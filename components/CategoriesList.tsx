@@ -67,7 +67,7 @@ const CategoriesList: React.FC = () => {
           {loading ? "Checking..." : "Become A Seller"}
         </button>
       </div>
-      <h1 className="text-2xl font-semibold text-center lg:hidden">Shop by Category</h1>
+      <h1 className="text-2xl text-gray-800 font-semibold text-center lg:hidden">Shop by Category</h1>
       {/* Small screens: Display categories with images */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6 lg:hidden">
         {categories.map((category) => (
@@ -80,7 +80,7 @@ const CategoriesList: React.FC = () => {
               alt={category.name}
               className="w-full h-32 sm:h-36 object-cover rounded-t-lg"
             />
-            <h3 className="text-center mt-2 text-sm sm:text-base font-medium">{category.name}</h3>
+            <h3 className="text-center text-gray-800 mt-2 text-sm sm:text-base font-medium">{category.name}</h3>
           </div>
         ))}
       </div>
