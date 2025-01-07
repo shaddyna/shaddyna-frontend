@@ -95,7 +95,7 @@ const Shop: React.FC = () => {
   ];
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto">
       <h1 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Our Shops</h1>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {shops.map((shop) => (
