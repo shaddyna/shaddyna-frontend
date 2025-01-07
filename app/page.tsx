@@ -11,7 +11,7 @@ import BottomNavigationBar from '@/components/BottomNav';
 
 const HomePage: React.FC = () => {
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen flex flex-col">
       <HeadNavigation />
     <div className="px-4 py-0"> {/* Padding added here for the whole page */}
       <div className="hidden lg:block">
