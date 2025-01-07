@@ -164,7 +164,7 @@ const PaymentPage: NextPage = () => {
 
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/api/sellers/create", {
+      const response = await fetch("https://shaddyna-backend.onrender.com/api/sellers/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -179,7 +179,7 @@ const PaymentPage: NextPage = () => {
       }      
 
       // Assuming payment was successful, update the user's role to 'seller'
-      const updatedUserResponse = await axios.put(`http://localhost:5000/api/users/${user._id}`, {
+      const updatedUserResponse = await axios.put(`https://shaddyna-backend.onrender.com/api/users/${user._id}`, {
         role: "seller",
       });
 

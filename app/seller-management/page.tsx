@@ -285,7 +285,7 @@ const SellerManagement: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get('https://shaddyna-frontend.onrender.com/api/sellers/'); // Adjust API route as needed
+        const response = await axios.get('https://shaddyna-backend.onrender.com/api/sellers/'); // Adjust API route as needed
         setSellers(response.data);
       } catch (err: any) {
         setError(err.message || 'Failed to fetch sellers.');
@@ -342,7 +342,7 @@ const SellerManagement: React.FC = () => {
     if (editSeller) {
       console.log('Edit seller _id:', editSeller._id);  // Log the ID to check
       try {
-        const response = await axios.put(`http://localhost:5000/api/sellers/edit/${editSeller._id}`, editSeller);
+        const response = await axios.put(`https://shaddyna-backend.onrender.com/api/sellers/edit/${editSeller._id}`, editSeller);
         setSellers(
           sellers.map((seller) =>
             seller._id === editSeller._id ? response.data : seller

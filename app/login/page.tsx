@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://shaddyna-frontend.onrender.com/api/auth/login', {
+      const res = await fetch('https://shaddyna-backend.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://shaddyna-frontend.onrender.com/api/auth/register', {
+      const res = await fetch('https://shaddyna-backend.onrender.com/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
