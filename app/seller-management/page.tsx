@@ -285,7 +285,7 @@ const SellerManagement: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get('http://localhost:5000/api/sellers/'); // Adjust API route as needed
+        const response = await axios.get('https://shaddyna-frontend.onrender.com/api/sellers/'); // Adjust API route as needed
         setSellers(response.data);
       } catch (err: any) {
         setError(err.message || 'Failed to fetch sellers.');

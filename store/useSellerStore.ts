@@ -22,7 +22,7 @@ export const useSellerStore = create<SellerStore>((set) => ({
   setSellers: (sellers) => set({ sellers }),
   fetchSellers: async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/sellers'); 
+      const response = await axios.get('https://shaddyna-frontend.onrender.com/api/sellers'); 
       set({ sellers: response.data });
     } catch (error) {
       console.error('Error fetching sellers:', error);

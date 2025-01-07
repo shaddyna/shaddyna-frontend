@@ -41,7 +41,7 @@ export const useUserSellerStore = create<UserSellerStore>((set) => ({
   // Fetch all users
   fetchUsers: async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/users'); // Adjust the API endpoint
+      const response = await axios.get('https://shaddyna-frontend.onrender.com/api/users'); // Adjust the API endpoint
       set({ users: response.data });
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -51,7 +51,7 @@ export const useUserSellerStore = create<UserSellerStore>((set) => ({
   // Fetch all sellers
   fetchSellers: async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/sellers'); // Adjust the API endpoint
+      const response = await axios.get('https://shaddyna-frontend.onrender.com/api/sellers'); // Adjust the API endpoint
       set({ sellers: response.data });
     } catch (error) {
       console.error('Error fetching sellers:', error);
@@ -72,7 +72,7 @@ export const useUserSellerStore = create<UserSellerStore>((set) => ({
       const { id, email } = decodedToken;
 
       // Fetch the user
-      const userResponse = await axios.get(`http://localhost:5000/api/users/${id}`);
+      const userResponse = await axios.get(`https://shaddyna-frontend.onrender.com/api/users/${id}`);
       const userData = userResponse.data;
 
       if (!userData) {

@@ -369,7 +369,7 @@ const ShopCreationPage: React.FC = () => {
       },
     };
     try {
-      const response = await fetch(`http://localhost:5000/api/sellers/edit/${sellerId}`, {
+      const response = await fetch(`https://shaddyna-frontend.onrender.com/api/sellers/edit/${sellerId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

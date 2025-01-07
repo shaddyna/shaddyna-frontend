@@ -247,7 +247,7 @@ export default function ConfirmationPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/orders/place-order",
+        "https://shaddyna-frontend.onrender.com/api/orders/place-order",
         {
           method: "POST",
           headers: {

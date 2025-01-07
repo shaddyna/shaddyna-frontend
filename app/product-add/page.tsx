@@ -90,7 +90,7 @@ const ShopCreationPage: React.FC = () => {
     formDataToSubmit.append("twitter", formData.twitter);
   
     try {
-      const response = await fetch(`http://localhost:5000/api/sellers/edit/${sellerId}`, {
+      const response = await fetch(`https://shaddyna-frontend.onrender.com/api/sellers/edit/${sellerId}`, {
         method: "PUT",
         body: formDataToSubmit,  // Send as FormData
       });
