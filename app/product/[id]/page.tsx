@@ -66,7 +66,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
     <div className="bg-gray-50 min-h-screen flex flex-col">
 
       <HeadNavigation />
-      <div className="p-6 max-w-7xl mx-auto">
+      <div className="p-6 max-w-7xl ">
         {/* Product Image and Details */}
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
