@@ -111,7 +111,7 @@ import Footer from "@/components/Footer"
 import HeadNavigation from "@/components/HeadNavigation"
 
 export default function CartPage() {
-  return (<div>
+  return (<div className="bg-gray-50 min-h-screen flex flex-col">
     <HeadNavigation />
     <CartDetails />
   <Footer />
