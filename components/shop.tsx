@@ -97,7 +97,7 @@ const Shop: React.FC = () => {
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Our Shops</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {shops.map((shop) => (
           <div key={shop.id} className="max-w-sm rounded-lg border border-gray-200 shadow-lg overflow-hidden">
             {/* Shop Image */}
@@ -132,6 +132,7 @@ const Shop: React.FC = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Shop;

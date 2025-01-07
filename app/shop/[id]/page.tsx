@@ -87,7 +87,7 @@ const ShopDetails: React.FC = () => {
   </div>
 
   {/* Shop Info */}
-<div className="flex flex-col items-start space-y-4 w-full md:w-3/4">
+<div className="flex flex-col items-start space-y-2 w-full md:w-3/4">
   <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800 leading-tight">
     {shop.name}
   </h1>
