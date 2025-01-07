@@ -343,7 +343,7 @@ const Products: React.FC = () => {
               <p className="text-xs sm:text-sm text-gray-500 font-medium mt-1">
                 Kes {product.price}
               </p>
-              <p className="text-xs sm:text-sm tex[#182155] font-bold mt-1">
+              <p className="text-xs sm:text-sm text-gray-800 tex[#182155] font-bold mt-1">
                 Shop Name
               </p>
               <div className="flex items-center mt-2">{renderStars(product.rating)}</div>

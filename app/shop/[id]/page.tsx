@@ -71,7 +71,7 @@ const ShopDetails: React.FC = () => {
   ];
 
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen flex flex-col">
 
     <HeadNavigation />
     <div className="container mx-auto p-6">
