@@ -63,7 +63,8 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen flex flex-col">
+
       <HeadNavigation />
       <div className="p-6 max-w-7xl mx-auto">
         {/* Product Image and Details */}

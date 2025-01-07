@@ -190,40 +190,41 @@ const ShopDetails: React.FC = () => {
 {/* Social Media Links */}
 <div className="mt-8 mb-6">
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-4">Follow Us</h2>
-  <div className="flex space-x-6 mt-4">
-    {/* Facebook */}
-    <a 
-      href={shop.socialLinks.facebook} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="flex items-center text-[#3b5998] hover:text-[#ff199c] transition duration-300 text-lg font-medium space-x-2"
-    >
-      <FaFacebookF className="text-xl" />
-      <span>Facebook</span>
-    </a>
+  <div className="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 mt-4">
+  {/* Facebook */}
+  <a 
+    href={shop.socialLinks.facebook} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="flex items-center text-[#3b5998] hover:text-[#ff199c] transition duration-300 text-lg font-medium space-x-2"
+  >
+    <FaFacebookF className="text-xl" />
+    <span>Facebook</span>
+  </a>
 
-    {/* Instagram */}
-    <a 
-      href={shop.socialLinks.instagram} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="flex items-center text-[#e1306c] hover:text-[#ff199c] transition duration-300 text-lg font-medium space-x-2"
-    >
-      <FaInstagram className="text-xl" />
-      <span>Instagram</span>
-    </a>
+  {/* Instagram */}
+  <a 
+    href={shop.socialLinks.instagram} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="flex items-center text-[#e1306c] hover:text-[#ff199c] transition duration-300 text-lg font-medium space-x-2"
+  >
+    <FaInstagram className="text-xl" />
+    <span>Instagram</span>
+  </a>
 
-    {/* Twitter */}
-    <a 
-      href={shop.socialLinks.twitter} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="flex items-center text-[#1da1f2] hover:text-[#ff199c] transition duration-300 text-lg font-medium space-x-2"
-    >
-      <FaTwitter className="text-xl" />
-      <span>Twitter</span>
-    </a>
-  </div>
+  {/* Twitter */}
+  <a 
+    href={shop.socialLinks.twitter} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="flex items-center text-[#1da1f2] hover:text-[#ff199c] transition duration-300 text-lg font-medium space-x-2"
+  >
+    <FaTwitter className="text-xl" />
+    <span>Twitter</span>
+  </a>
+</div>
+
 </div>
 
 
