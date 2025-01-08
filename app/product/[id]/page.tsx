@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 
 import BottomNavigationBar from "@/components/BottomNav";
 import Footer from "@/components/Footer";
@@ -67,7 +67,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
 
       <HeadNavigation />
       <div className="p-6 max-w-7xl ">
-        {/* Product Image and Details */}
+        {/* Product Image and Details *
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
             <div className="w-full mb-4">
@@ -89,7 +89,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
             </div>
           </div>
 
-          {/* Product Info */}
+          {/* Product Info *
           <div className="w-full lg:w-1/2 pl-0 lg:pl-6">
             <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
             <p className="text-xl text-gray-600 mt-2">Kes {product.price}</p>
@@ -104,7 +104,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
               <span className="ml-2 text-gray-500">({product.reviews.length} reviews)</span>
             </div>
 
-            {/* Sold By */}
+            {/* Sold By *
             <div className="mt-6 flex items-center space-x-3">
               <a href={`/seller/${product.seller}`} className="flex items-center space-x-2">
                 <img
@@ -119,7 +119,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
               </a>
             </div>
 
-            {/* Product Actions */}
+            {/* Product Actions *
             <div className="flex space-x-6 mt-6">
               <button className="text-gray-600 hover:text-yellow-500">
                 <AiOutlineHeart size={24} />
@@ -135,7 +135,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
               </button>
             </div>
 
-            {/* Color & Size Selector */}
+            {/* Color & Size Selector *
             <div className="mt-4">
               <label className="block text-sm font-semibold text-gray-700">Color</label>
               <div className="flex space-x-4 mt-2">
@@ -173,7 +173,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
           </div>
         </div>
 
-        {/* Reviews */}
+        {/* Reviews *
         <div className="mt-12">
           <h2 className="text-xl font-semibold text-gray-800">Customer Reviews</h2>
           {product.reviews.map((review, index) => (
@@ -192,7 +192,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
           ))}
         </div>
 
-        {/* Review Form */}
+        {/* Review Form *
         <form onSubmit={handleReviewSubmit} className="mt-12">
           <h2 className="text-xl font-semibold text-gray-800">Write a Review</h2>
           <div className="mt-4">
@@ -212,6 +212,65 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
       </div>
       <Footer />
       <BottomNavigationBar />
+    </div>
+  );
+};
+
+export default ProductDetailPage;*/
+
+// pages/product/[id].tsx
+"use client";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  // Add any other properties for the product
+}
+
+const ProductDetailPage = ({ params }: { params: { [x: string]: any; id: string } }) => {
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [paramId, setParamId] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Assuming params is a Promise, we unwrap it asynchronously
+    if (params) {
+      params.then((unwrappedParams: { id: string | null }) => {
+        setParamId(unwrappedParams.id);
+      });
+    }
+  }, [params]);
+
+  useEffect(() => {
+    if (paramId) {
+      axios
+        .get(`https://shaddyna-backend.onrender.com/api/products/${paramId}`)
+        .then((response) => {
+          setProduct(response.data.product);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError("Error fetching product details");
+          setLoading(false);
+        });
+    }
+  }, [paramId]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!product) return <div>Product not found</div>;
+
+  return (
+    <div>
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+      <p>Price: ${product.price}</p>
+      {/* Render other product details */}
     </div>
   );
 };

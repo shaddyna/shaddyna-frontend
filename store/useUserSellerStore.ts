@@ -9,6 +9,7 @@ interface User {
 }
 
 interface Seller {
+  [x: string]: string;
   _id: string;
   name: string;
   email: string;
@@ -16,7 +17,7 @@ interface Seller {
   status: string;
 }
 
-interface UserSellerStore {
+/*interface UserSellerStore {
   user: User | null;
   sellers: Seller[];
   users: User[];
@@ -27,7 +28,20 @@ interface UserSellerStore {
   fetchUsers: () => Promise<void>;
   fetchSellers: () => Promise<void>;
   fetchCurrentUser: () => Promise<void>;
+}*/
+interface UserSellerStore {
+  user: User | null;
+  sellers: Seller[];
+  users: User[];
+  currentUserRole: 'customer' | 'seller' | 'admin' | null; // Include 'admin'
+  setUser: (user: User) => void;
+  setUsers: (users: User[]) => void;
+  setSellers: (sellers: Seller[]) => void;
+  fetchUsers: () => Promise<void>;
+  fetchSellers: () => Promise<void>;
+  fetchCurrentUser: () => Promise<void>;
 }
+
 
 export const useUserSellerStore = create<UserSellerStore>((set) => ({
   user: null,
@@ -99,3 +113,92 @@ export const useUserSellerStore = create<UserSellerStore>((set) => ({
     }
   },
 }));
+
+/*import { create } from 'zustand';
+import axios from 'axios';
+
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+  role: 'admin' | 'customer' | 'seller'; // Directly from backend role
+}
+
+interface Seller {
+  [x: string]: string;
+  _id: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  status: string;
+}
+
+interface UserSellerStore {
+  user: User | null;
+  sellers: Seller[];
+  users: User[];
+  currentUserRole: 'customer' | 'seller' | 'admin' | null; // Updated to include 'admin'
+  setUser: (user: User) => void;
+  setUsers: (users: User[]) => void;
+  setSellers: (sellers: Seller[]) => void;
+  fetchUsers: () => Promise<void>;
+  fetchSellers: () => Promise<void>;
+  fetchCurrentUser: () => Promise<void>;
+}
+
+export const useUserSellerStore = create<UserSellerStore>((set) => ({
+  user: null,
+  sellers: [],
+  users: [],
+  currentUserRole: null,
+  setUser: (user) => set({ user }),
+  setUsers: (users) => set({ users }),
+  setSellers: (sellers) => set({ sellers }),
+
+  fetchUsers: async () => {
+    try {
+      const response = await axios.get('https://shaddyna-backend.onrender.com/api/users');
+      set({ users: response.data });
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  },
+
+  fetchSellers: async () => {
+    try {
+      const response = await axios.get('https://shaddyna-backend.onrender.com/api/sellers');
+      set({ sellers: response.data });
+    } catch (error) {
+      console.error('Error fetching sellers:', error);
+    }
+  },
+
+  fetchCurrentUser: async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found');
+        set({ user: null, currentUserRole: null });
+        return;
+      }
+
+      const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decoding the JWT token
+      const { id } = decodedToken;
+
+      const userResponse = await axios.get(`https://shaddyna-backend.onrender.com/api/users/${id}`);
+      const userData = userResponse.data;
+
+      if (!userData) {
+        console.error('User not found');
+        set({ user: null, currentUserRole: null });
+        return;
+      }
+
+      set({ user: userData, currentUserRole: userData.role }); // Set user role from API
+    } catch (error) {
+      console.error('Error fetching current user:', error);
+      set({ user: null, currentUserRole: null });
+    }
+  },
+}));*/
+

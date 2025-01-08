@@ -24,6 +24,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import Link from 'next/link';
 import Header from "./Header";
 import { useCartStore } from "@/store/cart-store";
+import { useUserSellerStore } from '@/store/useUserSellerStore';
 
 const PaymentDialog: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
   isOpen,
@@ -55,6 +56,14 @@ const HeadNavigation: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const { getTotalItems } = useCartStore();
   const totalItems = getTotalItems();
+  const { fetchCurrentUser, currentUserRole } = useUserSellerStore();
+  // Get the current user's role from the store
+
+   // Fetch the current user role when the component mounts
+   useEffect(() => {
+    fetchCurrentUser();
+  }, [fetchCurrentUser]);
+
 
   useEffect(() => {
     // Check localStorage for a token to set the login state
@@ -264,7 +273,7 @@ const HeadNavigation: React.FC = () => {
       </div>
 
       {/* Navigation Drawer (Visible only when hamburger menu is clicked) */}
-      <div
+      {/*<div
         className={`fixed inset-0 bg-gray-800 bg-opacity-50 transition-all duration-300 ${isDrawerOpen ? "block" : "hidden"} z-50`} // Set high z-index here
         onClick={toggleDrawer} // Close drawer when the background is clicked
       >
@@ -279,22 +288,22 @@ const HeadNavigation: React.FC = () => {
             <FaTimes />
           </button>
 
-          {/* Optional buttons can be uncommented when needed */}
+          {/* Optional buttons can be uncommented when needed *
           <button
             className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
             onClick={handleSellClick}
             >
-            <FaShoppingCart className="mr-2" /> {/* Icon for Start Selling */}
+            <FaShoppingCart className="mr-2" /> {/* Icon for Start Selling *
             My Shop
           </button> 
 
           <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
-            <FaBalanceScale className="mr-2" /> {/* Icon for Compare */}
+            <FaBalanceScale className="mr-2" /> {/* Icon for Compare *
             Compare
           </button>
 
          <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
-          <FaBlog className="mr-2" /> {/* Icon for Blog */}
+          <FaBlog className="mr-2" /> {/* Icon for Blog *
           Blog
         </button> 
 
@@ -302,7 +311,7 @@ const HeadNavigation: React.FC = () => {
             className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
             onClick={handleClick} // Trigger the navigation on click
           >
-            <FaTruck className="mr-2" /> {/* Icon for Delivery */}
+            <FaTruck className="mr-2" /> {/* Icon for Delivery *
             Delivery
           </button>
 
@@ -310,7 +319,7 @@ const HeadNavigation: React.FC = () => {
             className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
             onClick={handleAdminClick} // Trigger the navigation on click
           >
-            <FaCogs className="mr-2" /> {/* Icon for Admin Panel */}
+            <FaCogs className="mr-2" /> {/* Icon for Admin Panel *
             Admin Panel
           </button>
 
@@ -318,12 +327,12 @@ const HeadNavigation: React.FC = () => {
             className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
             onClick={handleUserClick} // Trigger the navigation on click
           >
-            <FaUserAlt className="mr-2" /> {/* Icon for My Profile */}
+            <FaUserAlt className="mr-2" /> {/* Icon for My Profile *
             My Profile
           </button>
 
           <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
-            <FaLifeRing className="mr-2" /> {/* Icon for Help */}
+            <FaLifeRing className="mr-2" /> {/* Icon for Help *
             Help?
           </button>
 
@@ -341,7 +350,93 @@ const HeadNavigation: React.FC = () => {
             </button>
             )}
         </div>
+      </div>*/}
+
+<div
+      className={`fixed inset-0 bg-gray-800 bg-opacity-50 transition-all duration-300 ${isDrawerOpen ? 'block' : 'hidden'} z-50`}
+      onClick={toggleDrawer}
+    >
+      <div
+        className="bg-white p-4 w-64 h-full flex flex-col space-y-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          className="text-2xl p-2 hover:bg-gray-100 text-gray-800 rounded-full"
+          onClick={toggleDrawer}
+        >
+          <FaTimes />
+        </button>
+
+        {/* Conditional rendering based on user role */}
+        {(currentUserRole === 'seller' || currentUserRole === 'admin') && (
+          <button
+            className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
+            onClick={handleSellClick}
+          >
+            <FaShoppingCart className="mr-2" />
+            My Shop
+          </button>
+        )}
+
+        {(currentUserRole === 'admin') && (
+          <button
+            className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
+            onClick={handleAdminClick}
+          >
+            <FaCogs className="mr-2" />
+            Admin Panel
+          </button>
+        )}
+
+        {(currentUserRole === 'admin') && (
+          <button
+            className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
+            onClick={handleSellClick}
+          >
+            <FaTruck className="mr-2" />
+            Delivery
+          </button>
+        )}
+
+        {/* Common buttons for all roles */}
+        <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
+          <FaBalanceScale className="mr-2" />
+          Compare
+        </button>
+
+        <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
+          <FaBlog className="mr-2" />
+          Blog
+        </button>
+
+        <button
+          className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
+          onClick={handleUserClick}
+        >
+          <FaUserAlt className="mr-2" />
+          My Profile
+        </button>
+
+        <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
+          <FaLifeRing className="mr-2" />
+          Help?
+        </button>
+
+        {isLoggedIn ? (
+          <button onClick={logout} className="flex items-center px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-full">
+            <FaSignOutAlt className="mr-2" />
+            Logout
+          </button>
+        ) : (
+          <button
+            className="hidden lg:block text-sm font-medium text-blue-600"
+            onClick={handleLoginClick}
+          >
+            Login/Register
+          </button>
+        )}
       </div>
+    </div>
 
     </header>
     <PaymentDialog

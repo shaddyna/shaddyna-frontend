@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 
 const Shop: React.FC = () => {
   const shops = [
@@ -100,20 +100,20 @@ const Shop: React.FC = () => {
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {shops.map((shop) => (
           <div key={shop.id} className="max-w-sm rounded-lg border border-gray-200 shadow-lg overflow-hidden">
-            {/* Shop Image */}
+            {/* Shop Image *
             <img
               src={shop.image || 'https://via.placeholder.com/400x300'}
               alt={shop.name}
               className="w-full h-56 object-cover"
             />
             <div className="p-4">
-              {/* Shop Name */}
+              {/* Shop Name *
               <h3 className="text-xl font-semibold text-gray-800">{shop.name}</h3>
-              {/* Shop Location */}
+              {/* Shop Location *
               <p className="text-sm text-gray-600 mt-2">{shop.location}</p>
-              {/* Shop Description */}
+              {/* Shop Description *
               <p className="text-sm text-gray-500 mt-2">{shop.description}</p>
-              {/* Rating and Product Count */}
+              {/* Rating and Product Count *
               <div className="flex items-center mt-4">
                 <span className="text-yellow-500">⭐ {shop.rating}</span>
                 <span className="ml-2 text-gray-500">({shop.productsCount} Products)</span>
@@ -133,6 +133,91 @@ const Shop: React.FC = () => {
     </div>
   );
   
+};
+
+export default Shop;*/
+
+"use client";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+interface Shop {
+  _id: string;
+  name: string;
+  location: string;
+  image: string;
+  description: string;
+  rating: number;
+  productsCount: number;
+}
+
+const Shop: React.FC = () => {
+  const [shops, setShops] = useState<Shop[]>([]); // Initialize as an empty array
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchShops = async () => {
+      try {
+        const response = await axios.get("https://shaddyna-backend.onrender.com/api/shops/shops");
+        console.log("API Response:", response.data); // Debugging the API response
+        setShops(response.data.shops); // Accessing the correct shops array
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch shops.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchShops();
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-6">Loading shops...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-red-600 py-6">{error}</div>;
+  }
+
+  return (
+    <div className="container mx-auto pb-4">
+      <h1 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Our Shops</h1>
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        {shops.map((shop) => (
+          <div
+            key={shop._id} // Make sure 'id' is unique, or use '_id' if that's present
+            className="max-w-sm rounded-lg border border-gray-200 shadow-lg overflow-hidden"
+          >
+            <img
+              src={shop.image || "https://via.placeholder.com/400x300"}
+              alt={shop.name}
+              className="w-full h-56 object-cover"
+            />
+            <div className="p-4">
+              <h3 className="text-xl font-semibold text-gray-800">{shop.name}</h3>
+              <p className="text-sm text-gray-600 mt-2">{shop.location}</p>
+              <p className="text-sm text-gray-500 mt-2">{shop.description}</p>
+              <div className="flex items-center mt-4">
+                <span className="text-yellow-500">⭐ {shop.rating}</span>
+                <span className="ml-2 text-gray-500">({shop.productsCount} Products)</span>
+              </div>
+            </div>
+            <div className="p-4 border-t border-gray-200">
+            <a
+                href={`/shop/${shop._id}`}
+                className="text-[#182155] hover:text-blue-700 font-semibold"
+              >
+                Visit Shop
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Shop;

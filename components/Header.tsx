@@ -18,32 +18,32 @@ const Header: React.FC = () => {
           <ul className="flex space-x-4">
             {/* Use icons instead of text on small screens */}
             <li className="sm:hidden">
-              <Link href="/about">
+              <Link href="">
                 <FaInfoCircle className="text-[#ff199c]" />
               </Link>
             </li>
             <li className="sm:hidden">
-              <Link href="/services">
+              <Link href="">
                 <FaCogs className="text-[#ff199c]" />
               </Link>
             </li>
             <li className="sm:hidden">
-              <Link href="/contact">
+              <Link href="">
                 <FaPhone className="text-[#ff199c]" />
               </Link>
             </li>
 
             {/* Text links for larger screens */}
             <li className="hidden sm:block">
-            <Link href="/about" className="text-[#ff199c] hover:text-white">About</Link>
+            <Link href="" className="text-[#ff199c] hover:text-white">About</Link>
 
 
             </li>
             <li className="hidden sm:block">
-              <Link href="/services" className="text-[#ff199c] hover:text-white">Services</Link>
+              <Link href="" className="text-[#ff199c] hover:text-white">Services</Link>
             </li>
             <li className="hidden sm:block">
-              <Link href="/contact" className="text-[#ff199c] hover:text-white">Contact</Link>
+              <Link href="" className="text-[#ff199c] hover:text-white">Contact</Link>
             </li>
                       </ul>
         </nav>

@@ -1,4 +1,4 @@
-"use client"
+/*"use client"
 import BackButton from '@/components/BackButton';
 import BottomNavigationBar from '@/components/BottomNav';
 import Footer from '@/components/Footer';
@@ -76,17 +76,17 @@ const ShopDetails: React.FC = () => {
     <HeadNavigation />
     <div className="container mx-auto p-6">
     <div className="flex items-center justify-start mb-8 px-0">
-          {/* Back Button */}
+          {/* Back Button *
           <BackButton />
         </div>
-      {/* Shop Header */}
+      {/* Shop Header *
 <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 px-6 sm:px-12 md:px-16">
-  {/* Shop Image */}
+  {/* Shop Image *
   <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full shadow-lg border-4 border-[#ff199c]">
     <img src={shop.image} alt={shop.name} className="w-full h-full object-cover" />
   </div>
 
-  {/* Shop Info */}
+  {/* Shop Info *
 <div className="flex flex-col items-start space-y-2 w-full md:w-3/4">
   <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800 leading-tight">
     {shop.name}
@@ -109,7 +109,7 @@ const ShopDetails: React.FC = () => {
   </div>
 </div>
 
-{/* Follow Button */}
+{/* Follow Button *
 <div className="w-full md:w-auto flex justify-center md:ml-auto mt-6 md:mt-0">
   <button className="py-3 px-6 sm:py-3 sm:px-8 md:py-2 md:px-6 lg:py-3 lg:px-8 bg-[#ff199c] text-white rounded-xl hover:bg-pink-700 transition-all duration-300 text-sm md:text-md font-semibold shadow-lg transform hover:scale-105">
     Follow Shop
@@ -117,9 +117,9 @@ const ShopDetails: React.FC = () => {
 </div>
 </div>
 
-{/* Shop Products */}
+{/* Shop Products *
 <Products/>
-{/* Shop Contacts */}
+{/* Shop Contacts *
 <div className="mb-10">
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#333333] mb-6">Contact</h2>
   <p className="text-sm sm:text-base text-gray-600">
@@ -128,7 +128,7 @@ const ShopDetails: React.FC = () => {
   <p className="text-sm sm:text-base text-gray-600">Phone: {shop.contacts.split(', ')[1]}</p>
 </div>
 
-{/* Shop Reviews */}
+{/* Shop Reviews *
 <div className="mb-12">
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6 mt-8">Customer Reviews</h2>
   <div className="space-y-8">
@@ -145,7 +145,7 @@ const ShopDetails: React.FC = () => {
 </div>
 
 
-{/* Add Review Form */}
+{/* Add Review Form *
 <div>
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mt-8 mb-6">Add Your Review</h2>
   <form onSubmit={handleSubmitReview} className="space-y-6">
@@ -187,11 +187,11 @@ const ShopDetails: React.FC = () => {
 
 
 
-{/* Social Media Links */}
+{/* Social Media Links *
 <div className="mt-8 mb-6">
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-4">Follow Us</h2>
   <div className="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 mt-4">
-  {/* Facebook */}
+  {/* Facebook *
   <a 
     href={shop.socialLinks.facebook} 
     target="_blank" 
@@ -202,7 +202,7 @@ const ShopDetails: React.FC = () => {
     <span>Facebook</span>
   </a>
 
-  {/* Instagram */}
+  {/* Instagram *
   <a 
     href={shop.socialLinks.instagram} 
     target="_blank" 
@@ -213,7 +213,7 @@ const ShopDetails: React.FC = () => {
     <span>Instagram</span>
   </a>
 
-  {/* Twitter */}
+  {/* Twitter *
   <a 
     href={shop.socialLinks.twitter} 
     target="_blank" 
@@ -228,7 +228,7 @@ const ShopDetails: React.FC = () => {
 </div>
 
 
-{/* Related Shops */}
+{/* Related Shops *
 <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6 mt-8">Related Shops</h2>
 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 overflow-x-auto py-2">
   {relatedShops.map((relatedShop, index) => (
@@ -248,6 +248,62 @@ const ShopDetails: React.FC = () => {
     </div>
     <Footer />
     <BottomNavigationBar />
+    </div>
+  );
+};
+
+export default ShopDetails;*/
+
+"use client";
+import { SetStateAction, useEffect, useState } from "react";
+import axios from "axios";
+
+interface Shop {
+  id: string;
+  name: string;
+  sellerId: string;
+}
+
+const ShopDetails = ({ params }: { params: {
+  [x: string]: any; id: string 
+} }) => {
+  const [shop, setShop] = useState<Shop | null>(null); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [paramId, setParamId] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Assuming params is a Promise, we unwrap it asynchronously
+    if (params) {
+      params.then((unwrappedParams: { id: SetStateAction<string | null>; }) => {
+        setParamId(unwrappedParams.id);
+      });
+    }
+  }, [params]);
+
+  useEffect(() => {
+    if (paramId) {
+      axios
+        .get(`https://shaddyna-backend.onrender.com/api/shops/${paramId}`)
+        .then((response) => {
+          setShop(response.data.shop);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError("Error fetching shop details");
+          setLoading(false);
+        });
+    }
+  }, [paramId]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!shop) return <div>Shop not found</div>;
+
+  return (
+    <div>
+      <h1>{shop.name}</h1>
+      {/* Render other shop details */}
     </div>
   );
 };

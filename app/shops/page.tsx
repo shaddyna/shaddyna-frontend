@@ -5,6 +5,7 @@ import HeadNavigation from "@/components/HeadNavigation";
 import Footer from "@/components/Footer";
 import BottomNavigationBar from "@/components/BottomNav";
 import ShopSearchBar from "@/components/ShopSearch";
+import Shop from "@/components/shop";
 
 const ShopsPage: NextPage = () => {
   const [isMounted, setIsMounted] = useState(false);  // State to track if component is mounted
@@ -196,142 +197,7 @@ const ShopsPage: NextPage = () => {
     <div>
       <HeadNavigation />
       <div className="max-w-screen-xl mx-auto p-4">
-        <div className="flex flex-col lg:flex-row gap-4 mb-8">
-          {/* Filters Section */}
-          <div className="w-full lg:w-1/4 space-y-6">
-            <h3 className="text-xl font-bold text-[#182155]">Filters</h3>
-  
-            {/* Reset Button */}
-            <button
-              onClick={resetFilters}
-              className="text-white bg-[#ff199c] p-2 rounded-md mb-6 hover:bg-[#182155] transition duration-300"
-            >
-              Reset Filters
-            </button>
-  
-            {/* Search Bar 
-            <div>
-              <h4 className="text-lg font-semibold text-[#182155]">Search</h4>
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded"
-              />
-            </div>*/}
-            <ShopSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-  
-            {/* Price Filter */}
-            <div>
-              <h4 className="text-lg font-semibold text-[#182155]">Price</h4>
-              <input
-                type="range"
-                min="0"
-                max="1000"
-                value={priceRange[0]}
-                onChange={(e) => setPriceRange([+e.target.value, priceRange[1]])}
-                className="w-full bg-[#182155] h-2 rounded-lg"
-              />
-              <input
-                type="range"
-                min="0"
-                max="1000"
-                value={priceRange[1]}
-                onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
-                className="w-full bg-[#182155] h-2 rounded-lg mt-2"
-              />
-              <p>
-                Price: ${priceRange[0]} - ${priceRange[1]}
-              </p>
-            </div>
-  
-            {/* Category Filter */}
-            <div>
-              <h4 className="text-lg font-semibold text-[#182155]">Category</h4>
-              <select
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded"
-              >
-                <option value="">Select Category</option>
-                {categories.map((category, index) => (
-                  <option key={index} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-  
-            {/* Shop Filter */}
-            <div>
-              <h4 className="text-lg font-semibold text-[#182155]">Location</h4>
-              <select
-                onChange={(e) => setSelectedShop(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded"
-              >
-                <option value="">Select Location</option>
-                {shops.map((shop, index) => (
-                  <option key={index} value={shop}>
-                    {shop}
-                  </option>
-                ))}
-              </select>
-            </div>
-  
-            {/* Rating Filter */}
-            <div>
-              <h4 className="text-lg font-semibold text-[#182155]">Rating</h4>
-              <div className="flex gap-2">
-                {[5, 4, 3, 2, 1].map((star) => (
-                  <button
-                    key={star}
-                    className={`w-6 h-6 text-yellow-500 ${rating === star ? "bg-[#182155]" : "bg-transparent"}`}
-                    onClick={() => setRating(star === rating ? null : star)}
-                  >
-                    ★
-                  </button>
-                ))}
-              </div>
-            </div>
-  
-            {/* Sorting Order */}
-            <div>
-              <h4 className="text-lg font-semibold text-[#182155]">Sort By</h4>
-              <select
-                onChange={(e) => setSortOrder(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded"
-              >
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-                <option value="oldest">Top Rated</option>
-              </select>
-            </div>
-          </div>
-  
-          {/* Products Section */}
-          <div className="w-full lg:w-3/4">
-            <h2 className="text-2xl font-bold text-[#182155] mb-6">Products</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-              {filteredProducts.map((product) => (
-                <div key={product.id} className="border p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                  <img
-                    src="/placeholder-image.jpg"
-                    alt="Product"
-                    className="w-full h-48 object-cover rounded"
-                  />
-                  <h3 className="text-lg font-semibold text-[#182155] mt-4">{product.name}</h3>
-                  <p className="text-sm text-gray-600">${product.price}</p>
-                  <div className="flex items-center mt-2">
-                    <span className="text-yellow-500">
-                      {"★".repeat(product.rating)}{" "}
-                      {"☆".repeat(5 - product.rating)}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <Shop />
       </div>
       <Footer />
       <BottomNavigationBar />
