@@ -194,7 +194,7 @@ const ShopsPage: NextPage = () => {
   }
 
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen flex flex-col">
       <HeadNavigation />
       <div className="max-w-screen-xl mx-auto p-4">
       <Shop />
