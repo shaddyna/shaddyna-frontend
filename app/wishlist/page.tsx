@@ -60,10 +60,10 @@ const WishlistPage: React.FC = () => {
         )}
       </div>
     </div>
+    </div>
+    </div>
     <Footer />
     <BottomNavigationBar />
-    </div>
-    </div>
     </div>
   );
 };
