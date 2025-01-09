@@ -31,7 +31,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
     const fetchProductDetail = async () => {
       try {
         const response = await fetch(
-          `https://shaddyna-frontend.onrender.com/api/products/${productId}`
+          `https://shaddyna-backend.onrender.com/api/products/${productId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch product details");
