@@ -285,6 +285,7 @@ const OrderManagement: React.FC = () => {
   return (
     <div>
       <HeadNavigation />
+      <div className="bg-gray-50 min-h-screen flex flex-col">
     <div className="container mx-auto p-4">
     <div className="flex items-center justify-between pb-4">
     <BackButton />
@@ -367,6 +368,7 @@ const OrderManagement: React.FC = () => {
           ))}
         </div>
       )}
+    </div>
     </div>
     <Footer />
     <BottomNavigationBar />
