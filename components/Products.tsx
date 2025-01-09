@@ -638,11 +638,11 @@ const Products: React.FC = () => {
             key={product.id}
             className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105 bg-white cursor-pointer"
           >
-            <img
+           <img
               src={product.image}
               alt={product.name}
               className="w-full h-36 sm:h-48 object-cover"
-              onClick={() => handleProductClick(product.id)}
+              onClick={() => router.push(`/product/${product.id}`)} // Ensure correct ID is passed
             />
             <div className="p-3 sm:p-4">
               <h3 className="text-sm sm:text-base font-semibold text-gray-800 truncate">

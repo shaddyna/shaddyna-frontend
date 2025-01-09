@@ -254,7 +254,9 @@ const SellerManagement: React.FC = () => {
 };
 
 export default <SellerManagement></SellerManagement>*/
-"use client";
+
+
+/*"use client";
 
 import BottomNavigationBar from '@/components/BottomNav';
 import Footer from '@/components/Footer';
@@ -466,4 +468,258 @@ const SellerManagement: React.FC = () => {
   );
 };
 
+export default SellerManagement;*/
+"use client";
+
+import BottomNavigationBar from "@/components/BottomNav";
+import Footer from "@/components/Footer";
+import HeadNavigation from "@/components/HeadNavigation";
+import React, { useState, useEffect } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import axios from "axios";
+import BackButton from "@/components/BackButton";
+
+interface Seller {
+  _id: string;
+  name: string;
+  status: string;
+}
+
+const SellerManagement: React.FC = () => {
+  const [sellers, setSellers] = useState<Seller[]>([]);
+  const [newSeller, setNewSeller] = useState({ name: "", status: "" });
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [viewSeller, setViewSeller] = useState<Seller | null>(null);
+  const [editSeller, setEditSeller] = useState<Seller | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSellers = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get(
+          "https://shaddyna-backend.onrender.com/api/sellers/"
+        );
+        setSellers(response.data);
+      } catch (err: any) {
+        setError(err.message || "Failed to fetch sellers.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSellers();
+  }, []);
+
+  const handleDelete = async (_id: string) => {
+    try {
+      await axios.delete(`/api/sellers/${_id}`);
+      setSellers(sellers.filter((seller) => seller._id !== _id));
+    } catch (err) {
+      console.error("Failed to delete seller:", err);
+    }
+  };
+
+  const handleEdit = (_id: string) => {
+    const sellerToEdit = sellers.find((seller) => seller._id === _id);
+    if (sellerToEdit) {
+      setEditSeller(sellerToEdit);
+    }
+  };
+
+  const handleAddSeller = async () => {
+    if (!newSeller.name || !newSeller.status) return;
+
+    try {
+      const response = await axios.post("/api/sellers", newSeller);
+      setSellers([...sellers, response.data]);
+      setNewSeller({ name: "", status: "" });
+      setIsFormVisible(false);
+    } catch (err) {
+      console.error("Failed to add seller:", err);
+    }
+  };
+
+  const handleView = (seller: Seller) => {
+    setViewSeller(seller);
+  };
+
+  const handleBack = () => {
+    setViewSeller(null);
+    setEditSeller(null);
+  };
+
+  const handleSaveEdit = async () => {
+    if (editSeller) {
+      try {
+        const response = await axios.put(
+          `https://shaddyna-backend.onrender.com/api/sellers/edit/${editSeller._id}`,
+          editSeller
+        );
+        setSellers(
+          sellers.map((seller) =>
+            seller._id === editSeller._id ? response.data : seller
+          )
+        );
+        setEditSeller(null);
+      } catch (err) {
+        console.error("Failed to update seller:", err);
+      }
+    }
+  };
+
+  return (
+    <div className="bg-white text-gray-900 min-h-screen">
+      <HeadNavigation />
+      <div className="container mx-auto p-4">
+        {loading ? (
+          <p className="text-center text-xl text-[#182155]">Loading sellers...</p>
+        ) : error ? (
+          <p className="text-red-500 text-center">{error}</p>
+        ) : (
+          <>
+            {viewSeller ? (
+              <div>
+                <button
+                  onClick={handleBack}
+                  className="mb-4 flex items-center text-[#182155]"
+                >
+                  <FaArrowLeft /> Back
+                </button>
+                <div className="bg-[#182155] text-white p-6 rounded shadow">
+                  <h2 className="text-2xl font-bold">{viewSeller.name}</h2>
+                  <p>Status: {viewSeller.status}</p>
+                </div>
+              </div>
+            ) : editSeller ? (
+              <div>
+                <button
+                  onClick={handleBack}
+                  className="mb-4 flex items-center text-[#182155]"
+                >
+                  <FaArrowLeft /> Back
+                </button>
+                <div className="bg-[#182155] p-6 text-white rounded shadow">
+                  <h2 className="text-2xl font-bold mb-4">Edit Seller</h2>
+                  <input
+                    type="text"
+                    value={editSeller.name}
+                    onChange={(e) =>
+                      setEditSeller({ ...editSeller, name: e.target.value })
+                    }
+                    placeholder="Name"
+                    className="w-full p-2 mb-4 border rounded"
+                  />
+                  <select
+                    value={editSeller.status}
+                    onChange={(e) =>
+                      setEditSeller({ ...editSeller, status: e.target.value })
+                    }
+                    className="w-full p-2 mb-4 border rounded"
+                  >
+                    <option value="active">Activate</option>
+                    <option value="pending">Pending</option>
+                    <option value="inactive">Deactivate</option>
+                  </select>
+                  <button
+                    onClick={handleSaveEdit}
+                    className="bg-[#ff199c] text-white px-4 py-2 rounded shadow hover:bg-[#e61789]"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+             <div className="container mx-auto p-3">
+                <div className="flex items-center justify-between">
+                  <BackButton />
+                  <h1 className="text-3xl font-bold text-[#182155]">
+                    Seller Management
+                  </h1>
+                </div>
+              </div>
+                <ul>
+                  {sellers.map((seller) => (
+                    <li
+                      key={seller._id}
+                      className="bg-gray-100 p-4 rounded shadow mb-4 flex justify-between items-center"
+                    >
+                      <div>
+                        <h3 className="text-lg font-semibold">{seller.name}</h3>
+                        <p>Status: {seller.status}</p>
+                      </div>
+                      <div>
+                        <button
+                          onClick={() => handleView(seller)}
+                          className="bg-[#182155] text-white px-3 py-1 rounded mr-2"
+                        >
+                          View
+                        </button>
+                        <button
+                          onClick={() => handleEdit(seller._id)}
+                          className="bg-[#ff199c] text-white px-3 py-1 rounded mr-2"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(seller._id)}
+                          className="bg-red-500 text-white px-3 py-1 rounded"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                {isFormVisible ? (
+                  <div className="bg-[#182155] p-6 text-white rounded shadow mt-6">
+                    <h2 className="text-xl font-bold mb-4">Add Seller</h2>
+                    <input
+                      type="text"
+                      value={newSeller.name}
+                      onChange={(e) =>
+                        setNewSeller({ ...newSeller, name: e.target.value })
+                      }
+                      placeholder="Name"
+                      className="w-full p-2 mb-4 border rounded"
+                    />
+                    <input
+                      type="text"
+                      value={newSeller.status}
+                      onChange={(e) =>
+                        setNewSeller({ ...newSeller, status: e.target.value })
+                      }
+                      placeholder="Status"
+                      className="w-full p-2 mb-4 border rounded"
+                    />
+                    <button
+                      onClick={handleAddSeller}
+                      className="bg-[#ff199c] text-white px-4 py-2 rounded shadow hover:bg-[#e61789]"
+                    >
+                      Add
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => setIsFormVisible(true)}
+                    className="bg-[#182155] text-white px-4 py-2 rounded shadow hover:bg-[#141b45] mt-6"
+                  >
+                    Add Seller
+                  </button>
+                )}
+              </>
+            )}
+          </>
+        )}
+      </div>
+      <Footer />
+      <BottomNavigationBar />
+    </div>
+  );
+};
+
 export default SellerManagement;
+

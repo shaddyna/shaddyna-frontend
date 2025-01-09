@@ -9,7 +9,7 @@ interface User {
 }
 
 interface Seller {
-  [x: string]: string;
+  //[x: string]: string;
   _id: string;
   name: string;
   email: string;
