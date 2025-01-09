@@ -95,7 +95,7 @@ export function CartDetails() {
                   <div className="flex items-center justify-between mt-2">
                     <p className="text-sm text-gray-500">Color: {item.color}</p>
                     <div className="flex items-center gap-4">
-                      <span className="font-medium">
+                      <span className="font-medium text-gray-600">
                         KSH {(item.price * item.quantity).toFixed(2)}
                       </span>
                       <Button 
