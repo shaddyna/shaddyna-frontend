@@ -114,6 +114,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
   return (
     <div>
       <HeadNavigation />
+      <div className="bg-gray-50 min-h-screen flex flex-col">
       <div className="container mx-auto p-4">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <img
@@ -154,6 +155,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
             onClose={() => setSnackbarMessage("")}
           />
         )}
+      </div>
       </div>
       <Footer />
       <BottomNavigationBar />
