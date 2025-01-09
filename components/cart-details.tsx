@@ -48,7 +48,7 @@ export function CartDetails() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-8">Shopping Cart</h1>
+      <h1 className="text-2xl text-gray-600 font-bold mb-8">Shopping Cart</h1>
       
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Cart Items */}
@@ -117,7 +117,7 @@ export function CartDetails() {
         {/* Order Summary */}
         <div className="lg:col-span-1">
           <Card className="p-6 sticky top-24">
-            <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
+            <h2 className="text-lg text-gray-600 font-semibold mb-4">Order Summary</h2>
             <div className="space-y-4 mb-4 border-b pb-4">
               {items.map((item) => (
                 <div key={`${item._id}-${item.color}`} className="flex items-start gap-3">
@@ -130,12 +130,12 @@ export function CartDetails() {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium truncate">{item.name}</p>
+                    <p className="font-medium truncate text-gray-600">{item.name}</p>
                     <p className="text-sm text-gray-500">
                       Color: {item.color} | Qty: {item.quantity}
                     </p>
                   </div>
-                  <span className="font-medium">
+                  <span className="font-medium text-gray-600">
                     KSH {(item.price * item.quantity).toFixed(2)}
                   </span>
                 </div>
@@ -144,11 +144,11 @@ export function CartDetails() {
             <div className="border-t pt-4">
               <div className="flex justify-between mb-4">
                 <span className="text-gray-600">Subtotal</span>
-                <span className="font-medium">KSH {getTotalPrice().toFixed(2)}</span>
+                <span className="font-medium text-gray-600">KSH {getTotalPrice().toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-lg font-semibold">
-                <span>Total</span>
-                <span>KSH {getTotalPrice().toFixed(2)}</span>
+                <span className="text-gray-600">Total</span>
+                <span className="text-gray-600">KSH {getTotalPrice().toFixed(2)}</span>
               </div>
             </div>
             <Button 
