@@ -428,9 +428,8 @@ const SearchPage: NextPage = () => {
   }
 
   return (
-    <div>
+    <div className="bg-gray-50">
       <HeadNavigation />
-      <div className="bg-gray-50 min-h-screen flex flex-col">
       <div className="max-w-screen-xl mx-auto p-4">
         <div className="flex flex-col lg:flex-row gap-4 mb-8">
           {/* Filters Section */}
@@ -571,7 +570,6 @@ const SearchPage: NextPage = () => {
             </div>
           </div>
         </div>
-      </div>
       </div>
       <Footer />
       <BottomNavigationBar />
