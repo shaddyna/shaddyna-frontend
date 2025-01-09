@@ -83,13 +83,13 @@ export function CheckoutDetails() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-8">Checkout</h1>
+      <h1 className="text-2xl text-gray-600 font-bold mb-8">Checkout</h1>
       
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Shipping Form */}
         <div className="lg:col-span-2">
           <Card className="p-6">
-            <h2 className="text-lg font-semibold mb-4">Shipping Information</h2>
+            <h2 className="text-lg font-semibold text-gray-600  mb-4">Shipping Information</h2>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -98,7 +98,7 @@ export function CheckoutDetails() {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>First Name</FormLabel>
+                        <FormLabel className="text-gray-600">First Name</FormLabel>
                         <FormControl>
                           <Input placeholder="John" {...field} />
                         </FormControl>
@@ -111,7 +111,7 @@ export function CheckoutDetails() {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Last Name</FormLabel>
+                        <FormLabel className="text-gray-600">Last Name</FormLabel>
                         <FormControl>
                           <Input placeholder="Doe" {...field} />
                         </FormControl>
@@ -126,7 +126,7 @@ export function CheckoutDetails() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel className="text-gray-600">Email</FormLabel>
                       <FormControl>
                         <Input type="email" placeholder="john@example.com" {...field} />
                       </FormControl>
@@ -140,7 +140,7 @@ export function CheckoutDetails() {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone</FormLabel>
+                      <FormLabel className="text-gray-600">Phone</FormLabel>
                       <FormControl>
                         <Input placeholder="+254 *** *** ***" {...field} />
                       </FormControl>
@@ -154,7 +154,7 @@ export function CheckoutDetails() {
                   name="address"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Address</FormLabel>
+                      <FormLabel className="text-gray-600">Address</FormLabel>
                       <FormControl>
                         <Input placeholder="Street address" {...field} />
                       </FormControl>
@@ -169,7 +169,7 @@ export function CheckoutDetails() {
                     name="city"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>City</FormLabel>
+                        <FormLabel className="text-gray-600">City</FormLabel>
                         <FormControl>
                           <Input placeholder="City" {...field} />
                         </FormControl>
@@ -182,7 +182,7 @@ export function CheckoutDetails() {
                     name="postalCode"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Postal Code</FormLabel>
+                        <FormLabel className="text-gray-600">Postal Code</FormLabel>
                         <FormControl>
                           <Input placeholder="Postal code" {...field} />
                         </FormControl>
@@ -197,7 +197,7 @@ export function CheckoutDetails() {
                   name="additionalInfo"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Additional Information (Optional)</FormLabel>
+                      <FormLabel className="text-gray-600">Additional Information (Optional)</FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="Additional delivery instructions"
