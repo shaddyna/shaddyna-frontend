@@ -110,7 +110,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
   if (!product) {
 
     return <div className="bg-gray-50 min-h-screen flex flex-col">
-      <p className="text-center mt-10">Loading product details...</p>;
+      <p className="text-center text-gray-600 mt-10">Loading product details...</p>;
       </div>
   }
 
