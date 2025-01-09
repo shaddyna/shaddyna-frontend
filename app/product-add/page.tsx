@@ -315,7 +315,7 @@ const ProductManagement: React.FC = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/products/delete/${id}`, {
+      const response = await fetch(`https://shaddyna-backend.onrender.com/api/products/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -354,7 +354,7 @@ const ProductManagement: React.FC = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/products/add", {
+      const response = await fetch("https://shaddyna-backend.onrender.com/api/products/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -391,7 +391,7 @@ const ProductManagement: React.FC = () => {
   const handleSaveEdit = async () => {
     if (editProduct) {
       try {
-        const response = await fetch(`http://localhost:5000/api/products/update/${editProduct.id}`, {
+        const response = await fetch(`https://shaddyna-backend.onrender.com/api/products/update/${editProduct.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

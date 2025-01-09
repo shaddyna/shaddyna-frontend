@@ -162,7 +162,7 @@ const AdminCategories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/categories');
+      const response = await axios.get('https://shaddyna-backend.onrender.com/api/categories');
       setCategories(response.data);
     } catch (error) {
       console.error('Error fetching categories:', error);
@@ -179,7 +179,7 @@ const AdminCategories = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/categories', newCategory);
+      await axios.post('https://shaddyna-backend.onrender.com/api/categories', newCategory);
       setNewCategory({ name: '', description: '' });
       fetchCategories();
     } catch (error) {
@@ -193,7 +193,7 @@ const AdminCategories = () => {
       return;
     }
     try {
-      await axios.put(`http://localhost:5000/api/categories/${editCategory._id}`, editCategory);
+      await axios.put(`https://shaddyna-backend.onrender.com/api/categories/${editCategory._id}`, editCategory);
       setEditCategory(null);
       fetchCategories();
     } catch (error) {
@@ -203,7 +203,7 @@ const AdminCategories = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:5000/api/categories/${id}`);
+      await axios.delete(`https://shaddyna-backend.onrender.com/api/categories/${id}`);
       fetchCategories();
     } catch (error) {
       console.error('Error deleting category:', error);

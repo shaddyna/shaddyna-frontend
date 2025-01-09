@@ -217,7 +217,7 @@ const CategoriesList: React.FC = () => {
     const fetchCategories = async () => {
       setIsFetching(true);
       try {
-        const response = await fetch("http://localhost:5000/api/categories");
+        const response = await fetch("https://shaddyna-backend.onrender.com/api/categories");
         if (!response.ok) {
           throw new Error("Failed to fetch categories");
         }

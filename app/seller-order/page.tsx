@@ -18,7 +18,7 @@ const OrderManagement: React.FC = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/orders/orders');
+        const res = await fetch('https://shaddyna-backend.onrender.com/api/orders/orders');
         const data = await res.json();
         setOrders(data);
       } catch (error) {

@@ -86,13 +86,13 @@ const CategoryDetails: React.FC = () => {
         setLoading(true);
         try {
           const categoryResponse = await fetch(
-            `http://localhost:5000/api/categories/${categoryId}`
+            `https://shaddyna-backend.onrender.com/api/categories/${categoryId}`
           );
           const categoryData = await categoryResponse.json();
           setCategory(categoryData);
 
           const productsResponse = await fetch(
-            `http://localhost:5000/api/products?categoryId=${categoryId}`
+            `https://shaddyna-backend.onrender.com/api/products?categoryId=${categoryId}`
           );
           const productsData = await productsResponse.json();
           setProducts(productsData);

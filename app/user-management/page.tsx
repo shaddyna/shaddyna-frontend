@@ -42,9 +42,9 @@ const AdminUsersPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isEditing && formData._id) {
-      await axios.put(`http://localhost:5000/api/users/${formData._id}`, formData);
+      await axios.put(`https://shaddyna-backend.onrender.com/api/users/${formData._id}`, formData);
     } else {
-      await axios.post("http://localhost:5000/api/users", formData);
+      await axios.post("https://shaddyna-backend.onrender.com/api/users", formData);
     }
     fetchUsers();
     setFormData({});
