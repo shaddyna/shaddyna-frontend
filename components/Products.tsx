@@ -532,7 +532,7 @@ import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart-store";
-import { useWishlistStore } from "@/store/wihlist-store";  // Import the wishlist store
+import { useWishlistStore } from "@/store/wishlist-store";  // Import the wishlist store
 import Snackbar from "@/components/SnackBar"; // Snackbar component to show messages
 
 interface Product {

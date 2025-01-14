@@ -9,6 +9,7 @@ interface User {
 }
 
 interface Seller {
+  //[x: string]: any;
   //[x: string]: string;
   _id: string;
   name: string;
@@ -201,4 +202,3 @@ export const useUserSellerStore = create<UserSellerStore>((set) => ({
     }
   },
 }));*/
-

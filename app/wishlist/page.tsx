@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import { useWishlistStore } from "@/store/wihlist-store";
+import { useWishlistStore } from "@/store/wishlist-store";
 import { FaHeart } from "react-icons/fa";
 import Footer from "@/components/Footer";
 import BottomNavigationBar from "@/components/BottomNav";

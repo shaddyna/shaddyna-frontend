@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { useCartStore } from "@/store/cart-store";
-import { useWishlistStore } from "@/store/wihlist-store";
+import { useWishlistStore } from "@/store/wishlist-store";
 import Snackbar from "@/components/SnackBar";
 import HeadNavigation from "@/components/HeadNavigation";
 import Footer from "@/components/Footer";

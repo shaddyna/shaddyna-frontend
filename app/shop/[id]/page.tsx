@@ -1,4 +1,4 @@
-"use client"
+/*"use client"
 import BackButton from '@/components/BackButton';
 import BottomNavigationBar from '@/components/BottomNav';
 import Footer from '@/components/Footer';
@@ -76,17 +76,16 @@ const ShopDetails: React.FC = () => {
     <HeadNavigation />
     <div className="container mx-auto p-6">
     <div className="flex items-center justify-start mb-8 px-0">
-          {/* Back Button */}
+          {/* Back Button *
           <BackButton />
         </div>
-      {/* Shop Header */}
+      {/* Shop Header *
 <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 px-6 sm:px-12 md:px-16">
   {/* Shop Image *
   <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full shadow-lg border-4 border-[#ff199c]">
     <img src={shop.image} alt={shop.name} className="w-full h-full object-cover" />
   </div>
-
-  {/* Shop Info */}
+  {/* Shop Info *
 <div className="flex flex-col items-start space-y-2 w-full md:w-3/4">
   <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800 leading-tight">
     {shop.name}
@@ -109,7 +108,7 @@ const ShopDetails: React.FC = () => {
   </div>
 </div>
 
-{/* Follow Button */}
+{/* Follow Button *
 <div className="w-full md:w-auto flex justify-center md:ml-auto mt-6 md:mt-0">
   <button className="py-3 px-6 sm:py-3 sm:px-8 md:py-2 md:px-6 lg:py-3 lg:px-8 bg-[#ff199c] text-white rounded-xl hover:bg-pink-700 transition-all duration-300 text-sm md:text-md font-semibold shadow-lg transform hover:scale-105">
     Follow Shop
@@ -117,9 +116,9 @@ const ShopDetails: React.FC = () => {
 </div>
 </div>
 
-{/* Shop Products */}
+{/* Shop Products *
 <Products/>
-{/* Shop Contacts */}
+{/* Shop Contacts *
 <div className="mb-10">
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#333333] mb-6">Contact</h2>
   <p className="text-sm sm:text-base text-gray-600">
@@ -128,7 +127,7 @@ const ShopDetails: React.FC = () => {
   <p className="text-sm sm:text-base text-gray-600">Phone: {shop.contacts.split(', ')[1]}</p>
 </div>
 
-{/* Shop Reviews */}
+{/* Shop Reviews *
 <div className="mb-12">
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6 mt-8">Customer Reviews</h2>
   <div className="space-y-8">
@@ -145,7 +144,7 @@ const ShopDetails: React.FC = () => {
 </div>
 
 
-{/* Add Review Form */}
+{/* Add Review Form *
 <div>
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mt-8 mb-6">Add Your Review</h2>
   <form onSubmit={handleSubmitReview} className="space-y-6">
@@ -187,11 +186,11 @@ const ShopDetails: React.FC = () => {
 
 
 
-{/* Social Media Links */}
+{/* Social Media Links *
 <div className="mt-8 mb-6">
   <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-4">Follow Us</h2>
   <div className="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 mt-4">
-  {/* Facebook */}
+  {/* Facebook *
   <a 
     href={shop.socialLinks.facebook} 
     target="_blank" 
@@ -202,7 +201,7 @@ const ShopDetails: React.FC = () => {
     <span>Facebook</span>
   </a>
 
-  {/* Instagram */}
+  {/* Instagram *
   <a 
     href={shop.socialLinks.instagram} 
     target="_blank" 
@@ -213,7 +212,7 @@ const ShopDetails: React.FC = () => {
     <span>Instagram</span>
   </a>
 
-  {/* Twitter */}
+  {/* Twitter *
   <a 
     href={shop.socialLinks.twitter} 
     target="_blank" 
@@ -228,7 +227,7 @@ const ShopDetails: React.FC = () => {
 </div>
 
 
-{/* Related Shops */}
+{/* Related Shops *
 <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6 mt-8">Related Shops</h2>
 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 overflow-x-auto py-2">
   {relatedShops.map((relatedShop, index) => (
@@ -252,7 +251,11 @@ const ShopDetails: React.FC = () => {
   );
 };
 
-export default ShopDetails;
+export default ShopDetails;*/
+
+
+
+
 
 
 /*"use client";
@@ -310,3 +313,223 @@ const ShopDetails = ({ params }: { params: {
 };
 
 export default ShopDetails;*/
+
+"use client";
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import BackButton from '@/components/BackButton';
+import BottomNavigationBar from '@/components/BottomNav';
+import Footer from '@/components/Footer';
+import HeadNavigation from '@/components/HeadNavigation';
+import Products from '@/components/Products';
+import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+
+interface Review {
+  user: string;
+  rating: number;
+  comment: string;
+}
+
+interface Shop {
+  _id: string;
+  name: string;
+  location: string;
+  image: string;
+  description: string;
+  rating: number;
+  productsCount: number;
+  joinDate: string;
+  contacts: string;
+  successfulSalesCount: number;
+  products: Array<{ name: string; price: string; image: string }>;
+  socialLinks: {
+    facebook: string;
+    instagram: string;
+    twitter: string;
+  };
+}
+
+const ShopDetails: React.FC = () => {
+  const [shop, setShop] = useState<Shop | null>(null);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [newReview, setNewReview] = useState({ user: '', rating: 0, comment: '' });
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const shopId = window.location.pathname.split('/').pop(); // Assuming the shop ID is part of the URL path
+
+  useEffect(() => {
+    const fetchShopDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/shops/${shopId}`);
+        setShop(response.data.shop);
+        setReviews(response.data.reviews); // Assuming reviews are part of the response
+      } catch (err) {
+        setError('Failed to fetch shop details');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (shopId) {
+      fetchShopDetails();
+    }
+  }, [shopId]);
+
+  const handleReviewChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setNewReview({ ...newReview, [name]: value });
+  };
+
+  const handleSubmitReview = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newReview.user && newReview.rating && newReview.comment) {
+      setReviews([...reviews, { ...newReview, rating: Number(newReview.rating) }]);
+      setNewReview({ user: '', rating: 0, comment: '' });
+    } else {
+      alert('Please fill in all fields');
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error || !shop) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div className="bg-gray-50 min-h-screen flex flex-col">
+      <HeadNavigation />
+      <div className="container mx-auto p-6">
+        <div className="flex items-center justify-start mb-8 px-0">
+          <BackButton />
+        </div>
+
+        {/* Shop Header */}
+        <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 px-6 sm:px-12 md:px-16">
+          <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full shadow-lg border-4 border-[#ff199c]">
+            <img src={shop.image || 'https://via.placeholder.com/150'} alt={shop.name} className="w-full h-full object-cover" />
+          </div>
+
+          <div className="flex flex-col items-start space-y-2 w-full md:w-3/4">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800 leading-tight">{shop.name}</h1>
+            <p className="text-base sm:text-lg text-gray-600 font-medium">{shop.location}</p>
+            <p className="text-sm sm:text-base text-gray-500 mt-2">{shop.description}</p>
+
+            <div className="flex items-center mt-4 space-x-4">
+              <span className="text-yellow-500 text-xl sm:text-2xl">⭐ {shop.rating}</span>
+              <span className="text-sm sm:text-base text-gray-500">({shop.productsCount} Products)</span>
+            </div>
+
+            <div className="mt-4 space-y-2">
+              <p className="text-sm sm:text-base text-gray-500">
+                <span className="font-semibold">Joined on:</span> {new Date(shop.joinDate).toLocaleDateString()}
+              </p>
+              <p className="text-sm sm:text-base text-gray-500">
+                <span className="font-semibold">Successful Sales:</span> {shop.successfulSalesCount}
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full md:w-auto flex justify-center md:ml-auto mt-6 md:mt-0">
+            <button className="py-3 px-6 sm:py-3 sm:px-8 md:py-2 md:px-6 lg:py-3 lg:px-8 bg-[#ff199c] text-white rounded-xl hover:bg-pink-700 transition-all duration-300 text-sm md:text-md font-semibold shadow-lg transform hover:scale-105">
+              Follow Shop
+            </button>
+          </div>
+        </div>
+
+        {/* Shop Products */}
+        <Products />
+
+        {/* Shop Contacts */}
+        <div className="mb-10">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[#333333] mb-6">Contact</h2>
+          <p className="text-sm sm:text-base text-gray-600">
+            Email: {/*<a href={`mailto:${shop.contacts.split(', ')[0]}`} className="text-[#ff199c] hover:underline">{shop.contacts.split(', ')[0]}</a>*/}
+          </p>
+          <p className="text-sm sm:text-base text-gray-600">Phone: </p>
+        </div>
+
+        {/* Shop Reviews */}
+        <div className="mb-12">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6 mt-8">Customer Reviews</h2>
+          <div className="space-y-8">
+            {/*{reviews.map((review, index) => (
+              <div key={index} className="border-b border-gray-300 pb-6">
+                <p className="font-semibold text-[#182155] text-lg">{review.user}</p>
+                <div className="flex items-center mt-2">
+                  <span className="text-yellow-500 text-xl">⭐ {review.rating}</span>
+                </div>
+                <p className="text-[#182155] mt-2 text-base">{review.comment}</p>
+              </div>
+            ))}*/}
+          </div>
+        </div>
+
+        {/* Add Review Form */}
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mt-8 mb-6">Add Your Review</h2>
+          <form onSubmit={handleSubmitReview} className="space-y-6">
+            <input
+              type="text"
+              name="user"
+              value={newReview.user}
+              onChange={handleReviewChange}
+              placeholder="Your Name"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:ring-[#ff199c] focus:ring-2 focus:outline-none placeholder:text-[#ff199c] text-[#182155]"
+            />
+            <input
+              type="number"
+              name="rating"
+              value={newReview.rating}
+              onChange={handleReviewChange}
+              placeholder="Rating (1-5)"
+              min="1"
+              max="5"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:ring-[#ff199c] focus:ring-2 focus:outline-none placeholder:text-[#ff199c] text-[#182155]"
+            />
+            <textarea
+              name="comment"
+              value={newReview.comment}
+              onChange={handleReviewChange}
+              placeholder="Your Review"
+              rows={4}
+              className="w-full p-4 border border-gray-300 rounded-lg focus:ring-[#ff199c] focus:ring-2 focus:outline-none placeholder:text-[#ff199c] text-[#182155]"
+            />
+            <button
+              type="submit"
+              className="w-full py-3 bg-[#182155] text-white rounded-lg hover:bg-[#e61c8d] transition duration-300 text-lg font-semibold shadow-md transform hover:scale-105"
+            >
+              Submit Review
+            </button>
+          </form>
+        </div>
+
+        {/* Social Media Links */}
+        <div className="mt-8 mb-6">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6">Follow Us</h2>
+          <div className="flex space-x-6">
+            <a  target="_blank" rel="noopener noreferrer">
+              <FaFacebookF size={24} className="text-[#182155]" />
+            </a>
+            <a  target="_blank" rel="noopener noreferrer">
+              <FaInstagram size={24} className="text-[#182155]" />
+            </a>
+            <a target="_blank" rel="noopener noreferrer">
+              <FaTwitter size={24} className="text-[#182155]" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Navigation */}
+      <BottomNavigationBar />
+      <Footer />
+    </div>
+  );
+};
+
+export default ShopDetails;
