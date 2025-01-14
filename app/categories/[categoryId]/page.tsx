@@ -199,7 +199,7 @@ const CategoryDetails: React.FC = () => {
           setCategory(categoryData);
 
           const productsResponse = await fetch(
-            `http://localhost:5000/api/products?categoryId=${categoryId}`
+            `https://shaddyna-backend.onrender.com/api/products?categoryId=${categoryId}`
           );
           const productsData = await productsResponse.json();
 

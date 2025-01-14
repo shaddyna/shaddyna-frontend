@@ -362,7 +362,7 @@ const ShopDetails: React.FC = () => {
   useEffect(() => {
     const fetchShopDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/shops/${shopId}`);
+        const response = await axios.get(`https://shaddyna-backend.onrender.com/api/shops/${shopId}`);
         setShop(response.data.shop);
         setReviews(response.data.reviews); // Assuming reviews are part of the response
       } catch (err) {
