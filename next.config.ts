@@ -2,8 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["i.pinimg.com"], // Add any other domains here as needed
+    domains: ["i.pinimg.com", "res.cloudinary.com"], // Add res.cloudinary.com here
   },
 };
 
 export default nextConfig;
+

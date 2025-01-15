@@ -102,10 +102,26 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
 
   const handleAddToWishlist = () => {
     if (!product) return;
+  
+    const wishlistItem = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      images: [product.image], // Convert the single image to an array
+      rating: product.rating,
+    };
+  
+    addToWishlist(wishlistItem);
+    setSnackbarMessage("Product added to wishlist!");
+  };
+  
+
+  /*const handleAddToWishlist = () => {
+    if (!product) return;
 
     addToWishlist(product);
     setSnackbarMessage("Product added to wishlist!");
-  };
+  };*/
 
   if (!product) {
 
@@ -123,7 +139,8 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
           <img
             src={product.image}
             alt={product.name}
-            className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md"
+            className="w-full h-36 sm:h-48 object-contain" 
+            //className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md"
           />
           <div className="flex-1">
             <h1 className="text-2xl font-bold text-gray-800">{product.name}</h1>

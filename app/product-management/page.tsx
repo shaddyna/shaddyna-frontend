@@ -482,7 +482,14 @@ interface Category {
 
 const ProductManagement: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]); 
-  const [newProduct, setNewProduct] = useState({ name: "", price: "", description: "", categoryId: '', });
+  //const [newProduct, setNewProduct] = useState({ name: "", price: "", description: "", categoryId: '', });
+  const [newProduct, setNewProduct] = useState({
+    name: "",
+    price: "",
+    description: "",
+    categoryId: "",
+    images: [] as File[], // Store multiple images here
+  });
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [viewProduct, setViewProduct] = useState<Product | null>(null);
   const [editProduct, setEditProduct] = useState<Product | null>(null);
@@ -557,29 +564,54 @@ useEffect(() => {
       setEditProduct({ ...productToEdit });
     }
   };
-
   const handleAddProduct = async () => {
-    if (!newProduct.name || !newProduct.price || !newProduct.description || !newProduct.categoryId) {
-      alert("All fields (name, price, description, and category) are required");
+    // Log the newProduct object before validating
+    console.log("newProduct object before validation:", newProduct);
+  
+    // Validate if all required fields are provided
+    if (
+      !newProduct.name ||
+      !newProduct.price ||
+      !newProduct.description ||
+      !newProduct.categoryId ||
+      newProduct.images.length === 0
+    ) {
+      alert("All fields (name, price, description, category, and images) are required");
       return;
     }
   
+    // Prepare the added product object
     const addedProduct = {
       name: newProduct.name,
       price: parseFloat(newProduct.price),
       description: newProduct.description,
-      categoryId: newProduct.categoryId, // Send the actual ObjectId of the selected category
+      categoryId: newProduct.categoryId,
     };
   
+    // Log the addedProduct object to ensure the values are correct
+    console.log("Product data being sent to server:", addedProduct);
+  
     try {
+      const formData = new FormData();
+      formData.append("name", addedProduct.name);
+      formData.append("price", addedProduct.price.toString());
+      formData.append("description", addedProduct.description);
+      formData.append("categoryId", addedProduct.categoryId);
+  
+      // Log images before appending to FormData
+      console.log("Images being sent:", newProduct.images);
+      newProduct.images.forEach((file, index) => {
+        console.log(`Appending image ${index + 1}: ${file.name}`); // Log each image
+        formData.append("images", file);
+      });
+  
       const response = await fetch("https://shaddyna-backend.onrender.com/api/products/add", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify(addedProduct),
+        body: formData, // Let the browser set the Content-Type
       });
+  
+      // Log the response from the server
+      console.log("Response from server:", response);
   
       if (!response.ok) {
         alert("Failed to add product");
@@ -588,7 +620,7 @@ useEffect(() => {
   
       const savedProduct = await response.json();
       setProducts([...products, savedProduct.product]);
-      setNewProduct({ name: "", price: "", description: "", categoryId: "" });
+      setNewProduct({ name: "", price: "", description: "", categoryId: "", images: [] });
       setIsFormVisible(false);
       alert("Product added successfully!");
     } catch (error) {
@@ -596,6 +628,8 @@ useEffect(() => {
       alert("Error adding product. Please try again.");
     }
   };
+  
+  
   
   
   
@@ -699,53 +733,62 @@ useEffect(() => {
         </div>
      ) : isFormVisible ? (
       <div className="container mx-auto p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-[#182155]">Add New Product</h2>
-        <input
-          type="text"
-          placeholder="Product Name"
-          value={newProduct.name}
-          onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-          className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-        />
-        <input
-          type="number"
-          placeholder="Product Price"
-          value={newProduct.price}
-          onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
-          className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-        />
-        <textarea
-          placeholder="Product Description"
-          value={newProduct.description}
-          onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
-          className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-        />
-        <select
-          value={newProduct.categoryId}
-          onChange={(e) => setNewProduct({ ...newProduct, categoryId: e.target.value })}
-          className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-        >
-          <option value="">Select a Category</option>
-          {categories.map((category) => (
-            <option key={category._id} value={category._id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
+  <h2 className="text-2xl font-bold text-[#182155]">Add New Product</h2>
+  <input
+    type="text"
+    placeholder="Product Name"
+    value={newProduct.name}
+    onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
+    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+  />
+  <input
+    type="number"
+    placeholder="Product Price"
+    value={newProduct.price}
+    onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
+    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+  />
+  <textarea
+    placeholder="Product Description"
+    value={newProduct.description}
+    onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
+    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+  />
+  <select
+    value={newProduct.categoryId}
+    onChange={(e) => setNewProduct({ ...newProduct, categoryId: e.target.value })}
+    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+  >
+    <option value="">Select a Category</option>
+    {categories.map((category) => (
+      <option key={category._id} value={category._id}>
+        {category.name}
+      </option>
+    ))}
+  </select>
 
-        <button
-          onClick={handleAddProduct}
-          className="mt-4 bg-[#ff199c] text-white p-2 rounded-md"
-        >
-          Add Product
-        </button>
-        <button
-          onClick={() => setIsFormVisible(false)}
-          className="mt-4 ml-4 text-[#ff199c] hover:underline"
-        >
-          Cancel
-        </button>
-      </div>
+  <input
+    type="file"
+    accept="image/*"
+    multiple
+    onChange={(e) => setNewProduct({ ...newProduct, images: Array.from(e.target.files || []) })}
+    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+  />
+
+  <button
+    onClick={handleAddProduct}
+    className="mt-4 bg-[#ff199c] text-white p-2 rounded-md"
+  >
+    Add Product
+  </button>
+  <button
+    onClick={() => setIsFormVisible(false)}
+    className="mt-4 ml-4 text-[#ff199c] hover:underline"
+  >
+    Cancel
+  </button>
+</div>
+
     ) : (
     
         <div className="container mx-auto p-6">

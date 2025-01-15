@@ -5,7 +5,8 @@ export interface WishlistItem {
   id: string;
   name: string;
   price: number;
-  image: string;
+  images: string | string[]; 
+  //images: string[];
   rating: number;  // or other fields you need
 }
 
