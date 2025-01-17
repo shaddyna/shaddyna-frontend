@@ -1,4 +1,5 @@
 "use client"
+import Back from '@/components/Back';
 import BottomNavigationBar from '@/components/BottomNav';
 import Footer from '@/components/Footer';
 import HeadNavigation from '@/components/HeadNavigation';
@@ -15,7 +16,7 @@ const handleClick = () => {
 };
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <HeadNavigation />
+      <Back title={'Paymrnt Processing'} />
 
       <main className="flex-grow flex items-center justify-center p-4 sm:p-8">
         <div className="w-full max-w-md sm:max-w-lg p-6 sm:p-8 bg-white rounded-lg shadow-lg border border-[#182155]">
