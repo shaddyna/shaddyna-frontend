@@ -98,13 +98,15 @@ const Login = () => {
 };
 
 export default Login;*/
+
+
+
 "use client"
 
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-
 
 const Login = () => {
   const router = useRouter();
@@ -147,12 +149,11 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col">
-    <div className="min-h-screen flex items-center justify-center bg-white p-6">
-      <div className="shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c] ">
+    <div className="min-h-screen flex items-center justify-center bg-white p-6 overflow-hidden">
+      <div className="relative shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c]">
         {/* Decorative Elements */}
-        <div className="absolute -top-10 -left-10 bg-[#ff199c] w-32 h-32 rounded-full blur-2xl opacity-10"></div>
-        <div className="absolute -bottom-10 -right-10 bg-[#182155] w-40 h-40 rounded-full blur-2xl opacity-10"></div>
+        <div className="absolute -top-10 -left-10 bg-[#ff199c] w-32 h-32 rounded-full blur-2xl opacity-10 z-[-1]"></div>
+        <div className="absolute -bottom-10 -right-10 bg-[#182155] w-40 h-40 rounded-full blur-2xl opacity-10 z-[-1]"></div>
 
         <h1 className="text-4xl font-extrabold text-center text-[#182155] mb-6">Welcome Back!</h1>
         <p className="text-center text-gray-700 mb-4">Login to continue to your account</p>
@@ -210,7 +211,7 @@ const Login = () => {
         {/* Sign up link moved below the form */}
         <div className="mt-6 text-center">
           <p className="text-gray-700">
-            Don’t have an account?{' '}
+            Don't have an account?{' '}
             <span
               onClick={handleSignUpClick}
               className="text-[#182155] font-semibold cursor-pointer hover:underline"
@@ -220,7 +221,6 @@ const Login = () => {
           </p>
         </div>
       </div>
-    </div>
     </div>
   );
 };
