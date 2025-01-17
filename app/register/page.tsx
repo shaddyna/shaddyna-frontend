@@ -127,6 +127,15 @@ const SignUp = () => {
 export default SignUp;*/
 
 
+
+
+
+
+
+
+
+
+
 'use client'; 
 
 import { useState } from 'react';
@@ -173,22 +182,20 @@ const SignUp = () => {
       setError('Error during signup');
     }
   };
+
   const handleSignInClick = () => {
     router.push('/login');
   };
-
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col overflow-hidden">
-      <div className="flex-1 flex items-center justify-center bg-white p-6">
-        <div className="relative shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c]">
-          {/* Decorative Elements */}
-          <div className="absolute -top-10 -left-10 bg-[#ff199c] w-32 h-32 rounded-full blur-2xl opacity-10"></div>
-          <div className="absolute -bottom-10 -right-10 bg-[#182155] w-40 h-40 rounded-full blur-2xl opacity-10"></div>
-
-          <h1 className="text-4xl font-extrabold text-center text-[#182155] mb-6">Create an Account</h1>
-          <p className="text-center text-gray-700 mb-4">Sign up to join our platform</p>
-          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-          <form onSubmit={handleSubmit}>
+    <div className="min-h-screen flex items-center justify-center bg-white p-6 overflow-hidden">
+      <div className="relative shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c]">
+        {/* Decorative Elements */}
+        <div className="absolute -top-10 -left-10 bg-[#ff199c] w-32 h-32 rounded-full blur-2xl opacity-10 z-[-1]"></div>
+        <div className="absolute -bottom-10 -right-10 bg-[#182155] w-40 h-40 rounded-full blur-2xl opacity-10 z-[-1]"></div>
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Create an Account</h1>
+        <p className="text-center text-gray-600 mb-4">Sign up to join our platform</p>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label htmlFor="firstName" className="block text-gray-700 font-medium mb-2">
                 First Name
@@ -261,19 +268,18 @@ const SignUp = () => {
             </button>
           </form>
         
-          {/* Sign up link moved below the form */}
-          <div className="mt-6 text-center">
-            <p className="text-gray-700">
-              Already have an account?{' '}
-              <span
-                onClick={handleSignInClick}
-                className="text-[#182155] font-semibold cursor-pointer hover:underline"
-              >
-                Sign in
-              </span>
-            </p>
-          </div>
-        
+
+       {/* Sign up link moved below the form */}
+       <div className="mt-6 text-center">
+          <p className="text-gray-700">
+            Already have an account?{' '}
+            <span
+            onClick={handleSignInClick}
+            className="text-[#182155] font-semibold cursor-pointer hover:underline z-10"
+          >
+            Sign in
+          </span>
+          </p>
         </div>
       </div>
     </div>
