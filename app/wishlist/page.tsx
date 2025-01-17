@@ -78,6 +78,7 @@ import Footer from "@/components/Footer";
 import BottomNavigationBar from "@/components/BottomNav";
 import HeadNavigation from "@/components/HeadNavigation";
 import { useRouter } from "next/navigation";
+import Back from "@/components/Back";
 
 const WishlistPage: React.FC = () => {
   const { items: wishlistItems, removeItem } = useWishlistStore();
@@ -88,13 +89,11 @@ const WishlistPage: React.FC = () => {
 
   return (
     <div>
-      <HeadNavigation />
+      <Back title={"Your Wishlist"} />
     <div className="bg-gray-50 min-h-screen flex flex-col">
     <div className="px-4 py-0">
     <div className="pb-4 pt-4">
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6 text-center">
-        Your Wishlist
-      </h2>
+     
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 lg:gap-6">
         {wishlistItems.length > 0 ? (
           wishlistItems.map((product) => (

@@ -16,4 +16,4 @@ const ProductCard: FC<ProductCardProps> = ({ name, price, rating }) => {
   );
 };
 
-export default ProductCard;
+export default ProductCard;   

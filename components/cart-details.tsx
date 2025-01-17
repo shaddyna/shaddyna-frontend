@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card"
 import { useEffect, useState } from "react"
 import { CartSkeleton } from "@/app/cart/cart-skeleton"
 import { useRouter } from "next/navigation"
+import Back from "./Back"
 
 export function CartDetails() {
   const router = useRouter()
@@ -47,9 +48,9 @@ export function CartDetails() {
   }
 
   return (
+    <div>
+    <Back title={"Your Shopping Cart"} />
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl text-gray-600 font-bold mb-8">Shopping Cart</h1>
-      
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-4">
@@ -160,6 +161,7 @@ export function CartDetails() {
           </Card>
         </div>
       </div>
+    </div>
     </div>
   )
 } 

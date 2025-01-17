@@ -184,6 +184,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import HeadNavigation from "@/components/HeadNavigation";
 import Footer from "@/components/Footer";
+import Back from "@/components/Back";
 
 export default function ConfirmationPage() {
   const paymentDetails = useCheckoutStore((state) => state.paymentDetails);
@@ -288,7 +289,7 @@ export default function ConfirmationPage() {
 
   return (
     <div>
-    <HeadNavigation />
+  <Back title={"Payment"} />
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-8">Order Confirmation</h1>
       <div className="space-y-4">

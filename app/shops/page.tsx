@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import BottomNavigationBar from "@/components/BottomNav";
 import ShopSearchBar from "@/components/ShopSearch";
 import Shop from "@/components/shop";
+import Back from "@/components/Back";
 
 const ShopsPage: NextPage = () => {
   const [isMounted, setIsMounted] = useState(false);  // State to track if component is mounted
@@ -195,7 +196,7 @@ const ShopsPage: NextPage = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
-      <HeadNavigation />
+     <Back title={"Our Shops"} />
       <div className="max-w-screen-xl mx-auto p-4">
       <Shop />
       </div>

@@ -131,6 +131,7 @@ import { useRouter } from "next/navigation";
 import BottomNavigationBar from "@/components/BottomNav";
 import { useUserSellerStore } from "@/store/useUserSellerStore"; // Import your Zustand store
 import axios from "axios";
+import Back from "@/components/Back";
 
 const PaymentPage: NextPage = () => {
   const [formData, setFormData] = useState({
@@ -202,7 +203,7 @@ const PaymentPage: NextPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <HeadNavigation />
+      <Back title={"Payment"} />
 
       <main className="flex-grow flex items-center justify-center p-4 sm:p-8">
         <div className="w-full max-w-md p-6 sm:p-8 bg-white rounded-lg shadow-md border border-[#182155]">

@@ -23,6 +23,7 @@ import { CheckoutSkeleton } from "@/app/checkout/checkout-skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import { useRouter } from "next/navigation"; 
+import Back from "./Back";
 
 export function CheckoutDetails() {
   const router = useRouter(); 
@@ -82,9 +83,9 @@ export function CheckoutDetails() {
   }
 
   return (
+    <div>
+    <Back title={"Checkout"} />
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl text-gray-600 font-bold mb-8">Checkout</h1>
-      
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Shipping Form */}
         <div className="lg:col-span-2">
@@ -258,6 +259,7 @@ export function CheckoutDetails() {
           </Card>
         </div>
       </div>
+    </div>
     </div>
   )
 } 

@@ -1,14 +1,16 @@
+import Back from "@/components/Back";
 import BottomNavigationBar from "@/components/BottomNav";
 import Footer from "@/components/Footer";
 import HeadNavigation from "@/components/HeadNavigation";
+import { NextPage } from "next";
 import React from "react";
 
-const HelpPage = () => {
+const HelpPage: NextPage = () => { 
   return (
     <div>
-        <HeadNavigation />
+       <Back title={"Payment"} />
     <div className="container mx-auto p-4 bg-white text-[#182155]">
-      <h1 className="text-3xl font-bold text-center mb-6">Welcome to Shaddyna Help</h1>
+      <h1 className="text-3xl font-bold text-center mb-4">Welcome to Shaddyna Help</h1>
       
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Getting Started</h2>

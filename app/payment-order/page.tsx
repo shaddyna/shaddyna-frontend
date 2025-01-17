@@ -11,6 +11,7 @@ import { useCheckoutStore } from "@/store/checkout-store";
 import { useRouter } from "next/navigation"; 
 import HeadNavigation from "@/components/HeadNavigation";
 import Footer from "@/components/Footer";
+import Back from "@/components/Back";
 
 const paymentSchema = z.object({
   phoneNumber: z.string().min(10, "Phone number must be at least 10 digits"),
@@ -41,7 +42,7 @@ export default function PaymentPage() {
 
   return (
     <div>
-      <HeadNavigation />
+      <Back title={"Payment"} />
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-8">Payment</h1>
       <Card className="p-6">

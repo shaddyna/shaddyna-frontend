@@ -362,6 +362,7 @@ import HeadNavigation from "@/components/HeadNavigation";
 import Footer from "@/components/Footer";
 import SearchBar from "@/components/SearchBar";
 import BottomNavigationBar from "@/components/BottomNav";
+import Back from "@/components/Back";
 
 const SearchPage: NextPage = () => {
   const [products, setProducts] = useState<any[]>([]); 
@@ -429,7 +430,7 @@ const SearchPage: NextPage = () => {
 
   return (
     <div>
-      <HeadNavigation />
+      <Back title={"Search Page"} />
       <div className="bg-gray-50">
       <div className="max-w-screen-xl mx-auto p-4 bg-gray-50">
         <div className="flex flex-col lg:flex-row gap-4 mb-8">
