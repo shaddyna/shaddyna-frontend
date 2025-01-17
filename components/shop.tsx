@@ -141,6 +141,7 @@ export default Shop;*/
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ShopsShimmerLoader from "./ShopShimmerLoader";
 
 interface Shop {
   _id: string;
@@ -175,7 +176,7 @@ const Shop: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-center py-6">Loading shops...</div>;
+    return <ShopsShimmerLoader />;
   }
 
   if (error) {
