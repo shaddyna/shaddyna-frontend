@@ -141,14 +141,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#ff199c] to-[#182155] p-6">
-      <div className="bg-white shadow-2xl rounded-3xl p-8 max-w-md w-full relative">
-        {/* Decorative Circle */}
-        <div className="absolute -top-10 -left-10 bg-[#ff199c] w-32 h-32 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute -bottom-10 -right-10 bg-[#182155] w-40 h-40 rounded-full blur-3xl opacity-30"></div>
+    <div className="min-h-screen flex items-center justify-center bg-white p-6">
+      <div className="shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c] relative">
+        {/* Decorative Elements */}
+        <div className="absolute -top-10 -left-10 bg-[#ff199c] w-32 h-32 rounded-full blur-2xl opacity-10"></div>
+        <div className="absolute -bottom-10 -right-10 bg-[#182155] w-40 h-40 rounded-full blur-2xl opacity-10"></div>
 
         <h1 className="text-4xl font-extrabold text-center text-[#182155] mb-6">Welcome Back!</h1>
-        <p className="text-center text-gray-500 mb-4">Login to continue to your account</p>
+        <p className="text-center text-gray-700 mb-4">Login to continue to your account</p>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
@@ -162,7 +162,7 @@ const Login = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border rounded-full text-black focus:outline-none focus:ring-4 focus:ring-[#ff199c]"
+              className="w-full px-4 py-3 border border-gray-300 rounded-full text-black focus:outline-none focus:ring-4 focus:ring-[#ff199c]"
             />
           </div>
           <div className="mb-6 relative">
@@ -177,10 +177,10 @@ const Login = () => {
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-4 focus:ring-[#ff199c] text-black"
+                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-4 focus:ring-[#ff199c] text-black"
               />
               <span
-                className="absolute right-3 top-3 cursor-pointer text-gray-500"
+                className="absolute right-3 top-3 cursor-pointer text-gray-400"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
@@ -188,20 +188,20 @@ const Login = () => {
             </div>
           </div>
           <div className="text-right mb-6">
-            <a href="/forgot-password" className="text-[#ff199c] hover:underline">
+            <a href="/forgot-password" className="text-[#182155] hover:underline">
               Forgot Password?
             </a>
           </div>
           <button
             type="submit"
-            className="w-full bg-[#ff199c] text-white py-3 rounded-full font-bold hover:bg-[#e21887] focus:outline-none focus:ring-4 focus:ring-[#ff199c] shadow-lg"
+            className="w-full bg-[#ff199c] text-white py-3 rounded-full font-bold hover:bg-opacity-90 focus:outline-none focus:ring-4 focus:ring-[#182155] shadow-md"
           >
             Log In
           </button>
         </form>
-        <p className="text-center text-gray-600 mt-6">
+        <p className="text-center text-gray-700 mt-6">
           Don’t have an account?{' '}
-          <a href="/register" className="text-[#ff199c] font-semibold hover:underline">
+          <a href="/register" className="text-[#182155] font-semibold hover:underline">
             Sign up
           </a>
         </p>
