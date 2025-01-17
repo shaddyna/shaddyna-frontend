@@ -172,10 +172,14 @@ const SignUp = () => {
       setError('Error during signup');
     }
   };
+  const handleSignInClick = () => {
+    router.push('/login');
+  };
 
   return (
+    <div className="bg-gray-50 min-h-screen flex flex-col">
     <div className="min-h-screen flex items-center justify-center bg-white p-6">
-      <div className="shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c] relative">
+      <div className="shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c]">
         {/* Decorative Elements */}
         <div className="absolute -top-10 -left-10 bg-[#ff199c] w-32 h-32 rounded-full blur-2xl opacity-10"></div>
         <div className="absolute -bottom-10 -right-10 bg-[#182155] w-40 h-40 rounded-full blur-2xl opacity-10"></div>
@@ -256,13 +260,21 @@ const SignUp = () => {
           </button>
         </form>
       
-          Already have an account?
-           
-          <a href="/register"  className="text-[#182155] font-semibold hover:underline">
-              Sign Up
-          </a>
+           {/* Sign up link moved below the form */}
+        <div className="mt-6 text-center">
+          <p className="text-gray-700">
+            Don’t have an account?{' '}
+            <span
+              onClick={handleSignInClick}
+              className="text-[#182155] font-semibold cursor-pointer hover:underline"
+            >
+              Sign up
+            </span>
+          </p>
+        </div>
       
           </div>
+    </div>
     </div>
   );
 };

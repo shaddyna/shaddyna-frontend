@@ -98,18 +98,19 @@ const Login = () => {
 };
 
 export default Login;*/
-'use client';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useState } from 'react';
+"use client"
+
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 
 const Login = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -141,9 +142,14 @@ const Login = () => {
     }
   };
 
+  const handleSignUpClick = () => {
+    router.push('/register');
+  };
+
   return (
+    <div className="bg-gray-50 min-h-screen flex flex-col">
     <div className="min-h-screen flex items-center justify-center bg-white p-6">
-      <div className="shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c] relative">
+      <div className="shadow-2xl rounded-3xl p-8 max-w-md w-full border border-[#ff199c] ">
         {/* Decorative Elements */}
         <div className="absolute -top-10 -left-10 bg-[#ff199c] w-32 h-32 rounded-full blur-2xl opacity-10"></div>
         <div className="absolute -bottom-10 -right-10 bg-[#182155] w-40 h-40 rounded-full blur-2xl opacity-10"></div>
@@ -199,13 +205,22 @@ const Login = () => {
           >
             Log In
           </button>
-          </form>
-          Don’t have an account?    
-          <a href="/register"  className="text-[#182155] font-semibold hover:underline">
-              Sign Up
-          </a>
+        </form>
 
+        {/* Sign up link moved below the form */}
+        <div className="mt-6 text-center">
+          <p className="text-gray-700">
+            Don’t have an account?{' '}
+            <span
+              onClick={handleSignUpClick}
+              className="text-[#182155] font-semibold cursor-pointer hover:underline"
+            >
+              Sign up
+            </span>
+          </p>
+        </div>
       </div>
+    </div>
     </div>
   );
 };
