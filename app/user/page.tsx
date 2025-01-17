@@ -15,13 +15,14 @@ import {
   
 } from "react-icons/fa";
 import { useRouter } from "next/navigation"
+import Back from "@/components/Back";
 
 const UserPage: React.FC = () => {
   const router = useRouter();
   const buttons = [
-    { name: "Account Management", icon: <FaUser />, color: "bg-blue-500", action: () => router.push("/user-profile")  },
+    { name: "Account Management", icon: <FaUser />, color:  "bg-[#182155]", action: () => router.push("/user-profile")  },
     //{ name: "Product Search and Discovery", icon: <FaSearch />, color: "bg-purple-500" },
-    { name: "Order Management", icon: <FaShoppingCart />, color: "bg-green-500",action: () => router.push("/seller-order") },
+    { name: "Order Management", icon: <FaShoppingCart />, color:  "bg-[#ff199c]",action: () => router.push("/seller-order") },
     /*{ name: "Payment and Transaction Management", icon: <FaMoneyBill />, color: "bg-yellow-500" },
     /*{ name: "Delivery and Shipping", icon: <FaTruck />, color: "bg-orange-500" },
     { name: "Reviews and Feedback", icon: <FaStar />, color: "bg-indigo-500" },
@@ -36,28 +37,23 @@ const UserPage: React.FC = () => {
 
   return (
     <div>
-      <HeadNavigation />
+      <Back title={"User Features"} />
       <div className="min-h-screen bg-gray-100 py-8">
-      <div className="flex items-center justify-start mb-8 px-6">
-          {/* Back Button */}
-          <BackButton />
-          
-          {/* Title */}
-          <h1 className="text-3xl font-bold text-center mx-auto">User Features</h1>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4">
-          {buttons.map((button, index) => (
-            <div
-            key={index}
-            onClick={button.action}
-            className={`flex flex-col items-center justify-center p-6 text-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ${button.color}`}
-          >
-            <div className="text-4xl mb-4">{button.icon}</div>
-            <p className="text-center text-lg font-semibold">{button.name}</p>
-          </div>
-          ))}
-        </div>
-      </div>
+       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4">
+         {buttons.map((button, index) => (
+           <button
+             key={index}
+             onClick={button.action}
+             className={`flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full ${button.color} text-sm sm:px-4 sm:py-2 md:px-6 md:py-3`}
+           >
+             <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+               <div className="text-xl">{button.icon}</div>
+             </div>
+             <span className="font-semibold">{button.name}</span>
+           </button>
+         ))}
+       </div>
+     </div>
       <Footer />
       <BottomNavigationBar />
     </div>

@@ -6,6 +6,7 @@ import HeadNavigation from '@/components/HeadNavigation';
 import BottomNavigationBar from '@/components/BottomNav';
 import Footer from '@/components/Footer';
 import BackButton from '@/components/BackButton';
+import Back from '@/components/Back';
 
 type OrderStatus = 'pending' | 'processing' | 'completed' | 'cancelled';
 type PaymentStatus = 'paid' | 'unpaid';
@@ -90,13 +91,10 @@ const OrderManagement: React.FC = () => {
 
   return (
     <div>
-      <HeadNavigation />
+     <Back title={'Customer Orders'} />
     <div className="container mx-auto p-4">
     <div className="flex items-center justify-between pb-4">
-    <BackButton />
-    <h1 className="text-3xl font-bold text-[#182155]">
-      User Order
-    </h1>
+    
   </div>
       {loading ? (
         <div>Loading...</div>
