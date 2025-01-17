@@ -330,23 +330,28 @@ const CategoriesList: React.FC = () => {
         <CategoryShimmerLoader />
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6 lg:hidden">
-          {categories.map((category) => (
-            <div
-              key={category._id}
-              className="bg-gray-200 rounded-lg p-2 sm:p-3 cursor-pointer hover:bg-gray-300"
-              onClick={() => handleCategoryClick(category._id)}
-            >
+        {categories.map((category) => (
+          <div
+            key={category._id}
+            className="bg-gray-200 rounded-lg p-2 sm:p-3 cursor-pointer hover:bg-gray-300"
+            onClick={() => handleCategoryClick(category._id)}
+          >
+            <div className="relative w-full h-32 sm:h-36 rounded-t-lg overflow-hidden">
               <img
                 src={category.image}
                 alt={category.name}
-                className="w-full h-32 sm:h-36 object-cover rounded-t-lg"
+                className="w-full h-full object-cover"
               />
-              <h3 className="text-center text-gray-800 mt-2 text-sm sm:text-base font-medium">
-                {category.name}
-              </h3>
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-40 hover:bg-opacity-50 transition-opacity duration-300"></div>
             </div>
-          ))}
-        </div>
+            <h3 className="text-center text-gray-800 mt-2 text-sm sm:text-base font-medium">
+              {category.name}
+            </h3>
+          </div>
+        ))}
+      </div>
+      
       )}
   
       {/* Larger screens: Display categories horizontally as a list */}
