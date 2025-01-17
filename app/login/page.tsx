@@ -104,6 +104,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -198,13 +199,12 @@ const Login = () => {
           >
             Log In
           </button>
-        </form>
-        <p className="text-center text-gray-700 mt-6">
-          Don’t have an account?{' '}
-          <a href="/register" className="text-[#182155] font-semibold hover:underline">
-            Sign up
+          </form>
+          Don’t have an account?    
+          <a href="/register"  className="text-[#182155] font-semibold hover:underline">
+              Sign Up
           </a>
-        </p>
+
       </div>
     </div>
   );
