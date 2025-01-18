@@ -46,7 +46,7 @@ const Orders = () => {
 
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/orders/orders/customer/${customerId}`);
+        const response = await axios.get(`https://shaddyna-backend.onrender.com/api/orders/orders/customer/${customerId}`);
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
