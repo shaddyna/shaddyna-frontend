@@ -324,6 +324,7 @@ import Footer from '@/components/Footer';
 import HeadNavigation from '@/components/HeadNavigation';
 import Products from '@/components/Products';
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import Back from '@/components/Back';
 
 interface Review {
   user: string;
@@ -402,12 +403,8 @@ const ShopDetails: React.FC = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
-      <HeadNavigation />
+      <Back title={'Shop details'} />
       <div className="container mx-auto p-6">
-        <div className="flex items-center justify-start mb-8 px-0">
-          <BackButton />
-        </div>
-
         {/* Shop Header */}
         <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 px-6 sm:px-12 md:px-16">
           <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full shadow-lg border-4 border-[#ff199c]">
