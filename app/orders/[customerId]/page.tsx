@@ -75,15 +75,16 @@ const Orders = () => {
   return (
     <div>
       <Back title={"Customer Orders"} />
-    <div className="bg-white p-8 min-h-screen">
+    <div className="bg-white p-4 min-h-screen">
       <div className="space-y-6">
         {orders.map((order) => {
           const { formattedDate, time } = formatDate(order.date);
 
           return (
-            <div key={order._id} className="border-2 border-[#ff199c] rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-[#182155]">Order ID: {order._id}</h2>
+            <div key={order._id} className="border-2 border-[#ff199c] rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105">
+              <div className="flex items-center justify-between mb-2">
+              <h2 className="text-2xl sm:text-l text-[#182155] font-bold">Order ID: {order._id}</h2>
+
                 <FaShoppingCart className="text-[#ff199c] text-3xl" />
               </div>
               <p className="text-[#182155]">Customer: {order.customerName}</p>
@@ -120,7 +121,7 @@ const Orders = () => {
               </div>
 
               <h3 className="mt-6 text-xl font-semibold text-[#182155]">Shipping Info</h3>
-              <div className="bg-[#f7f7f7] p-4 rounded-lg shadow-sm">
+              <div className="bg-[#f7f7f7] p-4 rounded-lg shadow-sm text-gray-800">
                 <p>{order.shippingInfo.address}, {order.shippingInfo.city}, {order.shippingInfo.postalCode}</p>
               </div>
 
