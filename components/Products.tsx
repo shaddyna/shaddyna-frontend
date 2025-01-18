@@ -706,6 +706,7 @@ import Snackbar from "@/components/SnackBar"; // Snackbar component to show mess
 import ProductsShimmerLoader from "./ProductShimmerLoader";
 
 interface Product {
+  sellerId: string;
   id: string;
   name: string;
   price: number;
@@ -809,7 +810,7 @@ const Products: React.FC = () => {
       image: product.images[0], // Use the first image from the array
       color: "default", // Placeholder for color
       stock: 10, // Placeholder for stock
-      sellerId: "67790317fafd38a4e5558f70", // Placeholder for sellerId
+      sellerId: product.sellerId, // Placeholder for sellerId
     };
 
     addItem(cartItem);

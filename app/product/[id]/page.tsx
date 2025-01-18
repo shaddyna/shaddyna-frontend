@@ -9,6 +9,7 @@ import Snackbar from "@/components/SnackBar";
 import HeadNavigation from "@/components/HeadNavigation";
 import Footer from "@/components/Footer";
 import BottomNavigationBar from "@/components/BottomNav";
+import Back from "@/components/Back";
 
 interface ProductDetail {
   id: string;
@@ -132,7 +133,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
 
   return (
     <div>
-      <HeadNavigation />
+      <Back title={"Product details"} />
       <div className="bg-gray-50 min-h-screen flex flex-col">
       <div className="container mx-auto p-4">
         <div className="flex flex-col md:flex-row items-center gap-6">

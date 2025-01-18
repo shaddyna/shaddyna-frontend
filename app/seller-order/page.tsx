@@ -1,5 +1,5 @@
 
-"use client";
+/*"use client";
 import React, { useEffect, useState } from 'react';
 import { Order, Product } from '@/types/order';
 import HeadNavigation from '@/components/HeadNavigation';
@@ -178,5 +178,107 @@ const OrderManagement: React.FC = () => {
   );
 };
 
-export default OrderManagement;
+export default OrderManagement;*/
+
+// pages/seller/orders.tsx
+"use client"
+import React, { useEffect, useState } from "react";
+import { useUserSellerStore } from "@/store/useUserSellerStore";
+
+interface Order {
+  orderId: string;
+  sellerId: string;
+  products: Array<any>;
+  price: number;
+  payment_status: string;
+  shippingInfo: string;
+  delivery_status: string;
+  date: string;
+  mpesaCode: string;
+  mpesaName: string;
+  mpesaNumber: string;
+  amount: number;
+}
+
+const SellerOrders: React.FC = () => {
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [sellerId, setSellerId] = useState<string | null>(null);
+  const fetchCurrentUser = useUserSellerStore((state) => state.fetchCurrentUser);
+
+  useEffect(() => {
+    const initializeSeller = async () => {
+      try {
+        await fetchCurrentUser();
+        const currentUserRole = useUserSellerStore.getState().currentUserRole;
+
+        if (currentUserRole === "seller") {
+          const { user, sellers } = useUserSellerStore.getState();
+
+          if (!user) {
+            console.error("User is null.");
+            return;
+          }
+
+          const seller = sellers.find((seller) => seller.email === user.email);
+
+          if (seller) {
+            setSellerId(seller._id);
+            console.log(`Seller ID set to: ${seller._id}`);
+          } else {
+            console.error("No matching seller found for the current user.");
+          }
+        }
+      } catch (error) {
+        console.error("An error occurred during seller initialization:", error);
+      }
+    };
+
+    initializeSeller();
+  }, [fetchCurrentUser]);
+
+  useEffect(() => {
+    if (!sellerId) return;
+
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/orders/${sellerId}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch orders.");
+        }
+
+        const data = await response.json();
+        setOrders(data);
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+      }
+    };
+
+    fetchOrders();
+  }, [sellerId]);
+
+  return (
+    <div>
+      <h1>Your Orders</h1>
+      {orders.length === 0 ? (
+        <p>No orders found.</p>
+      ) : (
+        <ul>
+          {orders.map((order) => (
+            <li key={order.orderId}>
+              <h2>Order ID: {order.orderId}</h2>
+              <p>Price: {order.price}</p>
+              <p>Status: {order.payment_status}</p>
+              <p>Delivery: {order.delivery_status}</p>
+              <p>Amount: {order.amount}</p>
+              {/* Add more order details here */}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export default SellerOrders;
+
 
