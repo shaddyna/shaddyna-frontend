@@ -220,7 +220,7 @@ const PaymentPage: NextPage = () => {
                 <div className="flex flex-col" key={index}>
                   <label
                     htmlFor={field}
-                    className="text-[#182155] font-medium text-sm sm:text-base"
+                    className="text-[#182155] font-medium text-gray-700 text-sm sm:text-base"
                   >
                     {field === "mpesaCode"
                       ? "M-Pesa Code"
