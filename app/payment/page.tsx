@@ -220,7 +220,7 @@ const PaymentPage: NextPage = () => {
                 <div className="flex flex-col" key={index}>
                   <label
                     htmlFor={field}
-                    className="text-[#182155] font-medium text-gray-700 text-sm sm:text-base"
+                    className="text-[#182155] font-medium text-sm sm:text-base"
                   >
                     {field === "mpesaCode"
                       ? "M-Pesa Code"
@@ -244,7 +244,7 @@ const PaymentPage: NextPage = () => {
                     id={field}
                     value={(formData as any)[field]}
                     onChange={handleChange}
-                    className="mt-1 p-2 sm:p-3 rounded-lg border border-[#ff199c] focus:outline-none focus:ring-2 focus:ring-[#ff199c]"
+                    className="mt-1 p-2 sm:p-3 rounded-lg border border-[#ff199c] focus:outline-none focus:ring-2 focus:ring-[#ff199c] text-gray-800"
                     required
                   />
                 </div>
