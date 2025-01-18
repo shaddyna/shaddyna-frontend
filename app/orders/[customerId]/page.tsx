@@ -83,13 +83,13 @@ const Orders = () => {
           return (
             <div key={order._id} className="border-2 border-[#ff199c] rounded-lg shadow-lg p-3 transition-transform transform ">
               <div className="flex items-center justify-between mb-2">
-              <h2 className="text-2xl sm:text-l text-[#182155] font-bold">Order ID: {order._id}</h2>
+              <h2 className="text-2xl sm:text-xl text-[#182155] font-bold">Order ID: {order._id}</h2>
 
                 <FaShoppingCart className="text-[#ff199c] text-3xl" />
               </div>
               <p className="text-[#182155]">Customer: {order.customerName}</p>
               <p className="text-[#182155]">M-Pesa Code: {order.mpesaCode}</p>
-              <p className="text-[#182155]">Total Amount: <span className="font-semibold text-[#ff199c]">Kshs{order.amount}</span></p>
+              <p className="text-[#182155]">Total Amount: <span className="font-semibold text-[#ff199c]">Kshs {order.amount}</span></p>
 
               <div className="flex flex-wrap gap-4 mt-4">
               <div className="flex items-center gap-4 w-full sm:w-auto">
@@ -106,7 +106,7 @@ const Orders = () => {
                 {/* Clock Icon for Time */}
                 <FaRegClock className="mr-2 text-lg text-[#ff199c]" />
                 <div>
-                  <span className="text-sm text-gray-600">{time}</span>
+                  <span className="text-lg text-gray-600">{time}</span>
                 </div>
               </div>
             </div>       
