@@ -4,6 +4,7 @@ import { useUserSellerStore } from "@/store/useUserSellerStore";
 import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import HeadNavigation from "@/components/HeadNavigation";
+import Back from "@/components/Back";
 
 const ShopCreationPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -116,15 +117,9 @@ const ShopCreationPage: React.FC = () => {
 
   return (
     <div>
-      <HeadNavigation />
-      <div className="py-10 px-20">
-        <BackButton />
-      </div>
+      <Back title={"Create Your Shop"} />
       <div className="min-h-screen bg-white flex items-center justify-center py-10 px-4">
         <div className="bg-[#f8f9fa] shadow-lg rounded-lg w-full max-w-5xl p-6 md:p-10">
-          <h1 className="text-2xl md:text-4xl font-bold text-center mb-8 text-[#182155]">
-            Create Your Shop
-          </h1>
           <form
             onSubmit={handleSubmit}
             className="space-y-6 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-4"

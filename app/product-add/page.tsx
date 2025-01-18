@@ -572,6 +572,7 @@ import React, { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useUserSellerStore } from "@/store/useUserSellerStore";
 import { Types } from 'mongoose';
+import Back from "@/components/Back";
 
 interface Product {
   id: string;           // Unique identifier for the product
@@ -1017,16 +1018,7 @@ useEffect(() => {
 
   return (
     <div className="bg-white text-gray-800">
-      <HeadNavigation />
-      <div className="container mx-auto p-6">
-  <div className="flex items-center justify-between">
-    <BackButton />
-    <h1 className="text-3xl font-bold text-[#182155]">
-      Product Management
-    </h1>
-  </div>
-</div>
-
+    <Back title={"Product Management"} />
       {viewProduct ? (
         <div className="container mx-auto p-6 bg-white rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-[#182155]">Product Details</h2>
