@@ -81,7 +81,7 @@ const Orders = () => {
           const { formattedDate, time } = formatDate(order.date);
 
           return (
-            <div key={order._id} className="border-2 border-[#ff199c] rounded-lg shadow-lg p-3 transition-transform transform hover:scale-105">
+            <div key={order._id} className="border-2 border-[#ff199c] rounded-lg shadow-lg p-3 transition-transform transform ">
               <div className="flex items-center justify-between mb-2">
               <h2 className="text-2xl sm:text-l text-[#182155] font-bold">Order ID: {order._id}</h2>
 
@@ -89,7 +89,7 @@ const Orders = () => {
               </div>
               <p className="text-[#182155]">Customer: {order.customerName}</p>
               <p className="text-[#182155]">M-Pesa Code: {order.mpesaCode}</p>
-              <p className="text-[#182155]">Total Amount: <span className="font-semibold text-[#ff199c]">${order.amount}</span></p>
+              <p className="text-[#182155]">Total Amount: <span className="font-semibold text-[#ff199c]">Kshs{order.amount}</span></p>
 
               <div className="flex flex-wrap gap-4 mt-4">
               <div className="flex items-center gap-4 w-full sm:w-auto">
