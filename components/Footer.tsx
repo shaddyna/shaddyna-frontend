@@ -1,4 +1,4 @@
-/*import React from 'react';
+{/*import React from 'react';
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
@@ -158,7 +158,7 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;*/
+export default Footer;*/}
 
 import Image from "next/image"
 import Link from "next/link"

@@ -8,6 +8,8 @@ import HeadNavigation from '@/components/HeadNavigation';
 import Footer from '@/components/Footer';
 import Shop from '@/components/shop';
 import BottomNavigationBar from '@/components/BottomNav';
+import HeroCarousel from '@/components/Courosel';
+import BrandSection from '@/components/BrandSection';
 
 const HomePage: React.FC = () => {
   return (
@@ -26,13 +28,17 @@ const HomePage: React.FC = () => {
         buttonText="Shop Now"
         buttonLink="/" // Replace with your shop link
       /> 
+
+      <HeroCarousel />
       
       <div className="block lg:hidden">
       <CategoriesList />
       </div>
       <Shop />
       <Products/>
-      
+      <h1 className="text-center text-3xl font-semibold pb-4">Our Featured Brands</h1>
+      <BrandSection />
+
     </div>
     <Footer />
     <BottomNavigationBar />

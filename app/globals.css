@@ -50,3 +50,25 @@ body {
 }
 
 
+/* Add the following styles to your globals.css or the specific CSS file */
+
+.scrolling-brands {
+  display: flex;
+  gap: 16px;
+  animation: scroll-left 30s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll-left 30s linear infinite;
+}
+
+

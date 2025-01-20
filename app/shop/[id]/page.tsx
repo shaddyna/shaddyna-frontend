@@ -314,7 +314,7 @@ const ShopDetails = ({ params }: { params: {
 
 export default ShopDetails;*/
 
-"use client";
+/*"use client";
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -405,7 +405,7 @@ const ShopDetails: React.FC = () => {
     <div className="bg-gray-50 min-h-screen flex flex-col">
       <Back title={'Shop details'} />
       <div className="container mx-auto p-6">
-        {/* Shop Header */}
+        {/* Shop Header *
         <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 px-6 sm:px-12 md:px-16">
           <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full shadow-lg border-4 border-[#ff199c]">
             <img src={shop.image || 'https://via.placeholder.com/150'} alt={shop.name} className="w-full h-full object-cover" />
@@ -438,19 +438,19 @@ const ShopDetails: React.FC = () => {
           </div>
         </div>
 
-        {/* Shop Products */}
+        {/* Shop Products *
         <Products />
 
-        {/* Shop Contacts */}
+        {/* Shop Contacts *
         <div className="mb-10">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#333333] mb-6">Contact</h2>
           <p className="text-sm sm:text-base text-gray-600">
-            Email: {/*<a href={`mailto:${shop.contacts.split(', ')[0]}`} className="text-[#ff199c] hover:underline">{shop.contacts.split(', ')[0]}</a>*/}
+            Email: {/*<a href={`mailto:${shop.contacts.split(', ')[0]}`} className="text-[#ff199c] hover:underline">{shop.contacts.split(', ')[0]}</a>*
           </p>
           <p className="text-sm sm:text-base text-gray-600">Phone: </p>
         </div>
 
-        {/* Shop Reviews */}
+        {/* Shop Reviews *
         <div className="mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6 mt-8">Customer Reviews</h2>
           <div className="space-y-8">
@@ -462,11 +462,11 @@ const ShopDetails: React.FC = () => {
                 </div>
                 <p className="text-[#182155] mt-2 text-base">{review.comment}</p>
               </div>
-            ))}*/}
+            ))}*
           </div>
         </div>
 
-        {/* Add Review Form */}
+        {/* Add Review Form *
         <div>
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mt-8 mb-6">Add Your Review</h2>
           <form onSubmit={handleSubmitReview} className="space-y-6">
@@ -505,7 +505,7 @@ const ShopDetails: React.FC = () => {
           </form>
         </div>
 
-        {/* Social Media Links */}
+        {/* Social Media Links *
         <div className="mt-8 mb-6">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6">Follow Us</h2>
           <div className="flex space-x-6">
@@ -522,9 +522,120 @@ const ShopDetails: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Navigation */}
+      {/* Bottom Navigation *
       <BottomNavigationBar />
       <Footer />
+    </div>
+  );
+};
+
+export default ShopDetails;*/
+"use client";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useUserSellerStore } from "@/store/useUserSellerStore"; // Update the import path if necessary
+
+interface Product {
+  sellerId: string;
+  _id: string;
+  name: string;
+  price: number;
+  images: string[];
+  description: string;
+  shopName?: string;
+  rating: number;
+}
+
+const ShopDetails: React.FC = () => {
+  const [sellerId, setSellerId] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchCurrentUser = useUserSellerStore((state) => state.fetchCurrentUser);
+
+  useEffect(() => {
+    const initializeSeller = async () => {
+      try {
+        await fetchCurrentUser();
+        const currentUserRole = useUserSellerStore.getState().currentUserRole;
+
+        if (currentUserRole === "seller") {
+          const { user, sellers } = useUserSellerStore.getState();
+          if (!user) {
+            console.error("User is null.");
+            return;
+          }
+
+          const seller = sellers.find((seller) => seller.email === user.email);
+          if (seller) {
+            setSellerId(seller._id);
+            console.log(`Seller ID set to: ${seller._id}`);
+
+            // Fetch products associated with the seller
+            fetchSellerProducts(seller._id);
+          } else {
+            console.error("No matching seller found for the current user.");
+          }
+        }
+      } catch (error) {
+        console.error("An error occurred during seller initialization:", error);
+      }
+    };
+
+    const fetchSellerProducts = async (sellerId: string) => {
+      try {
+        const response = await axios.get(
+          `https://shaddyna-backend.onrender.com/api/products/all`
+        );
+
+        const products = response.data.products; // Ensure products are accessed correctly
+        const filteredProducts = products.filter(
+          (product: Product) => product.sellerId === sellerId
+        );
+
+        setProducts(filteredProducts);
+      } catch (err) {
+        console.error("Failed to fetch seller products:", err);
+        setError("Failed to fetch seller products.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initializeSeller();
+  }, [fetchCurrentUser]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      <h1>Seller Products</h1>
+      {products.length > 0 ? (
+        <div className="products-container">
+          {products.map((product) => (
+            <div key={product._id} className="product-card">
+              <img
+                src={product.images[0]}
+                alt={product.name}
+                className="product-image"
+              />
+              <h3>{product.name}</h3>
+              <p>Price: ${product.price}</p>
+              <p>Description: {product.description}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No products found for this seller.</p>
+      )}
     </div>
   );
 };

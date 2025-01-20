@@ -746,7 +746,6 @@ const Products: React.FC = () => {
 
     fetchProducts();
   }, []);*/
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -761,6 +760,7 @@ const Products: React.FC = () => {
           price: product.price,
           images: product.images, // Store images array
           rating: product.rating,
+          sellerId: product.sellerId.toString(), // Destructure and add sellerId
         }));
         setProducts(formattedProducts);
       } catch (error) {
@@ -770,9 +770,10 @@ const Products: React.FC = () => {
         setIsLoading(false);
       }
     };
-
+  
     fetchProducts();
   }, []);
+  
 
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
