@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
       </div>
       <Shop />
       <Products/>
-      <h1 className="text-center text-3xl font-semibold pb-4">Our Featured Brands</h1>
+      <h1 className="text-center text-3xl font-semibold text-gray-800 pb-4">Our Featured Brands</h1>
       <BrandSection />
 
     </div>
