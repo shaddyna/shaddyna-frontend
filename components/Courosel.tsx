@@ -114,7 +114,7 @@ const HeroCarousel = () => {
             <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-white text-xl sm:text-3xl font-semibold p-4">
               <a
                 //href={slide.shopUrl}
-                href={`/shop/6789023b82fe6b19000c7c84`}
+                href={`/`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1 border-4 border-white text-white text-lg font-semibold rounded-lg hover:bg-white hover:text-[#182155] transition duration-300"
