@@ -97,7 +97,7 @@ const HeroCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000); // Change slide every 3 seconds
+    }, 4500); // Change slide every 3 seconds
 
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
