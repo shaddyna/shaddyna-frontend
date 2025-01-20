@@ -50,7 +50,7 @@ body {
 }
 
 
-/* Add the following styles to your globals.css or the specific CSS file */
+/* Add the following styles to your globals.css or the specific CSS file *
 
 .scrolling-brands {
   display: flex;
@@ -71,3 +71,77 @@ body {
   animation: scroll-left 40s linear infinite;
 }
 
+*/
+
+/*@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Inconsolata", Arial, Helvetica, sans-serif; /* Add Inconsolata globally */
+}
+
+.inconsolata-variable {
+  font-family: "Inconsolata", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Set a default weight */
+  font-variation-settings: "wdth" 100;
+}
+
+
+/* Add the following styles to your globals.css or the specific CSS file */
+
+.scrolling-brands {
+  display: flex;
+  gap: 16px;
+  animation: scroll-left 40s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll-left 40s linear infinite;
+}

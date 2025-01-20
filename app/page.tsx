@@ -34,6 +34,7 @@ const HomePage: React.FC = () => {
       <div className="block lg:hidden">
       <CategoriesList />
       </div>
+      <h1 className="text-center text-3xl font-semibold text-gray-800 pb-4">Our Shops</h1>
       <Shop />
       <Products/>
       <h1 className="text-center text-3xl font-semibold text-gray-800 pb-4">Our Featured Brands</h1>
