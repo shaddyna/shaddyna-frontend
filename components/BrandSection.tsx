@@ -68,4 +68,3 @@ const BrandSection: React.FC = () => {
 export default BrandSection;
 
 
-

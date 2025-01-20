@@ -314,7 +314,7 @@ const ShopDetails = ({ params }: { params: {
 
 export default ShopDetails;*/
 
-/*"use client";
+"use client";
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -405,7 +405,7 @@ const ShopDetails: React.FC = () => {
     <div className="bg-gray-50 min-h-screen flex flex-col">
       <Back title={'Shop details'} />
       <div className="container mx-auto p-6">
-        {/* Shop Header *
+        {/* Shop Header */}
         <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 px-6 sm:px-12 md:px-16">
           <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full shadow-lg border-4 border-[#ff199c]">
             <img src={shop.image || 'https://via.placeholder.com/150'} alt={shop.name} className="w-full h-full object-cover" />
@@ -438,19 +438,19 @@ const ShopDetails: React.FC = () => {
           </div>
         </div>
 
-        {/* Shop Products *
+        {/* Shop Products */}
         <Products />
 
-        {/* Shop Contacts *
+        {/* Shop Contacts */}
         <div className="mb-10">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#333333] mb-6">Contact</h2>
           <p className="text-sm sm:text-base text-gray-600">
-            Email: {/*<a href={`mailto:${shop.contacts.split(', ')[0]}`} className="text-[#ff199c] hover:underline">{shop.contacts.split(', ')[0]}</a>*
+            Email: {/*<a href={`mailto:${shop.contacts.split(', ')[0]}`} className="text-[#ff199c] hover:underline">{shop.contacts.split(', ')[0]}</a>*/}
           </p>
           <p className="text-sm sm:text-base text-gray-600">Phone: </p>
         </div>
 
-        {/* Shop Reviews *
+        {/* Shop Reviews */}
         <div className="mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6 mt-8">Customer Reviews</h2>
           <div className="space-y-8">
@@ -462,11 +462,11 @@ const ShopDetails: React.FC = () => {
                 </div>
                 <p className="text-[#182155] mt-2 text-base">{review.comment}</p>
               </div>
-            ))}*
+            ))}*/}
           </div>
         </div>
 
-        {/* Add Review Form *
+        {/* Add Review Form */}
         <div>
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mt-8 mb-6">Add Your Review</h2>
           <form onSubmit={handleSubmitReview} className="space-y-6">
@@ -505,7 +505,7 @@ const ShopDetails: React.FC = () => {
           </form>
         </div>
 
-        {/* Social Media Links *
+        {/* Social Media Links */}
         <div className="mt-8 mb-6">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6">Follow Us</h2>
           <div className="flex space-x-6">
@@ -522,15 +522,18 @@ const ShopDetails: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Navigation *
+      {/* Bottom Navigation */}
       <BottomNavigationBar />
       <Footer />
     </div>
   );
 };
 
-export default ShopDetails;*/
-"use client";
+export default ShopDetails;
+
+
+
+/*"use client";
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -640,4 +643,4 @@ const ShopDetails: React.FC = () => {
   );
 };
 
-export default ShopDetails;
+export default ShopDetails;*/
