@@ -99,7 +99,7 @@ const ShopCreationPage: React.FC = () => {
     });
   
     try {
-      const response = await fetch("http://localhost:5000/api/shops/create", {
+      const response = await fetch("https://shaddyna-backend.onrender.com/api/shops/create", {
         method: "POST",
         body: form, // Send the form data including image
       });
