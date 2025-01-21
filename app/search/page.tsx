@@ -450,11 +450,11 @@ const SearchPage: NextPage = () => {
 
             {/* Price Filter */}
             <div>
-              <h4 className="text-lg font-semibold text-[#182155]">Price</h4>
+              <h4 className="text-lg text-gray-800 font-semibold text-[#182155]">Price</h4>
               <input
                 type="range"
                 min="0"
-                max="1000"
+                max="1000000000"
                 value={priceRange[0]}
                 onChange={(e) => setPriceRange([+e.target.value, priceRange[1]])}
                 className="w-full bg-[#182155] h-2 rounded-lg"
