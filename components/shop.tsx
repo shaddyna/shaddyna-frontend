@@ -283,7 +283,7 @@ const Shop: React.FC = () => {
     shops.forEach((shop) => {
       fetchShopDetailsData(shop._id); // Fetch details for each shop by shopId
     });
-  }, [shops]); // Run the effect when `shops` changes
+  }, [shops]); // Run the effect when `shops` change
 
   if (loading) {
     return <ShopsShimmerLoader />;
