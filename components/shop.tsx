@@ -320,7 +320,7 @@ const Shop: React.FC = () => {
             <div className="p-4 border-t border-gray-200">
               <a
                 href={`/shop/${shop._id}`}
-                className="text-[#182155] hover:text-blue-700 font-semibold"
+                className="text-[#182155] hover:text-gray-500 font-semibold"
               >
                 Visit Shop
               </a>
