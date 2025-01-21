@@ -654,7 +654,9 @@ useEffect(() => {
   initializeSeller();
 }, [fetchCurrentUser]);
 
-useEffect(() => {
+////////////////////////////////////////////////////
+///////////////////////////////////////////////////
+/*useEffect(() => {
   const fetchProducts = async () => {
     if (!sellerId || !Types.ObjectId.isValid(sellerId)) {
       console.error("Invalid sellerId format:", sellerId);
@@ -681,13 +683,15 @@ useEffect(() => {
       setProducts(formattedProducts);
     } catch (error) {
       console.error("Error fetching products:", error);
-      alert("Error fetching products. Please try again.");
+      alert("Error fetching products. Please try again!!!.");
     }
   };
 
   fetchProducts();
-}, [sellerId]); // This effect will run when sellerId changes
-
+}, [sellerId]);*/ // This effect will run when sellerId changes
+///////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
 
 /*useEffect(() => {
@@ -948,7 +952,7 @@ useEffect(() => {
         formData.append("images", file);
       });
   
-      const response = await fetch("http://localhost:5000/api/products/add", {
+      const response = await fetch("https://shaddyna-backend.onrender.com/api/products/add", {
         method: "POST",
         body: formData, // Let the browser set the Content-Type
       });
