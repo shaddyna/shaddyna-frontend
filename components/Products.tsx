@@ -835,14 +835,16 @@ const Products: React.FC = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105 bg-white cursor-pointer"
+              className="border pt-2 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105 bg-white cursor-pointer"
             >
+              
               <img
                 src={product.images[0] || "/placeholder-image.png"} // Fallback image if the product has no image
                 alt={product.name}
-                className="w-full h-36 sm:h-48 object-contain pt-3 rounded-md" // Added `rounded-md` for medium border radius
+                className="w-full h-36 sm:h-48 object-contain" // Added `rounded-md` for medium border radius
                 onClick={() => router.push(`/product/${product.id}`)} // Ensure correct ID is passed
               />
+          
               <div className="p-3 pt-1 sm:p-2">
                 <h3 className="text-sm sm:text-base font-semibold text-gray-800 truncate">
                   {product.name}
