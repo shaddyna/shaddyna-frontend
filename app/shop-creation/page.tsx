@@ -5,8 +5,10 @@ import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import HeadNavigation from "@/components/HeadNavigation";
 import Back from "@/components/Back";
+import { useRouter } from 'next/navigation';
 
 const ShopCreationPage: React.FC = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     location: "",
@@ -104,6 +106,7 @@ const ShopCreationPage: React.FC = () => {
   
       if (response.ok) {
         console.log("Shop created successfully");
+        router.push('/');
       } else {
         const errorData = await response.json();
         console.error("Failed to create shop:", errorData);
@@ -132,7 +135,7 @@ const ShopCreationPage: React.FC = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
+                className="mt-2 text-black block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
               />
             </div>
             <div>
@@ -151,7 +154,7 @@ const ShopCreationPage: React.FC = () => {
                 value={formData.location}
                 onChange={handleChange}
                 required
-                className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
+                className="mt-2 text-black block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
               />
             </div>
             <div className="md:col-span-2">
@@ -162,7 +165,7 @@ const ShopCreationPage: React.FC = () => {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
+                className="mt-2 text-black block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
               />
             </div>
             <div>
@@ -173,7 +176,7 @@ const ShopCreationPage: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
+                className="mt-2 text-black block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
               />
             </div>
             <div>
@@ -184,17 +187,17 @@ const ShopCreationPage: React.FC = () => {
                 value={formData.contact}
                 onChange={handleChange}
                 required
-                className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
+                className="mt-2 text-black block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
               />
             </div>
-            <div>
+           {/*<div>
               <label className="block text-sm font-medium text-gray-700">Instagram</label>
               <input
                 type="url"
                 name="instagram"
                 value={formData.instagram}
                 onChange={handleChange}
-                className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
+                className="mt-2 text-black block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
               />
             </div>
             <div>
@@ -204,7 +207,7 @@ const ShopCreationPage: React.FC = () => {
                 name="facebook"
                 value={formData.facebook}
                 onChange={handleChange}
-                className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
+                className="mt-2 text-black block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
               />
             </div>
             <div>
@@ -214,9 +217,9 @@ const ShopCreationPage: React.FC = () => {
                 name="twitter"
                 value={formData.twitter}
                 onChange={handleChange}
-                className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
+                className="mt-2 text-black block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#ff199c] focus:ring-[#ff199c] text-base p-3"
               />
-            </div>
+            </div>*/}
             <div className="md:col-span-2">
               <button
                 type="submit"

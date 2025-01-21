@@ -854,7 +854,7 @@ const Products: React.FC = () => {
                 </p>
                 <p className="text-xs sm:text-sm text-gray-800 tex[#182155] font-bold mt-1">
                   Shop Name
-                  
+                  {/*{product.sellerId.toString()}*/}
                 </p>
                 <div className="flex items-center mt-2">{renderStars(product.rating)}</div>
                 <div className="flex justify-between items-center mt-4">
