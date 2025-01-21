@@ -679,7 +679,8 @@ interface Shop {
   rating: number;
   productsCount: number;
   joinDate: string;
-  contacts: string;
+  contact: string;
+  email: string;
   successfulSalesCount: number;
   products: Array<{ name: string; price: string; image: string }>;
   socialLinks: {
@@ -925,9 +926,9 @@ const ShopDetails: React.FC = () => {
         <div className="mb-10">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#333333] mb-0">Contact</h2>
           <p className="text-sm sm:text-base text-gray-600">
-            Email: {/*<a href={`mailto:${shop.contacts.split(', ')[0]}`} className="text-[#ff199c] hover:underline">{shop.contacts.split(', ')[0]}</a>*/}
+            Email: {shop.email}
           </p>
-          <p className="text-sm sm:text-base text-gray-600">Phone: {/*{shop.contacts.split(', ')[1]}*/}</p>
+          <p className="text-sm sm:text-base text-gray-600">Phone: {shop.contact}</p>
         </div>
 
         {/* Shop Reviews */}
