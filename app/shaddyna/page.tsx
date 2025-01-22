@@ -39,7 +39,7 @@ const ShaddynaHub = () => {
         </div>
         {/* Products Section */}
         <div className="px-3">
-            <h2 className="text-2xl font-semibold text-left mb-0">Product Shelf</h2>
+            <h2 className="text-2xl text-gray-800 font-semibold text-left mb-0">Product Shelf</h2>
             <p className="text-md text-[#182155] text-left group-hover:text-white transition-colors mb-4">
                 Buy and sell unique products listed by members.
             </p>
@@ -50,9 +50,9 @@ const ShaddynaHub = () => {
             <img src={product.image} alt={product.name} className="w-1/3 h-24 object-contain rounded-md" />
             {/* Product details on the right */}
             <div className="ml-2 flex flex-col justify-between">
-                <h3 className="text-xl font-semibold">{product.name}</h3>
+                <h3 className="text-xl text-gray-800 font-semibold">{product.name}</h3>
                 <p className="text-gray-600 mt-0">{product.description}</p>
-                <p className="text-lg font-bold mt-0">Ksh {product.price}</p>
+                <p className="text-lg text-gray-800 font-bold mt-0">Ksh {product.price}</p>
             </div>
             </div>
             ))}
@@ -60,7 +60,7 @@ const ShaddynaHub = () => {
         </div>
  {/* Skills Section */}
 <div className="px-3">
-  <h2 className="text-2xl font-semibold text-left mb-0">Skilled Services</h2>
+  <h2 className="text-2xl text-gray-800 font-semibold text-left mb-0">Skilled Services</h2>
   <p className="text-md text-[#182155] text-left group-hover:text-white transition-colors mb-4">
     Browse services offered by skilled members in Shaddyna Hub.
   </p>
@@ -109,7 +109,7 @@ const ShaddynaHub = () => {
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.217 3.742a1 1 0 00.95.69h3.946c.969 0 1.371 1.24.588 1.81l-3.194 2.318a1 1 0 00-.364 1.118l1.217 3.742c.3.921-.755 1.688-1.538 1.118l-3.194-2.318a1 1 0 00-1.176 0l-3.194 2.318c-.783.57-1.838-.197-1.538-1.118l1.217-3.742a1 1 0 00-.364-1.118L2.293 9.17c-.783-.57-.38-1.81.588-1.81h3.946a1 1 0 00.95-.69l1.217-3.742z" />
           </svg>
         </div>
-          <p className="text-lg font-bold mt-0"><span className='text-sm text-gray-400'>from</span> Ksh{product.price}</p>
+          <p className="text-lg font-bold mt-0 text-gray-800"><span className='text-sm text-gray-400'>from</span> Ksh{product.price}</p>
         </div>
       </div>
     ))}
