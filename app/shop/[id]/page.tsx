@@ -846,8 +846,8 @@ const ShopDetails: React.FC = () => {
     const router = useRouter();
     return (
       <div className="mt-8 pb-4">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6">Shop Products</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] m-3">Shop Products</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {products.map(product => (
             <div key={product._id} className="border rounded-lg shadow-md p-2">
               <img
@@ -883,40 +883,55 @@ const ShopDetails: React.FC = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
+      {/* Back Button */}
       <Back title={'Shop details'} />
-      <div className="container mx-auto p-6">
+
+      <div className="container mx-auto p-3">
         {/* Shop Header */}
-        <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8 px-6 sm:px-12 md:px-16">
+        <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-8 mb-8 px-0 sm:px-12 md:px-16">
           <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full shadow-lg border-4 border-[#ff199c]">
-            <img src={shop.image || 'https://via.placeholder.com/150'} alt={shop.name} className="w-full h-full object-cover" />
+            <img
+              src={shop.image || 'https://via.placeholder.com/150'}
+              alt={shop.name}
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          <div className="flex flex-col items-start space-y-2 w-full md:w-3/4">
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800 leading-tight">{shop.name}</h1>
-            <p className="text-base sm:text-lg text-gray-600 font-medium">{shop.location}</p>
-            <p className="text-sm sm:text-base text-gray-500 mt-2">{shop.description}</p>
+          <div className="flex flex-col md:flex-row items-start md:items-center w-full space-y-4 md:space-y-0 md:space-x-6 p-4 bg-white rounded-lg shadow-md border border-gray-300">
+          {/* Shop Info */}
+          <div className="flex flex-col w-full space-y-2">
+            <h1 className="text-3xl font-semibold text-[#182155] leading-tight">{shop.name}</h1>
+            <p className="text-md text-gray-600">{shop.location}</p>
+            <p className="text-sm text-gray-500">{shop.description}</p>
 
-            <div className="flex items-center mt-4 space-x-4">
-              <span className="text-yellow-500 text-xl sm:text-2xl">⭐ {shop.rating}</span>
-              <span className="text-sm sm:text-base text-gray-500">({products.length} Products)</span>
+            <div className="flex items-center space-x-4 mt-3">
+              <span className="text-[#ff199c] text-xl font-medium flex items-center space-x-1">
+                <span>⭐</span> 
+                <span>{shop.rating}</span>
+              </span>
+              <span className="text-sm text-gray-500">
+                ({products.length} Products)
+              </span>
             </div>
 
-            <div className="mt-4 space-y-2">
-              <p className="text-sm sm:text-base text-gray-500">
-              <span className="font-semibold">Joined on:</span> {new Date(shop.createdAt).toLocaleDateString()}
-
+            <div className="space-y-1 text-sm text-gray-500 mt-4">
+              <p>
+                <span className="font-medium text-[#182155]">Joined on:</span> {new Date(shop.createdAt).toLocaleDateString()}
               </p>
-              <p className="text-sm sm:text-base text-gray-500">
-                <span className="font-semibold">Successful Sales:</span> {shop.successfulSalesCount}
+              <p>
+                <span className="font-medium text-[#182155]">Successful Sales:</span> {shop.successfulSalesCount}
               </p>
             </div>
           </div>
 
-          <div className="w-full md:w-auto flex justify-center md:ml-auto mt-6 md:mt-0">
-            <button className="py-3 px-6 sm:py-3 sm:px-8 md:py-2 md:px-6 lg:py-3 lg:px-8 bg-[#ff199c] text-white rounded-xl hover:bg-pink-700 transition-all duration-300 text-sm md:text-md font-semibold shadow-lg transform hover:scale-105">
+          {/* Follow Button */}
+          <div className="flex justify-center w-full md:w-auto mt-4 md:mt-0">
+            <button className="py-2 px-6 bg-gradient-to-r from-[#ff199c] to-pink-500 text-white rounded-lg hover:shadow-md hover:scale-105 transition-transform duration-200 text-sm font-medium">
               Follow Shop
             </button>
           </div>
+        </div>
+
         </div>
 
         {/* Shop Products */}
@@ -925,9 +940,7 @@ const ShopDetails: React.FC = () => {
         {/* Shop Contacts */}
         <div className="mb-10">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#333333] mb-0">Contact</h2>
-          <p className="text-sm sm:text-base text-gray-600">
-            Email: {shop.email}
-          </p>
+          <p className="text-sm sm:text-base text-gray-600">Email: {shop.email}</p>
           <p className="text-sm sm:text-base text-gray-600">Phone: {shop.contact}</p>
         </div>
 
@@ -935,7 +948,7 @@ const ShopDetails: React.FC = () => {
         <div className="mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] mb-6 mt-8">Customer Reviews</h2>
           <div className="space-y-8">
-            {/*{reviews.map((review, index) => (
+           {/*} {reviews.map((review, index) => (
               <div key={index} className="border-b pb-6 mb-6">
                 <p className="text-lg font-semibold text-gray-800">{review.user}</p>
                 <p className="text-sm text-gray-600">Rating: {review.rating}/5</p>
@@ -944,8 +957,9 @@ const ShopDetails: React.FC = () => {
             ))}*/}
           </div>
 
+          {/* Write a Review Section */}
           <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Write a Review</h3>
-          <form onSubmit={handleSubmitReview} className="space-y-4 mt-4">
+          <form className="space-y-4 mt-4">
             <div className="space-y-2">
               <input
                 type="text"
@@ -974,13 +988,17 @@ const ShopDetails: React.FC = () => {
                 rows={5}
               ></textarea>
             </div>
-            <button type="submit" className="mt-4 w-full py-2 bg-[#ff199c] text-white rounded-lg hover:bg-pink-700 transition">
+            <button
+              type="submit"
+              className="mt-4 w-full py-2 bg-[#ff199c] text-white rounded-lg hover:bg-pink-700 transition"
+            >
               Submit Review
             </button>
           </form>
         </div>
       </div>
 
+      {/* Footer and Bottom Navigation Bar */}
       <Footer />
       <BottomNavigationBar />
     </div>
