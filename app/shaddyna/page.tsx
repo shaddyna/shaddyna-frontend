@@ -68,7 +68,7 @@ const ShaddynaHub = () => {
     {skills.map((product) => (
       <div
         key={product.id}
-        className="bg-white p-4 rounded-lg border border-gray-300"
+        className="bg-white p-2 rounded-lg border border-gray-300"
       >
         <img
           src={product.image}
