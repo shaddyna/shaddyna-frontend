@@ -462,7 +462,7 @@ const SearchPage: NextPage = () => {
               <input
                 type="range"
                 min="0"
-                max="1000"
+                max="1000000000"
                 value={priceRange[1]}
                 onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
                 className="w-full bg-[#182155] h-2 rounded-lg mt-2"
