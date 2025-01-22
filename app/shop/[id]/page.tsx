@@ -662,6 +662,7 @@ import { useRouter } from "next/navigation";
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
+import ShimmerLoader from '@/components/ShopDetailsShimmer';
 
 interface Review {
   user: string;
@@ -833,9 +834,9 @@ const ShopDetails: React.FC = () => {
       setSnackbarMessage("Product added to wishlist!");
     };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    if (loading) {
+      return <ShimmerLoader />;
+    }
 
   if (error || !shop) {
     return <div>Error: {error}</div>;
