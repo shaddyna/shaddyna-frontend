@@ -10,6 +10,7 @@ import Shop from '@/components/shop';
 import BottomNavigationBar from '@/components/BottomNav';
 import HeroCarousel from '@/components/Courosel';
 import BrandSection from '@/components/BrandSection';
+import ShaddynaButton from '@/components/ShaddynaButton';
 
 const HomePage: React.FC = () => {
   return (
@@ -19,7 +20,6 @@ const HomePage: React.FC = () => {
       <div className="hidden lg:block">
         <CategoriesList />
       </div>
-    
       <HeroSection
         title="Welcome to Our Website"
         subtitle="We offer the best products for you."
@@ -34,7 +34,8 @@ const HomePage: React.FC = () => {
       <div className="block lg:hidden">
       <CategoriesList />
       </div>
-      <h1 className="text-center text-3xl font-semibold text-gray-800 pb-4">Our Shops</h1>
+      <ShaddynaButton loading={false} />
+      <h1 className="text-center text-3xl font-semibold text-gray-800 pb-4 pt-2">Our Shops</h1>
       <Shop />
       <Products/>
       <h1 className="text-center text-3xl font-semibold text-gray-800 pb-4">Our Featured Brands</h1>
