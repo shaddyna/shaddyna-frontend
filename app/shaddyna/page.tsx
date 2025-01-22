@@ -25,7 +25,7 @@ const ShaddynaHub = () => {
   ];
 
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen flex flex-col">
         <Back title={'Shaddyna Hub'} />
     <div className="space-y-0">
       <div
