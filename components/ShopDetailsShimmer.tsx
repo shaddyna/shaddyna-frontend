@@ -7,6 +7,7 @@ import BottomNavigationBar from "./BottomNav";
 const ShimmerLoader = () => (
     <div>
         <Back title={"Shop details"} />
+        <div className="bg-gray-50 min-h-screen flex flex-col">
     <div className="space-y-6 m-3 animate-pulse">
       {/* Shop Header */}
       <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-8 mb-8 px-0 sm:px-12 md:px-16">
@@ -55,6 +56,7 @@ const ShimmerLoader = () => (
     </div>
     <BottomNavigationBar />
     <Footer />
+    </div>
     </div>
   );
 export default ShimmerLoader;
