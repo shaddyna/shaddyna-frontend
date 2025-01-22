@@ -846,7 +846,7 @@ const ShopDetails: React.FC = () => {
     const router = useRouter();
     return (
       <div className="mt-8 pb-4">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] m-3">Shop Products</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] m-3">{shop.name} products</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {products.map(product => (
             <div key={product._id} className="border rounded-lg shadow-md p-2">
@@ -901,8 +901,8 @@ const ShopDetails: React.FC = () => {
           {/* Shop Info */}
           <div className="flex flex-col w-full space-y-2">
             <h1 className="text-3xl font-semibold text-[#182155] leading-tight">{shop.name}</h1>
-            <p className="text-md text-gray-600">{shop.location}</p>
-            <p className="text-sm text-gray-500">{shop.description}</p>
+            <p className="text-md text-gray-500"> <span className="font-medium text-[#182155]">Location: </span>{shop.location}</p>
+            <p className="text-sm text-gray-500"> <span className="font-medium text-[#182155]">Description: </span>{shop.description}</p>
 
             <div className="flex items-center space-x-4 mt-3">
               <span className="text-[#ff199c] text-xl font-medium flex items-center space-x-1">
