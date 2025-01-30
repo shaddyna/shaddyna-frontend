@@ -1071,61 +1071,61 @@ useEffect(() => {
         </div>
      ) : isFormVisible ? (
       <div className="container mx-auto p-6 bg-white rounded-lg shadow-md">
-  <h2 className="text-2xl font-bold text-[#182155]">Add New Product</h2>
-  <input
-    type="text"
-    placeholder="Product Name"
-    value={newProduct.name}
-    onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-  />
-  <input
-    type="number"
-    placeholder="Product Price"
-    value={newProduct.price}
-    onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
-    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-  />
-  <textarea
-    placeholder="Product Description"
-    value={newProduct.description}
-    onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
-    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-  />
-  <select
-    value={newProduct.categoryId}
-    onChange={(e) => setNewProduct({ ...newProduct, categoryId: e.target.value })}
-    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-  >
-    <option value="">Select a Category</option>
-    {categories.map((category) => (
-      <option key={category._id} value={category._id}>
-        {category.name}
-      </option>
-    ))}
-  </select>
+      <h2 className="text-2xl font-bold text-[#182155]">Add New Product</h2>
+      <input
+        type="text"
+        placeholder="Product Name"
+        value={newProduct.name}
+        onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
+        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+      />
+      <input
+        type="number"
+        placeholder="Product Price"
+        value={newProduct.price}
+        onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
+        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+      />
+      <textarea
+        placeholder="Product Description"
+        value={newProduct.description}
+        onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
+        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+      />
+      <select
+        value={newProduct.categoryId}
+        onChange={(e) => setNewProduct({ ...newProduct, categoryId: e.target.value })}
+        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+      >
+        <option value="">Select a Category</option>
+        {categories.map((category) => (
+          <option key={category._id} value={category._id}>
+            {category.name}
+          </option>
+        ))}
+      </select>
 
-  <input
-    type="file"
-    accept="image/*"
-    multiple
-    onChange={(e) => setNewProduct({ ...newProduct, images: Array.from(e.target.files || []) })}
-    className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-  />
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={(e) => setNewProduct({ ...newProduct, images: Array.from(e.target.files || []) })}
+        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+      />
 
-  <button
-    onClick={handleAddProduct}
-    className="mt-4 bg-[#ff199c] text-white p-2 rounded-md"
-  >
-    Add Product
-  </button>
-  <button
-    onClick={() => setIsFormVisible(false)}
-    className="mt-4 ml-4 text-[#ff199c] hover:underline"
-  >
-    Cancel
-  </button>
-</div>
+      <button
+        onClick={handleAddProduct}
+        className="mt-4 bg-[#ff199c] text-white p-2 rounded-md"
+      >
+        Add Product
+      </button>
+      <button
+        onClick={() => setIsFormVisible(false)}
+        className="mt-4 ml-4 text-[#ff199c] hover:underline"
+      >
+        Cancel
+      </button>
+    </div>
 
     ) : (
     

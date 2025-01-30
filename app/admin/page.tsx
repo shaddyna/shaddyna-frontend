@@ -17,7 +17,7 @@ import {
   
   FaArrowLeft,
 } from "react-icons/fa";
-import { FaShop } from "react-icons/fa6";
+import { FaPeopleGroup, FaShop } from "react-icons/fa6";
 import Back from "@/components/Back";
 
 const AdminPage: React.FC = () => {
@@ -55,6 +55,7 @@ const AdminPage: React.FC = () => {
       action: () => router.push("/order-management"),
     },
     { name: "Payment and Payout Management", icon: <FaMoneyBill />, color: "bg-[#ff199c]", action: () => {} },
+    { name: "Members Management", icon: <FaPeopleGroup />, color: "bg-[#182155]", action: () => router.push("/members"), },
     //{ name: "Communication and Notifications", icon: <FaComments />, color: "bg-indigo-500", action: () => {} },
     /*{ name: "Shipping and Delivery Management", icon: <FaTruck />, color: "bg-orange-500", action: () => {} },
     { name: "Marketing and Promotions", icon: <FaBullhorn />, color: "bg-pink-500", action: () => {} },
