@@ -60,6 +60,7 @@ const EditMemberPage = () => {
   return (
     <div>
         <Back title={"Edit Member"} />
+    <div className="bg-gray-50">
     <div className="max-w-4xl mx-auto p-3">
       <div className="bg-white shadow-xl rounded-lg overflow-hidden border border-gray-200">
         <div className="p-6">
@@ -73,7 +74,7 @@ const EditMemberPage = () => {
                   name="name"
                   value={member.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#182155] focus:border-[#182155]"
+                  className="w-full text-gray-700 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#182155] focus:border-[#182155]"
                 />
               </div>
               <div className="w-full sm:w-1/2">
@@ -83,7 +84,7 @@ const EditMemberPage = () => {
                   name="email"
                   value={member.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#182155] focus:border-[#182155]"
+                  className="w-full text-gray-700 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#182155] focus:border-[#182155]"
                 />
               </div>
             </div>
@@ -96,7 +97,7 @@ const EditMemberPage = () => {
                   name="phoneNumber"
                   value={member.phoneNumber}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#182155] focus:border-[#182155]"
+                  className="w-full text-gray-700 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#182155] focus:border-[#182155]"
                 />
               </div>
               <div className="w-full sm:w-1/2">
@@ -105,7 +106,7 @@ const EditMemberPage = () => {
                   name="role"
                   value={member.role}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#182155] focus:border-[#182155]"
+                  className="w-full text-gray-700 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#182155] focus:border-[#182155]"
                 >
                   <option value="member">Member</option>
                   <option value="nonmember">Nonmember</option>
@@ -125,6 +126,7 @@ const EditMemberPage = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
     <BottomNavigationBar />
     <Footer />
