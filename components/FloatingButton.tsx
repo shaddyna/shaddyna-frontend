@@ -72,6 +72,17 @@ const FloatingButton = () => {
                   Our Forum
                 </button>
               </li>
+              <li>
+                <button
+                  className="w-full text-center bg-[#ff199c] text-white py-2 rounded hover:bg-[#ff1379] transition"
+                  onClick={() => {
+                    router.push('/members-list'); // Navigate to "Add Skill" page
+                    setIsModalOpen(false); // Close the modal
+                  }}
+                >
+                  Members
+                </button>
+              </li>
             </ul>
             {/* Close Button */}
             <button

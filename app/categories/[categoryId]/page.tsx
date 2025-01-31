@@ -1,6 +1,6 @@
 /*"use client";
 
-import { useSearchParams } from "next/navigation"; // Import useSearchParams
+/*import { useSearchParams } from "next/navigation"; // Import useSearchParams
 import React, { useEffect, useState } from "react";
 
 interface Product {
