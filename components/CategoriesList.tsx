@@ -373,7 +373,7 @@ const CategoriesList: React.FC = () => {
               ))}
             </div>
             <button
-              className="px-6 py-2 border-2 border-[#182155] font-bold text-[#182155] hover:text-white hover:bg-[#ff199c] rounded transition"
+              className="px-6 py-2 font-bold text-[#182155] hover:text-white hover:bg-[#ff199c] rounded transition"
               onClick={handlePaymentClick}
               disabled={loading}
             >
