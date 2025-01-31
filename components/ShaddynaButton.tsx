@@ -86,7 +86,7 @@ const ShaddynaButton: FC<ShaddynaButtonProps> = ({ loading }) => {
 
   return (
     <button
-      className="w-full pt-2 px-6 py-2 border-2 border-[#182155] font-bold text-white bg-[#ff199c] hover:bg-[#182155] rounded transition lg:hidden"
+      className="w-full pt-2 px-6 py-2 font-bold text-white bg-[#ff199c] hover:bg-[#182155] rounded transition lg:hidden"
       onClick={handleClick}
       disabled={loading}
     >
