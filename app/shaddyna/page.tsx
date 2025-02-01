@@ -81,7 +81,7 @@ const shelves = [
       </div>
 
       <BottomNavigationBar />
-      <FloatingButtonTwo />
+      {/*<FloatingButtonTwo />*/}
       <FloatingButton />
       <Footer />
     </div>

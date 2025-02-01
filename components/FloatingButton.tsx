@@ -26,7 +26,7 @@ const FloatingButton = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 shadow-lg w-64 relative">
-            <h2 className="text-xl font-semibold text-center mb-4">Select an Action</h2>
+            <h2 className="text-xl text-gray-700 font-semibold text-center mb-4">Select an Action</h2>
             <ul className="space-y-3">
               <li>
                 <button
