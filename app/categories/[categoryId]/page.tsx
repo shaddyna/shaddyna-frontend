@@ -341,15 +341,18 @@ const CategoryDetails: React.FC = () => {
       ))}
     </div>
   ) : (
-    <div className="flex flex-col items-center justify-center mt-10">
-    <p className="text-[#ff199c] text-lg font-semibold mb-3">No products found!!!</p>
-    <img
-      src="/assets/images/Empty.gif" 
-      alt="No products found"
-      className="w-72 h-auto opacity-80"
-    />
-  </div>
-  
+    <div className="flex flex-col items-center justify-center 
+                h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh]">
+  <p className="text-[#ff199c] text-lg font-semibold mb-3">
+    No products for this category!!!
+  </p>
+  <img
+    src="/assets/images/Empty.gif" 
+    alt="No products found"
+    className="w-72 h-auto opacity-80"
+  />
+</div>
+
   )}
 </div>
 
