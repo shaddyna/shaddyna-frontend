@@ -62,9 +62,18 @@ const ShopDetails: React.FC = () => {
   const { items: cartItems, addItem } = useCartStore();
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const { items: wishlistItems, addItem: addToWishlist } = useWishlistStore();
-  
+  const [shopId, setShopId] = useState<string | null>(null);
 
-  const shopId = window.location.pathname.split('/').pop(); // Assuming the shop ID is part of the URL path
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const id = window.location.pathname.split('/').pop() || null; // Fallback to null
+    setShopId(id);
+  }
+}, []);
+
+
+  
+//const shopId = window.location.pathname.split('/').pop(); // Assuming the shop ID is part of the URL path
 
   useEffect(() => {
     const fetchShopDetails = async () => {

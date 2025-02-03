@@ -98,7 +98,7 @@ const WishlistPage: React.FC = () => {
         {wishlistItems.length > 0 ? (
           wishlistItems.map((product) => (
             <div
-            key={product.id}
+            key={product._id}
             className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105 bg-white cursor-pointer"
           >
             <img
@@ -109,7 +109,7 @@ const WishlistPage: React.FC = () => {
               }
               alt={product.name}
               className="w-full h-36 sm:h-48 object-contain" 
-              onClick={() => handleProductClick(product.id)}
+              onClick={() => handleProductClick(product._id)}
             />
             <div className="p-3 sm:p-4">
               <h3 className="text-sm sm:text-base font-semibold text-gray-800 truncate">
@@ -120,7 +120,7 @@ const WishlistPage: React.FC = () => {
               </p>
               <div className="flex justify-between items-center mt-4">
                 <button
-                  onClick={() => removeItem(product.id)}
+                  onClick={() => removeItem(product._id)}
                   className="text-[#ff199c] hover:text-red-600 transition-transform transform hover:scale-110 sm:hover:scale-125"
                 >
                   <FaHeart size={16} />
