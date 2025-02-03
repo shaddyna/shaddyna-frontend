@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 export interface WishlistItem {
-  id: string;
+  _id: string;
   name: string;
   price: number;
   images: string | string[]; 
@@ -24,7 +24,7 @@ export const useWishlistStore = create<WishlistStore>()(
       items: [],
       addItem: (item) => {
         set((state) => {
-          const itemExists = state.items.some((i) => i.id === item.id);
+          const itemExists = state.items.some((i) => i._id === item._id);
           
           if (itemExists) {
             // Optionally, you can update or do nothing if the item already exists
@@ -36,7 +36,7 @@ export const useWishlistStore = create<WishlistStore>()(
       },
       removeItem: (itemId) => {
         set((state) => ({
-          items: state.items.filter((i) => i.id !== itemId),
+          items: state.items.filter((i) => i._id !== itemId),
         }));
       },
       clearWishlist: () => set({ items: [] }),

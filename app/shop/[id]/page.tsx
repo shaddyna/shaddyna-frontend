@@ -9,9 +9,10 @@ import { FaFacebookF, FaHeart, FaInstagram, FaShoppingCart, FaTwitter } from 're
 import Back from '@/components/Back';
 import { useRouter } from "next/navigation";
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import { useCartStore } from "@/store/cart-store";
+import { CartItem, useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 import ShimmerLoader from '@/components/ShopDetailsShimmer';
+import Snackbar from '@/components/SnackBar';
 
 interface Review {
   user: string;
@@ -41,7 +42,6 @@ interface Shop {
 }
 
 interface Product {
-  id: string;
   images: string[];   // Array of image URLs (strings)
   _id: string;
   name: string;
@@ -154,8 +154,57 @@ const ShopDetails: React.FC = () => {
         </>
       );
     };
-  
+
     const handleAddToCart = (product: Product) => {
+      const productExists = cartItems.some((item) => item._id === product._id);
+  
+      if (productExists) {
+        setSnackbarMessage("Product already added to cart!");
+        return;
+      }
+  
+      const cartItem = {
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+        image: product.images[0], // Use the first image from the array
+        color: "default", // Placeholder for color
+        stock: 10, // Placeholder for stock
+        sellerId: product.sellerId, // Placeholder for sellerId
+      };
+  
+      addItem(cartItem);
+      setSnackbarMessage("Product added to cart!");
+    };
+  
+    
+
+    {/*const handleAddToCart = (product: Product) => {
+      const productExists = cartItems.some((item) => item._id === product.id);
+    
+      if (productExists) {
+        setSnackbarMessage("Product already added to cart!");
+        return;
+      }
+    
+      const cartItem: CartItem = {
+        _id: product.id, // Ensure id is correctly mapped
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+        image: product.images[0] || "/placeholder-image.png", // Use fallback image if missing
+        color: "default", // Default color (if applicable)
+        stock: 10, // Default stock value
+        sellerId: product.sellerId, // Ensure sellerId is included
+      };
+    
+      addItem(cartItem);
+      setSnackbarMessage("Product added to cart!");
+    };*/}
+    
+  
+    {/*const handleAddToCart = (product: Product) => {
       const productExists = cartItems.some((item) => item._id === product.id);
   
       if (productExists) {
@@ -176,7 +225,7 @@ const ShopDetails: React.FC = () => {
   
       addItem(cartItem);
       setSnackbarMessage("Product added to cart!");
-    };
+    };*/}
   
     const handleWishlistClick = (product: Product) => {
       addToWishlist(product); // Add to the wishlist store
@@ -197,14 +246,14 @@ const ShopDetails: React.FC = () => {
     return (
       <div className="mt-8 pb-4">
         <h2 className="text-2xl sm:text-3xl font-semibold text-[#182155] m-3">{shop.name} products</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        {/*<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {products.map(product => (
-            <div key={product._id} className="border rounded-lg shadow-md p-2">
+            <div key={product.id} className="border rounded-lg shadow-md p-2">
               <img
                 src={product.images[0] || "/placeholder-image.png"} // Fallback image if the product has no image
                 alt={product.name}
                 className="w-full h-36 sm:h-48 object-contain" // object-contain keeps the aspect ratio
-                onClick={() => router.push(`/product/${product._id}`)} // Ensure correct ID is passed
+                onClick={() => router.push(`/product/${product.id}`)} // Ensure correct ID is passed
               />
               <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
               <p className="text-gray-600 text-sm mt-2">Price: Ksh {product.price}</p>
@@ -226,7 +275,68 @@ const ShopDetails: React.FC = () => {
               </div>
             </div>
           ))}
+     
+        {snackbarMessage && (
+        <Snackbar
+          message={snackbarMessage}
+          onClose={() => setSnackbarMessage("")}
+        />
+      )}
+        </div>*/}
+<div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 lg:gap-6">
+          {products.map((product) => (
+            <div
+              key={product._id}
+              className="border pt-2 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105 bg-white cursor-pointer"
+            >
+              
+              <img
+                src={product.images[0] || "/placeholder-image.png"} // Fallback image if the product has no image
+                alt={product.name}
+                className="w-full h-36 sm:h-48 object-contain" // Added `rounded-md` for medium border radius
+                onClick={() => router.push(`/product/${product._id}`)} // Ensure correct ID is passed
+              />
+          
+              <div className="p-3 pt-1 sm:p-2">
+                <h3 className="text-sm sm:text-base font-semibold text-gray-800 truncate">
+                  {product.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500 font-medium mt-1">
+                  Kes {product.price}
+                </p>
+                <p className="text-xs sm:text-sm text-gray-800 tex[#182155] font-bold mt-1">
+                  Shop Name
+                  {/*{product.sellerId.toString()}*/}
+                </p>
+                <div className="flex items-center mt-2">{renderStars(product.rating)}</div>
+                <div className="flex justify-between items-center mt-4">
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className="bg-[#182155] text-white py-1 px-3 sm:py-1.5 sm:px-5 rounded-full font-bold text-xs sm:text-sm shadow-md hover:from-yellow-500 hover:to-yellow-700 transition-all transform hover:scale-105 flex items-center gap-1"
+                  >
+                    <FaShoppingCart className="text-sm sm:text-base" />
+                    Add to Cart
+                  </button>
+                  <button
+                    onClick={() => handleWishlistClick(product)}
+                    className="text-[#ff199c] hover:text-red-600 transition-transform transform hover:scale-110 sm:hover:scale-125"
+                  >
+                    <FaHeart size={16} className="sm:size-[20px]" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+           {snackbarMessage && (
+        <Snackbar
+          message={snackbarMessage}
+          onClose={() => setSnackbarMessage("")}
+        />
+      )}
         </div>
+
+
+
       </div>
     );
   };

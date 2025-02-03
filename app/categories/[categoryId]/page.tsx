@@ -174,7 +174,8 @@ export default CategoryDetails;*/
 import Back from "@/components/Back";
 import BottomNavigationBar from "@/components/BottomNav";
 import Footer from "@/components/Footer";
-import { useCartStore } from "@/store/cart-store";
+import Snackbar from "@/components/SnackBar";
+import { CartItem, useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 import router from "next/router";
 import React, { useEffect, useState } from "react";
@@ -183,7 +184,7 @@ import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
 interface Product {
   sellerId: string;
-  id: string;
+  _id: string;
   name: string;
   price: number;
   images: string[]; // Changed to an array of strings for image URLs
@@ -198,7 +199,7 @@ const CategoryDetails: React.FC = () => {
   const [categoryId, setCategoryId] = useState<string | null>(null); 
   const { items: cartItems, addItem } = useCartStore();
   const { items: wishlistItems, addItem: addToWishlist } = useWishlistStore();
-   const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarMessage, setSnackbarMessage] = useState("");
   const renderStars = (rating: number) => {
       const fullStars = Math.floor(rating);
       const halfStar = rating % 1 >= 0.5;
@@ -222,29 +223,61 @@ const CategoryDetails: React.FC = () => {
       addToWishlist(product); // Add to the wishlist store
       setSnackbarMessage("Product added to wishlist!");
     };
-    
+
     const handleAddToCart = (product: Product) => {
-      const productExists = cartItems.some((item) => item._id === product.id);
-  
+      // Ensure we're using the correct property for product ID
+      const productId = product._id; 
+    
+      if (!productId) {
+        setSnackbarMessage("Error: Product ID missing!");
+        return;
+      }
+    
+      const productExists = cartItems.some((item) => item._id === productId);
+    
       if (productExists) {
         setSnackbarMessage("Product already added to cart!");
         return;
       }
-  
-      const cartItem = {
-        _id: product.id,
+    
+      const cartItem: CartItem = {
+        _id: productId, // Ensure ID is correctly captured
         name: product.name,
         price: product.price,
         quantity: 1,
-        image: product.images[0], // Use the first image from the array
-        color: "default", // Placeholder for color
-        stock: 10, // Placeholder for stock
-        sellerId: product.sellerId, // Placeholder for sellerId
+        image: product.images?.[0] || "/placeholder-image.png", // Safe image handling
+        color: "default", // Default color
+        stock: 10, // Default stock value
+        sellerId: product.sellerId, // Ensure sellerId is included
       };
-  
+    
       addItem(cartItem);
       setSnackbarMessage("Product added to cart!");
     };
+    
+    
+    /*const handleAddToCart = (product: Product) => {
+      const productExists = cartItems.some((item) => item._id === product.id);
+    
+      if (productExists) {
+        setSnackbarMessage("Product already added to cart!");
+        return;
+      }
+    
+      const cartItem: CartItem = {
+        _id: product.id, // Ensure id is correctly mapped
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+        image: product.images[0] || "/placeholder-image.png", // Use fallback image if missing
+        color: "default", // Default color (if applicable)
+        stock: 10, // Default stock value
+        sellerId: product.sellerId, // Ensure sellerId is included
+      };
+    
+      addItem(cartItem);
+      setSnackbarMessage("Product added to cart!");
+    };*/
 
   useEffect(() => {
     // Fetching categoryId using window.location.pathname
@@ -303,7 +336,7 @@ const CategoryDetails: React.FC = () => {
   {products && products.length > 0 ? (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
       {products.map((product: any) => (
-        <div key={product._id} className="bg-white shadow-md rounded-lg overflow-hidden">
+        <div key={product.id} className="bg-white shadow-md rounded-lg overflow-hidden">
           <img
             src={product.images[0] || "/placeholder-image.png"}
             alt={product.name}
@@ -354,6 +387,12 @@ const CategoryDetails: React.FC = () => {
 </div>
 
   )}
+  {snackbarMessage && (
+        <Snackbar
+          message={snackbarMessage}
+          onClose={() => setSnackbarMessage("")}
+        />
+      )}
 </div>
 
     <BottomNavigationBar />
