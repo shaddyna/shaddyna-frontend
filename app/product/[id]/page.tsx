@@ -105,7 +105,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
     if (!product) return;
   
     const wishlistItem = {
-      id: product.id,
+      _id: product.id,
       name: product.name,
       price: product.price,
       images: [product.image], // Convert the single image to an array
