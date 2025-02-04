@@ -707,7 +707,7 @@ import ProductsShimmerLoader from "./ProductShimmerLoader";
 
 interface Product {
   sellerId: string;
-  id: string;
+  _id: string;
   name: string;
   price: number;
   images: string[]; // Changed to an array of strings for image URLs
@@ -796,7 +796,7 @@ const Products: React.FC = () => {
   };
 
   const handleAddToCart = (product: Product) => {
-    const productExists = cartItems.some((item) => item._id === product.id);
+    const productExists = cartItems.some((item) => item._id === product._id);
 
     if (productExists) {
       setSnackbarMessage("Product already added to cart!");
@@ -804,7 +804,7 @@ const Products: React.FC = () => {
     }
 
     const cartItem = {
-      _id: product.id,
+      _id: product._id,
       name: product.name,
       price: product.price,
       quantity: 1,
@@ -834,7 +834,7 @@ const Products: React.FC = () => {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 lg:gap-6">
           {products.map((product) => (
             <div
-              key={product.id}
+              key={product._id}
               className="border pt-2 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105 bg-white cursor-pointer"
             >
               
@@ -842,7 +842,7 @@ const Products: React.FC = () => {
                 src={product.images[0] || "/placeholder-image.png"} // Fallback image if the product has no image
                 alt={product.name}
                 className="w-full h-36 sm:h-48 object-contain" // Added `rounded-md` for medium border radius
-                onClick={() => router.push(`/product/${product.id}`)} // Ensure correct ID is passed
+                onClick={() => router.push(`/product/${product._id}`)} // Ensure correct ID is passed
               />
           
               <div className="p-3 pt-1 sm:p-2">
