@@ -405,6 +405,7 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 import ShimmerLoader from '@/components/ShopDetailsShimmer';
+import Snackbar from '@/components/SnackBar';
 
 interface Review {
   user: string;
@@ -434,7 +435,6 @@ interface Shop {
 }
 
 interface Product {
-  id: string;
   images: string[];   // Array of image URLs (strings)
   _id: string;
   name: string;
@@ -443,6 +443,7 @@ interface Product {
   sellerId: string;
   rating: number; 
 }
+
 
 
 const ShopDetails: React.FC = () => {
@@ -549,7 +550,7 @@ const ShopDetails: React.FC = () => {
     };
   
     const handleAddToCart = (product: Product) => {
-      const productExists = cartItems.some((item) => item._id === product.id);
+      const productExists = cartItems.some((item) => item._id === product._id);
   
       if (productExists) {
         setSnackbarMessage("Product already added to cart!");
@@ -557,7 +558,7 @@ const ShopDetails: React.FC = () => {
       }
   
       const cartItem = {
-        _id: product.id,
+        _id: product._id,
         name: product.name,
         price: product.price,
         quantity: 1,
@@ -619,6 +620,12 @@ const ShopDetails: React.FC = () => {
               </div>
             </div>
           ))}
+          {snackbarMessage && (
+        <Snackbar
+          message={snackbarMessage}
+          onClose={() => setSnackbarMessage("")}
+        />
+      )}
         </div>
       </div>
     );
