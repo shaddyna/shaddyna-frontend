@@ -76,7 +76,7 @@ const ShelfComponent: React.FC<ShelfProps> = ({ shelves }) => {
       <h2 className="text-2xl text-gray-800 font-semibold text-left mb-0">Shelves</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
         {shelves.map((shelf) => (
-          <Link key={shelf.id} href={`/shel/${shelf.id}`} className="bg-white p-2 rounded-lg flex border border-gray-300 hover:bg-gray-100">
+          <Link key={shelf.id} href={`/shelf/${shelf.id}`} className="bg-white p-2 rounded-lg flex border border-gray-300 hover:bg-gray-100">
           <div>
             <img
               src={shelf.image}
