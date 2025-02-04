@@ -755,7 +755,7 @@ const Products: React.FC = () => {
         }
         const data = await response.json();
         const formattedProducts = data.products.map((product: any) => ({
-          id: product._id.toString(),
+          _id: product._id.toString(),
           name: product.name,
           price: product.price,
           images: product.images, // Store images array
