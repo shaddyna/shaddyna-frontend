@@ -109,9 +109,9 @@ const Footer = () => {
         <div>
           <h4 className="text-white text-lg font-semibold mb-4">Get in Touch</h4>
           <p className="mb-2">Nairobi City, Nairobi CBD, KENYA</p>
-          <Link href="mailto:info@email.com" className="text-pink-400 hover:text-[#ff199c]">shaddyna2211@gmail.com</Link>
+          <Link href="mailto:info@email.com" className="text-[#ff199c] hover:text-[#ff199c]">shaddyna2211@gmail.com</Link>
           <br />
-          <Link href="tel:001234567890" className="text-pink-400 hover:text-[#ff199c]">+(254) 027 147 36</Link>
+          <Link href="tel:001234567890" className="text-[#ff199c] hover:text-[#ff199c]">+(254) 027 147 36</Link>
         </div>
 
         {/* Learn More */}
@@ -135,11 +135,11 @@ const Footer = () => {
               type="email"
               placeholder="Email Address"
               required
-              className="w-full p-3 rounded-l-md bg-gray-800 border border-gray-600 text-white focus:outline-none"
+              className="w-full p-3 rounded-l-md bg-[#182155] border border-gray-400 text-white focus:outline-none"
             />
             <button
               type="submit"
-              className="absolute top-0 right-0 h-full px-5 bg-pink-500 text-white rounded-r-md hover:bg-[#ff199c]"
+              className="absolute top-0 right-0 h-full px-5 bg-[#ff199c] text-white rounded-r-md hover:bg-[#ff199c]"
             >
               Join
             </button>
