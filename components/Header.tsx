@@ -19,17 +19,17 @@ const Header: React.FC = () => {
             {/* Use icons instead of text on small screens */}
             <li className="sm:hidden">
               <Link href="">
-                <FaInfoCircle className="text-[#ff199c]" />
+                <FaInfoCircle className="text-pink-500" />
               </Link>
             </li>
             <li className="sm:hidden">
               <Link href="">
-                <FaCogs className="text-[#ff199c]" />
+                <FaCogs className="text-pink-500" />
               </Link>
             </li>
             <li className="sm:hidden">
               <Link href="">
-                <FaPhone className="text-[#ff199c]" />
+                <FaPhone className="text-pink-500" />
               </Link>
             </li>
 

@@ -109,9 +109,9 @@ const Footer = () => {
         <div>
           <h4 className="text-white text-lg font-semibold mb-4">Get in Touch</h4>
           <p className="mb-2">Nairobi City, Nairobi CBD, KENYA</p>
-          <Link href="mailto:info@email.com" className="text-blue-400 hover:text-blue-500">shaddyna2211@gmail.com</Link>
+          <Link href="mailto:info@email.com" className="text-pink-400 hover:text-[#ff199c]">shaddyna2211@gmail.com</Link>
           <br />
-          <Link href="tel:001234567890" className="text-blue-400 hover:text-blue-500">+(254) 027 147 36</Link>
+          <Link href="tel:001234567890" className="text-pink-400 hover:text-[#ff199c]">+(254) 027 147 36</Link>
         </div>
 
         {/* Learn More */}
@@ -139,7 +139,7 @@ const Footer = () => {
             />
             <button
               type="submit"
-              className="absolute top-0 right-0 h-full px-5 bg-blue-500 text-white rounded-r-md hover:bg-blue-600"
+              className="absolute top-0 right-0 h-full px-5 bg-pink-400 text-white rounded-r-md hover:bg-[#ff199c]"
             >
               Join
             </button>
