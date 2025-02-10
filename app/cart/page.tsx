@@ -106,6 +106,7 @@ const CartPage = () => {
 
 export default CartPage;*/
 
+import BottomNavigationBar from "@/components/BottomNav"
 import { CartDetails } from "@/components/cart-details"
 import Footer from "@/components/Footer"
 import HeadNavigation from "@/components/HeadNavigation"
@@ -114,6 +115,7 @@ export default function CartPage() {
   return (<div className="bg-gray-50 min-h-screen flex flex-col">
   <CartDetails />
   <Footer />
+  <BottomNavigationBar />
   </div>
 )
 } 

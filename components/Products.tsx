@@ -864,7 +864,7 @@ const Products: React.FC = () => {
                     className="bg-[#182155] text-white py-1 px-2 sm:py-1.5 sm:px-5 rounded-full font-bold text-xs sm:text-sm shadow-md hover:from-yellow-500 hover:to-yellow-700 transition-all transform hover:scale-105 flex items-center gap-1"
                   >
                     
-                    <ShoppingCart size={18} strokeWidth={2} />
+                    <ShoppingCart size={20} strokeWidth={2} />
                     Add to Cart
                   </button>
                   <button

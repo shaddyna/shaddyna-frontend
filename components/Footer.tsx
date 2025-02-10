@@ -135,7 +135,7 @@ const Footer = () => {
               type="email"
               placeholder="Email Address"
               required
-              className="w-full p-3 rounded-l-md bg-[#182155] border border-gray-400 text-white focus:outline-none"
+              className="w-full p-3 rounded-md bg-[#182155] border border-gray-400 text-white focus:outline-none"
             />
             <button
               type="submit"
