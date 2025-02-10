@@ -704,6 +704,7 @@ import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store"; // Import the wishlist store
 import Snackbar from "@/components/SnackBar"; // Snackbar component to show messages
 import ProductsShimmerLoader from "./ProductShimmerLoader";
+import { ShoppingCart } from "lucide-react";
 
 interface Product {
   sellerId: string;
@@ -862,7 +863,8 @@ const Products: React.FC = () => {
                     onClick={() => handleAddToCart(product)}
                     className="bg-[#182155] text-white py-1 px-3 sm:py-1.5 sm:px-5 rounded-full font-bold text-xs sm:text-sm shadow-md hover:from-yellow-500 hover:to-yellow-700 transition-all transform hover:scale-105 flex items-center gap-1"
                   >
-                    <FaShoppingCart className="text-sm sm:text-base" />
+                    
+                    <ShoppingCart size={18} strokeWidth={2} />
                     Add to Cart
                   </button>
                   <button
