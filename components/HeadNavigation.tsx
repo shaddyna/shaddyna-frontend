@@ -163,7 +163,7 @@ const HeadNavigation: React.FC = () => {
                 <img
                   src="/logo.jpeg"
                   alt="YourLogo"
-                  className="h-8 w-auto rounded-full" />
+                  className="h-9 w-auto rounded-full" />
               </Link>
             </div>
           </div>

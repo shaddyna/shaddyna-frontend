@@ -1,5 +1,6 @@
 // components/BottomNavigationBar.tsx
 "use client"
+import { CircleHelp, Heart, Search, Store } from 'lucide-react';
 import React, { useState } from 'react';
 import { FaHeart, FaSearch, FaStore, FaQuestionCircle } from 'react-icons/fa';
 
@@ -23,7 +24,7 @@ const BottomNavigationBar: React.FC = () => {
           className={`flex flex-col items-center ${activeLink === 'search' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('search')}
         >
-          <FaSearch className="text-2xl mb-1" />
+          <Search />
           <span>Search</span>
         </a>
         <a
@@ -31,7 +32,7 @@ const BottomNavigationBar: React.FC = () => {
           className={`flex flex-col items-center ${activeLink === 'wishlist' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('wishlist')}
         >
-          <FaHeart className="text-2xl mb-1" />
+          <Heart />
           <span>Wishlist</span>
         </a>
         <a
@@ -39,7 +40,7 @@ const BottomNavigationBar: React.FC = () => {
           className={`flex flex-col items-center ${activeLink === 'shop' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('shop')}
         >
-          <FaStore className="text-2xl mb-1" />
+          <Store />
           <span>Shops</span>
         </a>
         <a
@@ -47,7 +48,7 @@ const BottomNavigationBar: React.FC = () => {
           className={`flex flex-col items-center ${activeLink === 'help' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('help')}
         >
-          <FaQuestionCircle className="text-2xl mb-1" />
+          <CircleHelp />
           <span>Help</span>
         </a>
       </div>
