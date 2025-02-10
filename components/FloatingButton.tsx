@@ -65,7 +65,8 @@ const FloatingButton = () => {
                 <button
                   className="w-full text-center bg-[#ff199c] text-white py-2 rounded hover:bg-[#ff1379] transition"
                   onClick={() => {
-                    router.push('/forum'); // Navigate to "Add Skill" page
+                    router.push('/finance'); // Navigate to "Add Skill" page
+                    //router.push('/forum'); // Navigate to "Add Skill" page
                     setIsModalOpen(false); // Close the modal
                   }}
                 >

@@ -1,5 +1,5 @@
 
-"use client";
+/*"use client";
 import { useState, useEffect } from "react";
 import { NextPage } from "next";
 import Footer from "@/components/Footer";
@@ -128,7 +128,7 @@ const ForumPage: NextPage = () => {
               )
             )}
 
-            {/* Submit Button */}
+            {/* Submit Button *
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -148,4 +148,139 @@ const ForumPage: NextPage = () => {
   );
 };
 
-export default ForumPage;
+export default ForumPage;*/
+"use client";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+const ForumForm = () => {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    userId: "", // This should be dynamically set from the authenticated user
+    mpesaCode: "",
+    fullName: "",
+    amount: "",
+    phoneNumber: "",
+    email: "",
+  });
+
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
+
+  // Fetch the token from localStorage on component mount
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    } else {
+      setError("Authentication required. Please log in.");
+    }
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    if (!token) {
+      setError("User authentication failed. Please log in.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://shaddyna-backend.onrender.com/api/saving/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Attach token
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Saving created successfully!");
+        router.push("/"); // Redirect to home or another relevant page
+      } else {
+        setError(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      setError("An error occurred while creating saving.");
+    }
+
+    setLoading(false);
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-2xl font-semibold text-center mb-4">
+          Create Your First Saving
+        </h2>
+        {error && <p className="text-red-500 text-center mb-3">{error}</p>}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Full Name"
+            value={formData.fullName}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-lg"
+          />
+          <input
+            type="text"
+            name="mpesaCode"
+            placeholder="M-Pesa Code"
+            value={formData.mpesaCode}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-lg"
+          />
+          <input
+            type="number"
+            name="amount"
+            placeholder="Amount"
+            value={formData.amount}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-lg"
+          />
+          <input
+            type="text"
+            name="phoneNumber"
+            placeholder="Phone Number"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-lg"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border border-gray-300 rounded-lg"
+          />
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
+            disabled={loading}
+          >
+            {loading ? "Saving..." : "Submit"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default ForumForm;

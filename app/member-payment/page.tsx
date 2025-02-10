@@ -84,53 +84,6 @@ const PaymentPage: NextPage = () => {
     }
   };
 
-
-  /*const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!user) {
-      alert("User not found. Please log in again.");
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const response = await fetch("https://shaddyna-backend.onrender.com/api/sellers/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const responseBody = await response.json();
-      console.log("Response Status:", response.status);
-      console.log("Response Body:", responseBody);
-      if (!response.ok) {
-        throw new Error(`Failed to submit payment. Server returned: ${response.status} - ${responseBody.error || "Unknown error"}`);
-      }      
-
-      // Assuming payment was successful, update the user's role to 'seller'
-      const updatedUserResponse = await axios.put(`https://shaddyna-backend.onrender.com/api/users/${user._id}`, {
-        role: "seller",
-      });
-
-      if (updatedUserResponse.status === 200) {
-        // Update the user in the Zustand store
-        const updatedUser = updatedUserResponse.data;
-        useUserSellerStore.getState().setUser(updatedUser);
-
-        console.log("Seller created successfully:", updatedUser);
-        router.push("/member-processing");
-      } else {
-        throw new Error("Failed to update user role.");
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };*/
-
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Back title={"Membership"} />

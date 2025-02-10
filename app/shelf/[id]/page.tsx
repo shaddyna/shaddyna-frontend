@@ -279,7 +279,7 @@ const ShelfDetails = () => {
         </div>
       </div>
     </div>
-    <FloatingButtonEdit />
+    {/*<FloatingButtonEdit shelf={shelf} />*/}
     <Footer />
     <BottomNavigationBar />
     </div>

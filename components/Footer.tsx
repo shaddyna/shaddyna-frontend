@@ -1,166 +1,4 @@
-{/*import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
-
-const Footer: React.FC = () => {
-  return (
-    <footer className="bg-[#182155] text-white py-12">
-      <div className="container mx-auto px-6">
-        {/* Logo and About Section *
-        <div className="flex flex-col sm:flex-row sm:space-x-12 mb-12">
-          <div className="flex-1 mb-8 sm:mb-0">
-            <h1 className="text-4xl font-semibold text-[#ff199c] transition duration-300">
-              Shaddyna
-            </h1>
-            <p className="mt-4 text-gray-300">
-              Your ultimate destination for all things shopping! Browse our platform, discover amazing shops, and get the best deals.
-            </p>
-          </div>
-
-          {/* Quick Links *
-          <div className="flex-1 mb-8 sm:mb-0">
-            <h3 className="text-xl font-semibold text-white">Quick Links</h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <a
-                  href="/about"
-                  className="text-gray-300 hover:text-yellow-600 transition duration-300"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-               
-              </li>
-              <li>
-                <a
-                  href="/faq"
-                  className="text-gray-300 hover:text-yellow-600 transition duration-300"
-                >
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  className="text-gray-300 hover:text-yellow-600 transition duration-300"
-                >
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/terms"
-                  className="text-gray-300 hover:text-yellow-600 transition duration-300"
-                >
-                  Terms & Conditions
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Information *
-          <div className="flex-1">
-            <h3 className="text-xl font-semibold text-white">Contact</h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <p className="text-gray-300">
-                  Email:{' '}
-                  <a
-                    href="mailto:info@Imani Imports.com"
-                    className="text-[#ff199c] hover:text-yellow-500 transition duration-300"
-                  >
-                    info@Shaddyna.com
-                  </a>
-                </p>
-              </li>
-              <li>
-                <p className="text-gray-300">
-                  Phone:{' '}
-                  <a
-                    href="tel:+1234567890"
-                    className="text-[#ff199c] hover:text-yellow-500 transition duration-300"
-                  >
-                    (123) 456-7890
-                  </a>
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-{/* Social Media Links *
-<div className="flex justify-center space-x-6 mb-8 flex-col sm:flex-row text-center sm:text-left">
-  <a
-    href="https://facebook.com/ImaniImports"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center text-gray-300 hover:text-yellow-600 transition duration-300 mb-4 sm:mb-0"
-  >
-    <FaFacebook className="mr-2 text-[#ff199c] text-2xl" />
-    Facebook
-  </a>
-  <a
-    href="https://instagram.com/ImaniImports"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center text-gray-300 hover:text-yellow-600 transition duration-300 mb-4 sm:mb-0"
-  >
-    <FaInstagram className="mr-2 text-[#ff199c] text-2xl" />
-    Instagram
-  </a>
-  <a
-    href="https://twitter.com/ImaniImports"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center text-white hover:text-yellow-600 transition duration-300 mb-4 sm:mb-0"
-  >
-    <FaTwitter className="mr-2 text-[#ff199c] text-2xl" />
-    Twitter
-  </a>
-  <a
-    href="https://linkedin.com/company/ImaniImports"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center text-gray-300 hover:text-yellow-600 transition duration-300 mb-4 sm:mb-0"
-  >
-    <FaLinkedin className="mr-2 text-[#ff199c] text-2xl" />
-    LinkedIn
-  </a>
-</div>
-
-
-        {/* Newsletter Signup *
-        <div className="text-center mb-12">
-          <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
-          <p className="text-gray-300 mt-2">
-            Sign up for our newsletter to receive the latest updates, offers, and news.
-          </p>
-          <div className="mt-6 flex justify-center items-center space-x-4 flex-wrap">
-  <input
-    type="email"
-    placeholder="Enter your email"
-    className="p-2 sm:p-3 rounded-l-md text-gray-800 border-2 border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-600 w-full sm:w-auto text-sm sm:text-base"
-  />
-  <button className="bg-[#ff199c] text-white py-2 px-4 sm:py-2 sm:px-6 rounded-r-md hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-600 transition duration-300 w-full sm:w-auto mt-2 sm:mt-0 text-sm sm:text-base">
-    Subscribe
-  </button>
-</div>
-
-
-        </div>
-
-        {/* Copyright Section *
-        <div className="text-center text-gray-300 mb-8">
-          <p>&copy; {new Date().getFullYear()} Shaddyna. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;*/}
-
-import Image from "next/image"
+/*import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -240,4 +78,77 @@ export default function Footer() {
       </div>
     </footer>
   )
-}
+}*/
+
+import Link from "next/link";
+import { FaFacebook, FaTwitter, FaDribbble, FaInstagram, FaYoutube } from "react-icons/fa";
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-gray-300 py-4 mb-16">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
+        {/* Brand Section */}
+        <div>
+          {/*<Link href="/" className="text-white text-xl font-bold">
+            <img src="/assets/images/logo-light.svg" width={74} height={24} alt="shaddyna" />
+          </Link>*/}
+          <Link href="/" className="text-white text-3xl font-bold">
+            Shaddyna
+          </Link>
+          <p className="mt-4">&copy; {new Date().getFullYear()} shaddyna. All rights reserved.</p>
+          <div className="flex space-x-4 mt-4">
+            <FaFacebook className="text-white cursor-pointer hover:text-blue-500" size={24} />
+            <FaTwitter className="text-white cursor-pointer hover:text-blue-400" size={24} />
+            <FaDribbble className="text-white cursor-pointer hover:text-pink-500" size={24} />
+            <FaInstagram className="text-white cursor-pointer hover:text-pink-400" size={24} />
+            <FaYoutube className="text-white cursor-pointer hover:text-red-500" size={24} />
+          </div>
+        </div>
+
+        {/* Get in Touch */}
+        <div>
+          <h4 className="text-white text-lg font-semibold mb-4">Get in Touch</h4>
+          <p className="mb-2">Nairobi City, Nairobi CBD, KENYA</p>
+          <Link href="mailto:info@email.com" className="text-blue-400 hover:text-blue-500">shaddyna2211@gmail.com</Link>
+          <br />
+          <Link href="tel:001234567890" className="text-blue-400 hover:text-blue-500">+ (254) 027 147 36</Link>
+        </div>
+
+        {/* Learn More */}
+        <div>
+          <h4 className="text-white text-lg font-semibold mb-4">Learn More</h4>
+          <ul className="space-y-2">
+            <li><Link href="#" className="hover:text-white">About Us</Link></li>
+            <li><Link href="#" className="hover:text-white">Our Story</Link></li>
+            <li><Link href="#" className="hover:text-white">Projects</Link></li>
+            <li><Link href="#" className="hover:text-white">Terms of Use</Link></li>
+            <li><Link href="#" className="hover:text-white">Privacy Policy</Link></li>
+          </ul>
+        </div>
+
+        {/* Newsletter */}
+        <div>
+          <h4 className="text-white text-lg font-semibold mb-4">Our Newsletter</h4>
+          <p className="mb-4">Subscribe to our newsletter to get our news & deals delivered to you.</p>
+          <form className="relative">
+            <input
+              type="email"
+              placeholder="Email Address"
+              required
+              className="w-full p-3 rounded-l-md bg-gray-800 border border-gray-600 text-white focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="absolute top-0 right-0 h-full px-5 bg-blue-500 text-white rounded-r-md hover:bg-blue-600"
+            >
+              Join
+            </button>
+          </form>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+
