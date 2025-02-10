@@ -25,6 +25,7 @@ import Link from 'next/link';
 import Header from "./Header";
 import { useCartStore } from "@/store/cart-store";
 import { useUserSellerStore } from '@/store/useUserSellerStore';
+import { Bell, Logs, MessageCircleMore, ShoppingCart } from "lucide-react";
 
 const PaymentDialog: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
   isOpen,
@@ -138,7 +139,7 @@ const HeadNavigation: React.FC = () => {
 
   return (
     <><Header />
-    <header className="bg-[#ff199c] shadow-md sticky top-0 z-50 px-4 py-2">
+    <header className="bg-white shadow-md sticky top-0 z-50 px-4 py-2">
       {/* Responsive Container */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
         {/* Top Row (Small Screens: Nav and Logo on left, Msg and Notification on right) */}
@@ -146,13 +147,13 @@ const HeadNavigation: React.FC = () => {
           {/* Nav and Logo */}
           <div className="flex items-center space-x-4">
             <button
-              className="text-2xl p-2 text-white hover:bg-[#182155]  rounded-full lg:block" // Keep on large screens
+              className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0]  rounded-full lg:block" // Keep on large screens
               onClick={toggleDrawer} // Open the drawer when the hamburger menu is clicked
             >
               {isDrawerOpen ? (
                 <FaTimes /> // Show "X" when the drawer is open
               ) : (
-                <FaBars /> // Show hamburger menu when the drawer is closed
+                <Logs /> // Show hamburger menu when the drawer is closed
               )}
             </button>
             <div className="text-xl font-bold">
@@ -162,7 +163,7 @@ const HeadNavigation: React.FC = () => {
                 <img
                   src="/logo.jpeg"
                   alt="YourLogo"
-                  className="h-10 w-auto rounded-full" />
+                  className="h-8 w-auto rounded-full" />
               </Link>
             </div>
           </div>
@@ -170,21 +171,21 @@ const HeadNavigation: React.FC = () => {
           {isLoggedIn ? (
           <div className="flex items-center space-x-4 lg:hidden">
             <button
-          className="text-2xl p-2 text-white hover:bg-[#182155] rounded-full relative"
+          className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full relative"
           onClick={() => router.push("/cart")}
           >
-            <FaCartShopping />
+            <ShoppingCart />
             {totalItems > 0 && (
               <span className="absolute top-0 right-0 bg-[#182155] text-white text-xs rounded-full px-1">
                 {totalItems}
               </span>
             )}
           </button>
-         <button className="text-2xl p-2 text-white hover:bg-[#182155] rounded-full">
-           <FaEnvelope />
+         <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full">
+         <MessageCircleMore />
          </button>
-         <button className="text-2xl p-2 text-white hover:bg-[#182155] rounded-full">
-           <FaBell />
+         <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full">
+         <Bell />
          </button>
           </div>
           ) : (
@@ -271,86 +272,6 @@ const HeadNavigation: React.FC = () => {
         
         )}
       </div>
-
-      {/* Navigation Drawer (Visible only when hamburger menu is clicked) */}
-      {/*<div
-        className={`fixed inset-0 bg-gray-800 bg-opacity-50 transition-all duration-300 ${isDrawerOpen ? "block" : "hidden"} z-50`} // Set high z-index here
-        onClick={toggleDrawer} // Close drawer when the background is clicked
-      >
-        <div
-          className="bg-white p-4 w-64 h-full flex flex-col space-y-6"
-          onClick={(e) => e.stopPropagation()} // Prevent closing the drawer when clicking inside
-        >
-          <button
-            className="text-2xl p-2 hover:bg-gray-100 text-gray-800 rounded-full"
-            onClick={toggleDrawer}
-          >
-            <FaTimes />
-          </button>
-
-          {/* Optional buttons can be uncommented when needed *
-          <button
-            className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
-            onClick={handleSellClick}
-            >
-            <FaShoppingCart className="mr-2" /> {/* Icon for Start Selling *
-            My Shop
-          </button> 
-
-          <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
-            <FaBalanceScale className="mr-2" /> {/* Icon for Compare *
-            Compare
-          </button>
-
-         <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
-          <FaBlog className="mr-2" /> {/* Icon for Blog *
-          Blog
-        </button> 
-
-          <button
-            className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
-            onClick={handleClick} // Trigger the navigation on click
-          >
-            <FaTruck className="mr-2" /> {/* Icon for Delivery *
-            Delivery
-          </button>
-
-          <button
-            className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
-            onClick={handleAdminClick} // Trigger the navigation on click
-          >
-            <FaCogs className="mr-2" /> {/* Icon for Admin Panel *
-            Admin Panel
-          </button>
-
-          <button
-            className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
-            onClick={handleUserClick} // Trigger the navigation on click
-          >
-            <FaUserAlt className="mr-2" /> {/* Icon for My Profile *
-            My Profile
-          </button>
-
-          <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
-            <FaLifeRing className="mr-2" /> {/* Icon for Help *
-            Help?
-          </button>
-
-          {isLoggedIn ? (
-          <button onClick={logout} className="flex items-center px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-full">
-            <FaSignOutAlt className="mr-2" />
-            Logout
-          </button>
-          ) : (
-            <button
-            className="hidden lg:block text-sm font-medium text-blue-600"
-            onClick={handleLoginClick}
-            >
-            Login/Register
-            </button>
-            )}
-        </div>
-      </div>*/}
 
 <div
       className={`fixed inset-0 bg-gray-800 bg-opacity-50 transition-all duration-300 ${isDrawerOpen ? 'block' : 'hidden'} z-50`}

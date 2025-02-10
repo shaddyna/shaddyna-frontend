@@ -69,15 +69,7 @@ const shelves = [
 
         {/* Skills Section */}
         <ShaddynaSkills />
-        <div className="px-3">
-          <h2 className="text-2xl text-gray-800 font-semibold text-left mb-0">Skilled Services</h2>
-          <p className="text-md text-[#182155] text-left group-hover:text-white transition-colors mb-4">
-            Browse services offered by skilled members in Shaddyna Hub.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
-            {/* Skills Mapping */}
-          </div>
-        </div>
+        
       </div>
 
       <BottomNavigationBar />
