@@ -704,7 +704,7 @@ import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store"; // Import the wishlist store
 import Snackbar from "@/components/SnackBar"; // Snackbar component to show messages
 import ProductsShimmerLoader from "./ProductShimmerLoader";
-import { ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 
 interface Product {
   sellerId: string;
@@ -871,7 +871,7 @@ const Products: React.FC = () => {
                     onClick={() => handleWishlistClick(product)}
                     className="text-[#ff199c] hover:text-red-600 transition-transform transform hover:scale-110 sm:hover:scale-125"
                   >
-                    <FaHeart size={16} className="sm:size-[20px]" />
+                    <Heart size={20} />
                   </button>
                 </div>
               </div>

@@ -85,7 +85,7 @@ import { FaFacebook, FaTwitter, FaDribbble, FaInstagram, FaYoutube } from "react
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-4 mb-16">
+    <footer className="bg-[#182155] text-gray-300 py-4 mb-16">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
         {/* Brand Section */}
         <div>
@@ -139,7 +139,7 @@ const Footer = () => {
             />
             <button
               type="submit"
-              className="absolute top-0 right-0 h-full px-5 bg-pink-400 text-white rounded-r-md hover:bg-[#ff199c]"
+              className="absolute top-0 right-0 h-full px-5 bg-pink-500 text-white rounded-r-md hover:bg-[#ff199c]"
             >
               Join
             </button>
