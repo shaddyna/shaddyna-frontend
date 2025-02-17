@@ -183,6 +183,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
 interface Product {
+  shelfId: string;
   sellerId: string;
   _id: string;
   name: string;
@@ -249,6 +250,7 @@ const CategoryDetails: React.FC = () => {
         color: "default", // Default color
         stock: 10, // Default stock value
         sellerId: product.sellerId, // Ensure sellerId is included
+        shelfId: product.shelfId,
       };
     
       addItem(cartItem);
