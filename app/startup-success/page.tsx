@@ -16,29 +16,29 @@ const handleClick = () => {
 };
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <Back title={'Payment Processing'} />
+      <Back title={'Startup Processing'} />
 
       <main className="min-h-screen flex-grow flex items-center justify-center p-4 sm:p-8">
         <div className="w-full max-w-md sm:max-w-lg p-6 sm:p-8 bg-white rounded-lg shadow-lg border border-[#182155]">
           <h1 className="text-xl sm:text-3xl text-center font-semibold text-[#182155] mb-4 sm:mb-6">
-            Payment is Being Processed
+            Startup is Being Processed
           </h1>
 
           <div className="flex flex-col items-center space-y-4 sm:space-y-6">
             <div className="w-12 h-12 sm:w-16 sm:h-16 border-4 border-t-4 border-[#ff199c] rounded-full animate-spin"></div>
 
             <p className="text-sm sm:text-lg text-center text-[#182155]">
-              Thank you for your payment! We are processing your transaction to complete your registration as a seller.
+              Thank you for your startup submission! We are processing your idea.
             </p>
 
             <p className="text-xs sm:text-md text-center text-[#182155]">
-              Please be patient while we verify and finalize your payment. This may take a few moments.
+              Please be patient while we verify and finalize your submission. This may take a few moments.
             </p>
 
             <div className="text-center">
               <p className="text-sm sm:text-base font-medium text-[#182155]">While you wait:</p>
               <ul className="list-disc list-inside text-xs sm:text-sm text-[#182155]">
-                <li>Ensure your payment information is correct.</li>
+                <li>Ensure your information is correct.</li>
                 <li>If you have any issues, contact our support team.</li>
                 <li>We will notify you once the process is complete.</li>
               </ul>

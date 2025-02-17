@@ -10,6 +10,7 @@ export interface CartItem {
   color: string
   stock: number
   sellerId: string 
+  shelfId: string 
 }
 
 interface CartStore {

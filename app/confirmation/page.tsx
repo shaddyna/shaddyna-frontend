@@ -227,14 +227,20 @@ export default function ConfirmationPage() {
     console.log("Cart Items:", cartItems);
 
     const sellerIds = cartItems.map((item) => item.sellerId).filter(Boolean);
+    
+    const shelfIds = cartItems.map((item) => item.shelfId).filter(Boolean);
+    
 
     console.log("Extracted Seller IDs:", sellerIds);
+    console.log("Extracted Shelf IDs:", shelfIds);
 
     const sellerId = sellerIds;
+    const shelfId = shelfIds;
 
     const orderData = {
       mpesaCode,
       sellerId,
+      shelfId,
       mpesaName,
       mpesaNumber: phoneNumber,
       shippingInfo,

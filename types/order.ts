@@ -21,6 +21,7 @@ export type Product = {
     id: string;
     orderId: string;
     sellerId: string;
+    shelfId: string;
     date: string;
     mpesaCode: string;
     mpesaName: string;

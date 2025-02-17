@@ -172,7 +172,7 @@ const SellerPage: React.FC = () => {
   return (
     <div>
       <Back title={"Seller Management"} />
-      <div className="min-h-screen bg-gray-100 py-8">
+      <div className="min-h-screen bg-gray-100 py-4">
        
 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4">

@@ -280,12 +280,21 @@ const MainPage = () => {
     router.push("/forum");
   };
 
+  const handleSeminarClick = () => {
+    router.push("/seminar");
+  };
+
+  
+  const handleInvestClick = () => {
+    router.push("/shelf-list");
+  };
+
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white">
       <Back title={"Forum"} />
-      <div className="flex justify-center items-center py-0">
-        <div className="container mx-auto p-4 bg-white rounded-xl shadow-xl border border-gray-200">
-          <h1 className="text-2xl font-extrabold text-center text-gray-800 mb-4">Welcome to Our Forum Dashboard</h1>
+      <div className="min-h-screen py-0">
+        <div className="container mx-auto p-4 bg-white">
+          <h1 className="text-xl font-extrabold text-center text-gray-800 mb-4">Welcome to Our Forum Dashboard</h1>
 
           {/* Render the buttons dynamically */}
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-0">
@@ -299,7 +308,7 @@ const MainPage = () => {
               <span className="font-semibold">Deposit Money</span>
             </button>
             <button
-              onClick={handleSaveMoneyClick}
+              onClick={handleInvestClick}
               className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#182155] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
@@ -308,7 +317,7 @@ const MainPage = () => {
               <span className="font-semibold">Invest</span>
             </button>
             <button
-              onClick={handleSaveMoneyClick}
+              onClick={handleSeminarClick}
               className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#ff199c] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">

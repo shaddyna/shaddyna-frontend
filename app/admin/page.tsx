@@ -16,6 +16,8 @@ import {
   FaChartLine,
   
   FaArrowLeft,
+  FaMeetup,
+  FaLightbulb,
 } from "react-icons/fa";
 import { FaPeopleGroup, FaShop } from "react-icons/fa6";
 import Back from "@/components/Back";
@@ -56,6 +58,18 @@ const AdminPage: React.FC = () => {
     },
     { name: "Payment and Payout Management", icon: <FaMoneyBill />, color: "bg-[#ff199c]", action: () => {} },
     { name: "Members Management", icon: <FaPeopleGroup />, color: "bg-[#182155]", action: () => router.push("/members"), },
+    {
+      name: "Seminar Management",
+      icon: <FaMeetup />,
+      color: "bg-[#ff199c]",
+      action: () => router.push("/list-seminar"),
+    },
+    {
+      name: "Startup Management",
+      icon: <FaLightbulb />,
+      color: "bg-[#182155]",
+      action: () => router.push("/startup-list"),
+    },
     //{ name: "Communication and Notifications", icon: <FaComments />, color: "bg-indigo-500", action: () => {} },
     /*{ name: "Shipping and Delivery Management", icon: <FaTruck />, color: "bg-orange-500", action: () => {} },
     { name: "Marketing and Promotions", icon: <FaBullhorn />, color: "bg-pink-500", action: () => {} },

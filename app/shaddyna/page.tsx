@@ -10,43 +10,6 @@ import ShelfComponent from '@/components/Shelf';
 
 const ShaddynaHub = () => {
   // Dummy Data
-const shelves = [
-  {
-    id: 1,
-    name: "Sneaker Collection",
-    description: "A shelf dedicated to the best sneakers in the game.",
-    image: "https://i.pinimg.com/236x/2a/9a/53/2a9a530cc03d8dd849ede2f545d0aede.jpg",
-    price: "Starting from Ksh 3000",
-    members: [
-      { id: 1, name: "John Doe", role: "Owner" },
-      { id: 2, name: "Jane Smith", role: "Member" },
-      { id: 3, name: "Mike Brown", role: "Member" },
-    ],
-  },
-  {
-    id: 2,
-    name: "Designer Bags",
-    description: "A shelf for premium designer handbags and accessories.",
-    image: "https://i.pinimg.com/236x/94/5b/4f/945b4f64e16a8e8daceadc3545952325.jpg",
-    price: "Starting from Ksh 5000",
-    members: [
-      { id: 4, name: "Alice Johnson", role: "Owner" },
-      { id: 5, name: "Bob Williams", role: "Member" },
-    ],
-  },
-  {
-    id: 3,
-    name: "Casual Outfits",
-    description: "Trendy and stylish casual wear for all occasions.",
-    image: "https://i.pinimg.com/736x/a7/4c/12/a74c12da587c712e97a7e337478f9788.jpg",
-    price: "Starting from Ksh 2000",
-    members: [
-      { id: 6, name: "Emma Watson", role: "Owner" },
-      { id: 7, name: "Chris Evans", role: "Member" },
-      { id: 8, name: "Scarlett Johansson", role: "Member" },
-    ],
-  },
-];
 
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
@@ -65,7 +28,7 @@ const shelves = [
         {/* Product Shelf Component 
         <Shelf products={products} /> */}
 
-      <ShelfComponent shelves={shelves} />
+      <ShelfComponent />
 
         {/* Skills Section */}
         <ShaddynaSkills />

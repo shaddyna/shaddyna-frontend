@@ -304,6 +304,7 @@ const OrderManagement: React.FC = () => {
             >
               <h2 className="text-xl font-bold mb-2">Order ID: {String(order.orderId)}</h2>
               <p className="text-sm text-gray-600 mb-1">Seller ID: {String(order.sellerId)}</p>
+              <p className="text-sm text-gray-600 mb-1">Shelf ID: {String(order.shelfId)}</p>
               <p className="text-sm text-gray-600 mb-1">
                 Products: {order.products.map((product) => product.name).join(', ')}
               </p>

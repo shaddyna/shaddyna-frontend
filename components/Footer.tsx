@@ -111,7 +111,7 @@ const Footer = () => {
           <p className="mb-2">Nairobi City, Nairobi CBD, KENYA</p>
           <Link href="mailto:info@email.com" className="text-[#ff199c] hover:text-[#ff199c]">shaddyna2211@gmail.com</Link>
           <br />
-          <Link href="tel:001234567890" className="text-[#ff199c] hover:text-[#ff199c]">+(254) 027 147 36</Link>
+          <Link href="tel:0702714736" className="text-[#ff199c] hover:text-[#ff199c]">+254 (0) 702 714 736</Link>
         </div>
 
         {/* Learn More */}

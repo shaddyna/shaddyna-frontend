@@ -2,10 +2,8 @@
 import { useState, useEffect } from "react";
 import { NextPage } from "next";
 import Footer from "@/components/Footer";
-import HeadNavigation from "@/components/HeadNavigation";
 import { useRouter } from "next/navigation";
 import BottomNavigationBar from "@/components/BottomNav";
-import { useUserSellerStore } from "@/store/useUserSellerStore"; // Import your Zustand store
 import axios from "axios";
 import Back from "@/components/Back";
 
@@ -20,50 +18,72 @@ const StartUpPage: NextPage = () => {
 
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { user, fetchCurrentUser } = useUserSellerStore();
-  
-  // Fetch current user on mount
+
+  // Fetch token directly from localStorage
   useEffect(() => {
-    fetchCurrentUser();
-  }, [fetchCurrentUser]);
+    const token = localStorage.getItem("token");
+    if (token) {
+      console.log("Token is present:", token);
+    } else {
+      console.log("No token found.");
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!user) {
-      alert("User not found. Please log in again.");
-      return;
-    }
-
     setLoading(true);
+
     try {
-      const response = await fetch("https://shaddyna-backend.onrender.com/api/startups/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const responseBody = await response.json();
-      console.log("Response Status:", response.status);
-      console.log("Response Body:", responseBody);
-      if (!response.ok) {
-        throw new Error(`Failed to submit startup. Server returned: ${response.status} - ${responseBody.error || "Unknown error"}`); 
+      // Retrieve token directly from localStorage
+      const token = localStorage.getItem("token");
+
+      // Ensure token is available
+      if (!token) {
+        console.log("Token is not available");
+        alert('User information is not available or invalid. Please log in.');
+        setLoading(false);
+        return;
       }
 
-      // Assuming startup submission was successful
-      router.push("/startup-submitted");
-    } catch (error) {
-      console.error(error);
-    } finally {
+      // Log the token before sending it to the backend
+      console.log('User Token:', token);
+
+      // Set up authorization headers for the API request
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Use token from localStorage
+        },
+      };
+
+      // Submit form data to the backend
+      await axios.post(
+        'https://shaddyna-backend.onrender.com/api/startups',
+        { ...formData }, // Send only form data
+        config
+      );
+
+      // Handle successful submission
+      alert('Startup created successfully!');
+      setLoading(false);
+
+      // Redirect to another page after successful submission
+      router.push('/startup-success');
+    } catch (error: any) {
+      console.error('Error creating startup:', error);
+
+      // Provide better feedback for error handling
+      const errorMessage =
+        error.response?.data?.message || 'Failed to create startup. Please try again later.';
+
+      alert(errorMessage);
       setLoading(false);
     }
   };
-
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Back title={"Start Your Venture"} />

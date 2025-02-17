@@ -1023,6 +1023,7 @@ useEffect(() => {
   return (
     <div className="bg-white text-gray-800">
     <Back title={"Product Management"} />
+    <div className="">
       {viewProduct ? (
         <div className="container mx-auto p-6 bg-white rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-[#182155]">Product Details</h2>
@@ -1070,7 +1071,7 @@ useEffect(() => {
           </button>
         </div>
      ) : isFormVisible ? (
-      <div className="container mx-auto p-6 bg-white rounded-lg shadow-md">
+      <div className="min-h-screen container mx-auto p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-[#182155]">Add New Product</h2>
       <input
         type="text"
@@ -1129,7 +1130,7 @@ useEffect(() => {
 
     ) : (
     
-        <div className="container mx-auto p-6">
+        <div className="min-h-screen container mx-auto p-6">
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <li key={product.id} className="bg-white p-6 rounded-lg shadow-md">
@@ -1166,6 +1167,7 @@ useEffect(() => {
       )}
       <BottomNavigationBar />
       <Footer />
+    </div>
     </div>
   );
 };

@@ -181,7 +181,8 @@ const HeadNavigation: React.FC = () => {
               </span>
             )}
           </button>
-         <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full">
+         <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full"
+          onClick={() => router.push("/user-list")}>
          <MessageCircleMore />
          </button>
          <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full">
@@ -312,7 +313,7 @@ const HeadNavigation: React.FC = () => {
         {(currentUserRole === 'admin') && (
           <button
             className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
-            onClick={handleSellClick}
+            onClick={handleClick}
           >
             <FaTruck className="mr-2" />
             Delivery
