@@ -12,6 +12,8 @@ import BottomNavigationBar from "@/components/BottomNav";
 import Back from "@/components/Back";
 
 interface ProductDetail {
+  shelfId: any;
+  sellerId: string;
   id: string;
   name: string;
   description: string;
@@ -50,6 +52,8 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
           image: data.product.images?.[0] || "/default-image.jpg", // Use the first image or a placeholder
           rating: data.product.rating || 0,
           stock: data.product.stock || 0, // If the stock property exists in the backend, handle it here
+          sellerId: data.product.sellerId || "not provided",
+          shelfId: data.product.shelfId || "not provided"
         };
   
         setProduct(formattedProduct);
@@ -94,7 +98,8 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
       image: product.image,
       color: "default", // Placeholder for color
       stock: product.stock,
-      sellerId: "67790317fafd38a4e5558f70", // Placeholder for sellerId
+      sellerId: product.sellerId, // Placeholder for sellerId
+      shelfId: product.shelfId,
     };
 
     addToCart(cartItem);
