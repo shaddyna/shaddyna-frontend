@@ -435,6 +435,7 @@ interface Shop {
 }
 
 interface Product {
+  shelfId: string;
   images: string[];   // Array of image URLs (strings)
   _id: string;
   name: string;
@@ -566,6 +567,7 @@ const ShopDetails: React.FC = () => {
         color: "default", // Placeholder for color
         stock: 10, // Placeholder for stock
         sellerId: product.sellerId, // Placeholder for sellerId
+        shelfId: product.shelfId,
       };
   
       addItem(cartItem);
