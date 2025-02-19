@@ -45,7 +45,9 @@ export async function POST(request: Request) {
       });
 
       // trigger pusher event for each user
-      newConversation.users.forEach((user) => {
+      newConversation.users.forEach((user: { email?: string }) => {
+
+      //newConversation.users.forEach((user) => {
         if (user.email) {
           pusherServer.trigger(user.email, 'conversation:new', newConversation);
         }
