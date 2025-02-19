@@ -8,30 +8,26 @@ import useConversation from './useConversation';
 const useRoutes = () => {
   const pathname = usePathname();
   const { conversationId } = useConversation();
-
-  const routes = useMemo(
-    () => [
-      {
-        label: 'Chat',
-        href: '/conversations',
-        icon: HiChat,
-        active: pathname === '/conversations' || !!conversationId,
-      },
-      {
-        label: 'Users',
-        href: '/users',
-        icon: HiUsers,
-        active: pathname === '/users',
-      },
-      /*{
-        label: 'Logout',
-        href: '#',
-        onClick: () => signOut(),
-        icon: HiArrowLeftOnRectangle,
-      },*/
-    ],
-    [pathname, conversationId]
-  );
+    const routes = useMemo(
+      () => [
+        {
+          label: 'Chat',
+          href: '/conversations',
+          icon: HiChat,
+          active: pathname === '/conversations' || !!conversationId,
+          onClick: undefined, // Add this to prevent TypeScript errors
+        },
+        {
+          label: 'Users',
+          href: '/users',
+          icon: HiUsers,
+          active: pathname === '/users',
+          onClick: undefined, // Same here
+        },
+      ],
+      [pathname, conversationId]
+    );
+  
 
   return routes;
 };

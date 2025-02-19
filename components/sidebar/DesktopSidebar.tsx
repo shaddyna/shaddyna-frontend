@@ -25,14 +25,14 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
         <nav className="mt-4 flex flex-col justify-between">
           <ul role="list" className="flex flex-col items-center space-y-1">
             {routes.map((route) => (
-              <DesktopSidebarItem
-                key={route.label}
-                href={route.href}
-                label={route.label}
-                icon={route.icon}
-                active={route.active}
-                onClick={route.onClick}
-              />
+             <DesktopSidebarItem
+             key={route.label}
+             href={route.href}
+             label={route.label}
+             icon={route.icon}
+             active={route.active}
+             onClick={route.onClick ?? undefined} // Ensures TypeScript doesn't throw an error
+           />           
             ))}
           </ul>
         </nav>
