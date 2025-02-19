@@ -1,4 +1,4 @@
-'use client';  // Add this line to mark the component as a client-side component
+/*'use client';  // Add this line to mark the component as a client-side component
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';  // Use 'next/navigation' instead of 'next/router'
@@ -61,6 +61,40 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default UserList;*/
+
+"use client"; // If using Next.js App Router
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const ChatPage = () => {
+  const router = useRouter();
+  const [userId, setUserId] = useState(null);
+
+  /*useEffect(() => {
+    // Get userId from localStorage or auth state
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUserId(storedUser.id);
+    } else {
+      router.push("/login"); // Redirect to login if no user
+    }
+  }, [router]);
+
+  if (!userId) return <p>Loading...</p>;*/
+
+  return (
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-xl font-semibold mb-4">Chat</h1>
+      <iframe
+        src={`http://localhost:3001/users`}
+        style={{ width: "100%", height: "500px", border: "none" }}
+      ></iframe>
+    </div>
+  );
+};
+
+export default ChatPage;
+
 
 

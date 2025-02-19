@@ -59,8 +59,13 @@ const shelves = [
   ];
 
 const EditShelfDetails = () => {
+  //const pathname = usePathname();
+ // const id = parseInt(pathname.split("/").pop() || "0");
+
   const pathname = usePathname();
-  const id = parseInt(pathname.split("/").pop() || "0");
+const id = parseInt(pathname?.split("/").pop() || "0", 10);
+
+
   const [shelf, setShelf] = useState<any>(null);
 
   useEffect(() => {

@@ -12,7 +12,7 @@ interface User {
   name: string;
   email: string;
   firstName: string;
-  role: "admin" | "vendor" | "customer";
+  role: "admin" | "seller" | "customer";
 }
 
 const AdminUsersPage = () => {
@@ -25,12 +25,12 @@ const AdminUsersPage = () => {
   }, []);
 
   const fetchUsers = async () => {
-    const { data } = await axios.get("http://localhost:5000/api/users/all");
+    const { data } = await axios.get("https://shaddyna-backend.onrender.com/api/users/all");
     setUsers(data);
   };
 
   const handleDelete = async (id: string) => {
-    await axios.delete(`http://localhost:5000/api/users/${id}`);
+    await axios.delete(`https://shaddyna-backend.onrender.com/api/users/${id}`);
     fetchUsers();
   };
 
@@ -84,7 +84,7 @@ const AdminUsersPage = () => {
           className="border p-2 rounded-md w-full max-w-xs"
         >
           <option value="admin">Admin</option>
-          <option value="vendor">Vendor</option>
+          <option value="seller">Seller</option>
           <option value="customer">Customer</option>
         </select>
         <button

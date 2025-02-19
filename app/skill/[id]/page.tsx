@@ -169,8 +169,11 @@ const skills = [
   
 
 const SkillDetail = () => {
-  const params = useParams();
-  const { id } = params;
+  const params = useParams() as Record<string, string>;
+const { id } = params;
+
+  //const params = useParams();
+  //const { id } = params;
 
   // Find the skill from the skills array based on id
   const skill = skills.find(skill => skill.id === Number(id));

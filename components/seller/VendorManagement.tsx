@@ -1,4 +1,4 @@
-"use client"
+/*"use client"
 
 import React, { useState } from "react";
 import { FaSearch, FaUserPlus, FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -37,7 +37,7 @@ const VendorManagement = () => {
     <div className="p-6 space-y-6 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold text-gray-800">Vendor Management</h1>
 
-      {/* Add Vendor Button */}
+      {/* Add Vendor Button *
       <div className="flex justify-end">
         <button
           onClick={() => addVendor({ id: Date.now(), name: "New Vendor", email: "new@example.com", status: "Pending" })}
@@ -48,7 +48,7 @@ const VendorManagement = () => {
         </button>
       </div>
 
-      {/* Search Bar */}
+      {/* Search Bar *
       <div className="flex items-center space-x-2 mb-6">
         <FaSearch size={20} className="text-gray-500" />
         <input
@@ -60,7 +60,7 @@ const VendorManagement = () => {
         />
       </div>
 
-      {/* Vendor Table */}
+      {/* Vendor Table *
       <div className="overflow-x-auto bg-white rounded-lg shadow-md">
         <table className="min-w-full table-auto">
           <thead className="bg-gray-200">
@@ -126,4 +126,4 @@ const VendorManagement = () => {
   );
 };
 
-export default VendorManagement;
+export default VendorManagement;*/

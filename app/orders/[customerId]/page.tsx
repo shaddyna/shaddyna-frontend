@@ -36,7 +36,11 @@ interface Order {
 const Orders = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
-  const { customerId } = useParams(); // Get dynamic parameter from URL
+
+  const params = useParams();
+const customerId = Array.isArray(params?.customerId) ? params.customerId[0] : params?.customerId;
+
+  //const { customerId } = useParams(); // Get dynamic parameter from URL
 
   useEffect(() => {
     if (!customerId) {

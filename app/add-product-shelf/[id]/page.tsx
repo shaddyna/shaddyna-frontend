@@ -28,8 +28,9 @@ const AddProductPage = () => {
   const [isFormVisible, setIsFormVisible] = useState<boolean>(true); // Manage form visibility
   const [categories, setCategories] = useState<Category[]>([]);
 
-  const pathname = usePathname();
-  const shelfId = pathname.split("/").pop() || ""; // Extract shelfId from URL
+  const shelfId = usePathname()?.split("/").pop() || "";
+
+  //const shelfId = pathname.split("/").pop() || ""; // Extract shelfId from URL
 
   useEffect(() => {
     const fetchCategories = async () => {

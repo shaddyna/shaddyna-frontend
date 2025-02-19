@@ -182,7 +182,7 @@ const HeadNavigation: React.FC = () => {
             )}
           </button>
          <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full"
-          onClick={() => router.push("/user-list")}>
+          onClick={() => router.push("/conversations")}>
          <MessageCircleMore />
          </button>
          <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full">

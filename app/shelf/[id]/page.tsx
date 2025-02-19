@@ -338,8 +338,11 @@ interface Shelf {
 }
 
 const ShelfDetails = () => {
-  const pathname = usePathname();
-  const shelfId = pathname.split("/").pop(); // Extract the shelf ID from the URL
+  const pathname = usePathname() ?? ""; // Ensure pathname is always a string
+const shelfId = pathname.split("/").pop() || ""; // Extract the shelf ID
+
+  //const pathname = usePathname();
+  //const shelfId = pathname.split("/").pop(); // Extract the shelf ID from the URL
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [shelf, setShelf] = useState<Shelf | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
