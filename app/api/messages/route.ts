@@ -70,7 +70,9 @@ export async function POST(request: Request) {
       updatedConversation.messages[updatedConversation.messages.length - 1];
 
     // send notification in chat sidebar to all users in the conversation
-    updatedConversation.users.map((user) => {
+    updatedConversation.users.map((user: { email?: string }) => {
+
+    //updatedConversation.users.map((user) => {
       pusherServer.trigger(user.email!, 'conversation:update', {
         id: conversationId,
         messages: [lastMessage],
