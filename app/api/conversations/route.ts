@@ -93,7 +93,9 @@ export async function POST(request: Request) {
       },
     });
 
-    newConversation.users.map((user) => {
+    //newConversation.users.map((user) => {
+      newConversation.users.map((user: { email?: string }) => {
+
       if (user.email) {
         pusherServer.trigger(user.email, 'conversation:new', newConversation);
       }
