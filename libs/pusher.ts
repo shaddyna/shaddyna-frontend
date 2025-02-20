@@ -2,10 +2,18 @@ import PusherServer from 'pusher';
 import PusherClient from 'pusher-js';
 
 // create pusher server instance
-export const pusherServer = new PusherServer({
+/*export const pusherServer = new PusherServer({
   appId: process.env.PUSHER_APP_ID!,
   key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY!,
   secret: process.env.PUSHER_SECRET!,
+  cluster: 'mt1',
+  useTLS: true,
+});*/
+
+export const pusherServer = new PusherServer({
+  appId: '1944087',
+  key: 'fce44556e6f6dfa383c3',
+  secret: '134da508b304fdb6a688',
   cluster: 'mt1',
   useTLS: true,
 });
