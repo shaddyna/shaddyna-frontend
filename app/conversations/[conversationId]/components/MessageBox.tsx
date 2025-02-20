@@ -67,7 +67,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
               className="object-cover cursor-pointer hover:scale-110 transition translate"
             />
           ) : (
-            <div>{data.body}</div>
+            <div className='text-gray-700'>{data.body}</div>
           )}
         </div>
 

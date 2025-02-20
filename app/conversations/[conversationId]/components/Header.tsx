@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
           )}
 
           <div className="flex flex-col">
-            <div>
+            <div className='text-gray-700'>
               {conversation.firstName || otherUser?.firstName || otherUser?.email}
             </div>
             <div className="text-sm font-light text-neutral-500">
