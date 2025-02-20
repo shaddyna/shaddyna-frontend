@@ -12,6 +12,7 @@ import { User } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import { pusherClient } from '@/libs/pusher';
 import { find } from 'lodash';
+import Back from '@/components/Back';
 
 interface ConversationListProps {
   initialConversations: FullConversationType[];
@@ -93,17 +94,18 @@ const ConversationList: React.FC<ConversationListProps> = ({
           isOpen ? 'hidden' : 'block w-full left-0'
         )}
       >
-        <div className="px-5">
-          <div className="flex justify-between mb-4 py-4 border-b">
-            <div className="text-2xl font-bold text-neutral-800">Chats</div>
-            <div
+        <div className="px-0">
+          {/*<div className="flex justify-between mb-4 py-0 border-b">
+            {/*<div className="text-2xl font-bold text-neutral-800">Chats</div>*/}
+            {/*<div
               onClick={() => setIsModalOpen(true)}
               title="Create a group chat"
               className="rounded-full p-2 bg-gray-100 text-gray-600 cursor-pointer hover:opacity-75 transition"
             >
               <MdOutlineGroupAdd size={20} />
-            </div>
-          </div>
+            </div>*
+          </div>*/}
+          <Back title={'Chats'} />
 
           {conversations.map((conversation) => (
             <ConversationBox
