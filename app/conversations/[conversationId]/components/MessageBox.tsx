@@ -25,7 +25,8 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
     .join(', ');
 
   // dynamic classes
-  const container = clsx('flex gap-3 p-4', isOwn && 'justify-end');
+  const container = clsx('flex gap-3 p-4 bg-white', isOwn && 'justify-end');
+  //const container = clsx('flex gap-3 p-4', isOwn && 'justify-end');
   const avatar = clsx(isOwn && 'order-2');
   const body = clsx('flex flex-col gap-2', isOwn && 'items-end');
   const message = clsx(
