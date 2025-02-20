@@ -20,7 +20,8 @@ export const pusherServer = new PusherServer({
 
 // create pusher client instance
 export const pusherClient = new PusherClient(
-  process.env.NEXT_PUBLIC_PUSHER_APP_KEY!,
+  //process.env.NEXT_PUBLIC_PUSHER_APP_KEY!,
+  'fce44556e6f6dfa383c3',
   {
     channelAuthorization: {
       endpoint: '/api/pusher/auth',
