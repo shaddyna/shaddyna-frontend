@@ -35,7 +35,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
   );
 
   return (
-    <div className={`${container} bg-white p-2 rounded-md shadow-sm`}>  
+    
     <div className={container}>
       <div className={avatar}>
         <Avatar user={data.sender} />
@@ -81,7 +81,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ isLast, data }) => {
         }
       </div>
     </div>
-    </div>
+  
   );
 };
 export default MessageBox;
