@@ -1,0 +1,21 @@
+{
+    "name": "Shaddyna",
+    "short_name": "Shaddyna",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1E40AF",
+    "icons": [
+      {
+        "src": "/icons/logo.jpeg",
+        "sizes": "192x192",
+        "type": "image/jpeg"
+      },
+      {
+        "src": "/icons/logo.jpeg",
+        "sizes": "512x512",
+        "type": "image/jpeg"
+      }
+    ]
+  }
+  
