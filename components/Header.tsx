@@ -4,7 +4,7 @@ import { FaInfoCircle, FaCogs, FaPhone } from 'react-icons/fa'; // Import icons
 
 const Header: React.FC = () => {
   return (
-    <header className="text-white p-2" style={{ backgroundColor: "#ff199c" }}>
+    <header className="text-white p-2" style={{ backgroundColor: "#bf2c7e" }}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="text-xl sm:text-xl font-semibold"> {/* Adjust logo size for small screens */}
