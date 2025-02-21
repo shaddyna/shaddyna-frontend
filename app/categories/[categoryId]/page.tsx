@@ -257,30 +257,6 @@ const CategoryDetails: React.FC = () => {
       setSnackbarMessage("Product added to cart!");
     };
     
-    
-    /*const handleAddToCart = (product: Product) => {
-      const productExists = cartItems.some((item) => item._id === product.id);
-    
-      if (productExists) {
-        setSnackbarMessage("Product already added to cart!");
-        return;
-      }
-    
-      const cartItem: CartItem = {
-        _id: product.id, // Ensure id is correctly mapped
-        name: product.name,
-        price: product.price,
-        quantity: 1,
-        image: product.images[0] || "/placeholder-image.png", // Use fallback image if missing
-        color: "default", // Default color (if applicable)
-        stock: 10, // Default stock value
-        sellerId: product.sellerId, // Ensure sellerId is included
-      };
-    
-      addItem(cartItem);
-      setSnackbarMessage("Product added to cart!");
-    };*/
-
   useEffect(() => {
     // Fetching categoryId using window.location.pathname
     const id = window.location.pathname.split('/').pop();
