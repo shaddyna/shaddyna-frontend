@@ -191,7 +191,7 @@ const HeadNavigation: React.FC = () => {
           </div>
           ) : (
             <button
-  className="block px-4 py-2 text-sm sm:px-5 sm:py-2 sm:text-lg text-white border-2 sm:border-2 border-white rounded-lg hover:bg-white hover:text-[#182155] transition-all lg:hidden"
+  className="block px-4 py-2 text-sm sm:px-5 sm:py-2 sm:text-lg text-[#182155] border-2 sm:border-2 border-[#182155] rounded-lg hover:bg-white hover:text-[#182155] transition-all lg:hidden"
   onClick={handleLoginClick}
 >
   Login/Register
@@ -264,13 +264,12 @@ const HeadNavigation: React.FC = () => {
           </button>
        </div>
         ) : (
-          <button
-        className="hidden lg:block px-4 py-2 rounded-lg border-2 border-[#0f1c47] text-sm font-medium hover:bg-white hover:text-[#0f1c47] text-white"
-        onClick={handleLoginClick}
-        >
-        Login/Register
-        </button>
-        
+<button
+className="hidden lg:block px-4 py-2 rounded-lg border-2 border-blue text-sm font-medium hover:bg-white hover:text-[#182155] text-blue"
+onClick={handleLoginClick}
+>
+Login/Register
+</button>        
         )}
       </div>
 
