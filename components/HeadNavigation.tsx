@@ -265,7 +265,7 @@ const HeadNavigation: React.FC = () => {
        </div>
         ) : (
           <button
-        className="hidden lg:block px-4 py-2 rounded-lg border-2 border-white text-sm font-medium hover:bg-white hover:text-[#182155] text-white"
+        className="hidden lg:block px-4 py-2 rounded-lg border-2 border-[#0f1c47] text-sm font-medium hover:bg-white hover:text-[#0f1c47] text-white"
         onClick={handleLoginClick}
         >
         Login/Register
