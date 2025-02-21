@@ -85,7 +85,7 @@ import { FaFacebook, FaTwitter, FaDribbble, FaInstagram, FaYoutube } from "react
 
 const Footer = () => {
   return (
-    <footer className="bg-[#182155] text-gray-300 py-4 mb-16">
+    <footer className="bg-[#0f1c47] text-gray-300 py-4 mb-16">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
         {/* Brand Section */}
         <div>
@@ -109,9 +109,9 @@ const Footer = () => {
         <div>
           <h4 className="text-white text-lg font-semibold mb-4">Get in Touch</h4>
           <p className="mb-2">Nairobi City, Nairobi CBD, KENYA</p>
-          <Link href="mailto:info@email.com" className="text-[#ff199c] hover:text-[#ff199c]">shaddyna2211@gmail.com</Link>
+          <Link href="mailto:info@email.com" className="text-[#bf2c7e] hover:text-[#bf2c7e]">shaddyna2211@gmail.com</Link>
           <br />
-          <Link href="tel:0702714736" className="text-[#ff199c] hover:text-[#ff199c]">+254 (0) 702 714 736</Link>
+          <Link href="tel:0702714736" className="text-[#bf2c7e] hover:text-[#bf2c7e]">+254 (0) 702 714 736</Link>
         </div>
 
         {/* Learn More */}
@@ -135,11 +135,11 @@ const Footer = () => {
               type="email"
               placeholder="Email Address"
               required
-              className="w-full p-3 rounded-md bg-[#182155] border border-gray-400 text-white focus:outline-none"
+              className="w-full p-3 rounded-md bg-[#0f1c47] border border-gray-400 text-white focus:outline-none"
             />
             <button
               type="submit"
-              className="absolute top-0 right-0 h-full px-5 bg-[#ff199c] text-white rounded-r-md hover:bg-[#ff199c]"
+              className="absolute top-0 right-0 h-full px-5 bg-[#bf2c7e] text-white rounded-r-md hover:bg-[#bf2c7e]"
             >
               Join
             </button>
