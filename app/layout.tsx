@@ -131,7 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {isVisible && (
             <button
-              className="fixed top-1 right-5 bg-blue-600 text-white px-4 py-2 rounded shadow-lg animate-bounce"
+              className="fixed top-1 right-5 bg-[#0f1c47] text-white px-4 py-2 rounded shadow-lg animate-bounce"
               onClick={handleInstallClick}
             >
               Install Shaddyna 🚀
