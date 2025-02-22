@@ -16,7 +16,7 @@ const FloatingButton = () => {
     <div>
       {/* Floating Button */}
       <button
-        className="fixed bottom-24 right-6 bg-[#ff199c] text-white rounded-full p-4 shadow-lg hover:bg-[#ff1379] transition"
+        className="fixed bottom-24 right-6 bg-[#bf2c7e] text-white rounded-full p-4 shadow-lg hover:bg-[#ff1379] transition"
         onClick={handleClick}
       >
         <FaPlusCircle className="text-xl" />
@@ -30,7 +30,7 @@ const FloatingButton = () => {
             <ul className="space-y-3">
               <li>
                 <button
-                  className="w-full text-center bg-[#ff199c] text-white py-2 rounded hover:bg-[#ff1379] transition"
+                  className="w-full text-center bg-[#bf2c7e] text-white py-2 rounded hover:bg-[#ff1379] transition"
                   onClick={() => {
                     router.push('/add-skill'); // Navigate to "Add Skill" page
                     setIsModalOpen(false); // Close the modal
@@ -41,7 +41,7 @@ const FloatingButton = () => {
               </li>
               <li>
                 <button
-                  className="w-full text-center bg-[#ff199c] text-white py-2 rounded hover:bg-[#ff1379] transition"
+                  className="w-full text-center bg-[#bf2c7e] text-white py-2 rounded hover:bg-[#ff1379] transition"
                   onClick={() => {
                     router.push('/shelf-creation'); // Navigate to "Add Skill" page
                     setIsModalOpen(false); // Close the modal
@@ -52,7 +52,7 @@ const FloatingButton = () => {
               </li>
               <li>
                 <button
-                  className="w-full text-center bg-[#ff199c] text-white py-2 rounded hover:bg-[#ff1379] transition"
+                  className="w-full text-center bg-[#bf2c7e] text-white py-2 rounded hover:bg-[#ff1379] transition"
                   onClick={() => {
                     router.push('/startup'); // Navigate to "Add Skill" page
                     setIsModalOpen(false); // Close the modal
@@ -63,7 +63,7 @@ const FloatingButton = () => {
               </li>
               <li>
                 <button
-                  className="w-full text-center bg-[#ff199c] text-white py-2 rounded hover:bg-[#ff1379] transition"
+                  className="w-full text-center bg-[#bf2c7e] text-white py-2 rounded hover:bg-[#ff1379] transition"
                   onClick={() => {
                     router.push('/finance'); // Navigate to "Add Skill" page
                     //router.push('/forum'); // Navigate to "Add Skill" page
@@ -75,7 +75,7 @@ const FloatingButton = () => {
               </li>
               <li>
                 <button
-                  className="w-full text-center bg-[#ff199c] text-white py-2 rounded hover:bg-[#ff1379] transition"
+                  className="w-full text-center bg-[#bf2c7e] text-white py-2 rounded hover:bg-[#ff1379] transition"
                   onClick={() => {
                     router.push('/members-list'); // Navigate to "Add Skill" page
                     setIsModalOpen(false); // Close the modal

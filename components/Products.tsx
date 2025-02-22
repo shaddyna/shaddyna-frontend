@@ -26,59 +26,6 @@ const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-
-  /*useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://shaddyna-backend.onrender.com/api/products/all");
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-        const data = await response.json();
-        const formattedProducts = data.products.map((product: any) => ({
-          id: product._id.toString(),
-          name: product.name,
-          price: product.price,
-          images: product.images, // Store images array
-          rating: product.rating,
-        }));
-        setProducts(formattedProducts);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        alert("Error fetching products. Please try again.");
-      }
-    };
-
-    fetchProducts();
-  }, []);*/
-  /*useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://shaddyna-backend.onrender.com/api/products/all");
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-        const data = await response.json();
-        const formattedProducts = data.products.map((product: any) => ({
-          _id: product._id.toString(),
-          name: product.name,
-          price: product.price,
-          images: product.images, // Store images array
-          rating: product.rating,
-          sellerId: product.sellerId.toString(), // Destructure and add sellerId
-        }));
-        setProducts(formattedProducts);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        alert("Error fetching products. Please try again.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-  
-    fetchProducts();
-  }, []);*/
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -196,7 +143,7 @@ const Products: React.FC = () => {
                 <div className="flex justify-between items-center mt-4">
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="bg-[#182155] text-white py-1 px-2 sm:py-1.5 sm:px-5 rounded-full font-bold text-xs sm:text-sm shadow-md hover:from-yellow-500 hover:to-yellow-700 transition-all transform hover:scale-105 flex items-center gap-1"
+                    className="bg-[#0f1c47] text-white py-1 px-2 sm:py-1.5 sm:px-5 rounded-full font-bold text-xs sm:text-sm shadow-md hover:from-yellow-500 hover:to-yellow-700 transition-all transform hover:scale-105 flex items-center gap-1"
                   >
                     
                     <ShoppingCart size={20} strokeWidth={2} />
@@ -204,7 +151,7 @@ const Products: React.FC = () => {
                   </button>
                   <button
                     onClick={() => handleWishlistClick(product)}
-                    className="text-[#ff199c] hover:text-red-600 transition-transform transform hover:scale-110 sm:hover:scale-125"
+                    className="text-[#bf2c7e] hover:text-red-600 transition-transform transform hover:scale-110 sm:hover:scale-125"
                   >
                     <Heart size={18} />
                   </button>
@@ -222,62 +169,6 @@ const Products: React.FC = () => {
       )}
     </div>
   );
-
-  /*return (
-    <div className="pb-4">
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6 text-center">
-        Explore Our Products
-      </h2>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 lg:gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105 bg-white cursor-pointer"
-          >
-            <img
-              src={product.images[0] || "/placeholder-image.png"} // Fallback image if the product has no image
-              alt={product.name}
-              className="w-full h-36 sm:h-48 object-contain" // object-contain keeps the aspect ratio
-              onClick={() => router.push(`/product/${product.id}`)} // Ensure correct ID is passed
-            />
-            <div className="p-3 sm:p-4">
-              <h3 className="text-sm sm:text-base font-semibold text-gray-800 truncate">
-                {product.name}
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-500 font-medium mt-1">
-                Kes {product.price}
-              </p>
-              <p className="text-xs sm:text-sm text-gray-800 tex[#182155] font-bold mt-1">
-                Shop Name
-              </p>
-              <div className="flex items-center mt-2">{renderStars(product.rating)}</div>
-              <div className="flex justify-between items-center mt-4">
-                <button
-                  onClick={() => handleAddToCart(product)}
-                  className="bg-[#182155] text-white py-1 px-3 sm:py-1.5 sm:px-5 rounded-full font-bold text-xs sm:text-sm shadow-md hover:from-yellow-500 hover:to-yellow-700 transition-all transform hover:scale-105 flex items-center gap-1"
-                >
-                  <FaShoppingCart className="text-sm sm:text-base" />
-                  Add to Cart
-                </button>
-                <button
-                  onClick={() => handleWishlistClick(product)}
-                  className="text-[#ff199c] hover:text-red-600 transition-transform transform hover:scale-110 sm:hover:scale-125"
-                >
-                  <FaHeart size={16} className="sm:size-[20px]" />
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      {snackbarMessage && (
-        <Snackbar
-          message={snackbarMessage}
-          onClose={() => setSnackbarMessage("")}
-        />
-      )}
-    </div>
-  );*/
 };
 
 export default Products;

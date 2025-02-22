@@ -16,7 +16,7 @@ const BackButton: React.FC = () => {
   return (
     <button
       onClick={() => window.history.back()}
-      className="flex items-center space-x-2 bg-[#ff199c] text-white px-5 py-2 rounded-lg text-base font-semibold hover:bg-pink-700 hover:scale-105 transition-all duration-300"
+      className="flex items-center space-x-2 bg-[#bf2c7e] text-white px-5 py-2 rounded-lg text-base font-semibold hover:bg-pink-700 hover:scale-105 transition-all duration-300"
       aria-label="Go back"
     >
       <FaArrowLeft className="text-2xl" /> {/* Left arrow icon */}
