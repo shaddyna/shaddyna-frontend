@@ -56,7 +56,9 @@ export default function RootLayout({
     </html>
   );
 }*/
-"use client";
+
+
+/*"use client";
 
 import { useEffect, useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -141,4 +143,92 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   );
+}*/
+
+"use client";
+
+import { useEffect, useState } from "react";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import ToasterContext from "@/context/ToasterContext";
+import AuthContextProvider from "@/context/AuthContext";
+import ActiveStatus from "@/components/ActiveStatus";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const [installPrompt, setInstallPrompt] = useState<Event | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault();
+      setInstallPrompt(event);
+      setIsVisible(true);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallClick = () => {
+    if (installPrompt) {
+      (installPrompt as any).prompt();
+      (installPrompt as any).userChoice.then((choiceResult: any) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the install prompt");
+        } else {
+          console.log("User dismissed the install prompt");
+        }
+        setIsVisible(false);
+      });
+    }
+  };
+
+  return (
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#bf2c7e" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Shaddyna" />
+
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className="antialiased font-[--font-geist-sans]">
+        <AuthContextProvider>
+          <ToasterContext />
+          <ActiveStatus />
+          {children}
+
+          {isVisible && (
+            <button
+              className="fixed top-1 right-5 bg-[#0f1c47] text-white px-4 py-2 rounded shadow-lg animate-bounce"
+              onClick={handleInstallClick}
+            >
+              Install Shaddyna 🚀
+            </button>
+          )}
+        </AuthContextProvider>
+      </body>
+    </html>
+  );
 }
+
