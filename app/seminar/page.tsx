@@ -47,7 +47,7 @@ export default function SeminarsPage() {
   return (
     <div className="">
     <Back title={"Upcoming Seminars"} />
-    <div className="min-h-screen max-w-4xl mx-auto p-3">
+    <div className="min-h-screen bg-white max-w-4xl mx-auto p-3">
       {seminars.length === 0 ? (
         <p className="text-center text-gray-500">No seminars available.</p>
       ) : (
@@ -61,10 +61,10 @@ export default function SeminarsPage() {
                 height={300}
                 className="rounded-md"
               />
-              <h2 className="text-xl font-semibold mt-4">{seminar.name}</h2>
+              <h2 className="text-xl text-blue-900 font-semibold mt-4">{seminar.name}</h2>
               <p className="text-gray-600 mt-2">{seminar.description}</p>
               <p className="text-gray-800 mt-2 font-medium">Date: {seminar.date}</p>
-              <p className="text-lg font-bold mt-2">ksh {seminar.amount}</p>
+              <p className="text-lg text-blue-900 font-bold mt-2">ksh {seminar.amount}</p>
               <button
           onClick={() => handlePayment()}
           className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"

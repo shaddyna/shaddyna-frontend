@@ -70,10 +70,10 @@ const ShelvesPage = () => {
               alt={shelf.name}
               className="w-full h-48 object-cover rounded-md"
             />
-            <h2 className="text-xl font-semibold mt-3">{shelf.name}</h2>
-            <p className="text-gray-600">{shelf.description}</p>
-            <p className="text-lg font-bold text-blue-600 mt-2">${shelf.price}</p>
-            <h3 className="text-md font-semibold mt-3">Owners:</h3>
+            <h2 className="text-xl text-blue-900 font-semibold mt-3">{shelf.name}</h2>
+            <p className="text-gray-900">{shelf.description}</p>
+            <p className="text-lg font-bold text-blue-900 mt-2">${shelf.price}</p>
+            <h3 className="text-md text-blue-900 font-semibold mt-3">Owners:</h3>
             <ul className="mt-2 space-y-2">
               {shelf.members.map((member, index) => (
                 <li key={index} className="flex items-center space-x-3">
@@ -85,8 +85,8 @@ const ShelvesPage = () => {
                     />
                   )}
                   <div>
-                    <p className="font-semibold">{member.name}</p>
-                    <p className="text-sm text-gray-500">{member.role}</p>
+                    <p className="font-semibold text-blue-900">{member.name}</p>
+                    <p className="text-sm text-gray-500 text-blue-900">{member.role}</p>
                   </div>
                 </li>
               ))}
