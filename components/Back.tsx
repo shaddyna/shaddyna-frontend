@@ -9,7 +9,7 @@ interface BackProps {
 
 const Back: React.FC<BackProps> = ({ title }) => {
   return (
-    <header className="text-white p-3 sticky top-0 z-50" style={{ backgroundColor: '#ff199c' }}>
+    <header className="text-white p-3 sticky top-0 z-50" style={{ backgroundColor: '#bf2c7e' }}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Back Arrow */}
         <div className="text-xl sm:text-2xl font-semibold">
