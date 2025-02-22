@@ -199,9 +199,10 @@ export default function PaymentPage() {
     
     
     return (
-      <div>
+      <div >
         <Back title="Payment" />
-        <div className="bg-gray-50 min-h-screen flex flex-col">
+        
+        <div className="min-h-screen bg-gray-50 flex flex-col mb-0">
           <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl text-blue-900 font-bold mb-8">Payment</h1>
             <Card className="p-6">
@@ -295,7 +296,7 @@ export default function PaymentPage() {
           </div>
           <Footer />
         </div>
-      </div>
+        </div>
     );
   }
   
