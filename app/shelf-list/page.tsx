@@ -53,9 +53,9 @@ const ShelvesPage = () => {
   return (
     <div>
       <Back title={"Shelves List"} />
-    <div className="container bg-white mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">Available Shelves</h1>
-      {loading && <p className="text-center">Loading shelves...</p>}
+    <div className="container bg-white mx-auto p-3">
+      <h1 className="text-3xl text-blue-900 font-bold text-center mb-3">Available Shelves</h1>
+      {loading && <p className="bg-white text-center text-black">Loading shelves...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

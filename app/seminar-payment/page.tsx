@@ -203,7 +203,7 @@ export default function PaymentPage() {
         <Back title="Payment" />
         <div className="bg-gray-50 min-h-screen flex flex-col">
           <div className="container mx-auto px-4 py-8">
-            <h1 className="text-2xl font-bold mb-8">Payment</h1>
+            <h1 className="text-2xl text-blue-900 font-bold mb-8">Payment</h1>
             <Card className="p-6">
               <div className="flex space-x-4 mb-4">
                 <Button
@@ -228,7 +228,7 @@ export default function PaymentPage() {
                       name="phoneNumber"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
+                          <FormLabel className="text-blue-900">Phone Number</FormLabel>
                           <FormControl>
                             <Input placeholder="+254 *** *** ***" {...field} />
                           </FormControl>
@@ -241,7 +241,7 @@ export default function PaymentPage() {
                       name="mpesaCode"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>M-Pesa Code</FormLabel>
+                          <FormLabel className="text-blue-900">M-Pesa Code</FormLabel>
                           <FormControl>
                             <Input placeholder="M-Pesa code" {...field} />
                           </FormControl>
@@ -254,7 +254,7 @@ export default function PaymentPage() {
                       name="mpesaName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Name (as on M-Pesa)</FormLabel>
+                          <FormLabel className="text-blue-900">Name (as on M-Pesa)</FormLabel>
                           <FormControl>
                             <Input placeholder="Full name" {...field} />
                           </FormControl>
@@ -278,7 +278,7 @@ export default function PaymentPage() {
                     }}
                     className="space-y-4"
                   >
-                    <p>Use your savings balance to pay.</p>
+                    <p className="text-blue-900">Use your savings balance to pay.</p>
                     <Button
                       type="submit"
                       className="w-full bg-[#182155] hover:bg-blue-600 text-white"
