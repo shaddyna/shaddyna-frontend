@@ -1,303 +1,350 @@
+/*"use client";
+
+import { useState, useEffect } from "react";
+import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
+import axios from "axios";
+import Back from "@/components/Back";
+import Footer from "@/components/Footer";
+import BottomNavigationBar from "@/components/BottomNav";
+
+const PaymentPage = () => {
+ // const searchParams = useSearchParams();
+  const searchParams = useSearchParams() as ReadonlyURLSearchParams;
+const initialAmount = searchParams.get("amount") || "";
+
+
+  const [activeMethod, setActiveMethod] = useState("mpesa");
+  const [formData, setFormData] = useState({
+    phoneNumber: "",
+    mpesaCode: "",
+    mpesaName: "",
+    amount: initialAmount, // Set amount from query param
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setFormData((prev) => ({ ...prev, amount: initialAmount }));
+  }, [initialAmount]);
+
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePayWithMpesa = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setIsLoading(true);
+  
+    const paymentData = {
+      phoneNumber: formData.phoneNumber,
+      mpesaCode: formData.mpesaCode,
+      mpesaName: formData.mpesaName,
+      amount: formData.amount,
+    };
+  
+    console.log("Sending M-Pesa payment data:", paymentData); // Log the data
+  
+    try {
+      const response = await axios.post("http://localhost:5000/api/spayment/pay/mpesa", paymentData);
+      console.log("M-Pesa Payment Response:", response.data); // Log the response
+      setMessage(response.data.message);
+    } catch (error) {
+      console.error("M-Pesa Payment Error:", error);
+      setMessage("Payment failed");
+    }
+    setIsLoading(false);
+  };
+
+  const handlePayWithSavings = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const response = await axios.post("http://localhost:5000/api/spayment/pay/savings", {
+        userId: "12345", // Replace with actual user ID
+        amount: formData.amount,
+      });
+
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage("Payment failed");
+    }
+    setIsLoading(false);
+  };
+
+  return (
+    <div>
+      <Back title={"Seminar Payment"} />
+      <div className="bg-gray-50 min-h-screen flex flex-col">
+        <div className="container mx-auto px-4 py-8">
+          <div className="p-6 bg-white shadow rounded">
+            <div className="flex space-x-4 mb-4">
+              <button
+                onClick={() => setActiveMethod("mpesa")}
+                className={`w-full ${activeMethod === "mpesa" ? "bg-pink-500 text-white" : "bg-gray-300 text-black"}`}
+              >
+                Pay with M-Pesa
+              </button>
+              <button
+                onClick={() => setActiveMethod("savings")}
+                className={`w-full ${activeMethod === "savings" ? "bg-blue-600 text-white" : "bg-gray-300 text-black"}`}
+              >
+                Pay with Savings
+              </button>
+            </div>
+
+            {activeMethod === "mpesa" && (
+              <form onSubmit={handlePayWithMpesa} className="space-y-4">
+                <input type="text" name="phoneNumber" placeholder="+254 *** *** ***" value={formData.phoneNumber} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <input type="text" name="mpesaCode" placeholder="M-Pesa Code" value={formData.mpesaCode} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <input type="text" name="mpesaName" placeholder="Name (as on M-Pesa)" value={formData.mpesaName} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <button type="submit" className="w-full bg-pink-500 hover:bg-pink-600 text-white p-2 rounded" disabled={isLoading}>
+                  {isLoading ? "Processing..." : "Confirm Payment"}
+                </button>
+              </form>
+            )}
+
+            {activeMethod === "savings" && (
+              <form onSubmit={handlePayWithSavings} className="space-y-4">
+                <input type="number" name="amount" placeholder="Amount" value={formData.amount} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white p-2 rounded" disabled={isLoading}>
+                  {isLoading ? "Processing..." : "Pay with Savings"}
+                </button>
+              </form>
+            )}
+
+            {message && <p className="text-red-500 mt-4">{message}</p>}
+          </div>
+        </div>
+      </div>
+      <Footer />
+      <BottomNavigationBar />
+    </div>
+  );
+};
+
+export default PaymentPage;*/
+
 "use client";
 
 import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useCheckoutStore } from "@/store/checkout-store";
-import { useCartStore } from "@/store/cart-store";
-import { useUserSellerStore } from "@/store/useUserSellerStore";
-import { useRouter } from "next/navigation"; 
-import Footer from "@/components/Footer";
+import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode"; // Install with `npm install jwt-decode`
 import Back from "@/components/Back";
+import Footer from "@/components/Footer";
+import BottomNavigationBar from "@/components/BottomNav";
 
-const paymentSchema = z.object({
-  phoneNumber: z.string().min(10, "Phone number must be at least 10 digits"),
-  mpesaCode: z.string().min(6, "M-Pesa code must be at least 6 characters"),
-  mpesaName: z.string().min(2, "Name must be at least 2 characters"),
-});
+const getTokenFromLocalStorage = () => {
+  return typeof window !== "undefined" ? localStorage.getItem("token") : null;
+};
 
-type PaymentFormData = z.infer<typeof paymentSchema>;
-
-export default function PaymentPage() {
-  const form = useForm<PaymentFormData>({
-    resolver: zodResolver(paymentSchema),
-    defaultValues: {
-      phoneNumber: "",
-      mpesaCode: "",
-      mpesaName: "",
-    },
-  });
-
-  const setPaymentDetails = useCheckoutStore((state) => state.setPaymentDetails);
-  const shippingInfo = useCheckoutStore((state) => state.shippingInfo);
-  const cartItems = useCartStore((state) => state.items);
-  const clearCart = useCartStore((state) => state.clearCart);
-
-  const user = useUserSellerStore((state) => state.user);
-  const fetchCurrentUser = useUserSellerStore((state) => state.fetchCurrentUser);
-  
-  const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const router = useRouter();
-  const [activeMethod, setActiveMethod] = useState("mpesa");
-  
-
-  useEffect(() => {
-    if (!user) {
-      fetchCurrentUser();
-    }
-  }, [user, fetchCurrentUser]);
-
-  if (!user) {
-    return <div>Please login first to place an order...</div>;
+const getUserIdFromToken = () => {
+  const token = getTokenFromLocalStorage();
+  if (!token) {
+    console.log("No token found in localStorage");
+    return null;
   }
 
-  const shipping_fee = 150;
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  const amount = totalPrice + shipping_fee;
+  console.log("Token found:", token);
 
-  async function handlePayWithMpesa(data: PaymentFormData) {
-    setPaymentDetails(data);
-    console.log("Payment data submitted:", data);
-    router.push("/confirmation");
+  try {
+    const decoded = jwtDecode<{ id?: string }>(token); // Expect 'id' instead of 'userId'
+    console.log("Decoded Token:", decoded);
+
+    if (!decoded.id) {
+      console.error("id not found in token payload");
+      return null;
+    }
+
+    return decoded.id; // Use 'id' instead of 'userId'
+  } catch (error) {
+    console.error("Invalid token:", error);
+    return null;
+  }
+};
+
+
+const fetchUserSavings = async () => {
+  const token = getTokenFromLocalStorage();
+  if (!token) {
+    console.error("User not authenticated - no token");
+    alert("User not authenticated");
+    return null;
   }
 
-  // Fetch token directly from localStorage
-  const getTokenFromLocalStorage = () => {
-    return localStorage.getItem("token");
-  };
+  console.log("Fetching savings with token:", token); // Check if token is sent
 
-
-  /*async function handlePayWithSavings() {
-    setIsLoading(true);
-    setMessage("");
-
-    try {
-    const token = getTokenFromLocalStorage(); // Get token from localStorage
-    if (!token) {
-      alert("User not authenticated");
-      return;
-    }
+  try {
     const response = await fetch("https://shaddyna-backend.onrender.com/api/saving/savings", {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`, // Use token from localStorage
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     });
-      if (!response.ok) {
-        throw new Error("Failed to fetch savings. Please try again.");
-      }
-     
-      const result = await response.json();
-      const userSavings = result.balance || 0;
 
-      console.log("User Savings:", userSavings);
-      console.log("Required Amount:", amount);
-
-      if (userSavings < amount) {
-        setMessage("Insufficient savings to complete the payment.");
-        setIsLoading(false);
-        return;
-      }
-
-      await placeOrder();
-    } catch (error) {
-      setMessage(error instanceof Error ? error.message : "An error occurred.");
-    } finally {
-      setIsLoading(false);
+    if (!response.ok) {
+      console.error("Failed to fetch savings, Response:", response);
+      throw new Error("Failed to fetch savings");
     }
+
+    const result = await response.json();
+    console.log("Fetched Savings:", result);
+
+    return result.balance || 0;
+  } catch (error) {
+    console.error("Error fetching savings:", error);
+    return null;
   }
-  async function placeOrder() {
-      const mpesaCode = "N/A";
-      const mpesaName = "N/A";
-      const phoneNumber = "0000000000"
-    
-      const sellerIds = cartItems.map((item) => item.sellerId).filter(Boolean);
-      const orderData = {
-        mpesaCode,
-        sellerId: sellerIds,
-        mpesaName,
-        mpesaNumber: phoneNumber,
-        shippingInfo,
-        products: [{ products: cartItems }],
-        price: totalPrice,
-        shipping_fee,
-        amount,  // Ensure amount is being included
-        userId: user?._id,
-        customerEmail: user?.email,
-      };
-    
-      console.log("Sending order data:", orderData);
-    
-      try {
-        const response = await fetch("https://shaddyna-backend.onrender.com/api/orders/place-order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(orderData),
-          credentials: "include",
-        });
-    
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || "Failed to place order.");
-        }
-    
-        const result = await response.json();
-        setMessage(`Order placed successfully! Order ID: ${result.orderId}`);
-    
-        // Ensure amount is defined before calling createPurchase API
-        if (!amount || amount <= 0) {
-          throw new Error("Invalid amount, cannot create purchase.");
-        }
-    
-        const purchaseData = {
-          orderId: result.orderId,
-          amount: amount, // Explicitly pass amount
-        };
-    
-        console.log("Sending purchase data:", purchaseData);
+};
 
-        const token = getTokenFromLocalStorage(); // Get token from localStorage
-        if (!token) {
-          alert("User not authenticated");
-          return;
-        }
 
-        const purchaseResponse = await fetch("https://shaddyna-backend.onrender.com/api/purchase/create", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",  // Add this
-            "Authorization": `Bearer ${token}`,
-          },
-          body: JSON.stringify(purchaseData),
-          credentials: "include",
-        });
-        
-    
-        if (!purchaseResponse.ok) {
-          const purchaseErrorData = await purchaseResponse.json();
-          throw new Error(purchaseErrorData.message || "Failed to create purchase record.");
-        }
-    
-        const purchaseResult = await purchaseResponse.json();
-        console.log("Purchase record created successfully:", purchaseResult);
-    
-        clearCart();
-        router.push("/");
-      } catch (error) {
-        console.error("Error:", error);
-        setMessage(error instanceof Error ? error.message : "An error occurred.");
-      }
-    }*/
-    
-    
-    return (
-      <div >
-        <Back title="Payment" />
-        
-        <div className="min-h-screen bg-gray-50 flex flex-col mb-0">
-          <div className="container mx-auto px-4 py-8">
-            <h1 className="text-2xl text-blue-900 font-bold mb-8">Payment</h1>
-            <Card className="p-6">
-              <div className="flex space-x-4 mb-4">
-                <Button
-                  onClick={() => setActiveMethod("mpesa")}
-                  className={`w-full ${activeMethod === "mpesa" ? "bg-pink-500 text-white" : "bg-gray-300 text-black"}`}
-                >
-                  Pay with M-Pesa
-                </Button>
-                <Button
-                  onClick={() => setActiveMethod("savings")}
-                  className={`w-full ${activeMethod === "savings" ? "bg-blue-600 text-white" : "bg-gray-300 text-black"}`}
-                >
-                  Pay with Savings
-                </Button>
-              </div>
-              
-              {activeMethod === "mpesa" && (
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(handlePayWithMpesa)} className="space-y-4">
-                    <FormField
-                      control={form.control}
-                      name="phoneNumber"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-blue-900">Phone Number</FormLabel>
-                          <FormControl>
-                            <Input placeholder="+254 *** *** ***" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="mpesaCode"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-blue-900">M-Pesa Code</FormLabel>
-                          <FormControl>
-                            <Input placeholder="M-Pesa code" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="mpesaName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-blue-900">Name (as on M-Pesa)</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Full name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button type="submit" className="w-full bg-pink-500 hover:bg-pink-600 text-white">
-                      Confirm Payment
-                    </Button>
-                  </form>
-                </Form>
-              )}
-              
-              {activeMethod === "savings" && (
-                <Form {...form}>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault(); // Prevent default form submission
-                      //handlePayWithSavings(); // Call handlePayWithSavings directly
-                    }}
-                    className="space-y-4"
-                  >
-                    <p className="text-blue-900">Use your savings balance to pay.</p>
-                    <Button
-                      type="submit"
-                      className="w-full bg-[#182155] hover:bg-blue-600 text-white"
-                      disabled={isLoading}
-                    >
-                      {isLoading ? "Processing..." : "Pay with Savings"}
-                    </Button>
-                  </form>
-                </Form>
-              )}
+const PaymentPage = () => {
+  const searchParams = useSearchParams() as ReadonlyURLSearchParams;
+  const initialAmount = searchParams.get("amount") || "";
 
-            </Card>
+  const [activeMethod, setActiveMethod] = useState("mpesa");
+  const [formData, setFormData] = useState({
+    phoneNumber: "",
+    mpesaCode: "",
+    mpesaName: "",
+    amount: initialAmount,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setFormData((prev) => ({ ...prev, amount: initialAmount }));
+  }, [initialAmount]);
+
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePayWithMpesa = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setIsLoading(true);
+  
+    const paymentData = {
+      phoneNumber: formData.phoneNumber,
+      mpesaCode: formData.mpesaCode,
+      mpesaName: formData.mpesaName,
+      amount: formData.amount,
+    };
+  
+    console.log("Sending M-Pesa payment data:", paymentData); // Log the data
+  
+    try {
+      const response = await axios.post("https://shaddyna-backend.onrender.com/api/spayment/pay/mpesa", paymentData);
+      console.log("M-Pesa Payment Response:", response.data); // Log the response
+      setMessage(response.data.message);
+    } catch (error) {
+      console.error("M-Pesa Payment Error:", error);
+      setMessage("Payment failed");
+    }
+    setIsLoading(false);
+  };
+
+
+  const handlePayWithSavings = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const userId = getUserIdFromToken();
+    if (!userId) {
+      setMessage("User not authenticated");
+      setIsLoading(false);
+      return;
+    }
+
+    const userSavings = await fetchUserSavings();
+    if (userSavings === null) {
+      setMessage("Error fetching savings. Try again.");
+      setIsLoading(false);
+      return;
+    }
+
+    if (userSavings < Number(formData.amount)) {
+      setMessage("Insufficient savings to complete the payment.");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post("https://shaddyna-backend.onrender.com/api/spayment/pay/savings", {
+        userId,
+        amount: formData.amount,
+      });
+
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage("Payment failed");
+    }
+
+    setIsLoading(false);
+  };
+
+  return (
+    <div>
+      <Back title={"Seminar Payment"} />
+      <div className="bg-gray-50 min-h-screen flex flex-col">
+        <div className="container mx-auto px-4 py-8">
+          <div className="p-6 bg-white shadow rounded">
+            <div className="flex space-x-4 mb-4">
+              <button
+                onClick={() => setActiveMethod("mpesa")}
+                className={`w-full ${activeMethod === "mpesa" ? "bg-pink-500 text-white" : "bg-gray-300 text-black"}`}
+              >
+                Pay with M-Pesa
+              </button>
+              <button
+                onClick={() => setActiveMethod("savings")}
+                className={`w-full ${activeMethod === "savings" ? "bg-blue-600 text-white" : "bg-gray-300 text-black"}`}
+              >
+                Pay with Savings
+              </button>
+            </div>
+
+            {/*{activeMethod === "mpesa" && (
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+                <input type="text" name="phoneNumber" placeholder="+254 *** *** ***" value={formData.phoneNumber} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <input type="text" name="mpesaCode" placeholder="M-Pesa Code" value={formData.mpesaCode} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <input type="text" name="mpesaName" placeholder="Name (as on M-Pesa)" value={formData.mpesaName} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <button type="submit" className="w-full bg-pink-500 hover:bg-pink-600 text-white p-2 rounded" disabled={isLoading}>
+                  {isLoading ? "Processing..." : "Confirm Payment"}
+                </button>
+              </form>
+            )}*/}
+            {activeMethod === "mpesa" && (
+  <form onSubmit={handlePayWithMpesa} className="space-y-4">
+    <input type="text" name="phoneNumber" placeholder="+254 *** *** ***" value={formData.phoneNumber} onChange={handleChange} className="w-full border p-2 rounded" required />
+    <input type="text" name="mpesaCode" placeholder="M-Pesa Code" value={formData.mpesaCode} onChange={handleChange} className="w-full border p-2 rounded" required />
+    <input type="text" name="mpesaName" placeholder="Name (as on M-Pesa)" value={formData.mpesaName} onChange={handleChange} className="w-full border p-2 rounded" required />
+    <button type="submit" className="w-full bg-pink-500 hover:bg-pink-600 text-white p-2 rounded" disabled={isLoading}>
+      {isLoading ? "Processing..." : "Confirm Payment"}
+    </button>
+  </form>
+)}
+
+
+            {activeMethod === "savings" && (
+              <form onSubmit={handlePayWithSavings} className="space-y-4">
+                <input type="number" name="amount" placeholder="Amount" value={formData.amount} onChange={handleChange} className="w-full border p-2 rounded" required />
+                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white p-2 rounded" disabled={isLoading}>
+                  {isLoading ? "Processing..." : "Pay with Savings"}
+                </button>
+              </form>
+            )}
+
             {message && <p className="text-red-500 mt-4">{message}</p>}
           </div>
-          <Footer />
         </div>
-        </div>
-    );
-  }
-  
+      </div>
+      <Footer />
+      <BottomNavigationBar />
+    </div>
+  );
+};
+
+export default PaymentPage;
 

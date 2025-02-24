@@ -37,8 +37,9 @@ export default function SeminarsPage() {
 
     fetchSeminars();
   }, []);
-  const handlePayment = () => {
-    router.push("/seminar-payment");
+
+  const handlePayment = (amount: number) => {
+    router.push(`/seminar-payment?amount=${amount}`);
   };
 
   if (loading) return <p className="text-center mt-10">Loading seminars...</p>;
@@ -66,13 +67,12 @@ export default function SeminarsPage() {
               <p className="text-gray-800 mt-2 font-medium">Date: {seminar.date}</p>
               <p className="text-lg text-blue-900 font-bold mt-2">ksh {seminar.amount}</p>
               <button
-          onClick={() => handlePayment()}
-          className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-        >
-          Pay Now
-        </button>
-            </div>
-           
+                onClick={() => handlePayment(seminar.amount)}
+                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+              >
+                Pay Now
+              </button>
+            </div>           
           ))}
           
         </div>
