@@ -108,6 +108,9 @@ const MainPage = () => {
     router.push("/shelf-list");
   };
 
+  const handleWithdrawClick = () => {
+    router.push("/withdraw");
+  };
   return (
     <div className="bg-white">
       <Back title={"Forum"} />
@@ -154,7 +157,7 @@ const MainPage = () => {
               <span className="font-semibold">Buy Goods</span>
             </button>
             <button
-              onClick={handleSaveMoneyClick}
+              onClick={handleWithdrawClick}
               className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#bf2c7e] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
