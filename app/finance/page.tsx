@@ -3,10 +3,11 @@
 import Back from "@/components/Back";
 import BottomNavigationBar from "@/components/BottomNav";
 import Footer from "@/components/Footer";
-import { FaArrowCircleDown, FaArrowCircleUp, FaChartLine, FaRegCalendarAlt, FaRegMoneyBillAlt, FaShoppingCart } from "react-icons/fa";
+import { FaArrowCircleDown, FaArrowCircleUp, FaBalanceScale, FaChartLine, FaMoneyBill, FaMoneyCheck, FaRegCalendarAlt, FaRegMoneyBillAlt, FaShoppingCart } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUserSellerStore } from "@/store/useUserSellerStore"; // Import the store
+import { FaMoneyBillTransfer } from "react-icons/fa6";
 
 const MainPage = () => {
   const router = useRouter();
@@ -169,6 +170,15 @@ const MainPage = () => {
               <FaRegMoneyBillAlt className="text-xl" />
               </div>
               <span className="font-semibold">Savings</span>
+            </button>
+            <button
+              onClick={handleSaveMoneyClick}
+              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#bf2c7e] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
+            >
+              <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+              <FaMoneyCheck className="text-xl" />
+              </div>
+              <span className="font-semibold">Investment balance</span>
             </button>
           </div>
         </div>
