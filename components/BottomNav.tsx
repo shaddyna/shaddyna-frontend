@@ -1,6 +1,6 @@
 // components/BottomNavigationBar.tsx
 "use client"
-import { CircleHelp, Heart, Search, Store } from 'lucide-react';
+import { CircleHelp, DollarSign, Heart, PlusCircleIcon, Search, Store } from 'lucide-react';
 import React, { useState } from 'react';
 import { FaHeart, FaSearch, FaStore, FaQuestionCircle } from 'react-icons/fa';
 
@@ -20,12 +20,12 @@ const BottomNavigationBar: React.FC = () => {
     <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white shadow-md z-10">
       <div className="flex justify-around items-center py-2">
         <a
-          href="/search"
+          href="/"
           className={`flex flex-col items-center ${activeLink === 'search' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('search')}
         >
-          <Search />
-          <span>Search</span>
+          <PlusCircleIcon />
+          <span>Sell</span>
         </a>
         <a
           href="/wishlist"
@@ -44,12 +44,12 @@ const BottomNavigationBar: React.FC = () => {
           <span>Shops</span>
         </a>
         <a
-          href="/help"
+          href="/forum-page"
           className={`flex flex-col items-center ${activeLink === 'help' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('help')}
         >
-          <CircleHelp />
-          <span>Help</span>
+          <DollarSign />
+          <span>Forum</span>
         </a>
       </div>
     </div>

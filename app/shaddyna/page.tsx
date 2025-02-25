@@ -7,6 +7,8 @@ import ShaddynaSkills from '@/components/Skills';
 import Shelf from '@/components/Shelf';
 import React from 'react';
 import ShelfComponent from '@/components/Shelf';
+import SearchBar from '@/components/Search';
+import Search from '@/components/Search';
 
 const ShaddynaHub = () => {
   // Dummy Data
@@ -14,6 +16,7 @@ const ShaddynaHub = () => {
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
       <Back title={'Shaddyna Hub'} />
+      <Search />
       <div className="space-y-0">
         <div
           className="relative h-[150px] sm:h-[300px] lg:h-[350px] bg-cover bg-center m-3 rounded-lg"
@@ -36,8 +39,8 @@ const ShaddynaHub = () => {
       </div>
 
       <BottomNavigationBar />
-      {/*<FloatingButtonTwo />*/}
-      <FloatingButton />
+      {/*<FloatingButtonTwo />
+      <FloatingButton />*/}
       <Footer />
     </div>
   );
