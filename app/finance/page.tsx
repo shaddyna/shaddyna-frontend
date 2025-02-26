@@ -7,7 +7,7 @@ import { FaArrowCircleDown, FaArrowCircleUp, FaBalanceScale, FaChartLine, FaMone
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUserSellerStore } from "@/store/useUserSellerStore"; // Import the store
-import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { FaMoneyBillTransfer, FaMoneyBillTrendUp } from "react-icons/fa6";
 
 const MainPage = () => {
   const router = useRouter();
@@ -122,7 +122,8 @@ const MainPage = () => {
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-0">
             <button
               onClick={handleSaveMoneyClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#bf2c7e] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
+              className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+              style={{ borderColor: "#bf2c7e" }} // Apply border color dynamically
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
               <FaArrowCircleUp className="text-xl" />
@@ -131,34 +132,38 @@ const MainPage = () => {
             </button>
             <button
               onClick={handleInvestClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#182155] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
+              className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+              style={{ borderColor: "#182155" }} // Apply border color dynamically
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-                <FaChartLine className="text-xl" />
+              <FaMoneyBillTrendUp className="text-xl" />
               </div>
               <span className="font-semibold">Invest</span>
             </button>
             <button
               onClick={handleSeminarClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#bf2c7e] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
+              className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+              style={{ borderColor: "#bf2c7e" }} // Apply border color dynamically
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-              <FaRegCalendarAlt  className="text-xl" />
+              <FaRegCalendarAlt className="text-xl" />
               </div>
               <span className="font-semibold">Pay for Seminar</span>
             </button>
             <button
               onClick={handleBuyGoodsClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#182155] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
+              className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+              style={{ borderColor: "#182155" }} // Apply border color dynamically
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-                <FaShoppingCart className="text-xl" />
+              <FaShoppingCart className="text-xl" />
               </div>
               <span className="font-semibold">Buy Goods</span>
             </button>
             <button
               onClick={handleWithdrawClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#bf2c7e] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
+              className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+              style={{ borderColor: "#bf2c7e" }} // Apply border color dynamically
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
               <FaArrowCircleDown className="text-xl" />
@@ -167,22 +172,26 @@ const MainPage = () => {
             </button>
             <button
               onClick={handleSaveMoneyClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#182155] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
+              className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+              style={{ borderColor: "#182155" }} // Apply border color dynamically
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
               <FaRegMoneyBillAlt className="text-xl" />
               </div>
               <span className="font-semibold">Savings</span>
             </button>
-            <button
+
+                       <button
               onClick={handleSaveMoneyClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#bf2c7e] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
+              className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+              style={{ borderColor: "#bf2c7e" }} // Apply border color dynamically
             >
               <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
               <FaMoneyCheck className="text-xl" />
               </div>
               <span className="font-semibold">Investment balance</span>
             </button>
+
           </div>
         </div>
       </div>

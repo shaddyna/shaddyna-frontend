@@ -125,7 +125,7 @@ const MainPage = () => {
   style={{ borderColor: "#bf2c7e" }} // Apply border color dynamically
 >
   <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-    <FaPeopleGroup className="text-xl" />
+    <FaLightbulb className="text-xl" />
   </div>
   <span className="font-semibold">Add A Skill</span>
 </button>
@@ -136,7 +136,7 @@ const MainPage = () => {
   style={{ borderColor: "#182155" }} // Apply border color dynamically
 >
   <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-    <FaPeopleGroup className="text-xl" />
+    <FaMoneyBillTransfer className="text-xl" />
   </div>
   <span className="font-semibold">Create a Shelf</span>
 </button>
