@@ -79,6 +79,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useUserSellerStore } from "@/store/useUserSellerStore"; // Import your Zustand store
 import Back from "@/components/Back";
+import { FaCartShopping, FaMoneyBillWave } from "react-icons/fa6";
 
 const UserPage: React.FC = () => {
   const router = useRouter();
@@ -88,13 +89,13 @@ const UserPage: React.FC = () => {
     {
       name: "Account Management",
       icon: <FaUser />,
-      color: "bg-[#182155]",
+      color: "border-[#182155]",
       action: () => router.push("/user-profile"),
     },
     {
       name: "Order Management",
-      icon: <FaShoppingCart />,
-      color: "bg-[#ff199c]",
+      icon:  <FaCartShopping />,
+      color: "border-[#ff199c]",
       action: () => {
         if (user && user._id) {
           router.push(`/orders/${user._id}`); // Navigate to the dynamic route
@@ -105,8 +106,8 @@ const UserPage: React.FC = () => {
     },
     {
       name: "My money",
-      icon: <FaShoppingCart />,
-      color: "bg-[#182155]",
+      icon: <FaMoneyBillWave />,
+      color: "border-[#182155]",
       action: () => {
         if (user && user._id) {
           router.push(`/finance`); // Navigate to the dynamic route
@@ -124,6 +125,20 @@ const UserPage: React.FC = () => {
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4">
           {buttons.map((button, index) => (
             <button
+  key={index}
+  onClick={button.action}
+  className={`flex items-center justify-start p-3 text-gray-800 border-2 ${button.color} rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent`}
+>
+  <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+    <div className="text-xl">{button.icon}</div>
+  </div>
+  <span className="font-semibold">{button.name}</span>
+</button>
+
+
+ ))}
+
+            {/*<button
               key={index}
               onClick={button.action}
               className={`flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full ${button.color} text-sm sm:px-4 sm:py-2 md:px-6 md:py-3`}
@@ -132,8 +147,8 @@ const UserPage: React.FC = () => {
                 <div className="text-xl">{button.icon}</div>
               </div>
               <span className="font-semibold">{button.name}</span>
-            </button>
-          ))}
+            </button>*
+          ))}*/}
         </div>
       </div>
       <Footer />

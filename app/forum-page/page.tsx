@@ -117,42 +117,55 @@ const MainPage = () => {
 
           {/* Render the buttons dynamically */}
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-0">
+            
+            
             <button
-              onClick={handleAddSkillClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#bf2c7e] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
-            >
-              <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-              <FaLightbulb className="text-xl" />
-              </div>
-              <span className="font-semibold">Add a Skill</span>
-            </button>
+  onClick={handleAddSkillClick}
+  className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+  style={{ borderColor: "#bf2c7e" }} // Apply border color dynamically
+>
+  <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+    <FaPeopleGroup className="text-xl" />
+  </div>
+  <span className="font-semibold">Add A Skill</span>
+</button>
+         
             <button
-              onClick={handleCreateShelfClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#182155] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
-            >
-              <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-                <FaTable className="text-xl" />
-              </div>
-              <span className="font-semibold">Create a Shelf</span>
-            </button>
+  onClick={handleCreateShelfClick}
+  className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+  style={{ borderColor: "#182155" }} // Apply border color dynamically
+>
+  <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+    <FaPeopleGroup className="text-xl" />
+  </div>
+  <span className="font-semibold">Create a Shelf</span>
+</button>
+
+
             <button
-              onClick={handleStartUpClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#bf2c7e] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
-            >
-              <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-              <FaPen  className="text-xl" />
-              </div>
-              <span className="font-semibold">StartUp Application</span>
-            </button>
+  onClick={handleStartUpClick}
+  className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+  style={{ borderColor: "#bf2c7e" }} // Apply border color dynamically
+>
+  <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+    <FaPen className="text-xl" />
+  </div>
+  <span className="font-semibold">StartUp Application</span>
+</button>
+
+
+
             <button
-              onClick={handleMembersClick}
-              className="flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full bg-[#182155] text-sm sm:px-4 sm:py-2 md:px-6 md:py-3"
-            >
-              <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-              <FaPeopleGroup className="text-xl" />
-              </div>
-              <span className="font-semibold">Members</span>
-            </button>
+  onClick={handleMembersClick}
+  className="flex items-center justify-start p-3 text-gray-800 border-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent"
+  style={{ borderColor: "#182155" }} // Apply border color dynamically
+>
+  <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+    <FaPeopleGroup className="text-xl" />
+  </div>
+  <span className="font-semibold">Members</span>
+</button>
+
           </div>
         </div>
       </div>

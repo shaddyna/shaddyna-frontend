@@ -30,44 +30,44 @@ const AdminPage: React.FC = () => {
     {
       name: "User Management",
       icon: <FaUser />,
-      color: "bg-[#182155]",
+      color: "border-[#182155]",
       action: () => router.push("/user-management"),
     },
     {
       name: "Seller Management",
       icon: <FaShop />,
-      color: "bg-[#ff199c]",
+      color: "border-[#ff199c]",
       action: () => router.push("/seller-management"),
     },
     {
       name: "Product Management",
       icon: <FaBox />,
-      color: "bg-[#182155]",
+      color: "border-[#182155]",
       action: () => router.push("/product-management"),
     },
     { name: "Category Management", 
       icon: <FaChartLine />, 
-      color: "bg-[#ff199c]", 
+      color: "border-[#ff199c]", 
       action: () => router.push("/category-management"),
     },
     {
       name: "Order Management",
       icon: <FaShoppingCart />,
-      color: "bg-[#182155]",
+      color: "border-[#182155]",
       action: () => router.push("/order-management"),
     },
-    { name: "Payment and Payout Management", icon: <FaMoneyBill />, color: "bg-[#ff199c]", action: () => {} },
-    { name: "Members Management", icon: <FaPeopleGroup />, color: "bg-[#182155]", action: () => router.push("/members"), },
+    { name: "Payment and Payout Management", icon: <FaMoneyBill />, color: "border-[#ff199c]", action: () => {} },
+    { name: "Members Management", icon: <FaPeopleGroup />, color: "border-[#182155]", action: () => router.push("/members"), },
     {
       name: "Seminar Management",
       icon: <FaMeetup />,
-      color: "bg-[#ff199c]",
+      color: "border-[#ff199c]",
       action: () => router.push("/list-seminar"),
     },
     {
       name: "Startup Management",
       icon: <FaLightbulb />,
-      color: "bg-[#182155]",
+      color: "border-[#182155]",
       action: () => router.push("/startup-list"),
     },
     //{ name: "Communication and Notifications", icon: <FaComments />, color: "bg-indigo-500", action: () => {} },
@@ -98,7 +98,18 @@ const AdminPage: React.FC = () => {
 <div className="min-h-screen bg-gray-100 py-8">
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4">
           {buttons.map((button, index) => (
-            <button
+                        <button
+                        key={index}
+                        onClick={button.action}
+                        className={`flex items-center justify-start p-3 text-gray-800 border-2 ${button.color} rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent`}
+                      >
+                        <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+                          <div className="text-xl">{button.icon}</div>
+                        </div>
+                        <span className="font-semibold">{button.name}</span>
+                      </button>
+          ))}
+            {/*<button
               key={index}
               onClick={button.action}
               className={`flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full ${button.color} text-sm sm:px-4 sm:py-2 md:px-6 md:py-3`}
@@ -107,8 +118,8 @@ const AdminPage: React.FC = () => {
                 <div className="text-xl">{button.icon}</div>
               </div>
               <span className="font-semibold">{button.name}</span>
-            </button>
-          ))}
+            </button>*/}
+          
         </div>
       </div>
       </div>

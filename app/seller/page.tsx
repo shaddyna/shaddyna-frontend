@@ -74,6 +74,7 @@ import BackButton from "@/components/BackButton";
 import { useRouter } from "next/navigation";
 import { useUserSellerStore } from "@/store/useUserSellerStore";
 import Back from "@/components/Back";
+import { FaCartShopping } from "react-icons/fa6";
 
 const SellerPage: React.FC = () => {
   const router = useRouter();
@@ -85,7 +86,7 @@ const SellerPage: React.FC = () => {
     { 
       name: "Shop Account Management", 
       icon: <FaUser />, 
-      color: "bg-[#182155]",
+      color: "border-[#182155]",
       action: async () => {
         if (!user) {
           console.error("User is not logged in.");
@@ -110,7 +111,7 @@ const SellerPage: React.FC = () => {
     { 
       name: "Product Management", 
       icon: <FaBox />, 
-      color: "bg-[#ff199c]", 
+      color: "border-[#ff199c]", 
       action: async () => {
         if (!user) {
           console.error("User is not logged in.");
@@ -161,8 +162,8 @@ const SellerPage: React.FC = () => {
         }
       }
     },
-    { name: "Order Management", icon: <FaShoppingCart />, color: "bg-[#182155]", action: () => router.push("/seller-order") },
-    { name: "Payment and Payout Management", icon: <FaMoneyBill />, color: "bg-[#ff199c]", action: () => {} },
+    { name: "Order Management", icon:  <FaCartShopping />, color: "border-[#182155]", action: () => router.push("/seller-order") },
+    { name: "Payment and Payout Management", icon: <FaMoneyBill />, color: "border-[#ff199c]", action: () => {} },
   ];
 
   useEffect(() => {
@@ -177,7 +178,18 @@ const SellerPage: React.FC = () => {
 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4">
           {buttons.map((button, index) => (
-            <button
+                        <button
+                        key={index}
+                        onClick={button.action}
+                        className={`flex items-center justify-start p-3 text-gray-800 border-2 ${button.color} rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full text-sm sm:px-4 sm:py-2 md:px-6 md:py-3 bg-transparent`}
+                      >
+                        <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
+                          <div className="text-xl">{button.icon}</div>
+                        </div>
+                        <span className="font-semibold">{button.name}</span>
+                      </button>
+          ))}
+            {/*<button
               key={index}
               onClick={button.action}
               className={`flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full ${button.color} text-sm sm:px-4 sm:py-2 md:px-6 md:py-3`}
@@ -186,8 +198,8 @@ const SellerPage: React.FC = () => {
                 <div className="text-xl">{button.icon}</div>
               </div>
               <span className="font-semibold">{button.name}</span>
-            </button>
-          ))}
+            </button>*/}
+      
         </div>
       </div>
 
