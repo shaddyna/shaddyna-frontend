@@ -124,7 +124,7 @@ const initialAmount = searchParams.get("amount") || "";
 
 export default PaymentPage;*/
 
-"use client";
+/*"use client";
 
 import { useState, useEffect } from "react";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
@@ -314,7 +314,7 @@ const PaymentPage = () => {
                   {isLoading ? "Processing..." : "Confirm Payment"}
                 </button>
               </form>
-            )}*/}
+            )}*
             {activeMethod === "mpesa" && (
   <form onSubmit={handlePayWithMpesa} className="space-y-4">
     <input type="text" name="phoneNumber" placeholder="+254 *** *** ***" value={formData.phoneNumber} onChange={handleChange} className="w-full border p-2 rounded" required />
@@ -346,5 +346,5 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default PaymentPage;*/
 
