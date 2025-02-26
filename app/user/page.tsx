@@ -103,6 +103,18 @@ const UserPage: React.FC = () => {
         }
       },
     },
+    {
+      name: "My money",
+      icon: <FaShoppingCart />,
+      color: "bg-[#182155]",
+      action: () => {
+        if (user && user._id) {
+          router.push(`/finance`); // Navigate to the dynamic route
+        } else {
+          console.error("User ID not found. Ensure the user is logged in.");
+        }
+      },
+    },
   ];
 
   return (
