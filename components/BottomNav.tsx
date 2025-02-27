@@ -1,5 +1,6 @@
 // components/BottomNavigationBar.tsx
 "use client"
+import { DollarCircleIcon, FavouriteIcon, PlusSignCircleIcon, ShoppingBasket01Icon } from 'hugeicons-react';
 import { CircleHelp, DollarSign, Heart, PlusCircleIcon, Search, Store } from 'lucide-react';
 import React, { useState } from 'react';
 import { FaHeart, FaSearch, FaStore, FaQuestionCircle } from 'react-icons/fa';
@@ -24,7 +25,7 @@ const BottomNavigationBar: React.FC = () => {
           className={`flex flex-col items-center ${activeLink === 'search' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('search')}
         >
-          <PlusCircleIcon />
+          <PlusSignCircleIcon/>
           <span>Sell</span>
         </a>
         <a
@@ -32,7 +33,7 @@ const BottomNavigationBar: React.FC = () => {
           className={`flex flex-col items-center ${activeLink === 'wishlist' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('wishlist')}
         >
-          <Heart />
+          <FavouriteIcon />
           <span>Wishlist</span>
         </a>
         <a
@@ -40,7 +41,7 @@ const BottomNavigationBar: React.FC = () => {
           className={`flex flex-col items-center ${activeLink === 'shop' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('shop')}
         >
-          <Store />
+          <ShoppingBasket01Icon />
           <span>Shops</span>
         </a>
         <a
@@ -48,7 +49,7 @@ const BottomNavigationBar: React.FC = () => {
           className={`flex flex-col items-center ${activeLink === 'help' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('help')}
         >
-          <DollarSign />
+          <DollarCircleIcon />
           <span>Forum</span>
         </a>
       </div>

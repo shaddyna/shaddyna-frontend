@@ -26,6 +26,7 @@ import Header from "./Header";
 import { useCartStore } from "@/store/cart-store";
 import { useUserSellerStore } from '@/store/useUserSellerStore';
 import { Bell, Logs, MessageCircleMore, ShoppingCart } from "lucide-react";
+import { BubbleChatIcon, Menu01Icon, Notification03Icon, ShoppingCart01Icon } from "hugeicons-react";
 
 const PaymentDialog: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
   isOpen,
@@ -157,7 +158,7 @@ const HeadNavigation: React.FC = () => {
               {isDrawerOpen ? (
                 <FaTimes /> // Show "X" when the drawer is open
               ) : (
-                <Logs /> // Show hamburger menu when the drawer is closed
+                <Menu01Icon /> // Show hamburger menu when the drawer is closed
               )}
             </button>
             <div className="text-xl font-bold">
@@ -178,7 +179,7 @@ const HeadNavigation: React.FC = () => {
           className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full relative"
           onClick={() => router.push("/cart")}
           >
-            <ShoppingCart />
+            <ShoppingCart01Icon />
             {totalItems > 0 && (
               <span className="absolute top-0 right-0 bg-[#182155] text-white text-xs rounded-full px-1">
                 {totalItems}
@@ -187,10 +188,10 @@ const HeadNavigation: React.FC = () => {
           </button>
          <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full"
           onClick={() => router.push("/conversations")}>
-         <MessageCircleMore />
+         <BubbleChatIcon/>
          </button>
          <button className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full">
-         <Bell />
+         <Notification03Icon />
          </button>
           </div>
           ) : (
@@ -253,7 +254,7 @@ const HeadNavigation: React.FC = () => {
           className="text-2xl p-2 text-white hover:bg-[#182155] rounded-full relative"
           onClick={() => router.push("/cart")}
           >
-            <FaCartShopping />
+            <ShoppingCart01Icon />
             {totalItems > 0 && (
               <span className="absolute top-0 right-0 bg-[#182155] text-white text-xs rounded-full px-1">
                 {totalItems}
@@ -298,7 +299,7 @@ Login/Register
             className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
             onClick={handleSellClick}
           >
-            <FaShoppingCart className="mr-2" />
+            <ShoppingCart01Icon className="mr-2" />
             My Shop
           </button>
         )}
