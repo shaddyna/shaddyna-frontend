@@ -70,7 +70,7 @@ export default function SearchResults() {
 
   return (
     <div className="container mx-auto p-4 bg-white">
-      <h2 className="text-2xl font-bold mb-4">Search Results for "{query}"</h2>
+      <h2 className="text-2xl text-gray-800 font-bold mb-4">Search Results for "{query}"</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredProducts.map(product => (
           <div key={product._id} className="border p-4 rounded-lg shadow-md bg-white">
@@ -80,8 +80,8 @@ export default function SearchResults() {
               className="w-full h-40 object-cover mb-2 rounded"
             />
             {/* ✅ Updated text rendering without `dangerouslySetInnerHTML` */}
-            <h3 className="text-lg font-semibold">{highlightMatch(product.name)}</h3>
-            <p className="text-gray-600">${product.price.toFixed(2)}</p>
+            <h3 className="text-lg text-gray-800 font-semibold">{highlightMatch(product.name)}</h3>
+            <p className="text-gray-600">Ksh{product.price.toFixed(2)}</p>
           </div>
         ))}
       </div>
