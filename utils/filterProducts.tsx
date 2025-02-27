@@ -1,0 +1,15 @@
+import React from "react";
+
+export const highlightMatch = (text: string, query: string) => {
+  if (!query) return text;
+
+  const parts = text.split(new RegExp(`(${query})`, "gi"));
+
+  return parts.map((part, i) =>
+    part.toLowerCase() === query.toLowerCase() ? (
+      <span key={i} className="bg-yellow-300 text-black px-1 rounded">{part}</span>
+    ) : (
+      part
+    )
+  );
+};
