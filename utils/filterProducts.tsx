@@ -3,7 +3,9 @@ import React from "react";
 export const highlightMatch = (text: string, query: string) => {
   if (!query) return text;
 
-  const parts = text.split(new RegExp(`(${query})`, "gi"));
+  const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")})`, "gi");
+
+  const parts = text.split(regex);
 
   return parts.map((part, i) =>
     part.toLowerCase() === query.toLowerCase() ? (
@@ -13,3 +15,4 @@ export const highlightMatch = (text: string, query: string) => {
     )
   );
 };
+
