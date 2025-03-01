@@ -21,7 +21,7 @@ const BottomNavigationBar: React.FC = () => {
     <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white shadow-md z-10">
       <div className="flex justify-around items-center py-2">
         <a
-          href="/"
+          href="/sell"
           className={`flex flex-col items-center ${activeLink === 'search' ? activeStyle : inactiveStyle}`}
           onClick={() => handleLinkClick('search')}
         >
