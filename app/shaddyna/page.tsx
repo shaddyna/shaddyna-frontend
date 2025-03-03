@@ -75,10 +75,8 @@ const ShaddynaHub = () => {
           </h1>
         </div>
       </div>
-
         {/* Toggle Buttons */}
-        {/* Toggle Buttons */}
-<div className="grid grid-cols-2 gap-2 my-6 mx-3">
+<div className="grid grid-cols-2 gap-2 my-3 mx-3">
   <button
     onClick={() => setActiveTab("shelves")}
     className={`w-full py-3 text-base font-semibold border-b-4 transition rounded-lg ${
