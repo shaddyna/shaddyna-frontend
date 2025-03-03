@@ -30,7 +30,7 @@ export default function SearchBar() {
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full pl-12 pr-12 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 shadow-md transition-all h-12"
+          className="w-full pl-12 pr-12 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-blue-900 text-gray-700 shadow-md transition-all h-12"
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
         

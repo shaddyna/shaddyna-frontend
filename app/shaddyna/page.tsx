@@ -59,9 +59,8 @@ const ShaddynaHub = () => {
     <div className="bg-gray-50 min-h-screen flex flex-col">
       <Back title={"Shaddyna Hub"} />
       <Search />
-
-      {/* Hero Section */}
-      <div
+         {/* Hero Section */}
+   <div
         className="relative h-[150px] sm:h-[300px] lg:h-[350px] bg-cover bg-center m-3 rounded-lg"
         style={{
           backgroundImage:
@@ -76,7 +75,7 @@ const ShaddynaHub = () => {
         </div>
       </div>
         {/* Toggle Buttons */}
-<div className="grid grid-cols-2 gap-2 my-3 mx-3">
+<div className="grid grid-cols-2 gap-2 my-0 mx-3">
   <button
     onClick={() => setActiveTab("shelves")}
     className={`w-full py-3 text-base font-semibold border-b-4 transition rounded-lg ${
