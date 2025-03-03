@@ -125,6 +125,7 @@ const initialAmount = searchParams.get("amount") || "";
 export default PaymentPage;*/
 
 "use client";
+export const dynamic = "force-dynamic"; // Add this at the top
 
 import { useState, useEffect } from "react";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
