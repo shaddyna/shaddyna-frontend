@@ -60,31 +60,6 @@ const ShaddynaHub = () => {
       <Back title={"Shaddyna Hub"} />
       <Search />
 
-      {/* Toggle Buttons */}
-     {/* Toggle Buttons */}
-<div className="grid grid-cols-2 gap-2 my-6 mx-4">
-  <button
-    onClick={() => setActiveTab("shelves")}
-    className={`w-full py-4 text-lg font-semibold border-b-4 transition rounded-lg ${
-      activeTab === "shelves"
-        ? "text-white bg-[#bf2c7e] border-blue-900"
-        : "text-blue-900 bg-white border-gray-300 hover:border-blue-900"
-    }`}
-  >
-    Shelves
-  </button>
-  <button
-    onClick={() => setActiveTab("skills")}
-    className={`w-full py-4 text-lg font-semibold border-b-4 transition rounded-lg ${
-      activeTab === "skills"
-        ? "text-white bg-[#bf2c7e] border-blue-900"
-        : "text-blue-900 bg-white border-gray-300 hover:border-blue-900"
-    }`}
-  >
-    Skills
-  </button>
-</div>
-
       {/* Hero Section */}
       <div
         className="relative h-[150px] sm:h-[300px] lg:h-[350px] bg-cover bg-center m-3 rounded-lg"
@@ -101,7 +76,31 @@ const ShaddynaHub = () => {
         </div>
       </div>
 
-      {/* Display Shelves or Skills based on selection */}
+        {/* Toggle Buttons */}
+        {/* Toggle Buttons */}
+<div className="grid grid-cols-2 gap-2 my-6 mx-3">
+  <button
+    onClick={() => setActiveTab("shelves")}
+    className={`w-full py-3 text-base font-semibold border-b-4 transition rounded-lg ${
+      activeTab === "shelves"
+        ? "text-white bg-[#bf2c7e] border-blue-900"
+        : "text-blue-900 bg-white border-gray-300 hover:border-blue-900"
+    }`}
+  >
+    Shelves
+  </button>
+  <button
+    onClick={() => setActiveTab("skills")}
+    className={`w-full py-3 text-base font-semibold border-b-4 transition rounded-lg ${
+      activeTab === "skills"
+        ? "text-white bg-[#bf2c7e] border-blue-900"
+        : "text-blue-900 bg-white border-gray-300 hover:border-blue-900"
+    }`}
+  >
+    Skills
+  </button>
+</div>
+     {/* Display Shelves or Skills based on selection */}
       <div className="space-y-0">
         {activeTab === "shelves" ? <ShelfComponent /> : <ShaddynaSkills />}
       </div>
