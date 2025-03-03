@@ -42,6 +42,10 @@ export default function SeminarsPage() {
     router.push(`/seminar-payment?amount=${amount}`);
   };
 
+  const handleOtherPayment = (amount: number) => {
+    router.push(`/seminar-other-payment?amount=${amount}`);
+  };
+
   if (loading) return <p className="text-center mt-10">Loading seminars...</p>;
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
 
@@ -66,12 +70,21 @@ export default function SeminarsPage() {
               <p className="text-gray-600 mt-2">{seminar.description}</p>
               <p className="text-gray-800 mt-2 font-medium">Date: {seminar.date}</p>
               <p className="text-lg text-blue-900 font-bold mt-2">ksh {seminar.amount}</p>
+              <div>
               <button
                 onClick={() => handlePayment(seminar.amount)}
-                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 mr-4"
               >
                 Pay Now
               </button>
+              <button
+                onClick={() => handleOtherPayment(seminar.amount)}
+                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+              >
+                Pay For Another
+              </button>
+            </div>
+
             </div>           
           ))}
           
