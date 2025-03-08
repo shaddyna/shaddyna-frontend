@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 
 import React, { useEffect, useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
@@ -120,14 +120,6 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
     addToWishlist(wishlistItem);
     setSnackbarMessage("Product added to wishlist!");
   };
-  
-
-  /*const handleAddToWishlist = () => {
-    if (!product) return;
-
-    addToWishlist(product);
-    setSnackbarMessage("Product added to wishlist!");
-  };*/
 
   if (!product) {
 
@@ -189,4 +181,69 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
   );
 };
 
-export default ProductDetailPage;
+export default ProductDetailPage;*/
+"use client";
+import { useState } from "react";
+
+const ProductDetail = () => {
+  const [cart, setCart] = useState([]);
+
+  const product = {
+    productName: "Tesla Model S",
+    category: "Car",
+    attributes: {
+      Model: "Tesla",
+      Mileage: "0-10K",
+      FuelType: "Electric",
+      Transmission: "Automatic",
+      Year: "2022",
+    },
+    images: ["https://i.pinimg.com/736x/18/b4/d3/18b4d3d46ee6fe570fd8cd9d93e1c1aa.jpg"],
+  };
+
+  const handleAddToCart = () => {
+    setCart((prevCart) => [...prevCart, product]);
+    alert("Product added to cart!");
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+      <div className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg">
+        <h2 className="text-3xl font-bold text-center mb-4">{product.productName}</h2>
+
+        {product.images && product.images.length > 0 && (
+          <div className="flex justify-center mb-4">
+            <img
+              src={product.images[0]}
+              alt={product.productName}
+              className="w-64 h-64 object-cover rounded-md"
+            />
+          </div>
+        )}
+
+        <div className="bg-gray-200 p-4 rounded-md">
+          <h3 className="font-semibold mb-2">Product Details</h3>
+          <ul className="text-sm">
+            <li>
+              <strong>Category:</strong> {product.category}
+            </li>
+            {Object.entries(product.attributes || {}).map(([key, value]) => (
+              <li key={key}>
+                <strong>{key}:</strong> {value}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <button
+          className="mt-4 w-full bg-blue-600 text-white px-4 py-2 rounded-md"
+          onClick={handleAddToCart}
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetail;

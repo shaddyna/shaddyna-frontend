@@ -1,425 +1,345 @@
+/*"use client";
+import { useState } from "react";
 
+const productCategories = {
+  Car: {
+    label: "Car",
+    attributes: {
+      Model: ["Toyota", "Ford", "Tesla"],
+      Mileage: ["0-10K", "10K-50K", "50K+"],
+      FuelType: ["Petrol", "Diesel", "Electric"],
+      Transmission: ["Manual", "Automatic"],
+      Year: ["2020", "2021", "2022"],
+    },
+  },
+  Phone: {
+    label: "Phone",
+    attributes: {
+      Brand: ["Apple", "Samsung", "OnePlus"],
+      Storage: ["64GB", "128GB", "256GB"],
+      CameraPixel: ["12MP", "48MP", "108MP"],
+      BatteryLife: ["3000mAh", "4000mAh", "5000mAh"],
+    },
+  },
+  Clothes: {
+    label: "Clothes",
+    attributes: {
+      Brand: ["Nike", "Adidas", "Puma", "Kings"],
+      Size: ["S", "M", "L", "XL"],
+      Color: ["Red", "Blue", "Black", "White"],
+      Material: ["Cotton", "Polyester", "Denim"],
+    },
+  },
+};
 
+const AddProduct = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedValues, setSelectedValues] = useState<Record<string, string>>({});
+  const [currentStep, setCurrentStep] = useState(0);
+  const [productName, setProductName] = useState("");
+  const [images, setImages] = useState<File[]>([]);
 
-"use client";
+  const categoryAttributes = selectedCategory ? productCategories[selectedCategory].attributes : null;
+  const attributeKeys = categoryAttributes ? Object.keys(categoryAttributes) : [];
 
-import BackButton from "@/components/BackButton";
-import BottomNavigationBar from "@/components/BottomNav";
-import Footer from "@/components/Footer";
-import HeadNavigation from "@/components/HeadNavigation";
-import React, { useState, useEffect } from "react";
-import { FaArrowLeft } from "react-icons/fa";
-import { useUserSellerStore } from "@/store/useUserSellerStore";
-import { Types } from 'mongoose';
-import Back from "@/components/Back";
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategory(event.target.value);
+    setSelectedValues({});
+    setCurrentStep(0);
+  };
 
-interface Product {
-  id: string;           // Unique identifier for the product
-  name: string;         // Name of the product
-  price: number;        // Price of the product
-  description: string;  // Description of the product
-  categoryId?: string;  // Optional category ID (string format for ObjectId)
-}
+  const handleAttributeChange = (attribute: string, value: string) => {
+    setSelectedValues((prev) => ({ ...prev, [attribute]: value }));
+  };
 
-interface Category {
-  _id: string;
-  name: string;
-}
-
-
-const ProductManagement: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]); 
-  //const [newProduct, setNewProduct] = useState({ name: "", price: "", description: "", categoryId: '', });
-  const [newProduct, setNewProduct] = useState({
-    name: "",
-    price: "",
-    description: "",
-    categoryId: "",
-    images: [] as File[], // Store multiple images here
-  });
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const [viewProduct, setViewProduct] = useState<Product | null>(null);
-  const [editProduct, setEditProduct] = useState<Product | null>(null);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [sellerId, setSellerId] = useState<string | null>(null);
-
-  const fetchCurrentUser = useUserSellerStore((state) => state.fetchCurrentUser);
-
-useEffect(() => {
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch('https://shaddyna-backend.onrender.com/api/categories');
-      if (!response.ok) {
-        throw new Error('Failed to fetch categories');
-      }
-      const data = await response.json();
-      setCategories(data);
-    } catch (error) {
-      console.error('Error fetching categories:', error);
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setImages([...images, ...Array.from(event.target.files)]);
     }
   };
 
-  fetchCategories();
-}, []);
-
-useEffect(() => {
-  const initializeSeller = async () => {
-    try {
-      await fetchCurrentUser();
-      const currentUserRole = useUserSellerStore.getState().currentUserRole;
-
-      if (currentUserRole === "seller") {
-        const { user, sellers } = useUserSellerStore.getState();
-
-        if (!user) {
-          console.error("User is null.");
-          return;
-        }
-
-        const seller = sellers.find((seller) => seller.email === user.email);
-
-        if (seller) {
-          setSellerId(seller._id);
-          console.log(`Seller ID set to: ${seller._id}`);
-        } else {
-          console.error("No matching seller found for the current user.");
-        }
-      }
-    } catch (error) {
-      console.error("An error occurred during seller initialization:", error);
-    }
+  const nextStep = () => {
+    if (currentStep < attributeKeys.length) setCurrentStep(currentStep + 1);
   };
 
-  initializeSeller();
-}, [fetchCurrentUser]);
-const handleDelete = async (id: string) => {
-    try {
-      const response = await fetch(`https://shaddyna-backend.onrender.com/api/products/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete product");
-      }
-      setProducts(products.filter((product) => product.id !== id));
-      alert("Product deleted successfully!");
-    } catch (error) {
-      console.error("Error deleting product:", error);
-      alert("Error deleting product. Please try again.");
-    }
+  const prevStep = () => {
+    if (currentStep > 0) setCurrentStep(currentStep - 1);
   };
 
-  const handleEdit = (id: string) => {
-    const productToEdit = products.find((product) => product.id === id);
-    if (productToEdit) {
-      setEditProduct({ ...productToEdit });
-    }
-  };
-  const handleAddProduct = async () => {
-    // Fetch current user and sellers from the store
-    await useUserSellerStore.getState().fetchCurrentUser();
-    const currentUserRole = useUserSellerStore.getState().currentUserRole;
-  
-    // Ensure the current user is a seller
-    if (currentUserRole !== "seller") {
-      alert("Only sellers can add products.");
-      return;
-    }
-  
-    const { user, sellers } = useUserSellerStore.getState();
-    if (!user) {
-      alert("User information is missing. Please log in.");
-      return;
-    }
-  
-    const seller = sellers.find((seller) => seller.email === user.email);
-    if (!seller) {
-      alert("No matching seller found for the current user.");
-      return;
-    }
-  
-    const sellerId = seller._id;
-    console.log(`Adding product for seller with ID: ${sellerId}`);
-  
-    // Log the newProduct object before validating
-    console.log("newProduct object before validation:", newProduct);
-  
-    // Validate if all required fields are provided
-    if (
-      !newProduct.name ||
-      !newProduct.price ||
-      !newProduct.description ||
-      !newProduct.categoryId ||
-      newProduct.images.length === 0
-    ) {
-      alert("All fields (name, price, description, category, and images) are required");
-      return;
-    }
-  
-    // Prepare the added product object
-    const addedProduct = {
-      name: newProduct.name,
-      price: parseFloat(newProduct.price),
-      description: newProduct.description,
-      categoryId: newProduct.categoryId,
-      sellerId, // Include sellerId here
-    };
-  
-    console.log("Product data being sent to server:", addedProduct);
-  
-    try {
-      const formData = new FormData();
-      formData.append("name", addedProduct.name);
-      formData.append("price", addedProduct.price.toString());
-      formData.append("description", addedProduct.description);
-      formData.append("categoryId", addedProduct.categoryId);
-      formData.append("sellerId", addedProduct.sellerId); // Append sellerId to FormData
-  
-      console.log("Images being sent:", newProduct.images);
-      newProduct.images.forEach((file, index) => {
-        console.log(`Appending image ${index + 1}: ${file.name}`);
-        formData.append("images", file);
-      });
-  
-      const response = await fetch("https://shaddyna-backend.onrender.com/api/products/add", {
-        method: "POST",
-        body: formData, // Let the browser set the Content-Type
-      });
-  
-      console.log("Response from server:", response);
-  
-      if (!response.ok) {
-        alert("Failed to add product");
-        return;
-      }
-  
-      const savedProduct = await response.json();
-      setProducts([...products, savedProduct.product]);
-      setNewProduct({ name: "", price: "", description: "", categoryId: "", images: [] });
-      setIsFormVisible(false);
-      alert("Product added successfully!");
-    } catch (error) {
-      console.error("Error adding product:", error);
-      alert("Error adding product. Please try again.");
-    }
-  };
-  const handleView = (product: Product) => {
-    setViewProduct(product);
-  };
-
-  const handleBack = () => {
-    setViewProduct(null);
-    setEditProduct(null);
-  };
-
-  const handleSaveEdit = async () => {
-    if (editProduct) {
-      try {
-        const response = await fetch(`https://shaddyna-backend.onrender.com/api/products/update/${editProduct.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-          },
-          body: JSON.stringify(editProduct),
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to update product");
-        }
-
-        const updatedProduct = await response.json();
-        setProducts(
-          products.map((product) =>
-            product.id === editProduct.id ? updatedProduct : product
-          )
-        );
-        setEditProduct(null);
-        alert("Product updated successfully!");
-      } catch (error) {
-        console.error("Error updating product:", error);
-        alert("Error updating product. Please try again.");
-      }
-    }
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Product Data:", { productName, category: selectedCategory, images, ...selectedValues });
+    alert("Product Created Successfully!");
   };
 
   return (
-    <div className="bg-white text-gray-800">
-    <Back title={"New Product"} />
-    <div className="">
-      {viewProduct ? (
-        <div className="container mx-auto p-6 bg-white rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-[#182155]">Product Details</h2>
-          <p className="text-sm text-gray-600">ID: {viewProduct.id}</p>
-          <p className="text-lg font-semibold text-[#182155]">Name: {viewProduct.name}</p>
-          <p className="text-lg text-[#ff199c]">Price: ${viewProduct.price}</p>
-          <p className="text-gray-600">{viewProduct.description}</p>
-          <button 
-            onClick={handleBack} 
-            className="mt-4 text-[#ff199c] hover:underline">
-            <FaArrowLeft /> Back
-          </button>
-        </div>
-      ) : editProduct ? (
-        <div className="container mx-auto p-6 bg-white rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-[#182155]">Edit Product</h2>
-          <input
-            type="text"
-            value={editProduct.name}
-            onChange={(e) => setEditProduct({ ...editProduct, name: e.target.value })}
-            className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-          />
-          <input
-            type="number"
-            value={editProduct.price}
-            onChange={(e) => setEditProduct({ ...editProduct, price: parseFloat(e.target.value) })}
-            className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-          />
-          <textarea
-            value={editProduct.description}
-            onChange={(e) => setEditProduct({ ...editProduct, description: e.target.value })}
-            className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-          />
-          <button
-            onClick={handleSaveEdit}
-            className="mt-4 bg-[#ff199c] text-white p-2 rounded-md"
-          >
-            Save
-          </button>
-          <button
-            onClick={handleBack}
-            className="mt-4 ml-4 text-[#ff199c] hover:underline"
-          >
-            Cancel
-          </button>
-        </div>
-     ) : isFormVisible ? (
-      <div className="min-h-screen container mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-[#182155]">Add New Product</h2>
-      <input
-        type="text"
-        placeholder="Product Name"
-        value={newProduct.name}
-        onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-      />
-      <input
-        type="number"
-        placeholder="Product Price"
-        value={newProduct.price}
-        onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
-        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-      />
-      <textarea
-        placeholder="Product Description"
-        value={newProduct.description}
-        onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
-        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-      />
-      <select
-        value={newProduct.categoryId}
-        onChange={(e) => setNewProduct({ ...newProduct, categoryId: e.target.value })}
-        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-      >
-        <option value="">Select a Category</option>
-        {categories.map((category) => (
-          <option key={category._id} value={category._id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
+      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold text-center mb-4">Create a Product</h2>
 
-      <input
-        type="file"
-        accept="image/*"
-        multiple
-        onChange={(e) => setNewProduct({ ...newProduct, images: Array.from(e.target.files || []) })}
-        className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-      />
-
-      <button
-        //onClick={handleAddProduct}
-        className="mt-4 bg-[#ff199c] text-white p-2 rounded-md"
-      >
-        Add Product
-      </button>
-      <button
-        onClick={() => setIsFormVisible(false)}
-        className="mt-4 ml-4 text-[#ff199c] hover:underline"
-      >
-        Cancel
-      </button>
-    </div>
-
-    ) : (
-    
-        <div className="min-h-screen container mx-auto p-6">
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => (
-              <li key={product.id} className="bg-white p-6 rounded-lg shadow-md">
-                <p className="font-semibold text-[#182155]">ID: {product.id}</p>
-                <p className="text-xl text-[#182155]">{product.name}</p>
-                <button
-                  onClick={() => handleView(product)}
-                  className="text-[#ff199c] mt-2 block"
-                >
-                  View
-                </button>
-                <button
-                  onClick={() => handleEdit(product.id)}
-                  className="text-[#ff199c] mt-2 block"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(product.id)}
-                  className="text-[#ff199c] mt-2 block"
-                >
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
-          <main className="min-h-screen flex-grow flex items-center justify-center p-4 sm:p-8">
-        <div className="w-full max-w-md sm:max-w-lg p-6 sm:p-8 bg-white rounded-lg shadow-lg border border-[#182155]">
-          <h1 className="text-xl sm:text-3xl text-center font-semibold text-[#182155] mb-4 sm:mb-6">
-            Post a new product
-          </h1>
-
-          <div className="flex flex-col items-center space-y-4 sm:space-y-6">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 border-4 border-t-4 border-[#ff199c] rounded-full animate-spin"></div>
-
-            <p className="text-sm sm:text-lg text-center text-[#182155]">
-            Start Selling Instantly – No Seller Registration Needed!
-
-Great news! On our e-commerce platform, you can create and sell products without the need to register as a seller. Whether you're a business owner or just someone with great items to offer, you can start selling right away!
-            </p>
-
-            <p className="text-xs sm:text-md text-center text-[#182155]">
-            Start selling today and reach buyers effortlessly! 🚀
-            </p>
-
-            <div className="flex justify-center mt-4 sm:mt-6">
-              <button className="py-2 px-4 sm:py-3 sm:px-6 bg-[#ff199c] text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-[#e0157f] transition duration-300"
-                onClick={() => setIsFormVisible(true)}
-              >
-                Add Product
-              </button>
-            </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold">Product Name</label>
+            <input
+              type="text"
+              className="w-full p-2 border rounded-md"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
+              required
+            />
           </div>
-        </div>
-      </main>
-        </div>
-      )}
-      <BottomNavigationBar />
-      <Footer />
-    </div>
+
+          <div>
+            <label className="block text-sm font-semibold">Select Category</label>
+            <select className="w-full p-2 border rounded-md" onChange={handleCategoryChange} value={selectedCategory || ""}>
+              <option value="">-- Select --</option>
+              {Object.keys(productCategories).map((key) => (
+                <option key={key} value={key}>
+                  {productCategories[key].label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {selectedCategory && currentStep < attributeKeys.length && (
+            <div>
+              <label className="block text-sm font-semibold">{attributeKeys[currentStep]}</label>
+              <select
+                className="w-full p-2 border rounded-md"
+                onChange={(e) => handleAttributeChange(attributeKeys[currentStep], e.target.value)}
+                value={selectedValues[attributeKeys[currentStep]] || ""}
+              >
+                <option value="">-- Select --</option>
+                {categoryAttributes![attributeKeys[currentStep]].map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-semibold">Upload Images</label>
+            <input type="file" multiple accept="image/*" onChange={handleImageUpload} className="w-full p-2 border rounded-md" />
+          </div>
+
+          {images.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {images.map((image, index) => (
+                <img key={index} src={URL.createObjectURL(image)} alt="preview" className="w-20 h-20 object-cover rounded-md" />
+              ))}
+            </div>
+          )}
+
+          {selectedCategory && Object.keys(selectedValues).length > 0 && (
+            <div className="bg-gray-200 p-4 rounded-md">
+              <h3 className="font-semibold mb-2">Summary</h3>
+              <ul className="text-sm">
+                <li><strong>Product Name:</strong> {productName}</li>
+                <li><strong>Category:</strong> {productCategories[selectedCategory].label}</li>
+                {Object.entries(selectedValues).map(([key, value]) => (
+                  <li key={key}><strong>{key}:</strong> {value}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="flex justify-between">
+            {currentStep > 0 && (
+              <button type="button" className="bg-gray-500 text-white px-4 py-2 rounded-md" onClick={prevStep}>Back</button>
+            )}
+            {currentStep < attributeKeys.length - 1 ? (
+              <button type="button" className="bg-blue-600 text-white px-4 py-2 rounded-md" onClick={nextStep} disabled={!selectedValues[attributeKeys[currentStep]]}>Next</button>
+            ) : (
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded-md w-full">Submit Product</button>
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default ProductManagement;
+export default AddProduct;*/
+
+"use client";
+import { useState } from "react";
+
+const productCategories = {
+  Car: {
+    label: "Car",
+    attributes: {
+      Model: ["Toyota", "Ford", "Tesla"],
+      Mileage: ["0-10K", "10K-50K", "50K+"],
+      FuelType: ["Petrol", "Diesel", "Electric"],
+      Transmission: ["Manual", "Automatic"],
+      Year: ["2020", "2021", "2022"],
+    },
+  },
+  Phone: {
+    label: "Phone",
+    attributes: {
+      Brand: ["Apple", "Samsung", "OnePlus"],
+      Storage: ["64GB", "128GB", "256GB"],
+      CameraPixel: ["12MP", "48MP", "108MP"],
+      BatteryLife: ["3000mAh", "4000mAh", "5000mAh"],
+    },
+  },
+  Clothes: {
+    label: "Clothes",
+    attributes: {
+      Brand: ["Nike", "Adidas", "Puma", "Kings"],
+      Size: ["S", "M", "L", "XL"],
+      Color: ["Red", "Blue", "Black", "White"],
+      Material: ["Cotton", "Polyester", "Denim"],
+    },
+  },
+};
+
+const AddProduct = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedValues, setSelectedValues] = useState<Record<string, string>>({});
+  const [currentStep, setCurrentStep] = useState(0);
+  const [productName, setProductName] = useState("");
+  const [productStock, setProductStock] = useState("");
+  const [images, setImages] = useState<File[]>([]);
+
+  const categoryAttributes = selectedCategory ? productCategories[selectedCategory].attributes : null;
+  const attributeKeys = categoryAttributes ? Object.keys(categoryAttributes) : [];
+
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategory(event.target.value);
+    setSelectedValues({});
+    setCurrentStep(0);
+  };
+
+  const handleAttributeChange = (attribute: string, value: string) => {
+    setSelectedValues((prev) => ({ ...prev, [attribute]: value }));
+  };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setImages([...images, ...Array.from(event.target.files)]);
+    }
+  };
+
+  const nextStep = () => {
+    if (currentStep < attributeKeys.length - 1) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Product Data:", { productName, productStock, category: selectedCategory, images, ...selectedValues });
+    alert("Product Created Successfully!");
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
+      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold text-center mb-4">Create a Product</h2>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold">Product Name</label>
+            <input
+              type="text"
+              className="w-full p-2 border rounded-md"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold">Product Stock</label>
+            <input
+              type="number"
+              className="w-full p-2 border rounded-md"
+              value={productStock}
+              onChange={(e) => setProductStock(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold">Select Category</label>
+            <select className="w-full p-2 border rounded-md" onChange={handleCategoryChange} value={selectedCategory || ""}>
+              <option value="">-- Select --</option>
+              {Object.keys(productCategories).map((key) => (
+                <option key={key} value={key}>
+                  {productCategories[key].label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {selectedCategory && currentStep < attributeKeys.length && (
+            <div>
+              <label className="block text-sm font-semibold">{attributeKeys[currentStep]}</label>
+              <select
+                className="w-full p-2 border rounded-md"
+                onChange={(e) => handleAttributeChange(attributeKeys[currentStep], e.target.value)}
+                value={selectedValues[attributeKeys[currentStep]] || ""}
+              >
+                <option value="">-- Select --</option>
+                {categoryAttributes![attributeKeys[currentStep]].map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-semibold">Upload Images</label>
+            <input type="file" multiple accept="image/*" onChange={handleImageUpload} className="w-full p-2 border rounded-md" />
+          </div>
+
+          {images.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {images.map((image, index) => (
+                <img key={index} src={URL.createObjectURL(image)} alt="preview" className="w-20 h-20 object-cover rounded-md" />
+              ))}
+            </div>
+          )}
+
+          {selectedCategory && Object.keys(selectedValues).length === attributeKeys.length && (
+            <div className="bg-gray-200 p-4 rounded-md">
+              <h3 className="text-lg font-semibold">Summary</h3>
+              <p><strong>Product Name:</strong> {productName}</p>
+              <p><strong>Product Stock:</strong> {productStock}</p>
+              <p><strong>Category:</strong> {selectedCategory}</p>
+              {Object.entries(selectedValues).map(([key, value]) => (
+                <p key={key}><strong>{key}:</strong> {value}</p>
+              ))}
+            </div>
+          )}
+
+          <div className="flex justify-between">
+            {currentStep > 0 && (
+              <button type="button" className="bg-gray-500 text-white px-4 py-2 rounded-md" onClick={prevStep}>Back</button>
+            )}
+            {currentStep < attributeKeys.length - 1 && (
+              <button type="button" className="bg-blue-600 text-white px-4 py-2 rounded-md" onClick={nextStep} disabled={!selectedValues[attributeKeys[currentStep]]}>Next</button>
+            )}
+          </div>
+
+          {selectedCategory && Object.keys(selectedValues).length === attributeKeys.length && (
+            <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded-md w-full mt-4">Submit Product</button>
+          )}
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default AddProduct;
