@@ -325,7 +325,7 @@ const AddProduct = () => {
               <option value="">-- Select --</option>
               {Object.keys(productCategories).map((key) => (
                 <option key={key} value={key}>
-                  {productCategories[key].label}
+                  {productCategories[key as keyof typeof productCategories].label}
                 </option>
               ))}
             </select>
