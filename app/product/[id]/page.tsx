@@ -227,6 +227,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
         if (!response.ok) throw new Error("Failed to fetch product details");
         
         const data = await response.json();
+
         const formattedProduct: ProductDetail = {
           id: data.product._id,
           name: data.product.name,
@@ -236,7 +237,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
           rating: data.product.rating || 0,
           stock: data.product.stock,
           category: data.product.category,
-          attributes: data.product.attributes || {},
+          attributes: data.product.attributes || {}, // ✅ Ensure attributes is always an object
         };
 
         setProduct(formattedProduct);
@@ -338,15 +339,17 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
               ))}
             </div>
 
-            {/* Attributes */}
-            <div className="mt-4 bg-white p-4 rounded-lg shadow">
-              <h2 className="text-lg text-gray-800 font-semibold">Specifications:</h2>
+
+            {product.attributes && Object.entries(product.attributes).length > 0 ? (
               <ul className="mt-2 text-gray-600">
                 {Object.entries(product.attributes).map(([key, value]) => (
                   <li key={key} className="capitalize"><b>{key}:</b> {value}</li>
                 ))}
               </ul>
-            </div>
+            ) : (
+              <p className="text-gray-500">No attributes available.</p>
+            )}
+
 
             {/* Buttons */}
             <div className="flex gap-4 mt-6">
@@ -373,7 +376,33 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
        <div className="bg-white mt-3">
         <h2 className="text-2xl font-bold  px-3">Related Products</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 mb-4 px-3">
-          {relatedProducts.map((related) => {
+        {relatedProducts.map((related) => {
+  const matchingAttributes = related.attributes
+    ? Object.entries(related.attributes).filter(
+        ([key, value]) => product?.attributes?.[key] === value
+      )
+    : [];
+
+  return (
+    <div key={related.id} className="border p-4 rounded-lg shadow">
+      <img src={related.images[0]} alt={related.name} className="w-full h-40 object-cover rounded" />
+      <h3 className="text-lg font-semibold mt-2">{related.name}</h3>
+      <p className="text-gray-600">Kes {related.price}</p>
+      {matchingAttributes.length > 0 && (
+        <p className="text-sm text-gray-500 mt-1">
+          Matches:
+          {matchingAttributes.map(([key, value]) => (
+            <span key={key} className="ml-1 text-gray-600 font-semibold">
+              {key}: {value}
+            </span>
+          ))}
+        </p>
+      )}
+    </div>
+  );
+})}
+
+          {/*{relatedProducts.map((related) => {
             const matchingAttributes = Object.entries(related.attributes).filter(
               ([key, value]) => product?.attributes[key] === value
             );
@@ -394,7 +423,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
                 )}
               </div>
             );
-          })}
+          })}*/}
         </div>
       </div>
       <Footer />
