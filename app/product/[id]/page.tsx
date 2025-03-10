@@ -253,7 +253,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
   useEffect(() => {
     const fetchRelatedProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/products/related/${productId}`);
+        const response = await fetch(`https://shaddyna-backend.onrender.com/api/products/related/${productId}`);
         if (!response.ok) throw new Error("Failed to fetch related products");
 
         const data = await response.json();

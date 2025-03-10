@@ -200,10 +200,12 @@ const productCategories = {
 
 
 
-const API_URL = "http://localhost:5000/api/products"; // Adjust based on backend URL
+const API_URL = "https://shaddyna-backend.onrender.com/api/products"; // Adjust based on backend URL
 
 const AddProduct = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+ 
+
   const [selectedValues, setSelectedValues] = useState<Record<string, string>>({});
   const [currentStep, setCurrentStep] = useState(0);
   const [productName, setProductName] = useState("");
@@ -211,7 +213,12 @@ const AddProduct = () => {
   const [productPrice, setProductPrice] = useState("");
   const [images, setImages] = useState<File[]>([]);
 
-  const categoryAttributes = selectedCategory ? productCategories[selectedCategory].attributes : null;
+  //const categoryAttributes = selectedCategory ? productCategories[selectedCategory as keyof typeof productCategories].attributes : null;
+  const categoryAttributes = selectedCategory 
+  ? productCategories[selectedCategory as keyof typeof productCategories].attributes 
+  : null;
+
+
   const attributeKeys = categoryAttributes ? Object.keys(categoryAttributes) : [];
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -224,19 +231,12 @@ const AddProduct = () => {
     setSelectedValues((prev) => ({ ...prev, [attribute]: value }));
   };
 
-  /*const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      setImages([...images, ...Array.from(event.target.files)]);
-    }
-  };*/
-
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       setImages([...images, ...Array.from(event.target.files)]);
     }
   };
   
-
   const nextStep = () => {
     if (currentStep < attributeKeys.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -248,29 +248,11 @@ const AddProduct = () => {
       setCurrentStep(currentStep - 1);
     }
   };
-  const removeImage = (index) => {
+  const removeImage = (index: number) => {
     setImages(images.filter((_, i) => i !== index));
   };
 
-  /*const handleSubmit = async (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
-    
-    const formData = new FormData();
-    formData.append("name", productName);
-    formData.append("stock", productStock);
-    formData.append("category", selectedCategory);
-    formData.append("attributes", JSON.stringify(selectedValues));
-    images.forEach((image) => formData.append("images", image));
 
-    try {
-      const response = await axios.post(API_URL, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      alert("Product Created Successfully!");
-    } catch (error) {
-      console.error("Error adding product:", error);
-    }
-  };*/
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
   
@@ -372,13 +354,6 @@ const AddProduct = () => {
             <input type="file" multiple accept="image/*" onChange={handleImageUpload} className="w-full p-2 border rounded-md" />
           </div>
 
-         {/*{images.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-2">
-              {images.map((image, index) => (
-                <img key={index} src={URL.createObjectURL(image)} alt="preview" className="w-20 h-20 object-cover rounded-md" />
-              ))}
-            </div>
-          )}*/}
 
           {images.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-2">
