@@ -340,7 +340,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
 
             {/* Attributes */}
             <div className="mt-4 bg-white p-4 rounded-lg shadow">
-              <h2 className="text-lg font-semibold">Specifications:</h2>
+              <h2 className="text-lg text-gray-800 font-semibold">Specifications:</h2>
               <ul className="mt-2 text-gray-600">
                 {Object.entries(product.attributes).map(([key, value]) => (
                   <li key={key} className="capitalize"><b>{key}:</b> {value}</li>
@@ -370,7 +370,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
         )}
       </div>
          {/* Related Products Section */}
-       <div className="mt-3">
+       <div className="bg-white mt-3">
         <h2 className="text-2xl font-bold  px-3">Related Products</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 mb-4 px-3">
           {relatedProducts.map((related) => {
@@ -386,7 +386,7 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
                   <p className="text-sm text-gray-500 mt-1">
                     Matches:
                     {matchingAttributes.map(([key, value]) => (
-                      <span key={key} className="ml-1 font-semibold">
+                      <span key={key} className="ml-1 text-gray-600 font-semibold">
                         {key}: {value}
                       </span>
                     ))}
