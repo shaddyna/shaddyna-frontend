@@ -164,7 +164,8 @@ const AddProduct = () => {
 export default AddProduct;*/
 
 "use client";
-import { useState } from "react";
+import axios from "axios";
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react";
 
 const productCategories = {
   Car: {
@@ -197,12 +198,17 @@ const productCategories = {
   },
 };
 
+
+
+const API_URL = "http://localhost:5000/api/products"; // Adjust based on backend URL
+
 const AddProduct = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedValues, setSelectedValues] = useState<Record<string, string>>({});
   const [currentStep, setCurrentStep] = useState(0);
   const [productName, setProductName] = useState("");
   const [productStock, setProductStock] = useState("");
+  const [productPrice, setProductPrice] = useState("");
   const [images, setImages] = useState<File[]>([]);
 
   const categoryAttributes = selectedCategory ? productCategories[selectedCategory].attributes : null;
@@ -218,11 +224,18 @@ const AddProduct = () => {
     setSelectedValues((prev) => ({ ...prev, [attribute]: value }));
   };
 
+  /*const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setImages([...images, ...Array.from(event.target.files)]);
+    }
+  };*/
+
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       setImages([...images, ...Array.from(event.target.files)]);
     }
   };
+  
 
   const nextStep = () => {
     if (currentStep < attributeKeys.length - 1) {
@@ -235,12 +248,57 @@ const AddProduct = () => {
       setCurrentStep(currentStep - 1);
     }
   };
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log("Product Data:", { productName, productStock, category: selectedCategory, images, ...selectedValues });
-    alert("Product Created Successfully!");
+  const removeImage = (index) => {
+    setImages(images.filter((_, i) => i !== index));
   };
+
+  /*const handleSubmit = async (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    
+    const formData = new FormData();
+    formData.append("name", productName);
+    formData.append("stock", productStock);
+    formData.append("category", selectedCategory);
+    formData.append("attributes", JSON.stringify(selectedValues));
+    images.forEach((image) => formData.append("images", image));
+
+    try {
+      const response = await axios.post(API_URL, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      alert("Product Created Successfully!");
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
+  };*/
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+  
+    const formData = new FormData();
+    formData.append("name", productName);
+    formData.append("stock", productStock);
+    formData.append("price", productPrice);
+    formData.append("category", selectedCategory!);
+    formData.append("attributes", JSON.stringify(selectedValues));
+    images.forEach((image) => formData.append("images", image));
+  
+    try {
+      const response = await axios.post(API_URL, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+  
+      alert("Product Created Successfully!");
+      setProductName("");
+      setProductStock("");
+      setProductPrice("");
+      setSelectedCategory(null);
+      setSelectedValues({});
+      setImages([]);
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
+  };
+  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
@@ -268,6 +326,16 @@ const AddProduct = () => {
               required
             />
           </div>
+          <div>
+            <label className="block text-sm font-semibold">Product Price</label>
+            <input
+              type="number"
+              className="w-full p-2 border rounded-md"
+              value={productPrice}
+              onChange={(e) => setProductPrice(e.target.value)}
+              required
+            />
+          </div>
 
           <div>
             <label className="block text-sm font-semibold">Select Category</label>
@@ -290,7 +358,7 @@ const AddProduct = () => {
                 value={selectedValues[attributeKeys[currentStep]] || ""}
               >
                 <option value="">-- Select --</option>
-                {categoryAttributes![attributeKeys[currentStep]].map((option) => (
+                {categoryAttributes![attributeKeys[currentStep]].map((option: boolean | Key | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined) => (
                   <option key={option} value={option}>
                     {option}
                   </option>
@@ -304,10 +372,21 @@ const AddProduct = () => {
             <input type="file" multiple accept="image/*" onChange={handleImageUpload} className="w-full p-2 border rounded-md" />
           </div>
 
-          {images.length > 0 && (
+         {/*{images.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-2">
               {images.map((image, index) => (
                 <img key={index} src={URL.createObjectURL(image)} alt="preview" className="w-20 h-20 object-cover rounded-md" />
+              ))}
+            </div>
+          )}*/}
+
+          {images.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {images.map((image, index) => (
+                <div key={index} className="relative">
+                  <img src={URL.createObjectURL(image)} alt="preview" className="w-20 h-20 object-cover rounded-md" />
+                  <button type="button" onClick={() => removeImage(index)} className="absolute top-0 right-0 bg-red-500 text-white text-xs p-1 rounded-full">X</button>
+                </div>
               ))}
             </div>
           )}
@@ -317,6 +396,7 @@ const AddProduct = () => {
               <h3 className="text-lg font-semibold">Summary</h3>
               <p><strong>Product Name:</strong> {productName}</p>
               <p><strong>Product Stock:</strong> {productStock}</p>
+              <p><strong>Product Price:</strong> {productPrice}</p>
               <p><strong>Category:</strong> {selectedCategory}</p>
               {Object.entries(selectedValues).map(([key, value]) => (
                 <p key={key}><strong>{key}:</strong> {value}</p>
