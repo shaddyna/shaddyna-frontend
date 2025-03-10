@@ -335,17 +335,17 @@ const AddProduct = () => {
             <div>
               <label className="block text-sm font-semibold">{attributeKeys[currentStep]}</label>
               <select
-                className="w-full p-2 border rounded-md"
-                onChange={(e) => handleAttributeChange(attributeKeys[currentStep], e.target.value)}
-                value={selectedValues[attributeKeys[currentStep]] || ""}
-              >
-                <option value="">-- Select --</option>
-                {categoryAttributes![attributeKeys[currentStep]].map((option: boolean | Key | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+              className="w-full p-2 border rounded-md"
+              onChange={(e) => handleAttributeChange(attributeKeys[currentStep], e.target.value)}
+              value={selectedValues[attributeKeys[currentStep]] || ""}
+            >
+              <option value="">-- Select --</option>
+              {(categoryAttributes! as Record<string, string[]>)[attributeKeys[currentStep]].map((option: string) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
             </div>
           )}
 
