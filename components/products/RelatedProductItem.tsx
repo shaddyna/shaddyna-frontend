@@ -69,7 +69,7 @@ export const RelatedProductItem: React.FC<RelatedProductItemProps> = ({
     : [];
 
   return (
-    <div className="relative bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+    <div className="relative bg-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
       {/* Product Image */}
       <div className="w-full h-40 overflow-hidden rounded-lg">
         <img
@@ -80,7 +80,7 @@ export const RelatedProductItem: React.FC<RelatedProductItemProps> = ({
       </div>
 
       {/* Product Info */}
-      <h3 className="text-lg font-semibold mt-2 text-gray-900">{product.name}</h3>
+      <h3 className="text-lg font-semibold mt-0 text-gray-900">{product.name}</h3>
       <p className="text-gray-600 font-bold text-sm">Kes {product.price}</p>
 
       {/* Matching Attributes */}

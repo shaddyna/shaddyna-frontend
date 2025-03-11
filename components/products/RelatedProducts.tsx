@@ -32,7 +32,7 @@ export const RelatedProducts: React.FC<RelatedProductsProps> = ({
   });
 
   return (
-    <div className="bg-white mt-6 p-4 rounded-lg shadow-lg">
+    <div className=" mt-6 p-0 rounded-lg ">
       {/* Heading */}
       <div className="flex flex-col sm:flex-row justify-between items-center px-4">
         <h2 className="text-2xl font-bold text-gray-900">Related Products</h2>
@@ -56,7 +56,7 @@ export const RelatedProducts: React.FC<RelatedProductsProps> = ({
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 px-2 sm:px-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-6 px-0 sm:px-2">
         {filteredProducts.map((related) => (
           <RelatedProductItem
             key={related.id}
