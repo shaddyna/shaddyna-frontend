@@ -98,7 +98,7 @@ export const RelatedProductItem: React.FC<RelatedProductItemProps> = ({
       {/* Add to MiniCart Icon */}
       <button
         onClick={() => onAddToMiniCart(product)}
-        className="absolute top-3 right-3 p-2 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
+        className="absolute top-3 right-3 p-2 bg-[#0f1c47] text-white rounded-full shadow-md hover:bg-blue-700 transition-all"
       >
         <ShoppingCart size={18} />
       </button>

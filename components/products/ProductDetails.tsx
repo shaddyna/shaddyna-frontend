@@ -43,13 +43,13 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
     <div className="flex gap-4 mt-6">
       <button
         onClick={onAddToCart}
-        className="bg-blue-600 text-white py-2 px-4 rounded-lg font-bold flex items-center gap-2 hover:bg-blue-700 transition"
+        className="bg-[#0f1c47] text-white py-2 px-4 rounded-lg font-bold flex items-center gap-2 hover:bg-blue-700 transition"
       >
         <FaShoppingCart /> Add to Cart
       </button>
       <button
         onClick={onAddToWishlist}
-        className="bg-pink-500 text-white py-2 px-4 rounded-lg font-bold flex items-center gap-2 hover:bg-red-600 transition"
+        className="bg-[#bf2c7e] text-white py-2 px-4 rounded-lg font-bold flex items-center gap-2 hover:bg-red-600 transition"
       >
         <FaHeart /> Add to Wishlist
       </button>
