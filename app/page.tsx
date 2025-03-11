@@ -58,11 +58,11 @@ import Products from '@/components/Products';
 import HeadNavigation from '@/components/HeadNavigation';
 import Footer from '@/components/Footer';
 import Shop from '@/components/shop';
-import BottomNavigationBar from '@/components/BottomNav';
 import HeroCarousel from '@/components/Courosel';
 import BrandSection from '@/components/BrandSection';
 import ShaddynaButton from '@/components/ShaddynaButton';
 import SearchBar from '@/components/Search';
+import BottomNav from '@/components/BottomNav';
 
 // New Ad Component
 const ResponsiveAd: React.FC<{ position: string }> = ({ position }) => {
@@ -174,7 +174,7 @@ const HomePage: React.FC = () => {
         })}
       </div>
       <Footer />
-      <BottomNavigationBar />
+      <BottomNav />
     </div>
   );
 };

@@ -85,7 +85,7 @@ import { FaFacebook, FaTwitter, FaDribbble, FaInstagram, FaYoutube } from "react
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0f1c47] text-gray-300 py-4 mb-16">
+    <footer className="bg-[#0f1c47] text-gray-300 py-4 mb-0">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
         {/* Brand Section */}
         <div>

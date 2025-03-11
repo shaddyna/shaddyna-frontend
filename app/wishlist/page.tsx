@@ -89,7 +89,7 @@ const WishlistPage: React.FC = () => {
 
   return (
     <div>
-      <Back title={"Your Wishlist"} />
+      <HeadNavigation />
     <div className="bg-gray-50 min-h-screen flex flex-col">
     <div className="px-4 py-0">
     <div className="pb-4 pt-4">

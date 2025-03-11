@@ -1,5 +1,5 @@
 // components/BottomNavigationBar.tsx
-"use client"
+/*"use client"
 import { DollarCircleIcon, FavouriteIcon, PlusSignCircleIcon, ShoppingBasket01Icon } from 'hugeicons-react';
 import { CircleHelp, DollarSign, Heart, PlusCircleIcon, Search, Store } from 'lucide-react';
 import React, { useState } from 'react';
@@ -57,5 +57,45 @@ const BottomNavigationBar: React.FC = () => {
   );
 };
 
-export default BottomNavigationBar;
+export default BottomNavigationBar;*/
 
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FaHome, FaStore, FaHeart, FaComments, FaShoppingBag } from "react-icons/fa";
+
+const BottomNavBar = () => {
+  const pathname = usePathname() ?? ""; // Ensure it's always a string
+  // Get the current route
+
+  return (
+    <nav className="fixed bottom-0 left-0 w-full bg-white border-t shadow-md flex justify-around py-2 z-50">
+      <NavItem href="/" icon={FaHome} label="Home" pathname={pathname} />
+      <NavItem href="/shops" icon={FaStore} label="Shops" pathname={pathname} />
+      <NavItem href="/sell" icon={FaShoppingBag} label="Sell" pathname={pathname} />
+      <NavItem href="/wishlist" icon={FaHeart} label="Wishlist" pathname={pathname} />
+      <NavItem href="/forum" icon={FaComments} label="Forum" pathname={pathname} />
+    </nav>
+  );
+};
+
+interface NavItemProps {
+  href: string;
+  icon: React.ComponentType<{ size: number; className: string }>;
+  label: string;
+  pathname: string;
+}
+
+const NavItem: React.FC<NavItemProps> = ({ href, icon: Icon, label, pathname }) => {
+  const isActive = pathname === href;
+
+  return (
+    <Link href={href} className="flex flex-col items-center">
+      <Icon size={24} className={`transition-colors duration-300 ${isActive ? "text-blue-600" : "text-gray-500"}`} />
+      <span className={`text-xs font-medium ${isActive ? "text-blue-600" : "text-gray-500"}`}>{label}</span>
+    </Link>
+  );
+};
+
+export default BottomNavBar;

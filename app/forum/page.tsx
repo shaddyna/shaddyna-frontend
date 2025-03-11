@@ -152,6 +152,9 @@ export default ForumPage;*/
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Back from "@/components/Back";
+import Footer from "@/components/Footer";
+import BottomNavBar from "@/components/BottomNav";
 
 const ForumForm = () => {
   const router = useRouter();
@@ -218,6 +221,8 @@ const ForumForm = () => {
   };
 
   return (
+    <div>
+      <Back title={"Forum"} />
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-semibold text-center mb-4">
@@ -279,6 +284,9 @@ const ForumForm = () => {
           </button>
         </form>
       </div>
+    </div>
+    <Footer />
+    <BottomNavBar />
     </div>
   );
 };

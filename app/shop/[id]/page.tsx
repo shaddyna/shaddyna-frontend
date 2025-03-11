@@ -717,7 +717,7 @@ const ShopDetails: React.FC = () => {
                 type="text"
                 name="user"
                 value={newReview.user}
-                onChange={handleReviewChange}
+                /onChange={handleReviewChange}
                 placeholder="Your name"
                 className="w-full py-3 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-[#ff199c] transition"
               />
@@ -752,7 +752,6 @@ const ShopDetails: React.FC = () => {
 
       {/* Footer and Bottom Navigation Bar */}
       <Footer />
-      <BottomNavigationBar />
     </div>
   );
 };
