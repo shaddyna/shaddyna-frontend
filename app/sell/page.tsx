@@ -189,7 +189,7 @@ const AddProduct = () => {
 
           <div>
             <label className="block text-sm text-gray-800 font-semibold">Upload Images</label>
-            <input type="file" multiple accept="image/*" onChange={handleImageUpload} className="w-full p-2 border rounded-md" />
+            <input type="file" multiple accept="image/*" onChange={handleImageUpload} className="w-full text-gray-800 p-2 border rounded-md" />
           </div>
 
 
