@@ -122,12 +122,12 @@ const WishlistPage: React.FC = () => {
                   <h3 className="text-xs sm:text-sm font-semibold text-gray-800 truncate">
                     {product.name}
                   </h3>
-                  <p className="text-xs text-gray-500 font-medium mt-1">
+                  <p className="text-sm text-gray-500 font-medium mt-1">
                     Kes {product.price}
                   </p>
 
                   {/* Actions */}
-                  <div className="flex justify-between items-center mt-3">
+                  <div className="flex justify-between items-center mt-1">
                     <button
                       onClick={() => removeItem(product._id)}
                       className="flex items-center gap-1 sm:gap-2 text-[#bf2c7e] hover:text-red-600 text-xs sm:text-sm transition-transform transform hover:scale-105"
@@ -137,7 +137,7 @@ const WishlistPage: React.FC = () => {
                     </button>
                     <button
                       onClick={() => handleProductClick(product._id)}
-                      className="flex items-center gap-1 sm:gap-2 bg-[#0f1c47] text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-md text-xs sm:text-sm hover:bg-blue-700 transition"
+                      className="flex items-center gap-1 sm:gap-2 bg-[#0f1c47] text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-md text-sm sm:text-sm hover:bg-blue-900 transition"
                     >
                       <ViewIcon size={16} />
                       <span>View</span>
@@ -153,7 +153,7 @@ const WishlistPage: React.FC = () => {
             <p className="text-gray-500 text-sm sm:text-lg">Your wishlist is empty.</p>
             <button
               onClick={() => router.push("/")}
-              className="mt-3 bg-[#0f1c47] text-white px-4 sm:px-5 py-2 rounded-md text-sm hover:bg-blue-700 transition"
+              className="mt-3 bg-[#0f1c47] text-white px-4 sm:px-5 py-2 rounded-md text-sm hover:bg-blue-900 transition"
             >
               Explore Products
             </button>
