@@ -130,9 +130,9 @@ const HomePage: React.FC = () => {
       type: 'content',
       component: (
         <div key="shop-section">
-          <h1 className="text-center text-3xl font-semibold text-gray-800 pb-4 pt-2">
+          {/*<h1 className="text-center text-3xl font-semibold text-gray-800 pb-4 pt-2">
             Our Shops
-          </h1>
+          </h1>*/}
           <Shop />
         </div>
       )
