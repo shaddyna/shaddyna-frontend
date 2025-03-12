@@ -303,7 +303,7 @@ const CategoriesList: React.FC = () => {
       {/* Button for Small Screens */}
       <div className="lg:hidden w-full mb-4">
         <button
-          className="w-full px-3 py-2 border-2 border-[#182155] font-bold text-[#182155] hover:text-white hover:bg-[#ff199c] rounded transition"
+          className="w-full px-3 py-2 border-2 border-[#182155] font-bold text-[#182155] hover:text-white hover:bg-[#bf2c7e] rounded transition"
           onClick={handlePaymentClick}
           disabled={loading}
         >
@@ -341,7 +341,7 @@ const CategoriesList: React.FC = () => {
           ))}
           {/* More Categories Button */}
           <button
-            className="text-xs sm:text-sm font-medium text-[#182155] hover:text-[#ff199c] border border-gray-300 px-2 py-1 rounded-md transition"
+            className="text-xs sm:text-sm font-medium text-[#182155] hover:text-[#bf2c7e] border border-gray-300 px-2 py-1 rounded-md transition"
             onClick={handleMoreCategoriesClick}
           >
             More..
@@ -359,7 +359,7 @@ const CategoriesList: React.FC = () => {
               {categories.map((category) => (
                 <div
                   key={category._id}
-                  className="text-lg font-medium text-[#182155] hover:text-[#ff199c] cursor-pointer"
+                  className="text-lg font-medium text-[#182155] hover:text-[#bf2c7e] cursor-pointer"
                   onClick={() => handleCategoryClick(category._id)}
                 >
                   {category.name}
@@ -367,14 +367,14 @@ const CategoriesList: React.FC = () => {
               ))}
               {/* More Categories Button for Large Screens */}
               <button
-                className="text-sm font-medium text-[#182155] hover:text-[#ff199c] border border-gray-300 px-2 py-1 rounded-md transition"
+                className="text-sm font-medium text-[#182155] hover:text-[#bf2c7e] border border-gray-300 px-2 py-1 rounded-md transition"
                 onClick={handleMoreCategoriesClick}
               >
                 More
               </button>
             </div>
             <button
-              className="px-6 py-2 font-bold border-2 border-[#182155] text-[#182155] hover:text-white hover:bg-[#ff199c] rounded transition"
+              className="px-6 py-2 font-bold border-2 border-[#182155] text-[#182155] hover:text-white hover:bg-[#bf2c7e] rounded transition"
               onClick={handlePaymentClick}
               disabled={loading}
             >

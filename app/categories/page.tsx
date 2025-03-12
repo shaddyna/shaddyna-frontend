@@ -43,14 +43,14 @@ const AllCategories: React.FC = () => {
 
   return (
     <div>
-         <Back title="Categories" />
-    <div className="min-h-screen  px-3 pb-3">
+    <Back title={"Categories"} />
+    <div className="min-h-screen bg-white px-3 pb-3">
       <section className="my-3 max-w-7xl mx-auto">
         <h1 className="text-xl font-extrabold text-center text-gray-900 mb-3">Explore Categories</h1>
         {isFetching ? (
           <CategoryShimmerLoader />
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-0">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
             {categories.map((category) => (
               <div
                 key={category._id}
