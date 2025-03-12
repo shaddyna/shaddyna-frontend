@@ -42,7 +42,7 @@ const AllCategories: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="bg-white">
     <Back title={"Categories"} />
     <div className="min-h-screen bg-white px-3 pb-3">
       <section className="my-3 max-w-7xl mx-auto">
@@ -64,7 +64,7 @@ const AllCategories: React.FC = () => {
                     className="w-full h-full object-cover rounded-xl hover:opacity-90 transition-opacity duration-300"
                   />
                 </div>
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 mt-3 text-center capitalize tracking-wide">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 mt-1 text-center capitalize tracking-wide">
                   {category.name}
                 </h3>
               </div>
