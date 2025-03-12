@@ -97,9 +97,7 @@ const WishlistPage: React.FC = () => {
       <HeadNavigation />
 
       {/* Wishlist Content */}
-      <div className="px-3 py-3 max-w-6xl mx-auto w-full">
-        <h2 className="text-xl font-bold text-gray-800 mb-3">Your Wishlist ❤️</h2>
-
+      <div className=" min-h-screen px-3 py-3 max-w-6xl mx-auto w-full">
         {wishlistItems.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {wishlistItems.map((product) => (
@@ -150,12 +148,12 @@ const WishlistPage: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-12 text-center">
-            <img src="/empty-wishlist.png" alt="Empty Wishlist" className="w-32 sm:w-40 mb-4" />
+          <div className="flex flex-col items-center justify-center py-3 text-center">
+            <img src="/assets/images/Empty.gif" alt="Empty Wishlist" className="w-64 sm:w-64 mb-4" />
             <p className="text-gray-500 text-sm sm:text-lg">Your wishlist is empty.</p>
             <button
-              onClick={() => router.push("/shop")}
-              className="mt-4 bg-blue-600 text-white px-4 sm:px-5 py-2 rounded-md text-sm hover:bg-blue-700 transition"
+              onClick={() => router.push("/")}
+              className="mt-3 bg-[#0f1c47] text-white px-4 sm:px-5 py-2 rounded-md text-sm hover:bg-blue-700 transition"
             >
               Explore Products
             </button>
