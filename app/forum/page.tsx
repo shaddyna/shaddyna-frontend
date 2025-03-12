@@ -223,7 +223,7 @@ const ForumForm = () => {
   return (
     <div>
       <Back title={"Forum"} />
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-semibold text-center mb-4">
           Create Your First Saving
@@ -277,7 +277,7 @@ const ForumForm = () => {
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
+            className="w-full bg-[#0f1c47] text-white p-2 rounded-lg hover:bg-blue-900"
             disabled={loading}
           >
             {loading ? "Saving..." : "Submit"}
