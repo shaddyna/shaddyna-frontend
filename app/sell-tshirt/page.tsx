@@ -207,9 +207,9 @@ const AddProduct = () => {
           {selectedCategory && Object.keys(selectedValues).length === attributeKeys.length && (
             <div className="bg-gray-200 p-4 rounded-md">
               <h3 className="text-lg font-semibold">Summary:</h3>
-              <p><strong>Product Name:</strong> {productName}</p>
+              {/*<p><strong>Product Name:</strong> {productName}</p>
               <p><strong>Product Stock:</strong> {productStock}</p>
-              <p><strong>Product Price:</strong> {productPrice}</p>
+              <p><strong>Product Price:</strong> {productPrice}</p>*/}
               <p><strong>Type:</strong> {selectedCategory}</p>
               {Object.entries(selectedValues).map(([key, value]) => (
                 <p key={key}><strong>{key}:</strong> {value}</p>
