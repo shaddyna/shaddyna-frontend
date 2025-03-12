@@ -10,7 +10,7 @@ const productCategories = {
   Kings: {
     label: "Kings",
     attributes: {
-      Color: ["Blue", "Pink"],
+      Color: ["Blue", "Pink", "White"],
       Size: ["S", "M", "L", "XL",  "XXL"],
     },
   },
@@ -222,7 +222,7 @@ const AddProduct = () => {
               <button type="button" className="bg-gray-500 text-white px-4 py-2 rounded-md" onClick={prevStep}>Back</button>
             )}
             {currentStep < attributeKeys.length - 1 && (
-              <button type="button" className="bg-blue-600 text-white px-4 py-2 rounded-md" onClick={nextStep} disabled={!selectedValues[attributeKeys[currentStep]]}>Next</button>
+              <button type="button" className="bg-[#0f1c47] text-white px-4 py-2 rounded-md" onClick={nextStep} disabled={!selectedValues[attributeKeys[currentStep]]}>Next</button>
             )}
           </div>
 

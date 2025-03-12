@@ -21,6 +21,7 @@ const AddProduct = () => {
   const [selectedValues, setSelectedValues] = useState<Record<string, string>>({});
   const [currentStep, setCurrentStep] = useState(0);
   const [productName, setProductName] = useState("");
+  const [productNName, setProductNName] = useState("");
   const [productStock, setProductStock] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [images, setImages] = useState<File[]>([]);
@@ -70,6 +71,7 @@ const AddProduct = () => {
   
     const formData = new FormData();
     formData.append("name", productName);
+    formData.append("name", productNName);
     formData.append("stock", productStock);
     formData.append("price", productPrice);
     formData.append("category", selectedCategory!);
@@ -83,6 +85,7 @@ const AddProduct = () => {
   
       alert("Product Created Successfully!");
       setProductName("");
+      setProductNName("");
       setProductStock("");
       setProductPrice("");
       setSelectedCategory(null);
@@ -132,13 +135,23 @@ const AddProduct = () => {
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">Sell shop spaces</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm text-gray-800 font-semibold">Customer Name</label>
+        <div>
+            <label className="block text-sm text-gray-800 font-semibold">Shop Name</label>
             <input
               type="text"
               className="w-full p-2 border rounded-md"
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-800 font-semibold">Customer Name</label>
+            <input
+              type="text"
+              className="w-full p-2 border rounded-md"
+              value={productNName}
+              onChange={(e) => setProductNName(e.target.value)}
               required
             />
           </div>
@@ -206,6 +219,7 @@ const AddProduct = () => {
             <div className="bg-gray-200 p-4 rounded-md">
               <h3 className="text-lg font-semibold">Summary:</h3>
               <p><strong>Shop Name:</strong> {productName}</p>
+              <p><strong>Customer Name:</strong> {productNName}</p>
               <p><strong>Customer Number:</strong> {productStock}</p>
               <p><strong>Amount:</strong> {productPrice}</p>
               <p><strong>Type:</strong> {selectedCategory}</p>

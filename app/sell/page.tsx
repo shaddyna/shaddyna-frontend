@@ -121,7 +121,7 @@ const AddProduct = () => {
   return (
     <div>
     <Back title={"Sell"} />
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-3">
+    <div className="min-h-screen justify-center bg-gray-100 p-3">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">Create a Product</h2>
 

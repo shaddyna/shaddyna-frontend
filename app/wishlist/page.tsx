@@ -149,7 +149,7 @@ const WishlistPage: React.FC = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-3 text-center">
-            <img src="/assets/images/Empty.gif" alt="Empty Wishlist" className="w-64 sm:w-64 mb-4" />
+            <img src="/assets/images/Empty.gif" alt="Empty Wishlist" className="w-128 sm:w-128 mb-4" />
             <p className="text-gray-500 text-sm sm:text-lg">Your wishlist is empty.</p>
             <button
               onClick={() => router.push("/")}
