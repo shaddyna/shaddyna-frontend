@@ -49,7 +49,7 @@ const ShopsPage: NextPage = () => {
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
      <HeadNavigation />
-      <div className="max-w-screen-xl mx-auto p-4">
+     <div className="max-w-screen-xl mx-auto p-0 px-3">
       <Shop />
       </div>
       <Footer />

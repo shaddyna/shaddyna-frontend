@@ -292,7 +292,7 @@ const Shop: React.FC = () => {
     <div className="container mx-auto px-0 pb-3">
       <h2 className="text-center text-xl font-bold text-gray-800 my-3">Explore Shops</h2>
       
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
         {shops.map((shop) => (
           <div
             key={shop._id}
