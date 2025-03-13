@@ -63,23 +63,26 @@ export default BottomNavigationBar;*/
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useUIStore } from '@/store/ui-store';
 import { DollarCircleIcon, FavouriteIcon, PlusSignCircleIcon, ShoppingBasket01Icon, Home02Icon } from 'hugeicons-react';
 
 const BottomNavBar = () => {
-  const pathname = usePathname() ?? ""; // Ensure it's always a string
-  // Get the current route
+  const isDrawerOpen = useUIStore((state) => state.isDrawerOpen);
+  const pathname = usePathname() ?? "";
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full bg-white border-t shadow-md flex justify-around py-2 z-50">
+    <nav className={`fixed bottom-0 left-0 w-full bg-white border-t shadow-md flex justify-around py-2 z-40 transition-transform duration-300 ${
+      isDrawerOpen ? 'translate-y-full' : 'translate-y-0'
+    }`}>
       <NavItem href="/" icon={Home02Icon} label="Home" pathname={pathname} />
       <NavItem href="/shops" icon={ShoppingBasket01Icon} label="Shops" pathname={pathname} />
       <NavItem href="/sell" icon={PlusSignCircleIcon} label="Sell" pathname={pathname} />
       <NavItem href="/wishlist" icon={FavouriteIcon} label="Wishlist" pathname={pathname} />
       <NavItem href="/forum" icon={DollarCircleIcon} label="Forum" pathname={pathname} />
+      {/* ... rest of the nav items ... */}
     </nav>
   );
 };
-
 interface NavItemProps {
   href: string;
   icon: React.ComponentType<{ size: number; className: string }>;
@@ -99,3 +102,6 @@ const NavItem: React.FC<NavItemProps> = ({ href, icon: Icon, label, pathname }) 
 };
 
 export default BottomNavBar;
+
+
+

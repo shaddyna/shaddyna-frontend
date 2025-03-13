@@ -1,8 +1,7 @@
-"use client";
+/*"use client";
 
 import React, { useEffect, useState } from "react";
 import {
-  FaBars,
   FaSearch,
   FaCompass,
   FaHeart,
@@ -16,7 +15,6 @@ import {
   FaCogs,
   FaTruck,
   FaShoppingBag,
-  FaShoppingCart,
   FaBlog, // Import the "X" icon for closing the drawer
 } from "react-icons/fa";
 import { useRouter } from 'next/navigation'
@@ -145,11 +143,11 @@ const HeadNavigation: React.FC = () => {
   return (
     <><Header />
     <header className="bg-white shadow-md sticky top-0 z-50 px-4 py-2">
-      {/* Responsive Container */}
+      {/* Responsive Container *
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
-        {/* Top Row (Small Screens: Nav and Logo on left, Msg and Notification on right) */}
+        {/* Top Row (Small Screens: Nav and Logo on left, Msg and Notification on right) *
         <div className="flex items-center justify-between lg:w-auto">
-          {/* Nav and Logo */}
+          {/* Nav and Logo *
           <div className="flex items-center space-x-4">
             <button
               className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0]  rounded-full lg:block" // Keep on large screens
@@ -172,7 +170,7 @@ const HeadNavigation: React.FC = () => {
               </Link>
             </div>
           </div>
-          {/* Message and Notification Icons */}
+          {/* Message and Notification Icons *
           {isLoggedIn ? (
           <div className="flex items-center space-x-4 lg:hidden">
             <button
@@ -208,7 +206,7 @@ const HeadNavigation: React.FC = () => {
     
     )}
         </div>
-{/* Discover, Shops, and Favourites */}
+{/* Discover, Shops, and Favourites *
 <div
   className={`flex flex-row items-center justify-center space-x-4 transition-all duration-300 hidden md:flex`}
 >
@@ -231,7 +229,7 @@ const HeadNavigation: React.FC = () => {
 
 
 <div className={`w-full lg:max-w-md transition-all duration-300 hidden md:block`}>
-      <form onSubmit={handleSubmit}> {/* Add onSubmit handler */}
+      <form onSubmit={handleSubmit}> {/* Add onSubmit handler *
         <div className="relative">
           <input
             type="text"
@@ -247,7 +245,7 @@ const HeadNavigation: React.FC = () => {
         </div>
       </form>
     </div>
-        {/* Message and Notification Icons (Visible only on large screens) */}
+        {/* Message and Notification Icons (Visible only on large screens) *
         {isLoggedIn ? (
          <div className="hidden lg:flex items-center space-x-4">
           <button
@@ -293,7 +291,7 @@ Login/Register
           <FaTimes />
         </button>
 
-        {/* Conditional rendering based on user role */}
+        {/* Conditional rendering based on user role *
         {(currentUserRole === 'seller' || currentUserRole === 'admin') && (
           <button
             className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full"
@@ -324,7 +322,7 @@ Login/Register
           </button>
         )}
 
-        {/* Common buttons for all roles */}
+        {/* Common buttons for all roles *
         <button className="flex items-center px-4 py-2 text-sm text-gray-800 font-medium hover:bg-gray-100 rounded-full">
           <FaBalanceScale className="mr-2" />
           Compare
@@ -372,4 +370,197 @@ Login/Register
       /></>
   );
 };
+export default HeadNavigation;*/
+
+
+"use client";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useCartStore } from "@/store/cart-store";
+import { useUserSellerStore } from "@/store/useUserSellerStore";
+import { Menu01Icon } from "hugeicons-react";
+import  PaymentDialog  from "./PaymentDialog";
+import { MobileDrawer } from "./MobileDrawer";
+import { SearchBar } from "./SearchBar";
+import { NavButtons } from "./NavButtons";
+import { IconButtons } from "./IconButtons";
+import { LoginButton } from "./LoginButton";
+import Header from "./Header";
+import { FaTimes } from "react-icons/fa";
+
+const HeadNavigation: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const { getTotalItems } = useCartStore();
+  const totalItems = getTotalItems();
+  const { fetchCurrentUser, currentUserRole } = useUserSellerStore();
+  const router = useRouter();
+
+  // ... keep all the existing logic and state management here ...
+    // Fetch the current user role when the component mounts
+    useEffect(() => {
+      fetchCurrentUser();
+    }, [fetchCurrentUser]);
+  
+  
+    useEffect(() => {
+      // Check localStorage for a token to set the login state
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(!!token); // If token exists, user is logged in
+    }, []);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        //setIsScrolling(window.scrollY > 10); // Detect if the user has scrolled down
+      };
+  
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
+  
+    const toggleDrawer = () => {
+      setIsDrawerOpen(!isDrawerOpen); // Toggle the drawer visibility
+    };
+  
+  
+  
+    const closePaymentDialog = () => {
+      setIsPaymentDialogOpen(false);
+    };
+    
+    const handleClick = () => {
+      // Navigate to the Delivery Page
+      router.push('/delivery');
+    };
+  
+    const handleSellClick = () =>  {
+      
+      router.push('/seller');}
+  
+    const handleAdminClick = () => {
+      
+      router.push('/admin');}
+  
+    const handleUserClick = () => {
+      // Navigate to the Delivery Page
+      router.push('/user');}
+  
+      const handleHelpClick = () => {
+        // Navigate to the Delivery Page
+        router.push('/help');}
+  
+      const handleLoginClick = () => {
+        // Navigate to Login/Register page
+        router.push('/login');
+      };
+    
+      const logout = () => {
+        setIsLoggedIn(false);
+        localStorage.removeItem("token");
+        router.push('/login'); // Redirect to login page
+      };
+      
+       // Function to handle the search
+    const handleSearch = () => {
+      if (searchQuery.trim()) {
+        // Navigate to the search page with the search query as a URL parameter
+        router.push(`/search?query=${searchQuery}`);
+      }
+    };
+  
+    // Function to handle form submission
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      handleSearch(); // Trigger search logic on form submit
+    };
+
+  return (
+    <>
+      <Header />
+      <header className="bg-white shadow-md sticky top-0 z-50 px-4 py-2">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+          <div className="flex items-center justify-between lg:w-auto">
+            <div className="flex items-center space-x-4">
+              {/*<button
+                className="text-2xl p-2 text-[#182155] hover:text-[#c0c0c0] rounded-full lg:block"
+                onClick={toggleDrawer}
+              >
+                {isDrawerOpen ? <FaTimes /> : <Menu01Icon />}
+              </button>*/}
+              <Link href="/">
+                <img
+                  src="/logo.jpeg"
+                  alt="YourLogo"
+                  className="h-11 w-auto rounded-full"
+                />
+              </Link>
+            </div>
+          
+            {isLoggedIn ? (
+              <div className="flex items-center space-x-4 lg:hidden">
+                <IconButtons
+                  isLoggedIn={isLoggedIn}
+                  totalItems={totalItems}
+                  router={router} onLogout={function (): void {
+                    throw new Error("Function not implemented.");
+                  } }                />
+              </div>
+            ) : (
+              <LoginButton
+                handleLoginClick={handleLoginClick}
+                className="block lg:hidden"
+              />
+            )}
+          </div>
+
+          <NavButtons />
+          
+          <div className="w-full lg:max-w-md transition-all duration-300 hidden md:block">
+            <SearchBar
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              handleSearch={handleSearch}
+            />
+          </div>
+
+          <div className="hidden lg:flex items-center space-x-4">
+            {isLoggedIn ? (
+              <IconButtons
+                isLoggedIn={isLoggedIn}
+                totalItems={totalItems}
+                router={router} onLogout={function (): void {
+                  throw new Error("Function not implemented.");
+                } }              />
+            ) : (
+              <LoginButton handleLoginClick={handleLoginClick} />
+            )}
+          </div>
+        </div>
+
+        <MobileDrawer
+          isOpen={isDrawerOpen}
+          onClose={toggleDrawer}
+          currentUserRole={currentUserRole}
+          handleSellClick={handleSellClick}
+          handleAdminClick={handleAdminClick}
+          handleUserClick={handleUserClick}
+          handleHelpClick={handleHelpClick}
+          handleClick={handleClick}
+          isLoggedIn={isLoggedIn}
+          logout={logout}
+        />
+      </header>
+      <PaymentDialog
+        isOpen={isPaymentDialogOpen}
+        onClose={closePaymentDialog}
+      />
+    </>
+  );
+};
+
 export default HeadNavigation;
