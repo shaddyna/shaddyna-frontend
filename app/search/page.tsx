@@ -360,7 +360,7 @@ import { useState, useMemo, useEffect } from "react";
 import { NextPage } from "next";
 import HeadNavigation from "@/components/HeadNavigation";
 import Footer from "@/components/Footer";
-import SearchBar from "@/components/SearchBar";
+import {SearchBar }from "@/components/SearchBar";
 import BottomNavigationBar from "@/components/BottomNav";
 import Back from "@/components/Back";
 
@@ -446,7 +446,9 @@ const SearchPage: NextPage = () => {
               Reset Filters
             </button>
 
-            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={function (): void {
+                throw new Error("Function not implemented.");
+              } } />
 
             {/* Price Filter */}
             <div>

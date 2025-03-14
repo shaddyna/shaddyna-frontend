@@ -188,17 +188,18 @@ const UserAccountDrawer = ({ isOpen, onClose, router, onLogout, currentUserRole 
               <span>My Shop</span>
             </button>
           )}
-
+ {currentUserRole === 'admin' && (
           <button onClick={() => router.push("/delivery")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
             <FaTruck className="mr-3" />
             <span>Delivery</span>
           </button>
-
+    )}
+     {currentUserRole === 'admin' && (
           <button onClick={() => router.push("/blog")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
             <FaBook className="mr-3" />
             <span>Blog</span>
           </button>
-
+        )}
           <button onClick={() => router.push("/help")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
             <FaQuestionCircle className="mr-3" />
             <span>Help</span>
