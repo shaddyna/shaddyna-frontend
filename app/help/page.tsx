@@ -8,7 +8,7 @@ import React from "react";
 const HelpPage: NextPage = () => { 
   return (
     <div>
-       <Back title={"Payment"} />
+       <Back title={"Help"} />
     <div className="container mx-auto p-4 bg-white text-[#182155]">
       <h1 className="text-3xl font-bold text-center mb-4">Welcome to Shaddyna Help</h1>
       
@@ -60,7 +60,7 @@ const HelpPage: NextPage = () => {
       </footer>
     </div>
     <Footer />
-    <BottomNavigationBar />
+   
     </div>
   );
 };

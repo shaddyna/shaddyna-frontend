@@ -171,38 +171,38 @@ const UserAccountDrawer = ({ isOpen, onClose, router, onLogout, currentUserRole 
         
         <div className="space-y-4">
           <button onClick={() => router.push("/user")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
-            <UserAccountIcon className="mr-3" />
+            <UserAccountIcon className="mr-3 text-gray-700" />
             <span className="text-gray-700">My Profile</span>
           </button>
 
           {currentUserRole === 'admin' && (
             <button onClick={() => router.push("/admin")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
-              <FaCogs className="mr-3" />
+              <FaCogs className="mr-3 text-gray-700" />
               <span className="text-gray-700">Admin Panel</span>
             </button>
           )}
 
           {currentUserRole === 'seller' && (
             <button onClick={() => router.push("/seller")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
-              <FaCartFlatbed className="mr-3" />
+              <FaCartFlatbed className="mr-3 text-gray-700" />
               <span className="text-gray-700">My Shop</span>
             </button>
           )}
  {currentUserRole === 'admin' && (
           <button onClick={() => router.push("/delivery")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
-            <FaTruck className="mr-3" />
+            <FaTruck className="mr-3 text-gray-700" />
             <span className="text-gray-700">Delivery</span>
           </button>
     )}
      {currentUserRole === 'admin' && (
           <button onClick={() => router.push("/blog")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
-            <FaBook className="mr-3" />
+            <FaBook className="mr-3 text-gray-700" />
             <span className="text-gray-700">Blog</span>
           </button>
         )}
           <button onClick={() => router.push("/help")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
-            <FaQuestionCircle className="mr-3" />
-            <span className="t">Help</span>
+            <FaQuestionCircle className="mr-3 text-gray-700" />
+            <span className="text-gray-700">Help</span>
           </button>
 
           <button onClick={() => { onLogout(); onClose(); }} className="w-full flex items-center p-3 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-300 active:scale-95">
