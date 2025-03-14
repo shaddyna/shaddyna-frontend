@@ -188,7 +188,7 @@ const UserAccountDrawer = ({ isOpen, onClose, router, onLogout, currentUserRole 
               <span className="text-gray-700">My Shop</span>
             </button>
           )}
- {currentUserRole === 'admin' && (
+         {currentUserRole === 'admin' && (
           <button onClick={() => router.push("/delivery")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
             <FaTruck className="mr-3 text-gray-700" />
             <span className="text-gray-700">Delivery</span>
