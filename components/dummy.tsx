@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 import { useState, useMemo, useEffect } from "react";
 import { NextPage } from "next";
 import HeadNavigation from "@/components/HeadNavigation";
@@ -224,17 +224,17 @@ const SearchPage: NextPage = () => {
         }
       });
   }, [priceRange, selectedColor, selectedCategory, selectedShop, rating, sortOrder, searchQuery, products]);
-*/
+*
   return (
     <div>
       <HeadNavigation />
       <div className="max-w-screen-xl mx-auto p-4">
         <div className="flex flex-col lg:flex-row gap-4 mb-8">
-          {/* Filters Section */}
+          {/* Filters Section *
           <div className="w-full lg:w-1/4 space-y-6">
             <h3 className="text-xl font-bold text-[#182155]">Filters</h3>
   
-            {/* Reset Button */}
+            {/* Reset Button *
             <button
               onClick={resetFilters}
               className="text-white bg-[#ff199c] p-2 rounded-md mb-6 hover:bg-[#182155] transition duration-300"
@@ -252,10 +252,10 @@ const SearchPage: NextPage = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded"
               />
-            </div>*/}
+            </div>*
             <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
   
-            {/* Price Filter */}
+            {/* Price Filter *
             <div>
               <h4 className="text-lg font-semibold text-[#182155]">Price</h4>
               <input
@@ -279,7 +279,7 @@ const SearchPage: NextPage = () => {
               </p>
             </div>
   
-            {/* Category Filter */}
+            {/* Category Filter *
             <div>
               <h4 className="text-lg font-semibold text-[#182155]">Category</h4>
               <select
@@ -295,7 +295,7 @@ const SearchPage: NextPage = () => {
               </select>
             </div>
   
-            {/* Shop Filter */}
+            {/* Shop Filter *
             <div>
               <h4 className="text-lg font-semibold text-[#182155]">Shop</h4>
               <select
@@ -311,7 +311,7 @@ const SearchPage: NextPage = () => {
               </select>
             </div>
   
-            {/* Color Filter */}
+            {/* Color Filter *
             <div>
               <h4 className="text-lg font-semibold text-[#182155]">Color</h4>
               <div className="flex gap-2 flex-wrap">
@@ -326,7 +326,7 @@ const SearchPage: NextPage = () => {
               </div>
             </div>
   
-            {/* Rating Filter */}
+            {/* Rating Filter *
             <div>
               <h4 className="text-lg font-semibold text-[#182155]">Rating</h4>
               <div className="flex gap-2">
@@ -342,7 +342,7 @@ const SearchPage: NextPage = () => {
               </div>
             </div>
   
-            {/* Sorting Order */}
+            {/* Sorting Order *
             <div>
               <h4 className="text-lg font-semibold text-[#182155]">Sort By</h4>
               <select
@@ -355,7 +355,7 @@ const SearchPage: NextPage = () => {
             </div>
           </div>
   
-          {/* Products Section */}
+          {/* Products Section *
           <div className="w-full lg:w-3/4">
             <h2 className="text-2xl font-bold text-[#182155] mb-6">Products</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -386,4 +386,5 @@ const SearchPage: NextPage = () => {
   
 };
 
-export default SearchPage;
+export default SearchPage;*/
+
