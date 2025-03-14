@@ -138,11 +138,11 @@ export const IconButtons = ({ isLoggedIn, totalItems, router, onLogout }: IconBu
 
 "use client";
 import React, { useState, useEffect } from "react";
-import { LocationUser03Icon, ShoppingCart01Icon, UserAccountIcon } from "hugeicons-react";
+import { ShoppingCart01Icon, UserAccountIcon } from "hugeicons-react";
 import { useUIStore } from "@/store/ui-store";
 import { useUserSellerStore } from "@/store/useUserSellerStore";
-import { FaBalanceScale, FaCogs, FaQuestionCircle } from "react-icons/fa";
-import { FaBell, FaBook, FaCartFlatbed, FaMessage, FaTruck } from "react-icons/fa6";
+import { FaCogs, FaQuestionCircle } from "react-icons/fa";
+import { FaBook, FaCartFlatbed, FaTruck } from "react-icons/fa6";
 
 interface IconButtonsProps {
   isLoggedIn: boolean;
@@ -193,13 +193,13 @@ const UserAccountDrawer = ({ isOpen, onClose, router, onLogout, currentUserRole 
             <FaTruck className="mr-3 text-gray-700" />
             <span className="text-gray-700">Delivery</span>
           </button>
-    )}
-     {currentUserRole === 'admin' && (
+          )}
+          {currentUserRole === 'admin' && (
           <button onClick={() => router.push("/blog")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
             <FaBook className="mr-3 text-gray-700" />
             <span className="text-gray-700">Blog</span>
           </button>
-        )}
+          )}
           <button onClick={() => router.push("/help")} className="w-full flex items-center p-3 hover:bg-gray-100 rounded-lg transition-all duration-300 active:scale-95">
             <FaQuestionCircle className="mr-3 text-gray-700" />
             <span className="text-gray-700">Help</span>
@@ -248,13 +248,12 @@ export const IconButtons = ({ isLoggedIn, totalItems, router, onLogout }: IconBu
         </div>
 
         <UserAccountDrawer
-  isOpen={isUserDrawerOpen}
-  onClose={handleDrawerClose}
-  router={router}
-  onLogout={onLogout}
-  currentUserRole={currentUserRole || ""}  // Ensure it's always a string
-/>
-
+          isOpen={isUserDrawerOpen}
+          onClose={handleDrawerClose}
+          router={router}
+          onLogout={onLogout}
+          currentUserRole={currentUserRole || ""}  // Ensure it's always a string
+        /> 
       </>
     ) : null
   );

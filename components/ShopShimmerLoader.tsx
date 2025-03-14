@@ -2,7 +2,7 @@ import React from "react";
 
 const ShopsShimmerLoader = () => {
   return (
-    <div className="container mx-auto px-0 pb-3">
+    <div className="container bg-white mx-auto px-0 pb-3">
       <h2 className="text-center text-xl font-bold text-gray-300 my-3">
         Explore Shops
       </h2>

@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -10,10 +8,8 @@ import { ProductImageGallery } from "@/components/products/ProductImageGallery";
 import { ProductDetails } from "@/components/products/ProductDetails";
 import { RelatedProducts } from "@/components/products/RelatedProducts";
 //import { MiniCart } from "@/components/cart/MiniCart";
-import { FloatingCartButton } from "@/components/cart/FloatingCartButton";
 import Snackbar from "@/components/SnackBar";
 import Footer from "@/components/Footer";
-import BottomNavigationBar from "@/components/BottomNav";
 import Back from "@/components/Back";
 import { MiniCart } from "@/components/cart/MiniCart";
 
@@ -233,7 +229,6 @@ const ProductDetailPage: React.FC<{ params: { id: string } }> = ({ params }) => 
       )}
       </div>
       <Footer />
-      <BottomNavigationBar />
     </div>
   );
 };

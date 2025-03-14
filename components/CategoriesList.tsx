@@ -323,7 +323,7 @@ const CategoriesList: React.FC = () => {
         localStorage.setItem("categories", JSON.stringify(data));
       } catch (error) {
         console.error("Error fetching categories:", error);
-        alert("An error occurred while fetching categories. Please try again later.");
+       // alert("An error occurred while fetching categories. Please try again later.");
       } finally {
         setIsFetching(false);
       }

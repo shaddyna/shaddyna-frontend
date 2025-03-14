@@ -411,7 +411,7 @@ const Shop: React.FC = () => {
     }
   };
 
-  if (loading) return <ShopsShimmerLoader />;
+  if (loading) return <div className="bg-white"> <ShopsShimmerLoader />;</div>
   if (error) return <div className="text-center text-red-600 py-6 text-lg">{error}</div>;
 
   return (

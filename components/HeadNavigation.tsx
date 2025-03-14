@@ -379,7 +379,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useCartStore } from "@/store/cart-store";
 import { useUserSellerStore } from "@/store/useUserSellerStore";
-import { Menu01Icon } from "hugeicons-react";
 import  PaymentDialog  from "./PaymentDialog";
 import { MobileDrawer } from "./MobileDrawer";
 import { SearchBar } from "./SearchBar";
@@ -387,7 +386,6 @@ import { NavButtons } from "./NavButtons";
 import { IconButtons } from "./IconButtons";
 import { LoginButton } from "./LoginButton";
 import Header from "./Header";
-import { FaTimes } from "react-icons/fa";
 
 const HeadNavigation: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -495,7 +493,7 @@ const HeadNavigation: React.FC = () => {
               <Link href="/">
                 <img
                   src="/logo.jpeg"
-                  alt="YourLogo"
+                  alt=""
                   className="h-11 w-auto rounded-full"
                 />
               </Link>
