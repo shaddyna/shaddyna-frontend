@@ -24,7 +24,7 @@ export const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
           src={img}
           alt={`Thumbnail ${idx}`}
           className={`w-16 h-16 cursor-pointer border-2 ${
-            selectedImage === img ? "border-blue-500" : "border-gray-300"
+            selectedImage === img ? "border-[#0f1c47]" : "border-gray-300"
           } rounded-lg object-cover`}
           onClick={() => onSelectImage(img)}
         />

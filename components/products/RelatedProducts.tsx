@@ -45,7 +45,7 @@ export const RelatedProducts: React.FC<RelatedProductsProps> = ({
               onClick={() => toggleFilter(key)}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
                 selectedFilters.includes(key)
-                  ? "bg-blue-600 text-white shadow-md"
+                  ? "bg-[#0f1c47] text-white shadow-md"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               }`}
             >
