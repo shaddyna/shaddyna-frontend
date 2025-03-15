@@ -396,6 +396,11 @@ const HeadNavigation: React.FC = () => {
   const totalItems = getTotalItems();
   const { fetchCurrentUser, currentUserRole } = useUserSellerStore();
   const router = useRouter();
+  const logout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("token");
+    router.push('/login'); // Redirect to login page
+  };
 
   // ... keep all the existing logic and state management here ...
     // Fetch the current user role when the component mounts
@@ -456,12 +461,7 @@ const HeadNavigation: React.FC = () => {
         // Navigate to Login/Register page
         router.push('/login');
       };
-    
-      const logout = () => {
-        setIsLoggedIn(false);
-        localStorage.removeItem("token");
-        router.push('/login'); // Redirect to login page
-      };
+
       
        // Function to handle the search
     const handleSearch = () => {
@@ -504,9 +504,8 @@ const HeadNavigation: React.FC = () => {
                 <IconButtons
                   isLoggedIn={isLoggedIn}
                   totalItems={totalItems}
-                  router={router} onLogout={function (): void {
-                    throw new Error("Function not implemented.");
-                  } }                />
+                  router={router} 
+                  onLogout={logout}             />
               </div>
             ) : (
               <LoginButton
