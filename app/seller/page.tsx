@@ -163,7 +163,7 @@ const SellerPage: React.FC = () => {
       }
     },
     { name: "Order Management", icon:  <FaCartShopping />, color: "border-[#182155]", action: () => router.push("/seller-order") },
-    { name: "Payment and Payout Management", icon: <FaMoneyBill />, color: "border-[#ff199c]", action: () => {} },
+    { name: "Payment and Payout Management", icon: <FaMoneyBill />, color: "border-[#ff199c]", action: () => router.push("/payout")},
   ];
 
   useEffect(() => {
@@ -189,17 +189,6 @@ const SellerPage: React.FC = () => {
                         <span className="font-semibold">{button.name}</span>
                       </button>
           ))}
-            {/*<button
-              key={index}
-              onClick={button.action}
-              className={`flex items-center justify-start p-3 text-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full ${button.color} text-sm sm:px-4 sm:py-2 md:px-6 md:py-3`}
-            >
-              <div className="flex items-center justify-center bg-white text-gray-800 rounded-full w-10 h-10 mr-4 shadow-md">
-                <div className="text-xl">{button.icon}</div>
-              </div>
-              <span className="font-semibold">{button.name}</span>
-            </button>*/}
-      
         </div>
       </div>
 
@@ -218,7 +207,6 @@ const SellerPage: React.FC = () => {
       )}
 
       <Footer />
-      <BottomNavigationBar />
     </div>
   );
 };

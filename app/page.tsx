@@ -63,6 +63,7 @@ import BrandSection from '@/components/BrandSection';
 import ShaddynaButton from '@/components/ShaddynaButton';
 import SearchBar from '@/components/Search';
 import BottomNav from '@/components/BottomNav';
+import HomeFooter from '@/components/FooterHome';
 
 // New Ad Component
 const ResponsiveAd: React.FC<{ position: string }> = ({ position }) => {
@@ -173,7 +174,7 @@ const HomePage: React.FC = () => {
           }) : null;
         })}
       </div>
-      <Footer />
+      <HomeFooter />
       <BottomNav />
     </div>
   );
