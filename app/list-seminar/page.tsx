@@ -403,7 +403,7 @@ export default function SeminarManagement() {
       <Footer />
     </div>
         
-  );
+  
 }
 
     {/*<div className="bg-gray-50 min-h-screen">
