@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, MapPin, ShoppingBag, ChevronDown, ChevronUp, Search, X, Mail, Phone, Instagram, Facebook, Twitter, Heart, Share2, ArrowLeft, Clock } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -112,7 +112,16 @@ const boutiques: Boutique[] = [
   // ... (other boutiques with similar extended data)
 ];
 
-const BoutiqueDetailPage = ({ params }: { params: { id: string } }) => {
+
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+const BoutiqueDetailPage: FC<PageProps> = ({ params }) => {
+
+//const BoutiqueDetailPage = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
   const [boutique, setBoutique] = useState<Boutique | null>(null);
   const [activeTab, setActiveTab] = useState('products');
