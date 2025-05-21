@@ -112,10 +112,12 @@ const boutiques: Boutique[] = [
   // ... (other boutiques with similar extended data)
 ];
 
-
 interface PageProps {
   params: {
     id: string;
+  };
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
   };
 }
 
