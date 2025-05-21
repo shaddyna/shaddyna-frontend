@@ -121,7 +121,7 @@ interface Props {
   boutiqueId: string; // Pass this as a prop
 }
 
-const BoutiquesPage = ({ boutiqueId }: Props) => {
+const BoutiquesPage = () => {  // Remove the props parameter
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Boutiques");
   const [activeBoutique, setActiveBoutique] = useState<number | null>(null);
