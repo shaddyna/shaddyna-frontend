@@ -1129,7 +1129,7 @@ import { AdminPrompt, MembershipPrompt, PendingRequestPrompt, ErrorToast } from 
 interface ServicesPageProps {
   onOpenModal: () => void;
 }
-
+//const ServicesPage  = () => {
 const ServicesPage = ({ onOpenModal }: ServicesPageProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
@@ -1342,5 +1342,5 @@ return (
 );
 };
 
-export default ServicesPage;
+//export default ServicesPage;
 
