@@ -98,7 +98,7 @@ export const AdminTable = ({
 
 import { Edit, Trash, Plus, User } from "lucide-react";
 
-interface AdminTableProps {
+/*interface AdminTableProps {
   title: string;
   columns: {
     key: string;
@@ -109,6 +109,24 @@ interface AdminTableProps {
   onAdd: () => void;
   onEdit: (_id: number) => void;
   onDelete: (_id: number) => void;
+}*/
+
+interface AdminTableProps {
+  title: string;
+  columns: {
+    key: string;
+    label: string;
+    render?: (value: any) => React.ReactNode;
+  }[];
+  data: any[];
+  onAdd: () => void;
+  onEdit: (_id: string) => void;
+  onDelete: (_id: string) => void;
+  loading?: boolean;
+  error?: string | null;
+  pagination?: any;
+  onPageChange?: (page: number) => void;
+  onSearch?: (term: string) => void;
 }
 
 export const AdminTable = ({
