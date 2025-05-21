@@ -113,15 +113,15 @@ const boutiques: Boutique[] = [
 ];
 
 
-/*interface PageProps {
+interface PageProps {
   params: {
     id: string;
   };
 }
 
-const BoutiqueDetailPage: FC<PageProps> = ({ params }) => {*/
+const BoutiqueDetailPage = ({ params }: PageProps) => {
 
-const BoutiqueDetailPage = ({ params }: { params: { id: string } }) => {
+//const BoutiqueDetailPage = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
   const [boutique, setBoutique] = useState<Boutique | null>(null);
   const [activeTab, setActiveTab] = useState('products');
