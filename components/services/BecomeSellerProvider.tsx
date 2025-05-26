@@ -1,19 +1,19 @@
-// components/BecomeProviderBanner.tsx
+// components/BecomeSellerBanner.tsx
 import { motion } from "framer-motion";
 import { PlusCircle } from "lucide-react";
 
-interface BecomeProviderBannerProps {
-  handleCreateSkillClick: () => void;
+interface BecomeSellerBannerProps {
+  handleCreateSellerClick: () => void;
   checking: boolean;
   authLoading: boolean;
 }
 
-const BecomeProviderBanner = ({ handleCreateSkillClick, checking, authLoading }: BecomeProviderBannerProps) => {
+const BecomeSellerBanner = ({ handleCreateSellerClick, checking, authLoading }: BecomeSellerBannerProps) => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0f1c47] text-white">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Are you a skill provider?
+          Are you a Seller?
         </h2>
         <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
           Join our exclusive network of premium professionals and connect with high-value clients
@@ -22,7 +22,7 @@ const BecomeProviderBanner = ({ handleCreateSkillClick, checking, authLoading }:
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            onClick={handleCreateSkillClick}
+            onClick={handleCreateSellerClick}
             disabled={checking || authLoading}
             className="relative group bg-gradient-to-r from-[#bf2c7e] to-[#a02468] text-white px-6 py-4 sm:px-10 sm:py-5 rounded-full sm:rounded-xl text-base sm:text-lg font-medium hover:shadow-xl hover:shadow-[#bf2c7e]/30 transition-all duration-300 overflow-hidden disabled:opacity-50"
           >
@@ -53,4 +53,4 @@ const BecomeProviderBanner = ({ handleCreateSkillClick, checking, authLoading }:
   );
 };
 
-export default BecomeProviderBanner;
+export default BecomeSellerBanner;

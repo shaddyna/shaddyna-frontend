@@ -86,7 +86,8 @@ export const ProfileTabs = ({ activeTab, setActiveTab, isAdmin }: ProfileTabsPro
   if (isAdmin) {
     tabs.push(
       { id: "users", label: "Users", icon: <User size={18} /> },
-      { id: "products", label: "Products", icon: <ShoppingBag size={18} /> }
+      { id: "products", label: "Products", icon: <ShoppingBag size={18} /> },
+      { id: "seller-requests", label: "Seller Requests", icon: <ShoppingBag size={18} /> }
     );
   }
 

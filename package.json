@@ -11,7 +11,9 @@
   "dependencies": {
     "@reacticons/ionicons": "^7.1.0",
     "@tailwindcss/forms": "^0.5.10",
+    "axios": "^1.9.0",
     "chart.js": "^4.4.7",
+    "class-variance-authority": "^0.7.1",
     "framer-motion": "^12.5.0",
     "gsap": "^3.12.7",
     "ionicons": "^7.4.0",
@@ -26,8 +28,10 @@
     "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^7.1.1",
     "react-slick": "^0.30.3",
+    "react-toastify": "^11.0.5",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.15",
+    "tailwind-merge": "^3.3.0",
     "zustand": "^5.0.4"
   },
   "devDependencies": {

@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import { Search, PlusCircle } from "lucide-react";
 
 interface ServicesHeroProps {
-  handleCreateSkillClick: () => void;
+  handleCreateSellerClick: () => void;
   checking: boolean;
   authLoading: boolean;
 }
 
-const ServicesHero = ({ handleCreateSkillClick, checking, authLoading }: ServicesHeroProps) => {
+const ShopsHero = ({ handleCreateSellerClick, checking, authLoading }: ServicesHeroProps) => {
   return (
     <section className="relative h-80 md:h-96 flex items-center justify-center bg-gray-900 overflow-hidden">
       <div className="absolute inset-0 bg-black/60 z-10"></div>
@@ -25,7 +25,7 @@ const ServicesHero = ({ handleCreateSkillClick, checking, authLoading }: Service
       >
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
           <span className="bg-clip-text text-transparent bg-[#bf2c7e]">
-            Premium Skills
+            Premium Shops
           </span>
         </h1>
         <p className="text-xl text-gray-200 max-w-2xl mx-auto mb-8">
@@ -35,7 +35,7 @@ const ServicesHero = ({ handleCreateSkillClick, checking, authLoading }: Service
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={handleCreateSkillClick}
+            onClick={handleCreateSellerClick}
             disabled={checking || authLoading}
             className="px-8 py-3 bg-[#bf2c7e] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
           >
@@ -63,4 +63,4 @@ const ServicesHero = ({ handleCreateSkillClick, checking, authLoading }: Service
   );
 };
 
-export default ServicesHero;
+export default ShopsHero;

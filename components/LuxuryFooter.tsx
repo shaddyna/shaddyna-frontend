@@ -254,7 +254,7 @@ const LuxuryFooter = () => {
               Shaddyna
             </h3>
             <p className="mb-6">
-              Celebrating elegance, culture, and luxury — curated collections for the confident and classy.
+              Celebrating elegance, culture, and luxury curated collections for the confident and classy.
             </p>
             <div className="flex space-x-4">
               {socialIcons.map(({ Icon, link }, index) => (

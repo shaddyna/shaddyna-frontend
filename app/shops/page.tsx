@@ -161,7 +161,7 @@ const BoutiquesPage = () => {  // Remove the props parameter
   const router = useRouter();
 
   const handleVisit = (boutiqueId: string) => {
-    router.push(`/boutique/${boutiqueId}`);
+    router.push(`/shops/${boutiqueId}`);
   };
 
  const handleCreateShopClick = async () => {
@@ -507,7 +507,7 @@ const BoutiquesPage = () => {  // Remove the props parameter
   );
 };
 
-export default BoutiquesPage;* */
+export default BoutiquesPage;*/
 
 "use client";
 

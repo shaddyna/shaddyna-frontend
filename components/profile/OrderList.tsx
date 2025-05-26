@@ -108,7 +108,7 @@ const OrderItem = ({ item }: { item: OrderItem }) => (
       <p className="font-medium text-gray-900">{item.name}</p>
       <p className="text-sm text-gray-500">{item.designer}</p>
       <p className="text-sm text-gray-900">
-        ${item.price.toLocaleString()} x {item.quantity}
+        Ksh {item.price.toLocaleString()} x {item.quantity}
       </p>
     </div>
   </div>
