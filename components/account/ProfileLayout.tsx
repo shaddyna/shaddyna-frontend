@@ -19,7 +19,7 @@ export const ProfileLayout = ({ children }: ProfileLayoutProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white rounded-xl border border-[#f4b500] shadow-sm p-6"
+          className="bg-white rounded-xl border border-[#bf2c7e] shadow-sm p-6"
         >
           {children}
         </motion.div>

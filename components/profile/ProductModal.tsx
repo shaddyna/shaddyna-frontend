@@ -2,6 +2,7 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Plus, Trash, X } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -17,10 +18,6 @@ interface Attribute {
   nestedAttributes?: Record<string, Attribute>;
 }
 
-interface CategoryConfig {
-  label: string;
-  attributes: Record<string, Attribute>;
-}
 
 interface ProductFormData {
   name: string;
@@ -207,6 +204,7 @@ const productHierarchy: Record<string, {
 };*/
 
 export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProps) => {
+   const { user, token } = useAuth();
   const [formData, setFormData] = useState<ProductFormData>({
     name: "",
     designer: "",
@@ -293,7 +291,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
     }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  /*const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -346,7 +344,85 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
     } finally {
       setIsSubmitting(false);
     }
-  };
+  };*/
+
+  const handleSubmit = async (e: FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  
+  try {
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('designer', formData.designer);
+    formDataToSend.append('mainCategory', formData.mainCategory);
+    formDataToSend.append('subCategory', formData.subCategory);
+    formDataToSend.append('brand', formData.brand);
+    formDataToSend.append('price', formData.price);
+    formDataToSend.append('stock', formData.stock);
+    formDataToSend.append('attributes', JSON.stringify(formData.attributes));
+    
+    // Append each image file
+    formData.images.forEach((image) => {
+      formDataToSend.append('images', image);
+    });
+
+    // Add owner and shop info
+    if (user) {
+      formDataToSend.append('owner', user._id);
+      
+      // Fetch the user's shop
+      const shopsResponse = await fetch('http://localhost:5000/api/shops/my-shop', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      if (!shopsResponse.ok) {
+        throw new Error('Failed to fetch shop information');
+      }
+      
+      const shopData = await shopsResponse.json();
+      formDataToSend.append('shopId', shopData._id);
+      formDataToSend.append('shopName', shopData.name);
+    }
+
+    const response = await fetch('http://localhost:5000/api/products', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: formDataToSend,
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit product');
+    }
+
+    const result = await response.json();
+    
+    // Call the onAddProduct callback with the new product
+    onAddProduct(result.product);
+    onClose();
+    
+    // Reset form
+    setFormData({
+      name: "",
+      designer: "",
+      mainCategory: "",
+      subCategory: "",
+      brand: "",
+      price: "",
+      stock: "",
+      images: [],
+      attributes: {},
+    });
+  } catch (error) {
+    console.error('Error submitting product:', error);
+    alert('Error submitting product. Please try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const getCurrentAttributes = () => {
     const mainCategory = productHierarchy[formData.mainCategory as keyof typeof productHierarchy];
@@ -369,7 +445,6 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
   const renderNestedAttributes = (attributes: Record<string, Attribute>, parentPath = "") => {
     return Object.entries(attributes).map(([key, attr]) => {
       const fullPath = parentPath ? `${parentPath}-${key}` : key;
-      const parentValue = parentPath ? formData.attributes[parentPath] : null;
       
       // Skip if this attribute depends on a parent that hasn't been selected
       if (attr.dependsOn && !formData.attributes[attr.dependsOn]) {

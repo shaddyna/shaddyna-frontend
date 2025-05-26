@@ -1457,7 +1457,8 @@ const ProfilePage = () => {
       <ProfileTabs
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        isAdmin={user.role === "admin"}
+        isAdmin={user.role === "admin"} 
+        isSeller={user.role === "seller"} 
       />
 
       <ProfileTabContent
