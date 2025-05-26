@@ -415,7 +415,7 @@ export const ProfileTabContent = ({
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#f4b500]"></div>
         </div>
       ) : orders.length > 0 ? (
-        <OrderList orders={orders} onStartShopping={onStartShopping} />
+        <OrderList orders={orders} />
       ) : (
         <div className="text-center py-10">
           <p className="text-gray-500">You haven't placed any orders yet.</p>
@@ -434,7 +434,7 @@ export const ProfileTabContent = ({
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#f4b500]"></div>
         </div>
       ) : orders.length > 0 ? (
-        <OrderList orders={orders} onStartShopping={onStartShopping} />
+        <OrderList orders={orders}/>
       ) : (
         <div className="text-center py-10">
           <p className="text-gray-500">You haven't placed any orders yet.</p>
