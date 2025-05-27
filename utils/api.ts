@@ -1,5 +1,5 @@
 // utils/api.ts
-const API_URL = 'http://localhost:5000/api/users';
+const API_URL = 'https://shaddynab-new.onrender.com/api/users';
 
 export const registerUser = async (userData: {
   firstName: string;

@@ -26,7 +26,7 @@ const useProducts = () => {
       setLoading(true);
       setError(null);
   
-      console.log('Fetching products from:', 'http://localhost:5000/api/products');
+      console.log('Fetching products from:', 'https://shaddynab-new.onrender.com/api/products');
 
       /*const response = await fetch('http://localhost:5000/api/products', {
       headers: {
@@ -35,7 +35,7 @@ const useProducts = () => {
       }
     });*/
   
-      const response = await fetch('http://localhost:5000/api/products');
+      const response = await fetch('https://shaddynab-new.onrender.com/api/products');
       const data = await response.json();
 
  
