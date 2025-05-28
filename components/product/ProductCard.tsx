@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShoppingBag, Heart, Eye, Star } from "lucide-react";
-import { useState } from "react";
+import { Heart, Eye, Star } from "lucide-react";
 import { useWishlistStore } from "@/stores/wishlistStore";
 
 interface ProductCardProps {
@@ -68,18 +67,7 @@ export const ProductCard = ({
           loading="lazy"
         />
 
-        {/* Overlay Button */}
-        {/* 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onAddToCart}
-            className={`w-full bg-[${theme.primary}] hover:bg-[${theme.hover}] text-${theme.text} font-bold py-3 rounded-full flex items-center justify-center gap-2 transition-colors`}
-          >
-            <ShoppingBag size={16} /> Add to Bag
-          </motion.button>
-        </div>*/}
+ 
 
         {/* Badges */}
         <div className="absolute top-4 left-4 flex gap-2">

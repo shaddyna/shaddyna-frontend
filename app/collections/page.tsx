@@ -626,8 +626,8 @@ const CollectionsPage = () => {
                   />
                 </div>
                 <div className="flex justify-between mt-2 text-sm text-gray-600">
-                  <span>${priceRange[0]}</span>
-                  <span>${priceRange[1]}</span>
+                  <span>Ksh {priceRange[0]}</span>
+                  <span>Ksh {priceRange[1]}</span>
                 </div>
               </div>
 
