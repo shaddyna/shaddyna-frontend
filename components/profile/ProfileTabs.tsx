@@ -89,10 +89,14 @@ interface ProfileTabsProps {
 export const ProfileTabs = ({ activeTab, setActiveTab, isAdmin, isSeller }: ProfileTabsProps) => {
   const tabs: Tab[] = [
     { id: "profile", label: "Profile", icon: <User size={18} /> },
-    { id: "shop", label: "Shop", icon: <BsShop size={18} /> },
+  //  { id: "shop", label: "Shop", icon: <BsShop size={18} /> },
     { id: "orders", label: "Orders", icon: <ShoppingBag size={18} /> },
     { id: "skills", label: "Skills", icon: <BrainIcon size={18} /> },
   ];
+
+  if (isSeller) {
+    tabs.push({ id: "shop", label: "Shop", icon: <BsShop size={18} /> });
+  }
 
   if (isSeller || isAdmin) {
     tabs.push({ id: "products", label: "Products", icon: <ShoppingBag size={18} /> });
@@ -100,6 +104,7 @@ export const ProfileTabs = ({ activeTab, setActiveTab, isAdmin, isSeller }: Prof
 
   if (isAdmin) {
     tabs.push(
+      { id: "shops", label: "Shops", icon: <BsShop size={18} /> },
       { id: "users", label: "Users", icon: <User size={18} /> },
       { id: "seller-requests", label: "Seller Requests", icon: <ShoppingBag size={18} /> }
     );

@@ -255,6 +255,7 @@ import { Button } from "@/components/ui/button";
 import { AdminTable } from "@/components/profile/AdminTable";
 import { OrderList } from "@/components/profile/OrderList";
 import { SellerRequestsTab } from "@/components/profile/SellerRequestsTab"; // Import the SellerRequestsTab component
+import ShopManagementTab from "./ShopManagement";
 
 interface ProfileTabContentProps {
   activeTab: string;
@@ -310,6 +311,67 @@ export const ProfileTabContent = ({
   const [isEditing, setIsEditing] = useState(false);
 
   const renderProfileTab = () => (
+    <ProfileSection
+      title="Personal Information"
+      action={
+        !isEditing ? (
+          <Button
+            variant="outline"
+            onClick={() => setIsEditing(true)}
+            className="bg-white border border-[#bf2c7e] text-[#0f1c47] hover:bg-[#bf2c7e] hover:text-white"
+          >
+            <Edit size={16} className="mr-2 text-[#0f1c47]" /> Edit Profile
+          </Button>
+        ) : (
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setIsEditing(false)}
+              className="bg-white border border-[#bf2c7e] text-[#0f1c47] hover:bg-[#bf2c7e] hover:text-white"
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={onSubmit}
+              className="bg-[#bf2c7e] text-white hover:bg-[#0f1c47]"
+            >
+              Save Changes
+            </Button>
+          </div>
+        )
+      }
+    >
+      {!isEditing ? (
+        <ProfileInfoSection
+          firstName={`${user.firstName} ${user.lastName}`}
+          email={user.email}
+          shippingAddress={{
+            street: formData.shippingStreet,
+            city: formData.shippingCity,
+            state: formData.shippingState,
+            zip: formData.shippingZip,
+            country: formData.shippingCountry,
+          }}
+          billingAddress={{
+            street: formData.billingStreet,
+            city: formData.billingCity,
+            state: formData.billingState,
+            zip: formData.billingZip,
+            country: formData.billingCountry,
+          }}
+        />
+      ) : (
+        <ProfileEditForm
+          formData={formData}
+          onInputChange={onInputChange}
+          onSubmit={onSubmit}
+          onCancel={() => setIsEditing(false)}
+        />
+      )}
+    </ProfileSection>
+  );
+
+    const renderShopTab = () => (
     <ProfileSection
       title="Personal Information"
       action={
@@ -500,6 +562,8 @@ export const ProfileTabContent = ({
   switch (activeTab) {
     case "profile":
       return renderProfileTab();
+    case "shop":
+        return user.role === "seller" ? <ShopManagementTab user={user} /> : null;
     case "orders":
       return renderOrdersTab();
     case "skills":
