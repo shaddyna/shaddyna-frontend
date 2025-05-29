@@ -371,7 +371,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
       formDataToSend.append('owner', user._id);
       
       // Fetch the user's shop
-      const shopsResponse = await fetch('http://localhost:5000/api/shops/my-shop', {
+      const shopsResponse = await fetch('https://shaddynab-new.onrender.com/api/shops/my-shop', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -386,7 +386,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
       formDataToSend.append('shopName', shopData.name);
     }
 
-    const response = await fetch('http://localhost:5000/api/products', {
+    const response = await fetch('https://shaddynab-new.onrender.com/api/products', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`
