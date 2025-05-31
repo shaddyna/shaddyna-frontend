@@ -586,7 +586,7 @@ export const ReviewOrder = ({ onBack }: ReviewOrderProps) => {
 
   const handlePlaceOrder = async () => {
     if (!user || !token) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
 
