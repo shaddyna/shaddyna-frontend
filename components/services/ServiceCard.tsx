@@ -281,7 +281,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
           </div>
         </div>
         
-        {/* Expandable Details *
+        {/* Expandable Details */}
         <button
           onClick={() => toggleService(service._id)}
           className="w-full mt-6 flex justify-between items-center text-left"
@@ -294,7 +294,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
           ) : (
             <ChevronDown className="text-[#bf2c7e]" />
           )}
-        </button>*/}
+        </button>
 
         <div
           className={`overflow-hidden transition-all duration-300 ${

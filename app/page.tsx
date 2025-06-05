@@ -113,7 +113,7 @@ export default async function Home() {
 
   return (
     <>
-     
+     <Navbar />
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-[#0f1c47] to-[#bf2c7e] text-white py-20 px-4">

@@ -84,7 +84,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
             </button>
             <div className="text-center px-8">
               <h3 className="text-2xl font-bold mb-1">Inquire About {service.title}</h3>
-              <p className="text-gray-600">Send a message to {service.provider.name}</p>
+              {/*<p className="text-gray-600">Send a message to {service.provider.name}</p>*/}
             </div>
           </div>
           
@@ -94,16 +94,16 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
               {/* Service Summary */}
               <div className="md:w-1/3 bg-gray-50 p-6 rounded-lg">
                 <div className="flex items-center gap-4 mb-4">
-                  <img
+                 {/*} <img
                     src={service.provider.avatar}
                     alt={service.provider.name}
                     className="w-12 h-12 rounded-full object-cover border-2 border-[#bf2c7e]"
-                  />
+                  />*/}
                   <div>
-                    <h4 className="font-bold">{service.provider.name}</h4>
+                    {/*<h4 className="font-bold">{service.provider.name}</h4>*/}
                     <div className="flex items-center gap-1">
                       <Star className="text-[#bf2c7e] fill-[#bf2c7e]" size={14} />
-                      <span className="text-sm">{service.provider.rating} ({service.provider.projects} projects)</span>
+                      {/*<span className="text-sm">{service.provider.rating} ({service.provider.projects} projects)</span>*/}
                     </div>
                   </div>
                 </div>
@@ -180,9 +180,9 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                       className="block w-full pl-3 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
                     >
                       <option value={service.price}>Within {service.price} range</option>
-                      <option value="<$500">Under $500</option>
-                      <option value="$500-$1000">$500 - $1000</option>
-                      <option value="$1000-$5000">$1000 - $5000</option>
+                      <option value="<$500">Under ksh 500</option>
+                      <option value="$500-$1000">ksh 500 - ksh 1000</option>
+                      <option value="$1000-$5000">ksh 1000 - ksh 5000</option>
                       <option value="Custom">Custom Budget</option>
                     </select>
                   </div>
