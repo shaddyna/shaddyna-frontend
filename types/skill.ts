@@ -1,15 +1,15 @@
 export interface Skill {
-  _id?: string; // Optional, assigned by MongoDB
+  _id?: string; 
   title: string;
   description: string;
   price: number;
   deliveryTime: string;
   category: 'design' | 'development' | 'marketing' | 'writing' | 'video' | 'music' | 'business' | 'other';
   skills: string[];
-  inclusions: string[]; // Optional
-  images?: string[]; // Optional (Cloudinary URLs)
+  inclusions: string[]; 
+  images?: string[]; 
   about: string;
-  user: string; // MongoDB ObjectId as string
-  createdAt?: string; // Optional, ISO string
-  averageRating?: number; // Optional, range 1 to 5
+  user: string; 
+  createdAt?: string; 
+  averageRating?: number; 
 }
