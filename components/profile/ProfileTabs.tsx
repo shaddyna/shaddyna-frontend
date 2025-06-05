@@ -84,12 +84,12 @@ interface ProfileTabsProps {
   setActiveTab: (tab: string) => void;
   isAdmin: boolean;
   isSeller: boolean;
+  isMember: boolean; 
 }
 
-export const ProfileTabs = ({ activeTab, setActiveTab, isAdmin, isSeller }: ProfileTabsProps) => {
+export const ProfileTabs = ({ activeTab, setActiveTab, isAdmin, isSeller, isMember }: ProfileTabsProps) => {
   const tabs: Tab[] = [
     { id: "profile", label: "Profile", icon: <User size={18} /> },
-  //  { id: "shop", label: "Shop", icon: <BsShop size={18} /> },
     { id: "orders", label: "Orders", icon: <ShoppingBag size={18} /> },
     { id: "skills", label: "Skills", icon: <BrainIcon size={18} /> },
   ];
@@ -106,8 +106,12 @@ export const ProfileTabs = ({ activeTab, setActiveTab, isAdmin, isSeller }: Prof
     tabs.push(
       { id: "shops", label: "Shops", icon: <BsShop size={18} /> },
       { id: "users", label: "Users", icon: <User size={18} /> },
-      { id: "seller-requests", label: "Seller Requests", icon: <ShoppingBag size={18} /> }
+      { id: "seller-requests", label: "Seller Requests", icon: <ShoppingBag size={18} /> },
+      { id: "member-requests", label: "Member Requests", icon: <ShoppingBag size={18} /> }
     );
+  }
+    if (isMember) {
+    tabs.push({ id: "members", label: "Members", icon: <User size={18} /> }); // ✅ Add Members tab
   }
 
   return (

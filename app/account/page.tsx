@@ -1454,13 +1454,13 @@ const ProfilePage = () => {
         onEditAvatar={handleEditAvatar}
       />
 
-      <ProfileTabs
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        isAdmin={user.role === "admin"} 
-        isSeller={user.role === "seller"} 
-      />
-
+    <ProfileTabs
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      isAdmin={user.role === "admin"}
+      isSeller={user.role === "seller"}
+      isMember={user.member === true}
+    />
       <ProfileTabContent
         activeTab={activeTab}
         user={user}

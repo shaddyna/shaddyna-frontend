@@ -1154,7 +1154,7 @@ const ShopPage = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/products?shopId=${shopId}`);
+        const response = await fetch(`https://shaddynab-new.onrender.com/api/products?shopId=${shopId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }

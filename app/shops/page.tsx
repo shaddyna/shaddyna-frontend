@@ -521,7 +521,7 @@ import BecomeProviderBanner from "@/components/services/BecomeProviderBanner";
 import { useAuth } from "@/context/AuthContext";
 import CreateShopModal from "@/components/services/CreateShopModal";
 import ShopsHero from "@/components/services/ShopsHero";
-import { AdminPrompt, ErrorToast, MembershipPrompt, PendingRequestPrompt } from "@/components/services/Prompts";
+import { AdminPrompt, ErrorToast, MembershipPrompt, PendingRequestPrompt, SellerPrompt } from "@/components/services/Prompts";
 import BecomeSellerBanner from "@/components/services/BecomeSellerProvider";
 
 interface Shop {
@@ -579,7 +579,7 @@ const BoutiquesPage = () => {
   const [error, setError] = useState('');
   const [showPendingRequestPrompt, setShowPendingRequestPrompt] = useState(false);
   const [showAdminPrompt, setShowAdminPrompt] = useState(false);
-  const [showMembershipPrompt, setShowMembershipPrompt] = useState(false);
+  const [showSellerPrompt, setShowSellerPrompt] = useState(false);
   const [isCreateShopModalOpen, setIsCreateShopModalOpen] = useState(false); 
 
   const router = useRouter();
@@ -687,9 +687,9 @@ useEffect(() => {
       if (user.role === 'admin') {
         console.log('User is admin, showing admin prompt.');
         setShowAdminPrompt(true);
-      } else if (user.role === 'customer' && !user.member) {
+      } else if (user.role === 'customer') {
         console.log('User is customer but not a member, showing membership prompt.');
-        setShowMembershipPrompt(true);
+        setShowSellerPrompt(true);
       } else {
         console.log('User is eligible, opening create shop modal.');
         handleOpenCreateShopModal();
@@ -979,8 +979,8 @@ useEffect(() => {
         <AdminPrompt onClose={() => setShowAdminPrompt(false)} />
       )}
 
-      {showMembershipPrompt && (
-        <MembershipPrompt onClose={() => setShowMembershipPrompt(false)} />
+      {showSellerPrompt && (
+        <SellerPrompt onClose={() => setShowSellerPrompt(false)} />
       )}
 
       {showPendingRequestPrompt && (

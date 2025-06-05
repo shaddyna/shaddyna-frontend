@@ -57,7 +57,7 @@ export const MembershipPrompt = ({ onClose }: { onClose: () => void }) => (
           Unlock Premium Features
         </h2>
         <p className="text-gray-500 mb-6">
-          Upgrade to a seller membership and start selling today
+          Upgrade to become a member and enjoy exclusive benefits today
         </p>
 
         <div className="space-y-3 mb-8 text-left">
@@ -67,7 +67,7 @@ export const MembershipPrompt = ({ onClose }: { onClose: () => void }) => (
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             </div>
-            <span className="text-gray-700">Create your own shop</span>
+            <span className="text-gray-700">Create your own skills</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">
@@ -75,7 +75,7 @@ export const MembershipPrompt = ({ onClose }: { onClose: () => void }) => (
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             </div>
-            <span className="text-gray-700">Premium seller dashboard</span>
+            <span className="text-gray-700">Premium member dashboard</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">
@@ -97,7 +97,7 @@ export const MembershipPrompt = ({ onClose }: { onClose: () => void }) => (
 
         <div className="flex flex-col gap-3">
           <button
-            onClick={() => window.location.href = '/membership'}
+            onClick={() => window.location.href = '/member-membership'}
             className="w-full px-6 py-3.5 bg-gradient-to-r from-[#bf2c7e] to-[#d64285] text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
           >
             Upgrade Now
@@ -113,6 +113,92 @@ export const MembershipPrompt = ({ onClose }: { onClose: () => void }) => (
     </motion.div>
   </div>
 );
+
+export const SellerPrompt = ({ onClose }: { onClose: () => void }) => (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-all duration-300">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ type: "spring", damping: 20, stiffness: 300 }}
+      className="relative bg-gradient-to-br from-white to-gray-50 w-full max-w-md rounded-2xl shadow-2xl overflow-hidden border border-gray-100"
+    >
+      <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-[#bf2c7e]/10"></div>
+      <div className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full bg-[#0f1c47]/10"></div>
+
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-gray-100 transition-colors duration-200"
+      >
+        <FiX className="w-5 h-5 text-gray-500" />
+      </button>
+
+      <div className="relative z-10 p-8 text-center">
+        <div className="mx-auto flex items-center justify-center w-20 h-20 bg-gradient-to-r from-[#bf2c7e] to-[#d64285] rounded-full mb-6">
+          <FiStar className="w-8 h-8 text-white" />
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          Unlock Premium Features
+        </h2>
+        <p className="text-gray-500 mb-6">
+          Upgrade to become a seller and enjoy exclusive benefits today
+        </p>
+
+        <div className="space-y-3 mb-8 text-left">
+          <div className="flex items-center gap-3">
+            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">
+              <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <span className="text-gray-700">Create your own shop</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">
+              <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <span className="text-gray-700">Premium member dashboard</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">
+              <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <span className="text-gray-700">Priority customer support</span>
+          </div>
+        </div>
+
+        <div className="bg-gray-50 rounded-xl p-4 mb-8">
+          <div className="flex justify-center items-baseline gap-2">
+            <span className="text-4xl font-bold text-gray-900">Ksh 500</span>
+            <span className="text-gray-500">/month</span>
+          </div>
+          <p className="text-sm text-gray-500 mt-1">Cancel anytime</p>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <button
+            onClick={() => window.location.href = '/member-membership'}
+            className="w-full px-6 py-3.5 bg-gradient-to-r from-[#bf2c7e] to-[#d64285] text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+          >
+            Upgrade Now
+          </button>
+          <button
+            onClick={onClose}
+            className="w-full px-6 py-3 text-gray-600 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          >
+            Maybe Later
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+);
+
 
 export const PendingRequestPrompt = ({ onClose }: { onClose: () => void }) => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-all duration-300">

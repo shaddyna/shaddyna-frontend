@@ -541,7 +541,7 @@ const ServicesPage = () => {
   const [showPendingRequestPrompt, setShowPendingRequestPrompt] = useState(false);
   const [showAdminPrompt, setShowAdminPrompt] = useState(false);
   const [showMembershipPrompt, setShowMembershipPrompt] = useState(false);
-  const [isCreateShopModalOpen, setIsCreateShopModalOpen] = useState(false);
+  const [isCreateMemberModalOpen, setIsCreateMemberModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -572,12 +572,12 @@ const ServicesPage = () => {
     { name: "1+ month", value: "1month" }
   ];
 
-  const handleOpenCreateShopModal = () => {
-    setIsCreateShopModalOpen(true);
+  const handleOpenCreateMemberModal = () => {
+    setIsCreateMemberModalOpen(true);
   };
 
-  const handleCloseCreateShopModal = () => {
-    setIsCreateShopModalOpen(false);
+  const handleCloseCreateMemberModal = () => {
+    setIsCreateMemberModalOpen(false);
   };
 
   const checkExistingRequest = async () => {
@@ -604,7 +604,7 @@ const ServicesPage = () => {
     }
   };
 
-  const handleCreateHubClick = async () => {
+  /*const handleCreateHubClick = async () => {
     if (authLoading) return;
     
     setChecking(true);
@@ -630,7 +630,7 @@ const ServicesPage = () => {
       } else if (user.role === 'customer' && !user.member) {
         setShowMembershipPrompt(true);
       } else {
-        handleOpenCreateShopModal();
+        handleOpenCreateMemberModal();
       }
     } catch (error) {
       console.error('Error checking user status:', error);
@@ -638,7 +638,51 @@ const ServicesPage = () => {
     } finally {
       setChecking(false);
     }
-  };
+  };*/
+  const handleCreateHubClick = async () => { 
+  if (authLoading) return;
+
+  setChecking(true);
+  setError('');
+
+  try {
+    await refreshUser();
+
+    if (!user) {
+      console.log("User not logged in");
+      // Optional: Show login modal
+      return;
+    }
+
+    if (!user.member) {
+  console.log("User is not a member:", user); // 🔍 Confirm this
+  setShowMembershipPrompt(true);
+} else {
+  handleOpenCreateMemberModal();
+}
+
+
+    const hasPendingRequest = await checkExistingRequest();
+    if (hasPendingRequest) {
+      setShowPendingRequestPrompt(true);
+      return;
+    }
+
+    // Check membership status
+    if (!user.member) {
+      setShowMembershipPrompt(true); // Prompt to become a member
+    } else {
+      handleOpenCreateMemberModal(); // Proceed if member
+    }
+
+  } catch (error) {
+    console.error('Error checking user status:', error);
+    setError('An error occurred while checking your status');
+  } finally {
+    setChecking(false);
+  }
+};
+
 
   const toggleService = (id: string) => {
     setActiveService(activeService === id ? null : id);
@@ -810,8 +854,8 @@ const ServicesPage = () => {
       )}
 
       <SkillForm
-        isOpen={isCreateShopModalOpen}
-        onClose={handleCloseCreateShopModal}
+        isOpen={isCreateMemberModalOpen}
+        onClose={handleCloseCreateMemberModal}
       />
 
       <LuxuryFooter />

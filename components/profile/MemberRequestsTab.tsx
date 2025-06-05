@@ -5,7 +5,7 @@ import { AdminTable } from '@/components/profile/AdminTable';
 import { User, Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export interface SellerRequest {
+export interface MemberRequest {
   _id: string;
   amount: number;
   paymentMethod: string;
@@ -21,15 +21,15 @@ export interface SellerRequest {
   };
 }
 
-export const SellerRequestsTab = () => {
-  const [requests, setRequests] = useState<SellerRequest[]>([]);
+export const MemberRequestsTab = () => {
+  const [requests, setRequests] = useState<MemberRequest[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const res = await axios.get('https://shaddynab-new.onrender.com/api/membership');
+        const res = await axios.get('https://shaddynab-new.onrender.com/api/members');
         setRequests(res.data);
       } catch (err) {
         setError('Failed to fetch seller requests');
@@ -44,7 +44,7 @@ export const SellerRequestsTab = () => {
 
   const handleStatusChange = async (id: string, status: 'approved' | 'rejected') => {
     try {
-      await axios.put(`https://shaddynab-new.onrender.com/api/membership/${id}`, { status });
+      await axios.put(`https://shaddynab-new.onrender.com/api/members/${id}`, { status });
       setRequests(prev =>
         prev.map(req =>
           req._id === id ? { ...req, status, processedAt: new Date().toISOString() } : req
@@ -141,7 +141,7 @@ export const SellerRequestsTab = () => {
       onAdd={() => {}}
       onEdit={() => {}}
       onDelete={() => {}}
-      renderActions={(item: SellerRequest) => (
+      renderActions={(item: MemberRequest) => (
         <div className="flex gap-2">
           {item.status === 'pending' && (
             <>
