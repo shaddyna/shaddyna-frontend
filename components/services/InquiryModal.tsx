@@ -97,7 +97,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
               <div className="md:w-1/3 bg-gray-50 p-4 sm:p-6 rounded-lg border border-gray-100">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
-                    <User className="text-purple-600" size={20} />
+                    <User className="text-[#bf2c7e]" size={20} />
                   </div>
                   <div>
                     <div className="flex items-center gap-1">
@@ -115,7 +115,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                   
                   <div>
                     <p className="text-xs sm:text-sm text-gray-500 font-medium">Price Range</p>
-                    <p className="text-sm sm:text-base font-medium text-purple-600">{service.price}</p>
+                    <p className="text-sm sm:text-base font-medium text-[#bf2c7e]">{service.price}</p>
                   </div>
                   
                   <div>
@@ -142,7 +142,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
                         placeholder="John Doe"
                       />
                     </div>
@@ -162,7 +162,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -176,7 +176,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                       id="budget"
                       value={formData.budget}
                       onChange={(e) => setFormData({...formData, budget: e.target.value})}
-                      className="block w-full pl-3 pr-10 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      className="block w-full pl-3 pr-10 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
                     >
                       <option value={service.price}>Within {service.price} range</option>
                       <option value="<$500">Under ksh 500</option>
@@ -194,7 +194,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                       id="timeline"
                       value={formData.timeline}
                       onChange={(e) => setFormData({...formData, timeline: e.target.value})}
-                      className="block w-full pl-3 pr-10 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      className="block w-full pl-3 pr-10 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
                     >
                       <option value={service.deliveryTime}>Within {service.deliveryTime}</option>
                       <option value="ASAP">ASAP</option>
@@ -217,7 +217,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                         required
                         value={formData.message}
                         onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 min-h-[100px] sm:min-h-[120px]"
+                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] min-h-[100px] sm:min-h-[120px]"
                         placeholder="Tell the provider about your project needs..."
                       />
                     </div>
@@ -228,7 +228,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2.5 sm:py-3 rounded-lg transition-colors text-sm sm:text-base"
+                      className="w-full bg-[#bf2c7e] hover:bg-[#bf2c7e] text-white font-medium py-2.5 sm:py-3 rounded-lg transition-colors text-sm sm:text-base"
                     >
                       Send Inquiry
                     </motion.button>
