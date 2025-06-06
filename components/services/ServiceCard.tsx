@@ -46,7 +46,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
           <div className="flex-1">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               <div>
-                <h3 className="text-xl font-bold mb-1">{service.title}</h3>
+                <h3 className="text-xl text-gray-700 font-bold mb-1">{service.title}</h3>
                 {/*<p className="text-gray-600 mb-2">
                   by {service.user?.firstName} {service.user?.lastName}
                 </p>*/}
@@ -133,7 +133,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
               </div>
               
               <div>
-                <h4 className="font-bold mb-2">What's Included</h4>
+                <h4 className="font-bold mb-2 text-gray-700">What's Included</h4>
                 <ul className="space-y-2 text-gray-700">
                   {service.inclusions.map((inclusion, index) => (
                     <li key={index} className="flex items-start gap-2">
