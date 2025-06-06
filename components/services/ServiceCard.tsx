@@ -28,7 +28,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
           {/* Provider Info */}
           <div className="flex-shrink-0 flex sm:block">
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-purple-100 flex items-center justify-center">
-              <User className="text-purple-600 w-8 h-8 sm:w-10 sm:h-10" />
+              <User className="text-[#bf2c7e] w-8 h-8 sm:w-10 sm:h-10" />
               {/* {service.user?.proVerified && (
                 <div className="absolute -bottom-1 -right-1 bg-purple-600 text-white p-1 rounded-full">
                   <Award className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -64,7 +64,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
               </div>
               
               <div className="flex-shrink-0 bg-gray-50 p-2 sm:p-3 rounded-lg">
-                <p className="font-bold text-purple-600 text-base sm:text-lg">{formattedPrice}</p>
+                <p className="font-bold text-[#bf2c7e] text-base sm:text-lg">{formattedPrice}</p>
               </div>
             </div>
             
@@ -99,13 +99,13 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
           className="w-full mt-4 sm:mt-6 flex justify-between items-center text-left"
           aria-expanded={activeService === service._id}
         >
-          <span className="text-xs sm:text-sm font-medium text-purple-600">
+          <span className="text-xs sm:text-sm font-medium text-[#bf2c7e]">
             {activeService === service._id ? 'Hide details' : 'View service details'}
           </span>
           {activeService === service._id ? (
-            <ChevronUp className="text-purple-600 h-4 w-4 sm:h-5 sm:w-5" />
+            <ChevronUp className="text-[#bf2c7e] h-4 w-4 sm:h-5 sm:w-5" />
           ) : (
-            <ChevronDown className="text-purple-600 h-4 w-4 sm:h-5 sm:w-5" />
+            <ChevronDown className="text-[#bf2c7e] h-4 w-4 sm:h-5 sm:w-5" />
           )}
         </button>
 
@@ -128,7 +128,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
                 <ul className="space-y-2 text-xs sm:text-sm text-gray-600">
                   {service.inclusions.map((inclusion, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-purple-500 flex-shrink-0 mt-0.5" />
+                      <Check className="h-4 w-4 text-[#bf2c7e] flex-shrink-0 mt-0.5" />
                       <span>{inclusion}</span>
                     </li>
                   ))}
@@ -139,7 +139,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full mt-4 sm:mt-6 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2.5 sm:py-3 rounded-lg transition-colors text-sm sm:text-base"
+              className="w-full mt-4 sm:mt-6 bg-[#bf2c7e] hover:bg-[#bf2c7e] text-white font-medium py-2.5 sm:py-3 rounded-lg transition-colors text-sm sm:text-base"
               onClick={() => handleContinueClick(service)}
             >
               Continue ({formattedPrice})
