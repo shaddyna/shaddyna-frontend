@@ -8,6 +8,7 @@ import LuxuryFooter from "@/components/LuxuryFooter";
 import useProducts from "@/utils/useProducts";
 import { ProductCard } from "@/components/product/ProductCard";
 import ProductDetailModal from "@/components/product/ProductDetailModal";
+import StickyBottomNavbar from "@/components/BottomNav";
 
 interface Product {
   _id: string;
@@ -768,6 +769,7 @@ const CollectionsPage = () => {
           />
         )}
       </AnimatePresence>
+      <StickyBottomNavbar />
       <LuxuryFooter />
     </div>
   );

@@ -256,6 +256,8 @@ import Navbar from '@/components/Header';
 import LuxuryFooter from '@/components/LuxuryFooter';
 import Link from 'next/link';
 import InquiryModal from "@/components/services/InquiryModal";
+import BottomNavbar from "@/components/BottomNav";
+import StickyBottomNavbar from "@/components/BottomNav";
 
 type Shop = {
   _id: string;
@@ -656,7 +658,7 @@ export default function Home() {
         setFormData={setFormData}
         onSubmit={handleSubmit}
       />
-      
+   <StickyBottomNavbar />
       <LuxuryFooter />
     </>
   );
