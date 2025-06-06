@@ -779,8 +779,10 @@ const ServicesPage = () => {
   }
 
   return (
+    <>
+     <NavbarTwo />
     <div className="bg-white min-h-screen">
-      <NavbarTwo />
+     
 
       <ServicesHero 
         handleCreateSkillClick={handleCreateHubClick} 
@@ -860,6 +862,7 @@ const ServicesPage = () => {
 
       <LuxuryFooter />
     </div>
+    </>
   );
 };
 
