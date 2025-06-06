@@ -315,7 +315,6 @@ type ServiceCardProps = {
 
 const ServiceCard = ({ service, activeService, toggleService, handleContinueClick }: ServiceCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
-   const [selectedService, setSelectedService] = useState<any | null>(null);
 
   // Format price for display
   const formattedPrice = service.price ? `Ksh ${service.price}` : 'Contact for price';
@@ -337,7 +336,6 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
                 alt={service.user?.firstName}
                 className="w-20 h-20 rounded-full object-cover border-2 border-[#bf2c7e]"
               />*/}
-
               {/* Assuming proVerified is a user property *
               {service.user?.proVerified && (
                 <div className="absolute -bottom-1 -right-1 bg-[#bf2c7e] text-white p-1 rounded-full">
@@ -362,7 +360,16 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
                     <span className="font-medium text-gray-900">
                       {service.averageRating || 'New'}
                     </span>
+                    {/* Projects count would need to be added to the Skill model */}
                   </div>
+                  
+                  {/* Featured would need to be a property on the Skill model *
+                  {service.isFeatured && (
+                    <div className="flex items-center gap-1 bg-purple-100 px-2 py-1 rounded-full">
+                      <Sparkles className="text-purple-600" size={14} />
+                      <span className="text-purple-600 text-sm font-medium">Featured</span>
+                    </div>
+                  )}*/}
                 </div>
               </div>
               
@@ -412,9 +419,12 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
         </button>
 
         <div
-          className={`overflow-hidden transition-all duration-300 ${
+          className={`overflow-auto transition-all duration-300 ${
             activeService === service._id ? "max-h-96 mt-4" : "max-h-0"
           }`}
+          style={{
+            maxHeight: 'calc(100vh - 120px)', // Adjust the height as needed
+          }}
         >
           <div className="pt-4 border-t border-gray-100">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
