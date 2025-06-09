@@ -1,4 +1,3 @@
-
 /*"use client"
 import { motion } from "framer-motion";
 import { Star, Briefcase, Clock, Check, ChevronDown, ChevronUp, User } from "lucide-react";
@@ -81,27 +80,18 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
     >
       <div className="p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-        
+       
           <div className="flex-shrink-0 flex sm:block">
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-purple-100 flex items-center justify-center">
               <User className="text-[#bf2c7e] w-8 h-8 sm:w-10 sm:h-10" />
-              {/* {service.user?.proVerified && (
-                <div className="absolute -bottom-1 -right-1 bg-purple-600 text-white p-1 rounded-full">
-                  <Award className="h-3 w-3 sm:h-4 sm:w-4" />
-                </div>
-              )} *
             </div>
           </div>
           
-     
+        
           <div className="flex-1 space-y-3 sm:space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
               <div className="space-y-1 sm:space-y-2">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-800">{service.title}</h3>
-                {/* <p className="text-sm text-gray-600">
-                  by {service.user?.firstName} {service.user?.lastName}
-                </p> *
-                
                 <div className="flex flex-wrap items-center gap-2">
                   <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-full">
                     <Star className="text-yellow-400 fill-yellow-400" size={14} />
@@ -109,13 +99,6 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
                       {service.averageRating || 'New'}
                     </span>
                   </div>
-                  
-                  {/* {service.isFeatured && (
-                    <div className="flex items-center gap-1 bg-purple-50 px-2 py-1 rounded-full">
-                      <Sparkles className="text-purple-500" size={12} />
-                      <span className="text-xs text-purple-600 font-medium">Featured</span>
-                    </div>
-                  )} *
                 </div>
               </div>
               
@@ -126,7 +109,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
             
             <p className="text-sm sm:text-base text-gray-600 line-clamp-2">{service.description}</p>
             
-      
+       
             <div className="flex flex-wrap gap-2">
               {service.skills.map((skill, index) => (
                 <span key={index} className="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs sm:text-sm">
@@ -135,7 +118,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
               ))}
             </div>
             
-    
+      
             <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-500">
               <div className="flex items-center gap-1">
                 <Briefcase className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -149,7 +132,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
           </div>
         </div>
         
-
+  
         <button
           onClick={() => toggleService(service._id)}
           className="w-full mt-4 sm:mt-6 flex justify-between items-center text-left"
@@ -206,6 +189,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
     </motion.div>
   );
 };
+
 export default function Home() {
   const [shops, setShops] = useState<Shop[]>([]);
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -219,7 +203,7 @@ export default function Home() {
     budget: "",
     timeline: ""
   });
-
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const fetchShops = async () => {
@@ -236,26 +220,29 @@ export default function Home() {
     fetchSkills();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const toggleService = (id: string) => {
     setActiveService((prev) => (prev === id ? null : id));
   };
 
-  /*const handleContinueClick = (service: Skill) => {
-    console.log(`Continue clicked for service: ${service.title}`);
-    // Handle continue logic here
-  };*
-
-   const handleContinueClick = (service: any) => {
+  const handleContinueClick = (service: any) => {
     setSelectedService(service);
     setIsInquiryOpen(true);
-    setFormData(prev => ({
+    setFormData(prev => (    {
       ...prev,
-      budget: service.price ? `$${service.price}` : 'Custom',
+      budget: service.price ? `Ksh ${service.price}` : 'Custom',
       timeline: service.deliveryTime
     }));
   };
 
-    const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Inquiry submitted:', formData);
     setIsInquiryOpen(false);
@@ -272,34 +259,79 @@ export default function Home() {
   return (
     <>
       <div className="min-h-screen bg-white">
+        <Navbar />
         
-      <Navbar />
-     
-        <section className="relative bg-gradient-to-r from-[#0f1c47] to-[#bf2c7e] text-white py-20 px-4">
-          <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Discover Amazing Shops & Skills
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Find unique products and professional services tailored just for you
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="#shops"
-                className="bg-[#bf2c7e] hover:bg-[#a8246b] text-white font-bold py-3 px-6 rounded-full transition duration-300"
-              >
-                Browse Shops
-              </Link>
-              <Link
-                href="#skills"
-                className="bg-white hover:bg-gray-100 text-[#0f1c47] font-bold py-3 px-6 rounded-full transition duration-300"
-              >
-                Explore Skills
-              </Link>
+   
+        <section className="relative bg-white overflow-hidden">
+          <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full mt-24">
+          
+            <div className="relative h-full w-full overflow-hidden">
+              {[
+                {
+                  image: "https://i.pinimg.com/736x/f6/67/07/f667075b97630b1e3bb56c54c48c4250.jpg",
+                },
+                {
+                  image: "https://i.pinimg.com/736x/f6/67/07/f667075b97630b1e3bb56c54c48c4250.jpg",
+                },
+                {
+                  image: "https://i.pinimg.com/736x/f6/67/07/f667075b97630b1e3bb56c54c48c4250.jpg",
+                }
+              ].map((slide, index) => (
+                <div 
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                >
+                  <img
+                    src={slide.image}
+                    alt={`Slide ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            
+      
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
+              {[0, 1, 2].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-white w-6' : 'bg-white/50'}`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+          
+       
+          <div className="container mx-auto px-4 py-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 border border-yellow-200 rounded-lg p-4 flex items-center justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <h3 className="font-bold text-yellow-800">Holiday Sale!</h3>
+                  <p className="text-sm text-yellow-600">Up to 50% off selected items</p>
+                </div>
+                <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">New</span>
+              </div>
+              <div className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-4 flex items-center justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <h3 className="font-bold text-blue-800">New Professionals</h3>
+                  <p className="text-sm text-blue-600">Discover recently joined experts</p>
+                </div>
+                <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">Hot</span>
+              </div>
+              <div className="bg-gradient-to-r from-pink-50 to-pink-100 border border-pink-200 rounded-lg p-4 flex items-center justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <h3 className="font-bold text-pink-800">Limited Time Offer</h3>
+                  <p className="text-sm text-pink-600">Book now and get 20% off</p>
+                </div>
+                <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full">Sale</span>
+              </div>
             </div>
           </div>
         </section>
 
+   
         <section id="shops" className="py-16 px-4 max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-10">
             <h2 className="text-3xl font-bold text-[#0f1c47]">Featured Shops</h2>
@@ -348,6 +380,7 @@ export default function Home() {
           </div>
         </section>
 
+    
         <section id="skills" className="py-16 px-4 bg-gray-50">
           <div className="max-w-7xl mx-auto">
             <div className="flex justify-between items-center mb-10">
@@ -373,6 +406,7 @@ export default function Home() {
           </div>
         </section>
 
+    
         <section className="py-20 px-4 bg-[#0f1c47] text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -407,7 +441,7 @@ export default function Home() {
         setFormData={setFormData}
         onSubmit={handleSubmit}
       />
-   <StickyBottomNavbar />
+      <StickyBottomNavbar />
       <LuxuryFooter />
     </>
   );
@@ -593,7 +627,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full mt-4 sm:mt-6 bg-[#bf2c7e] hover:bg-[#bf2c7e] text-white font-medium py-2.5 sm:py-3 rounded-lg transition-colors text-sm sm:text-base"
+              className="w-full mt-4 sm:mt-6 bg-[#bf2c7e] hover:bg-[#bf2c7e] text-white font-medium py-2. sm5:py-3 rounded-lg transition-colors text-sm sm:text-base"
               onClick={() => handleContinueClick(service)}
             >
               Continue ({formattedPrice})
@@ -608,6 +642,7 @@ const ServiceCard = ({ service, activeService, toggleService, handleContinueClic
 export default function Home() {
   const [shops, setShops] = useState<Shop[]>([]);
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [loading, setLoading] = useState(true); // Added loading state
   const [activeService, setActiveService] = useState<string | null>(null);
   const [selectedService, setSelectedService] = useState<any | null>(null);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
@@ -631,8 +666,9 @@ export default function Home() {
       setSkills(skillsData);
     };
 
-    fetchShops();
-    fetchSkills();
+    Promise.all([fetchShops(), fetchSkills()]).then(() => {
+      setLoading(false); // Set loading to false once both fetches are done
+    });
   }, []);
 
   useEffect(() => {
@@ -650,7 +686,7 @@ export default function Home() {
   const handleContinueClick = (service: any) => {
     setSelectedService(service);
     setIsInquiryOpen(true);
-    setFormData(prev => (    {
+    setFormData(prev => ({
       ...prev,
       budget: service.price ? `Ksh ${service.price}` : 'Custom',
       timeline: service.deliveryTime
@@ -671,6 +707,19 @@ export default function Home() {
     alert('Your inquiry has been sent successfully!');
   };
 
+  if (loading) {
+    return (
+      <div className="bg-white min-h-screen">
+        <Navbar />
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#bf2c7e]"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="min-h-screen bg-white">
@@ -681,8 +730,7 @@ export default function Home() {
           <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full mt-24">
             {/* Main Carousel */}
             <div className="relative h-full w-full overflow-hidden">
-              {[
-                {
+              {[{
                   image: "https://i.pinimg.com/736x/f6/67/07/f667075b97630b1e3bb56c54c48c4250.jpg",
                 },
                 {

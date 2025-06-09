@@ -605,41 +605,7 @@ const ServicesPage = () => {
     }
   };
 
-  /*const handleCreateHubClick = async () => {
-    if (authLoading) return;
-    
-    setChecking(true);
-    setError('');
-    
-    try {
-      await refreshUser();
 
-      if (!user) {
-        console.log("User not logged in");
-        // Implement login modal here if needed
-        return;
-      }
-
-      const hasPendingRequest = await checkExistingRequest();
-      if (hasPendingRequest) {
-        setShowPendingRequestPrompt(true);
-        return;
-      }
-
-      if (user.role === 'admin') {
-        setShowAdminPrompt(true);
-      } else if (user.role === 'customer' && !user.member) {
-        setShowMembershipPrompt(true);
-      } else {
-        handleOpenCreateMemberModal();
-      }
-    } catch (error) {
-      console.error('Error checking user status:', error);
-      setError('An error occurred while checking your status');
-    } finally {
-      setChecking(false);
-    }
-  };*/
   const handleCreateHubClick = async () => { 
   if (authLoading) return;
 
