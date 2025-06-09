@@ -228,7 +228,7 @@ const legalLinks = [
 
 const LuxuryFooter = () => {
   return (
-    <footer className="relative bg-[#0f1c47] text-white pt-20 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <footer className="relative bg-[#0f1c47] text-white pt-8 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Decorative Motion Circles */}
       <motion.div 
         className="absolute top-20 left-10 w-24 h-24 bg-[#bf2c7e]/10 rounded-full blur-xl"

@@ -795,9 +795,9 @@ export default function Home() {
         </section>
 
         {/* Featured Shops */}
-        <section id="shops" className="py-16 px-4 max-w-7xl mx-auto">
-          <div className="flex justify-between items-center mb-10">
-            <h2 className="text-3xl font-bold text-[#0f1c47]">Featured Shops</h2>
+        <section id="shops" className="py-4 px-4 max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold text-[#0f1c47]">Featured Shops</h2>
             <Link
               href="/shops"
               className="text-[#bf2c7e] hover:text-[#a8246b] font-semibold"
@@ -844,10 +844,10 @@ export default function Home() {
         </section>
 
         {/* Popular Skills */}
-        <section id="skills" className="py-16 px-4 bg-gray-50">
+        <section id="skills" className="py-3 px-3 bg-gray-50">
           <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-center mb-10">
-              <h2 className="text-3xl font-bold text-[#0f1c47]">Popular Skills</h2>
+            <div className="flex justify-between items-center mb-3">
+              <h2 className="text-2xl font-bold text-[#0f1c47]">Popular Skills</h2>
               <Link
                 href="/hub"
                 className="text-[#bf2c7e] hover:text-[#a8246b] font-semibold"
@@ -869,7 +869,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA Section *
         <section className="py-20 px-4 bg-[#0f1c47] text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -894,7 +894,32 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </section>
+        </section>*/}
+        {/* CTA Section */}
+      <section className="py-8 px-4 bg-[#0f1c47] text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            Ready to find what you need?
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl mb-8">
+            Join thousands of happy customers discovering amazing products and services every day.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/auth/register"
+              className="bg-[#bf2c7e] hover:bg-[#a8246b] text-white font-bold py-3 px-6 sm:px-8 rounded-full transition duration-300"
+            >
+              Sign Up Now
+            </Link>
+            <Link
+              href=""
+              className="bg-transparent hover:bg-white/10 text-white font-bold py-3 px-6 sm:px-8 rounded-full border border-white transition duration-300"
+            >
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </section>
       </div>
       <InquiryModal
         isOpen={isInquiryOpen}
