@@ -45,6 +45,7 @@ export default StickyBottomNavbar;*/
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { User, ShoppingBag, ShoppingCart, Brain, Home } from "lucide-react";
+import { BsShop } from "react-icons/bs";
 
 const StickyBottomNavbar = () => {
   const pathname = usePathname();
@@ -52,7 +53,7 @@ const StickyBottomNavbar = () => {
   const navLinks = [
     { name: "Home", href: "/", icon: <Home size={24} /> },
     { name: "Cart", href: "/cart", icon: <ShoppingBag size={24} /> },
-    { name: "Shops", href: "/shops", icon: <ShoppingCart size={24} /> },
+    { name: "Shops", href: "/shops", icon: <BsShop size={24} /> },
     { name: "Hub", href: "/hub", icon: <Brain size={24} /> },
     { name: "Account", href: "/account", icon: <User size={24} /> },
   ];

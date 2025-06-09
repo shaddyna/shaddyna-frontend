@@ -122,7 +122,7 @@ const ShopsHero = ({ handleCreateSellerClick, checking, authLoading }: ServicesH
                       whileTap={{ scale: 0.95 }}
                       onClick={handleCreateSellerClick}
                       disabled={checking || authLoading}
-                      className="px-8 py-3 bg-[#bf2c7e] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="px-8 py-3 bg-[#0f1c47] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       {checking ? (
                         <span className="flex items-center justify-center gap-2">

@@ -826,7 +826,7 @@ const ServicesPage = () => {
         isOpen={isCreateMemberModalOpen}
         onClose={handleCloseCreateMemberModal}
       />
-<StickyBottomNavbar />
+      <StickyBottomNavbar />
       <LuxuryFooter />
     </div>
     </>

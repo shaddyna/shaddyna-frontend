@@ -39,7 +39,7 @@ const NavbarTwo = () => {
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
             <Link href="/" className="text-black font-bold text-2xl">
               <span className="group relative">
-                <span className="block group-hover:opacity-0 transition-opacity">Shaddyna</span>
+                <span className="block group-hover:opacity-0 transition-opacity text-[#0f1c47]">Shaddyna</span>
                 <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-clip-text text-[#0f1c47] bg-gradient-to-r from-[#bf2c7e] to-[#0f1c47]">
                   Shaddyna
                 </span>
