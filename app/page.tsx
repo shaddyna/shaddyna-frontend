@@ -794,7 +794,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Shops */}
+        {/* Featured Shops *
         <section id="shops" className="py-4 px-4 max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-bold text-[#0f1c47]">Featured Shops</h2>
@@ -841,7 +841,56 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </section>
+        </section>*/}
+        {/* Featured Shops */}
+<section id="shops" className="py-6 px-4 sm:py-8 max-w-7xl mx-auto">
+  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
+    <h2 className="text-xl sm:text-2xl font-bold text-[#0f1c47]">Featured Shops</h2>
+    <Link
+      href="/shops"
+      className="text-[#bf2c7e] hover:text-[#a8246b] font-semibold text-sm sm:text-base"
+    >
+      View All →
+    </Link>
+  </div>
+  <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+    {shops.slice(0, 6).map((shop) => (
+      <div
+        key={shop._id}
+        className="bg-white rounded-lg sm:rounded-xl shadow-sm sm:shadow-md overflow-hidden hover:shadow-md sm:hover:shadow-lg transition duration-300"
+      >
+        <div className="h-40 sm:h-48 overflow-hidden">
+          <img
+            src={shop.image || '/placeholder-shop.jpg'}
+            alt={shop.name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div className="p-4 sm:p-6">
+          <div className="flex justify-between items-start gap-2 mb-2">
+            <h3 className="text-lg sm:text-xl font-bold text-[#0f1c47]">{shop.name}</h3>
+            <span className="bg-[#bf2c7e] text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">
+              {shop.categories[0]}
+            </span>
+          </div>
+          <p className="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4 line-clamp-2">{shop.description}</p>
+          <div className="flex justify-between items-center">
+            <span className="text-xs sm:text-sm text-gray-500">
+              {shop.location}
+            </span>
+            <Link
+              href={`/shops/${shop._id}`}
+              className="text-[#bf2c7e] hover:text-[#a8246b] text-xs sm:text-sm font-semibold"
+            >
+              Visit Shop →
+            </Link>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
         {/* Popular Skills */}
         <section id="skills" className="py-3 px-3 bg-gray-50">
