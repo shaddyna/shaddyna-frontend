@@ -10,7 +10,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-inconsolata: "Inconsolata", monospace;
+  --font-weight: 100;
+  --font-variation-settings: "wdth" 100;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -22,7 +26,12 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 100;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 125;
 }
 @layer utilities {
   .will-change-transform {

@@ -52,9 +52,9 @@ import { AuthProvider } from "@/context/AuthContext";
 
 const inconsolata = Inconsolata({
   variable: "--font-inconsolata",
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-  display: "swap",
+  //subsets: ["latin"],
+ subsets: ["vietnamese",],
+ 
 });
 
 export const metadata: Metadata = {
@@ -70,7 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inconsolata.variable} font-mono antialiased 
+        className={`${inconsolata.variable} font-mono antialiased   
         bg-background text-foreground
         selection:bg-purple-600 selection:text-white
         leading-relaxed tracking-tight

@@ -523,7 +523,7 @@ import CreateShopModal from "@/components/services/CreateShopModal";
 import ShopsHero from "@/components/services/ShopsHero";
 import { AdminPrompt, ErrorToast, MembershipPrompt, PendingRequestPrompt, SellerPrompt } from "@/components/services/Prompts";
 import BecomeSellerBanner from "@/components/services/BecomeSellerProvider";
-import StickyBottomNavbar from "@/components/BottomNav";
+
 
 interface Shop {
   _id: string;
@@ -996,7 +996,7 @@ useEffect(() => {
         isOpen={isCreateShopModalOpen}
         onClose={handleCloseCreateShopModal}
       />
-<StickyBottomNavbar />
+
       <LuxuryFooter />
     </div>
   );

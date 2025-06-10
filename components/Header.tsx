@@ -7,6 +7,7 @@ import { Menu, X, ShoppingBag, User, Search, Heart } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/stores/cartStore";
 import { useWishlistStore } from "@/stores/wishlistStore";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +27,13 @@ const Navbar = () => {
   const handleLinkClick = () => {
     setIsOpen(false);
   };
+   
+  const router = useRouter();
+
+    const handleClick = () => {
+    router.push("/cart");
+  };
+
 
   return (
     <motion.header
@@ -116,14 +124,23 @@ const Navbar = () => {
               </motion.a>
             </Link>
           </div>
-
+          <div className="">
+            <motion.button
+           onClick={handleClick}
+            className="md:hidden text-black"
+            whileTap={{ scale: 0.9 }}
+          >
+            <ShoppingBag size={22} />
+          
+          </motion.button>
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-black"
+            className="md:hidden text- ml-4"
             whileTap={{ scale: 0.9 }}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
+          </div>
         </div>
       </div>
 

@@ -68,6 +68,7 @@ export default {
       animation: {
         slideIn: "slideIn 0.5s ease forwards",
       },
+
     },
   },
   plugins: [],

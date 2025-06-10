@@ -196,7 +196,7 @@ import { useCartStore } from "@/stores/cartStore";
 import Image from "next/image";
 import NavbarTwo from "@/components/HeaderTwo";
 import LuxuryFooter from "@/components/LuxuryFooter";
-import StickyBottomNavbar from "@/components/BottomNav";
+
 
 const CartPage = () => {
   const {
@@ -382,7 +382,7 @@ const CartPage = () => {
           )}
         </div>
       </div>
-      <StickyBottomNavbar />
+   
       <LuxuryFooter />
     </>
   );

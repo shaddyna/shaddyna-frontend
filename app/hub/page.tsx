@@ -526,7 +526,7 @@ import InquiryModal from "@/components/services/InquiryModal";
 import { AdminPrompt, MembershipPrompt, PendingRequestPrompt, ErrorToast } from "@/components/services/Prompts";
 import SkillForm from "@/components/services/CreateHubModal";
 import { useServices } from "@/hooks/useServices";
-import StickyBottomNavbar from "@/components/BottomNav";
+
 
 const ServicesPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -826,7 +826,7 @@ const ServicesPage = () => {
         isOpen={isCreateMemberModalOpen}
         onClose={handleCloseCreateMemberModal}
       />
-      <StickyBottomNavbar />
+  
       <LuxuryFooter />
     </div>
     </>
