@@ -202,7 +202,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { useWishlistStore } from "@/stores/wishlistStore";
 import { useRouter } from "next/navigation";
 
-const NavbarTwo = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const itemCount = useCartStore((state) => state.itemCount());
@@ -318,13 +318,17 @@ const NavbarTwo = () => {
             </Link>
           </div>
           <div className="">
-            <motion.button
-           onClick={handleClick}
-            className="md:hidden text-black"
+          <motion.button
+            onClick={handleClick}
+            className="md:hidden text-black relative"
             whileTap={{ scale: 0.9 }}
           >
             <ShoppingBag size={22} />
-          
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-[#bf2c7e] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
           </motion.button>
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
@@ -398,4 +402,4 @@ const NavbarTwo = () => {
   );
 };
 
-export default NavbarTwo;
+export default Navbar;

@@ -896,7 +896,7 @@ export default function Home() {
         <section id="skills" className="py-3 px-3 bg-gray-50">
           <div className="max-w-7xl mx-auto">
             <div className="flex justify-between items-center mb-3">
-              <h2 className="text-2xl font-bold text-[#0f1c47]">Popular Skills</h2>
+              <h2 className="text-2xl sm:text-2xl font-bold text-[#0f1c47]">Popular Skills</h2>
               <Link
                 href="/hub"
                 className="text-[#bf2c7e] hover:text-[#a8246b] font-semibold"

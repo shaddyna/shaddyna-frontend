@@ -584,26 +584,6 @@ const BoutiquesPage = () => {
   const [isCreateShopModalOpen, setIsCreateShopModalOpen] = useState(false); 
 
   const router = useRouter();
-
- /* useEffect(() => {
-    const fetchShops = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/shops');
-        if (!response.ok) {
-          throw new Error('Failed to fetch shops');
-        }
-        const data = await response.json();
-        setShops(data);
-      } catch (err) {
-        setError('Failed to load shops. Please try again later.');
-        console.error('Error fetching shops:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchShops();
-  }, []);*/
 useEffect(() => {
   const fetchShops = async () => {
     try {
@@ -750,256 +730,256 @@ useEffect(() => {
     );
   }
 
-  return (
-    <div className="bg-white min-h-screen">
-      <NavbarTwo />
-      <ShopsHero 
-        handleCreateSellerClick={handleCreateShopClick} 
-        checking={checking} 
-        authLoading={authLoading} 
-      />
+return (
+  <div className="bg-white min-h-screen">
+    <NavbarTwo />
+    <ShopsHero 
+      handleCreateSellerClick={handleCreateShopClick} 
+      checking={checking} 
+      authLoading={authLoading} 
+    />
 
-      {/* Search and Filter Bar */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-          {/* Search Bar */}
-          <div className="relative w-full md:w-96">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
-            </div>
-            <input
-              type="text"
-              placeholder="Search boutiques..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery("")}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center"
-              >
-                <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-              </button>
-            )}
+    {/* Search and Filter Bar */}
+    <section className="py-6 px-4 sm:py-8 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 sm:gap-4 mb-6">
+        {/* Search Bar */}
+        <div className="relative w-full md:w-80 lg:w-96">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Search className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
           </div>
-
-          {/* Category Filter */}
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            <div className="hidden md:flex items-center gap-2">
-              <span className="text-gray-600">Filter:</span>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="appearance-none bg-white border border-gray-300 rounded-full px-4 py-3 pr-10 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
-              >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <ChevronDown className="h-4 w-4" />
-              </div>
-            </div>
-
-            {/* Mobile Filter Button */}
+          <input
+            type="text"
+            placeholder="Search boutiques..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 border border-gray-300 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base"
+          />
+          {searchQuery && (
             <button
-              onClick={() => setMobileFiltersOpen(true)}
-              className="md:hidden flex items-center gap-2 px-4 py-3 border border-gray-300 rounded-full shadow-sm hover:bg-gray-50"
+              onClick={() => setSearchQuery("")}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center"
             >
-              <span>Filters</span>
-              <ChevronDown className="h-5 w-5" />
+              <X className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 hover:text-gray-600" />
             </button>
-          </div>
+          )}
         </div>
 
-        {/* Mobile Filters Panel */}
-        {mobileFiltersOpen && (
-          <div className="md:hidden mb-8 p-6 bg-white border border-gray-200 rounded-xl shadow-lg">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="font-bold text-lg">Filters</h3>
-              <button onClick={() => setMobileFiltersOpen(false)}>
-                <X className="h-5 w-5" />
-              </button>
+        {/* Category Filter */}
+        <div className="flex items-center gap-2 sm:gap-3 w-full md:w-auto">
+          <div className="hidden md:flex items-center gap-2">
+            <span className="text-gray-600 text-sm sm:text-base">Filter:</span>
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="appearance-none bg-white border border-gray-300 rounded-full px-3 sm:px-4 py-2 sm:py-2.5 pr-8 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base"
+            >
+              {categories.map(category => (
+                <option key={category} value={category}>{category}</option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <ChevronDown className="h-4 w-4" />
             </div>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium mb-2">Categories</h4>
-                <div className="grid grid-cols-2 gap-2">
-                  {categories.map(category => (
-                    <button
-                      key={category}
-                      onClick={() => {
-                        setSelectedCategory(category);
-                        setMobileFiltersOpen(false);
-                      }}
-                      className={`px-4 py-2 rounded-full text-sm ${
-                        selectedCategory === category
-                          ? "bg-[#bf2c7e] text-black font-bold"
-                          : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
+          </div>
+
+          {/* Mobile Filter Button */}
+          <button
+            onClick={() => setMobileFiltersOpen(true)}
+            className="md:hidden flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-full shadow-sm hover:bg-gray-50 text-sm"
+          >
+            <span>Filters</span>
+            <ChevronDown className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Filters Panel */}
+      {mobileFiltersOpen && (
+        <div className="md:hidden mb-6 p-4 sm:p-6 bg-white border border-gray-200 rounded-lg sm:rounded-xl shadow-md">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="font-bold text-base sm:text-lg">Filters</h3>
+            <button onClick={() => setMobileFiltersOpen(false)}>
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+          <div className="space-y-3">
+            <div>
+              <h4 className="font-medium text-sm sm:text-base mb-2">Categories</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {categories.map(category => (
+                  <button
+                    key={category}
+                    onClick={() => {
+                      setSelectedCategory(category);
+                      setMobileFiltersOpen(false);
+                    }}
+                    className={`px-3 py-1.5 rounded-full text-xs sm:text-sm ${
+                      selectedCategory === category
+                        ? "bg-[#bf2c7e] text-black font-bold"
+                        : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Shops Grid */}
-        {filteredShops.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredShops.map((shop) => (
-              <motion.div
-                key={shop._id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-100 overflow-hidden"
-              >
-                {/* Shop Cover Image */}
-                <div className="relative h-60 overflow-hidden">
-                  <img
-                    src={shop.image}
-                    alt={shop.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <h3 className="text-2xl font-bold text-white">{shop.name}</h3>
-                    <div className="flex items-center gap-2 mt-1">
-                      <MapPin className="text-[#bf2c7e]" size={16} />
-                      <span className="text-white text-sm">{shop.location}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Shop Info */}
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <p className="text-sm text-gray-500">Owner</p>
-                      <p className="font-medium">{shop.owner.name}</p>
-                    </div>
-                    <div className="flex items-center gap-1 bg-[#bf2c7e]/10 px-3 py-1 rounded-full">
-                      <Star className="text-[#bf2c7e] fill-[#bf2c7e]" size={16} />
-                      <span className="font-bold text-gray-900">New</span>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-600 mb-4">{shop.description}</p>
-
-                  {/* Categories */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {shop.categories.map((category, index) => (
-                      <span key={index} className="text-xs bg-gray-100 px-3 py-1 rounded-full">
-                        {category}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Expandable Details */}
-                  <button
-                    onClick={() => toggleShop(shop._id)}
-                    className="w-full flex justify-between items-center text-left"
-                  >
-                    <span className="text-sm font-medium text-[#bf2c7e]">
-                      {activeShop === shop._id ? 'Hide details' : 'View shop details'}
-                    </span>
-                    {activeShop === shop._id ? (
-                      <ChevronUp className="text-[#bf2c7e]" />
-                    ) : (
-                      <ChevronDown className="text-[#bf2c7e]" />
-                    )}
-                  </button>
-
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      activeShop === shop._id ? "max-h-96 mt-4" : "max-h-0"
-                    }`}
-                  >
-                    <div className="pt-4 border-t border-gray-100">
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                          <p className="text-sm text-gray-500">Categories</p>
-                          <p className="font-medium">{shop.categories.join(', ')}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-500">Contact</p>
-                          <p className="font-medium">{shop.contact.email}</p>
-                        </div>
-                      </div>
-                      <motion.button
-                        onClick={() => handleVisit(shop._id)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full mt-4 bg-[#bf2c7e] hover:bg-[#0f1c47] text-black font-bold py-3 rounded-lg flex items-center justify-center gap-2"
-                      >
-                        <ShoppingBag size={18} />
-                        Visit Shop
-                      </motion.button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="col-span-full text-center py-20"
-          >
-            <div className="mx-auto bg-[#bf2c7e]/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-              <Search className="text-[#bf2c7e]" size={24} />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">No shops found</h3>
-            <p className="text-gray-600 mb-6">Try adjusting your search or filter criteria</p>
-            <button
-              onClick={() => {
-                setSearchQuery("");
-                setSelectedCategory("All Boutiques");
-              }}
-              className="px-6 py-3 bg-[#bf2c7e] hover:bg-[#0f1c47] text-black font-bold rounded-full"
+      {/* Shops Grid */}
+      {filteredShops.length > 0 ? (
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {filteredShops.map((shop) => (
+            <motion.div
+              key={shop._id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-lg sm:rounded-xl shadow-sm hover:shadow-md sm:shadow-md sm:hover:shadow-lg transition-all border border-gray-100 overflow-hidden"
             >
-              Reset Filters
-            </button>
-          </motion.div>
-        )}
-      </section>
-      <BecomeSellerBanner
-        handleCreateSellerClick={handleCreateShopClick} 
-        checking={checking} 
-        authLoading={authLoading} 
-      />
+              {/* Shop Cover Image */}
+              <div className="relative h-40 sm:h-48 md:h-52 lg:h-60 overflow-hidden">
+                <img
+                  src={shop.image}
+                  alt={shop.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">{shop.name}</h3>
+                  <div className="flex items-center gap-1 mt-1">
+                    <MapPin className="text-[#bf2c7e]" size={14} />
+                    <span className="text-white text-xs sm:text-sm">{shop.location}</span>
+                  </div>
+                </div>
+              </div>
 
-      {/* Prompt Modals */}
-      {showAdminPrompt && (
-        <AdminPrompt onClose={() => setShowAdminPrompt(false)} />
+              {/* Shop Info */}
+              <div className="p-3 sm:p-4">
+                <div className="flex justify-between items-start mb-2 sm:mb-3">
+                  <div>
+                    <p className="text-xs sm:text-sm text-gray-500">Owner</p>
+                    <p className="font-medium text-sm sm:text-base">{shop.owner.name}</p>
+                  </div>
+                  <div className="flex items-center gap-1 bg-[#bf2c7e]/10 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full">
+                    <Star className="text-[#bf2c7e] fill-[#bf2c7e]" size={14} />
+                    <span className="font-bold text-gray-900 text-xs sm:text-sm">New</span>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{shop.description}</p>
+
+                {/* Categories */}
+                <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-5">
+                  {shop.categories.map((category, index) => (
+                    <span key={index} className="text-xs bg-gray-100 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full">
+                      {category}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Expandable Details */}
+                <button
+                  onClick={() => toggleShop(shop._id)}
+                  className="w-full flex justify-between items-center text-left"
+                >
+                  <span className="text-xs sm:text-sm font-medium text-[#bf2c7e]">
+                    {activeShop === shop._id ? 'Hide details' : 'View shop details'}
+                  </span>
+                  {activeShop === shop._id ? (
+                    <ChevronUp className="text-[#bf2c7e]" size={16} />
+                  ) : (
+                    <ChevronDown className="text-[#bf2c7e]" size={16} />
+                  )}
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    activeShop === shop._id ? "max-h-96 mt-3" : "max-h-0"
+                  }`}
+                >
+                  <div className="pt-3 border-t border-gray-100">
+                    <div className="grid grid-cols-2 gap-3 mb-3">
+                      <div>
+                        <p className="text-xs sm:text-sm text-gray-500">Categories</p>
+                        <p className="font-medium text-xs sm:text-sm">{shop.categories.join(', ')}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs sm:text-sm text-gray-500">Contact</p>
+                        <p className="font-medium text-xs sm:text-sm">{shop.contact.email}</p>
+                      </div>
+                    </div>
+                    <motion.button
+                      onClick={() => handleVisit(shop._id)}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full mt-3 bg-[#bf2c7e] hover:bg-[#0f1c47] text-black font-bold py-2 sm:py-2.5 rounded-lg flex items-center justify-center gap-1 text-xs sm:text-sm"
+                    >
+                      <ShoppingBag size={14} />
+                      Visit Shop
+                    </motion.button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="col-span-full text-center py-12 sm:py-16"
+        >
+          <div className="mx-auto bg-[#bf2c7e]/10 p-3 sm:p-4 rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6">
+            <Search className="text-[#bf2c7e]" size={20} />
+          </div>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">No shops found</h3>
+          <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">Try adjusting your search or filter criteria</p>
+          <button
+            onClick={() => {
+              setSearchQuery("");
+              setSelectedCategory("All Boutiques");
+            }}
+            className="px-4 py-2 sm:px-6 sm:py-3 bg-[#bf2c7e] hover:bg-[#0f1c47] text-black font-bold rounded-full text-sm sm:text-base"
+          >
+            Reset Filters
+          </button>
+        </motion.div>
       )}
+    </section>
+    <BecomeSellerBanner
+      handleCreateSellerClick={handleCreateShopClick} 
+      checking={checking} 
+      authLoading={authLoading} 
+    />
 
-      {showSellerPrompt && (
-        <SellerPrompt onClose={() => setShowSellerPrompt(false)} />
-      )}
+    {/* Prompt Modals */}
+    {showAdminPrompt && (
+      <AdminPrompt onClose={() => setShowAdminPrompt(false)} />
+    )}
 
-      {showPendingRequestPrompt && (
-        <PendingRequestPrompt onClose={() => setShowPendingRequestPrompt(false)} />
-      )}
+    {showSellerPrompt && (
+      <SellerPrompt onClose={() => setShowSellerPrompt(false)} />
+    )}
 
-      {error && (
-        <ErrorToast error={error} onClose={() => setError('')} />
-      )}
+    {showPendingRequestPrompt && (
+      <PendingRequestPrompt onClose={() => setShowPendingRequestPrompt(false)} />
+    )}
 
-      <CreateShopModal 
-        isOpen={isCreateShopModalOpen}
-        onClose={handleCloseCreateShopModal}
-      />
+    {error && (
+      <ErrorToast error={error} onClose={() => setError('')} />
+    )}
 
-      <LuxuryFooter />
-    </div>
-  );
+    <CreateShopModal 
+      isOpen={isCreateShopModalOpen}
+      onClose={handleCloseCreateShopModal}
+    />
+
+    <LuxuryFooter />
+  </div>
+);
 };
 
 export default BoutiquesPage;
