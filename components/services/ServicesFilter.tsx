@@ -60,7 +60,7 @@ const ServicesFilter = ({
             placeholder="Search services..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+            className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-black"
           />
           {searchQuery && (
             <button
@@ -77,7 +77,7 @@ const ServicesFilter = ({
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="appearance-none bg-white border border-gray-300 rounded-full px-3 py-2 sm:px-4 sm:py-2.5 pr-8 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm sm:text-base w-full"
+            className="appearance-none bg-white border border-gray-300 rounded-full px-3 py-2 sm:px-4 sm:py-2.5 pr-8 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base w-full"
           >
             {categories.map(category => (
               <option key={category} value={category}>{category}</option>
@@ -94,7 +94,7 @@ const ServicesFilter = ({
           className="flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 rounded-full shadow-sm hover:bg-gray-50 text-sm font-medium"
         >
           <Filter className="h-4 w-4" />
-          <span>Filters</span>
+          <span className="text-black">Filters</span>
         </button>
       </div>
 
@@ -103,7 +103,7 @@ const ServicesFilter = ({
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="appearance-none bg-white border border-gray-300 rounded-full px-4 py-2.5 pr-8 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm w-full"
+          className="appearance-none bg-white border border-gray-300 rounded-full px-4 py-2.5 pr-8 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm w-full text-black"
         >
           {categories.map(category => (
             <option key={category} value={category}>{category}</option>
@@ -115,7 +115,7 @@ const ServicesFilter = ({
       {showFilters && (
         <div className="p-4 bg-white border border-gray-200 rounded-xl shadow-lg w-full">
           <div className="flex justify-between items-center mb-3">
-            <h3 className="font-bold text-base">Filters</h3>
+            <h3 className="font-bold text-base text-black">Filters</h3>
             <button 
               onClick={() => setShowFilters(false)}
               className="text-gray-500 hover:text-gray-700"
@@ -126,7 +126,7 @@ const ServicesFilter = ({
           
           <div className="space-y-4">
             <div>
-              <h4 className="font-medium mb-2 text-sm">Service Level</h4>
+              <h4 className="font-medium mb-2 text-sm text-black">Service Level</h4>
               <div className="space-y-2">
                 {serviceLevels.map(level => (
                   <button
@@ -134,7 +134,7 @@ const ServicesFilter = ({
                     onClick={() => toggleServiceLevel(level.value)}
                     className={`flex items-center gap-2 w-full px-3 py-2 rounded-full text-left text-sm ${
                       selectedServiceLevel.includes(level.value)
-                        ? "bg-purple-600 text-white font-medium"
+                        ? "bg-[#bf2c7e] text-white font-medium"
                         : "bg-gray-100 text-gray-800 hover:bg-gray-200"
                     }`}
                   >
@@ -146,7 +146,7 @@ const ServicesFilter = ({
             </div>
             
             <div>
-              <h4 className="font-medium mb-2 text-sm">Delivery Time</h4>
+              <h4 className="font-medium mb-2 text-sm text-black">Delivery Time</h4>
               <div className="space-y-2">
                 {deliveryTimes.map(time => (
                   <button
@@ -154,7 +154,7 @@ const ServicesFilter = ({
                     onClick={() => toggleDeliveryTime(time.value)}
                     className={`flex items-center gap-2 w-full px-3 py-2 rounded-full text-left text-sm ${
                       selectedDeliveryTime.includes(time.value)
-                        ? "bg-purple-600 text-white font-medium"
+                        ? "bg-[#bf2c7e] text-white font-medium"
                         : "bg-gray-100 text-gray-800 hover:bg-gray-200"
                     }`}
                   >

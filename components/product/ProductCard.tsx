@@ -222,7 +222,7 @@ export const ProductCard = ({
   };
 
   return (
-    <Link href={`/app/products/${product.id}`} passHref>
+    <Link href={`/products/${product.id}`} passHref>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

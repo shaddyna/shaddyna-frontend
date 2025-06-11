@@ -113,7 +113,13 @@ export default function ProductDetailPage() {
     setSelectedImage((prev) => (prev - 1 + product.images.length) % product.images.length);
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    if (loading) {
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#bf2c7e]"></div>
+      </div>
+    );
+  }
   if (error) return <div className="min-h-screen flex items-center justify-center text-red-500">{error}</div>;
   if (!product) return <div className="min-h-screen flex items-center justify-center">Product not found</div>;
 
@@ -261,7 +267,7 @@ export default function ProductDetailPage() {
               {/* Shop Info */}
               <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-600">Sold by:</p>
-                <p className="font-medium">{product.shop.name}</p>
+                <p className="font-medium text-black">{product.shop.name}</p>
                 {product.owner && (
                   <p className="text-sm text-gray-600 mt-1">
                     Owner: {product.owner.firstName} {product.owner.lastName}
@@ -306,16 +312,16 @@ export default function ProductDetailPage() {
                 <div className="mt-2 flex items-center">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="p-2 border border-gray-300 rounded-l-md bg-gray-50 hover:bg-gray-100"
+                    className="p-2 border border-gray-300 text-black rounded-l-md bg-gray-50 hover:bg-gray-100"
                   >
                     -
                   </button>
-                  <span className="px-4 py-2 border-t border-b border-gray-300 bg-white text-center">
+                  <span className="px-4 py-2 text-black border-t border-b border-gray-300 bg-white text-center">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                    className="p-2 border border-gray-300 rounded-r-md bg-gray-50 hover:bg-gray-100"
+                    className="p-2 border border-gray-300 text-black rounded-r-md bg-gray-50 hover:bg-gray-100"
                   >
                     +
                   </button>
