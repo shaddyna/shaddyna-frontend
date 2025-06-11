@@ -1568,16 +1568,6 @@ const ShopPage = () => {
             hover: "#9f2565",
             text: "white",
           }}
-          //onQuickView={() => console.log('Quick View clicked for', product.name)}
-          //onAddToCart={() => console.log('Add to Cart clicked for', product.name)}
-           onQuickView={() => {
-                      // Find the original Product object by id
-                      const originalProduct = products.find(p => p._id === product._id);
-                      if (originalProduct) {
-                        setSelectedProduct(mapProduct(originalProduct, index));
-                      }
-                    }}
-                    onAddToCart={() => handleAddToCart()}
           animationDelay={0}
         />
       ))}
