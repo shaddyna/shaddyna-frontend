@@ -334,7 +334,7 @@ const NavbarTwo = () => {
             className="md:hidden text- ml-4"
             whileTap={{ scale: 0.9 }}
           >
-            {isOpen ? <X size={24} /> : <Menu className="text-black" size={24} />}
+            {isOpen ? <X className="text-black" size={24} /> : <Menu className="text-black" size={24} />}
           </motion.button>
           </div>
         </div>
