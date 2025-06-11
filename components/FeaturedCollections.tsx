@@ -383,8 +383,6 @@ const FeaturedCollectionsLight = () => {
             <ProductCard
               key={product.id}
               product={product}
-              onQuickView={() => setSelectedProduct(product)}
-              onAddToCart={() => handleAddToCart()}
               animationDelay={index * 0.1}
             />
           ))}
