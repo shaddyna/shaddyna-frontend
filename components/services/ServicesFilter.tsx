@@ -93,7 +93,7 @@ const ServicesFilter = ({
           onClick={() => setShowFilters(!showFilters)}
           className="flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 rounded-full shadow-sm hover:bg-gray-50 text-sm font-medium"
         >
-          <Filter className="h-4 w-4" />
+          <Filter className="h-4 w-4 text-black" />
           <span className="text-black">Filters</span>
         </button>
       </div>
