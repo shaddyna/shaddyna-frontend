@@ -270,7 +270,7 @@ return (
     </div>
 
     {/* Main Content */}
-    <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
+    <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-0 sm:py-8 md:py-12">
       <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 md:gap-12">
         {/* Left Column - Shop Info */}
         <div className="lg:w-1/3 space-y-4 sm:space-y-6 md:space-y-8">
@@ -288,7 +288,7 @@ return (
                   <h3 className="font-medium text-sm sm:text-base text-black">Categories</h3>
                   <div className="flex flex-wrap gap-1 sm:gap-2 mt-1">
                     {shop.categories.map((category, index) => (
-                      <span key={index} className="bg-gray-100 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm">
+                      <span key={index} className="bg-gray-100 px-2 py-0.5 text-black sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm">
                         {category}
                       </span>
                     ))}
@@ -319,7 +319,7 @@ return (
           </div>
           
           {/* Contact Section */}
-          <div className="bg-white p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl">
+          <div className="bg-white pt-0 pl-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl">
             <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-black">Contact</h2>
             <div className="space-y-3 sm:space-y-4">
               <div className="flex items-center gap-2 sm:gap-3">

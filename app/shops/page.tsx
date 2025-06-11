@@ -241,7 +241,7 @@ return (
             placeholder="Search shops..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 border border-gray-300 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base"
+            className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 border border-gray-300 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base text-black"
           />
           {searchQuery && (
             <button
@@ -276,8 +276,8 @@ return (
             onClick={() => setMobileFiltersOpen(true)}
             className="md:hidden flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-full shadow-sm hover:bg-gray-50 text-sm"
           >
-            <span>Filters</span>
-            <ChevronDown className="h-4 w-4" />
+            <span className="text-black">Filters</span>
+            <ChevronDown className="h-4 w-4 text-black" />
           </button>
         </div>
       </div>
@@ -286,14 +286,14 @@ return (
       {mobileFiltersOpen && (
         <div className="md:hidden mb-6 p-4 sm:p-6 bg-white border border-gray-200 rounded-lg sm:rounded-xl shadow-md">
           <div className="flex justify-between items-center mb-3">
-            <h3 className="font-bold text-base sm:text-lg">Filters</h3>
+            <h3 className="font-bold text-base sm:text-lg text-black">Filters</h3>
             <button onClick={() => setMobileFiltersOpen(false)}>
               <X className="h-5 w-5" />
             </button>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 text-black">
             <div>
-              <h4 className="font-medium text-sm sm:text-base mb-2">Categories</h4>
+              <h4 className="font-medium text-sm sm:text-base mb-2 text-black">Categories</h4>
               <div className="grid grid-cols-2 gap-2">
                 {categories.map(category => (
                   <button
