@@ -266,18 +266,24 @@ export const ProductCard = ({
 
         {/* Product Info */}
         <div className="p-3 sm:p-4">
-          <div className="flex justify-between items-start gap-2">
-            <div className="flex-1">
-              <h3 className="text-sm sm:text-base font-bold text-gray-900 line-clamp-1">
-                {product.name}
-              </h3>
-            </div>
-            <div className="text-right">
-              <p className={`text-[${theme.primary}] font-bold text-sm sm:text-base`}>
+          <div className="p-0 sm:p-4 text-gray-600 text-xs sm:text-sm">
+            <div className="flex justify-between items-start gap-2">
+              <div className="flex-1">
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 line-clamp-1">
+                  {product.name}
+                </h3>
+              </div>
+              <div className="text-right">
+               <p
+                className="text-gray-600 text-xs sm:text-sm font-bold text-sm sm:text-base"
+                style={{ color: theme.primary }}
+              >
                 Ksh {product.price.toLocaleString()}
               </p>
+              </div>
             </div>
           </div>
+
 
           {/* Action Buttons */}
           <div className="mt-3 flex gap-2">
