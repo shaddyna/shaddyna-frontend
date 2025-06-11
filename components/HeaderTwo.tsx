@@ -190,7 +190,6 @@ const NavbarTwo = () => {
 
 export default NavbarTwo;
 */
-
 "use client";
 
 import { useState } from "react";
@@ -202,7 +201,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { useWishlistStore } from "@/stores/wishlistStore";
 import { useRouter } from "next/navigation";
 
-const Navbar = () => {
+const NavbarTwo = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const itemCount = useCartStore((state) => state.itemCount());
@@ -270,7 +269,7 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/search" passHref legacyBehavior>
+            {/*<Link href="/search" passHref legacyBehavior>
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -278,7 +277,7 @@ const Navbar = () => {
               >
                 <Search size={20} />
               </motion.a>
-            </Link>
+            </Link>*/}
             <Link href="/wishlist" passHref legacyBehavior>
               <motion.a
                 whileHover={{ scale: 1.1 }}
@@ -363,11 +362,11 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <div className="flex items-center space-x-6 pt-6">
-                <Link href="/search" passHref legacyBehavior>
+                {/*<Link href="/search" passHref legacyBehavior>
                   <motion.a whileHover={{ scale: 1.1 }} className="text-black/80 hover:text-black">
                     <Search size={20} />
                   </motion.a>
-                </Link>
+                </Link>*/}
                 <Link href="/wishlist" passHref legacyBehavior>
                   <motion.a whileHover={{ scale: 1.1 }} className="text-black/80 hover:text-black relative">
                     <Heart size={20} />
@@ -402,4 +401,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarTwo;

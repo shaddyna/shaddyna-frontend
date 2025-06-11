@@ -385,7 +385,7 @@ const CollectionsPage = () => {
   </div>
 </motion.div>
 
-<div className="flex flex-col md:flex-row gap-4 sm:gap-6">
+<div className="flex flex-col md:flex-row gap-4 sm:gap-6 ml-4 mb-4">
   {/* Filters Sidebar - Desktop */}
   <motion.aside
     initial={{ opacity: 0, x: -20 }}
@@ -573,13 +573,6 @@ const CollectionsPage = () => {
             key={product.id}
             product={product}
             theme={{ primary: "#bf2c7e", hover: "#9f2565", text: "white" }}
-            onQuickView={() => {
-              const originalProduct = products.find(p => p._id === product.id);
-              if (originalProduct) {
-                setSelectedProduct(mapProduct(originalProduct, index));
-              }
-            }}
-            onAddToCart={() => handleAddToCart()}
             animationDelay={index * 0.1}
           />
         ))}

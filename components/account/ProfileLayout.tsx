@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import NavbarTwo from "@/components/HeaderTwo";
 import LuxuryFooter from "@/components/LuxuryFooter";
-import StickyBottomNavbar from "../BottomNav";
+
 
 interface ProfileLayoutProps {
   children: ReactNode;
@@ -25,7 +25,7 @@ export const ProfileLayout = ({ children }: ProfileLayoutProps) => {
           {children}
         </motion.div>
       </main>
-      <StickyBottomNavbar />
+      
       <LuxuryFooter />
     </div>
   );
