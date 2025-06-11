@@ -342,14 +342,14 @@ const CollectionsPage = () => {
         placeholder="Search collections..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="block w-full pl-10 pr-3 py-2 sm:py-2.5 border border-gray-300 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base"
+        className="block w-full pl-10 pr-3 py-2 sm:py-2.5 border border-gray-300 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base text-black"
       />
       {searchQuery && (
         <button
           onClick={() => setSearchQuery("")}
           className="absolute inset-y-0 right-0 pr-3 flex items-center"
         >
-          <X className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 hover:text-gray-600" />
+          <X className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 hover:text-gray-600 text-black" />
         </button>
       )}
     </div>
@@ -360,7 +360,7 @@ const CollectionsPage = () => {
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="appearance-none bg-white border border-gray-300 rounded-full px-3 sm:px-4 py-2 sm:py-2.5 pr-8 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base"
+          className="appearance-none bg-white border border-gray-300 rounded-full px-3 sm:px-4 py-2 sm:py-2.5 pr-8 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-sm sm:text-base text-black"
         >
           <option value="featured">Featured</option>
           <option value="price-low">Price: Low to High</option>
@@ -369,7 +369,7 @@ const CollectionsPage = () => {
           <option value="newest">New Arrivals</option>
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <ChevronDown className="h-4 w-4" />
+          <ChevronDown className="h-4 w-4 text-black" />
         </div>
       </div>
 
@@ -378,7 +378,7 @@ const CollectionsPage = () => {
         onClick={() => setMobileFiltersOpen(true)}
         className="md:hidden flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-full shadow-sm hover:bg-gray-50 text-sm"
       >
-        <Sliders className="h-4 w-4 sm:h-5 sm:w-5" />
+        <Sliders className="h-4 w-4 sm:h-5 sm:w-5 text-black" />
         <span>Filters</span>
       </button>
     </div>
@@ -611,7 +611,7 @@ const CollectionsPage = () => {
                 onClick={() => setMobileFiltersOpen(false)}
                 className="p-2 rounded-full hover:bg-gray-100"
               >
-                <X size={24} />
+                <X className="text-black" size={24} />
               </button>
             </div>
 
@@ -673,7 +673,7 @@ const CollectionsPage = () => {
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <h4 className="font-medium text-gray-900">Color</h4>
-                  <ChevronDown size={18} />
+                  <ChevronDown className="text-black" size={18} />
                 </div>
                 <div className="space-y-2">
                   {colors.map((color) => (
@@ -697,7 +697,7 @@ const CollectionsPage = () => {
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <h4 className="font-medium text-gray-900">Size</h4>
-                  <ChevronDown size={18} />
+                  <ChevronDown className="text-black" size={18} />
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {sizes.map((size) => (
@@ -717,7 +717,7 @@ const CollectionsPage = () => {
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <h4 className="font-medium text-gray-900">Season</h4>
-                  <ChevronDown size={18} />
+                  <ChevronDown className="text-black" size={18} />
                 </div>
                 <div className="space-y-2">
                   {seasons.map((season) => (
@@ -741,7 +741,7 @@ const CollectionsPage = () => {
               <div>
                 <div className="flex justify-between items-center mb-3">
                   <h4 className="font-medium text-gray-900">Designer</h4>
-                  <ChevronDown size={18} />
+                  <ChevronDown className="text-black" size={18} />
                 </div>
                 <div className="space-y-2">
                   {designers.map((designer) => (

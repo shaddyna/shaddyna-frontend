@@ -65,7 +65,7 @@ const LoginPage = () => {
         await login(formData.email, formData.password);
         setSuccess(true);
         setTimeout(() => {
-          window.location.href = '/account';
+          window.location.href = '/';
         }, 2000);
       } catch (error) {
         if (error instanceof Error) {
