@@ -325,41 +325,36 @@ const HeroSection = () => {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl w-full items-center">
         {/* Floating Image on Left */}
 
-<motion.div
-  className="w-full flex justify-center items-center relative"
-  animate={{ y: [0, -20, 0], rotate: [-1, 1, -1] }}
-  transition={{ duration: 10, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
->
-  {/* Adjustable Background Text */}
-  <div
-    className="absolute z-0 text-[#f4b500]/10 font-extrabold uppercase pointer-events-none select-none"
-    style={{
-      top: '90px',         // Adjust vertical position (e.g., '10px', '-30px')
-      left: '70%',         // Center horizontally (or use '10%', '0', etc.)
-      transform: 'translateX(-50%) rotate(-5deg)', // Center and rotate
-      fontSize: '5rem',    // Base font size, adjust as needed (e.g., '3rem', '8rem')
-      letterSpacing: '0.2em', // Adjust spacing if needed
-      whiteSpace: 'nowrap',
-    }}
-  >
-    Extreme Collections
-  </div>
+        <motion.div
+          className="w-full flex justify-center items-center relative"
+          animate={{ y: [0, -20, 0], rotate: [-1, 1, -1] }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        >
+          {/* Adjustable Background Text */}
+          <div
+            className="absolute z-0 text-[#f4b500]/10 font-extrabold uppercase pointer-events-none select-none"
+            style={{
+              top: '90px',         // Adjust vertical position (e.g., '10px', '-30px')
+              left: '70%',         // Center horizontally (or use '10%', '0', etc.)
+              transform: 'translateX(-50%) rotate(-5deg)', // Center and rotate
+              fontSize: '5rem',    // Base font size, adjust as needed (e.g., '3rem', '8rem')
+              letterSpacing: '0.2em', // Adjust spacing if needed
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Extreme Collections
+          </div>
 
-  {/* Floating Image */}
-  <div className="relative z-10 w-[300px] h-[420px] md:w-[400px] md:h-[550px] lg:w-[480px] lg:h-[680px] rounded-[40px] overflow-hidden shadow-2xl">
-    <img
-      src="/image5.png"
-      alt="Large Floating"
-      className="w-full h-full object-cover"
-      loading="lazy"
-    />
-  </div>
-</motion.div>
-
-
-
-
-
+          {/* Floating Image */}
+          <div className="relative z-10 w-[300px] h-[420px] md:w-[400px] md:h-[550px] lg:w-[480px] lg:h-[680px] rounded-[40px] overflow-hidden shadow-2xl">
+            <img
+              src="/image5.png"
+              alt="Large Floating"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </motion.div>
         {/* Image Gallery on Right */}
         <div className="relative h-[500px] md:h-[600px] w-full" ref={constraintsRef}>
           {images.map((img, index) => (

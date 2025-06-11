@@ -437,7 +437,7 @@ const LoginPage = () => {
     }
   };
 
-  return (
+return (
     <div className="bg-white min-h-screen">
       {/* Login Form */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -476,7 +476,7 @@ const LoginPage = () => {
             >
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold text-[#0f1c47] mb-2">
-                  Login
+ Login                 
                 </h2>
                 <p className="text-[#0f1c47]">
                   Access your exclusive account and benefits
@@ -523,7 +523,7 @@ const LoginPage = () => {
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className={`block w-full pl-10 pr-10 py-3 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-transparent`}
+                      className={`block w-full pl-10 pr-10 py-3 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#bf2c7e] focus:border-transparent text-black`}
                       placeholder="••••••••"
                     />
                     <button
@@ -569,7 +569,7 @@ const LoginPage = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
-                  className="w-full bg-[#bf2c7e] text-white font-bold py-4 rounded-full flex items-center justify-center gap-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full bg-[#bf2c7e] text-white font-bold py-4 rounded-full flex items-center justify-center gap-2 transition-colors disabled:-opacity70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -594,7 +594,7 @@ const LoginPage = () => {
               </form>
             </motion.div>
           )}
-        </div>
+ </       div>
       </section>
     </div>
   );
