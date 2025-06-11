@@ -142,7 +142,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
+                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-black"
                         placeholder="John Doe"
                       />
                     </div>
@@ -162,7 +162,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
+                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-black"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -176,7 +176,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                       id="budget"
                       value={formData.budget}
                       onChange={(e) => setFormData({...formData, budget: e.target.value})}
-                      className="block w-full pl-3 pr-10 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
+                      className="block w-full pl-3 pr-10 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-black"
                     >
                       <option value={service.price}>Within {service.price} range</option>
                       <option value="<$500">Under ksh 500</option>
@@ -194,7 +194,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                       id="timeline"
                       value={formData.timeline}
                       onChange={(e) => setFormData({...formData, timeline: e.target.value})}
-                      className="block w-full pl-3 pr-10 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e]"
+                      className="block w-full pl-3 pr-10 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] text-black"
                     >
                       <option value={service.deliveryTime}>Within {service.deliveryTime}</option>
                       <option value="ASAP">ASAP</option>
@@ -217,7 +217,7 @@ const InquiryModal = ({ isOpen, onClose, service, formData, setFormData, onSubmi
                         required
                         value={formData.message}
                         onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] min-h-[100px] sm:min-h-[120px]"
+                        className="block w-full pl-9 sm:pl-10 pr-3 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bf2c7e] focus:border-[#bf2c7e] min-h-[100px] sm:min-h-[120px] text-black"
                         placeholder="Tell the provider about your project needs..."
                       />
                     </div>
