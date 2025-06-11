@@ -27,7 +27,7 @@ interface Product {
   createdAt: string;
 }
 
-const CollectionsPage = () => {
+const ProductsPage = () => {
   const { products, loading, error } = useProducts();
 
   // Transform the API products to match our frontend format
@@ -788,4 +788,4 @@ const CollectionsPage = () => {
   );
 };
 
-export default CollectionsPage;
+export default ProductsPage;

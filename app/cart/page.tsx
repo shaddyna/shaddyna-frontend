@@ -29,7 +29,7 @@ const CartPage = () => {
             className="mb-8 sm:mb-12"
           >
             <div className="flex items-center justify-start gap-2 sm:gap-3">
-              <Link href="/collections" passHref legacyBehavior>
+              <Link href="/products" passHref legacyBehavior>
                 <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -162,7 +162,7 @@ const CartPage = () => {
                   </Link>
 
                   <p className="text-center text-xs sm:text-sm text-gray-500 mt-2 sm:mt-3">
-                    or <Link href="/collections" className="text-[#bf2c7e] hover:underline">Continue Shopping</Link>
+                    or <Link href="/productss" className="text-[#bf2c7e] hover:underline">Continue Shopping</Link>
                   </p>
                 </div>
               </div>
@@ -179,13 +179,13 @@ const CartPage = () => {
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Your cart is empty</h3>
               <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-5">Start shopping to add items to your cart</p>
-              <Link href="/collections" passHref legacyBehavior>
+              <Link href="/productss" passHref legacyBehavior>
                 <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="inline-block px-4 sm:px-5 py-2 sm:py-2.5 bg-[#bf2c7e] hover:bg-[#9f2565] text-white font-bold rounded-full transition-colors text-sm sm:text-base"
                 >
-                  Browse Collections
+                  Browse Products
                 </motion.a>
               </Link>
             </motion.div>
