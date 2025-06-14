@@ -13,7 +13,6 @@ import { AdminPrompt, MembershipPrompt, PendingRequestPrompt, ErrorToast } from 
 import SkillForm from "@/components/services/CreateHubModal";
 import { useServices } from "@/hooks/useServices";
 
-
 const ServicesPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
@@ -151,9 +150,37 @@ const ServicesPage = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Inquiry submitted:', formData);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const payload = {
+    service: selectedService?._id,
+    name: formData.name,
+    email: formData.email,
+    message: formData.message,
+    budget: formData.budget,
+    timeline: formData.timeline
+  };
+
+  console.log('Sending inquiry payload:', payload); // ✅ Log the data being sent
+
+  try {
+    const response = await fetch('http://localhost:5000/api/inquiries', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming you use JWT
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to send inquiry');
+    }
+
+    const data = await response.json();
+    console.log('Inquiry created:', data);
+
     setIsInquiryOpen(false);
     setFormData({
       name: "",
@@ -163,7 +190,11 @@ const ServicesPage = () => {
       timeline: ""
     });
     alert('Your inquiry has been sent successfully!');
-  };
+  } catch (error) {
+    console.error('Error sending inquiry:', error);
+    alert('Failed to send inquiry. Please try again.');
+  }
+};
 
   const resetFilters = () => {
     setSearchQuery("");

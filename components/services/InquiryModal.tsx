@@ -13,7 +13,6 @@ interface InquiryModalProps {
   isOpen: boolean;
   onClose: () => void;
   service: {
-    id: number;
     title: string;
     provider: Provider;
     price: string;
@@ -28,6 +27,7 @@ interface InquiryModalProps {
     timeline: string;
   };
   setFormData: React.Dispatch<React.SetStateAction<{
+
     name: string;
     email: string;
     message: string;
