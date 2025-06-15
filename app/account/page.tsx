@@ -321,6 +321,11 @@ import { MembersTab } from '@/components/user/MembersTab';
 import axios from 'axios';
 import { useAuth } from '@/context/AuthContext';
 import { Member, Order, Product, Skill, TabType } from '@/types/types';
+import { SellerList } from '@/components/user/SellersTab';
+import { ShopList } from '@/components/user/ShopList';
+import { UserList } from '@/components/user/UserList';
+import { MemberRequestsTab } from '@/components/user/MembersRequests';
+
 
 const ProfilePage = () => {
   const { user, token } = useAuth();
@@ -348,24 +353,6 @@ const ProfilePage = () => {
     }
   ];
 
-
-
-  const members: Member[] = [
-    {
-      id: 'mem-1',
-      name: 'Taylor Smith',
-      role: 'Admin',
-      joinDate: '2021-08-15',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg'
-    },
-    {
-      id: 'mem-2',
-      name: 'Jordan Lee',
-      role: 'Moderator',
-      joinDate: '2022-03-22',
-      avatar: 'https://randomuser.me/api/portraits/men/22.jpg'
-    }
-  ];
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -404,10 +391,16 @@ const ProfilePage = () => {
         return <OrdersTab orders={orders} />;
       case 'skills':
         return <SkillsTab userId={currentUser._id} isOwner token={token ?? ""} />;
-      case 'requests':
-        return <RequestsTab requests={[]}  />;
       case 'members':
-        return <MembersTab members={members} />;
+        return <MembersTab />;
+      case 'membersrequests':
+        return <MemberRequestsTab/>;  
+       case 'sellers':
+        return <SellerList/>; 
+      case 'shops':
+        return <ShopList/>;   
+           case 'users':
+        return <UserList token={token ?? ""}/>;     
       default:
         return null;
     }

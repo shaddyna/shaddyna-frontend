@@ -1,13 +1,60 @@
 // types.ts
-export type User = {
-  id: string;
+export interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: 'customer' | 'admin' | 'seller';
+  isActive: boolean;
+  member: boolean;
+  lastLogin?: string;
+  createdAt: string;
+  updatedAt: string;
+  shop?: {
+    _id: string;
+    name: string;
+  };
+  // Frontend-only properties
+  avatar?: string;
+  fullName?: string;
+}
+
+// types/memberRequest.ts
+export interface MemberRequest {
+  _id: string;
+  userId: {
+    _id: string;
+    name: string;
+    email: string;
+    avatar?: string;
+  };
+  status: 'pending' | 'approved' | 'rejected';
+  paymentMethod: 'mpesa' | 'card' | 'bank';
+  mpesaName?: string;
+  mpesaCode?: string;
+  amount: number;
+  createdAt: string;
+  processedAt?: string;
+  processedBy?: {
+    _id: string;
+    name: string;
+  };
+}
+
+export interface Seller {
+  _id: string;
   name: string;
   email: string;
-  avatar: string;
-  bio: string;
-  joinDate: string;
-  location: string;
-};
+  phoneNumber?: string;
+  mpesaCode: string;
+  amount: number;
+  status: 'inactive' | 'pending' | 'active';
+  createdAt: string;
+  updatedAt: string;
+  // Optional frontend properties
+  avatar?: string;
+  shopName?: string;
+}
 
 // Add this to your types file
 export interface Shop {
@@ -110,12 +157,19 @@ export type Request = {
   message?: string;
 };
 
-export type Member = {
-  id: string;
+export interface Member {
+  _id: string;
   name: string;
-  role: string;
-  joinDate: string;
-  avatar: string;
-};
+  email: string;
+  phoneNumber?: string;
+  mpesaCode: string;
+  amount: number;
+  status: 'inactive' | 'pending' | 'active';
+  createdAt: string;
+  updatedAt: string;
+  // Frontend-only properties
+  avatar?: string;
+  role?: string;
+}
 
-export type TabType = 'profile' | 'shop' | 'products' | 'orders' | 'skills' | 'requests' | 'members';
+export type TabType = 'profile' | 'shop' | 'products' | 'orders' | 'skills' | 'members' | 'membersrequests'| 'sellers' | 'sellerrequests' | 'shops'| 'inquiries' | 'users';

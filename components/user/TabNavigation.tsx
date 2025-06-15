@@ -19,8 +19,13 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({ activeTab, onTabCh
     { id: 'products', label: 'Products', icon: 'shopping-bag' },
     { id: 'orders', label: 'Orders', icon: 'receipt' },
     { id: 'skills', label: 'Skills', icon: 'lightning-bolt' },
-    { id: 'requests', label: 'Requests', icon: 'inbox' },
-    { id: 'members', label: 'Members', icon: 'users' }
+    { id: 'members', label: 'Members', icon: 'inbox' },
+    { id: 'membersrequests', label: 'Members Requests', icon: 'users' },
+    { id: 'sellers', label: 'Sellers', icon: 'receipt' },
+    { id: 'sellerrequests', label: 'Seller Requests', icon: 'lightning-bolt' },
+    { id: 'inquiries', label: 'Inquiries', icon: 'inbox' },
+    { id: 'shops', label: 'Shops', icon: 'users' },
+    { id: 'users', label: 'Users', icon: 'users' }
   ];
 
   return (
