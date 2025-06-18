@@ -162,7 +162,7 @@ const CartPage = () => {
                   </Link>
 
                   <p className="text-center text-xs sm:text-sm text-gray-500 mt-2 sm:mt-3">
-                    or <Link href="/productss" className="text-[#bf2c7e] hover:underline">Continue Shopping</Link>
+                    or <Link href="/products" className="text-[#bf2c7e] hover:underline">Continue Shopping</Link>
                   </p>
                 </div>
               </div>
