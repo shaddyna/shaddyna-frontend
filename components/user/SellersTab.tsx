@@ -15,7 +15,7 @@ export const SellerList = () => {
   useEffect(() => {
     const fetchSellers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/sellers');
+        const response = await axios.get('https://shaddynab-new.onrender.com/api/sellers');
         const sellersWithAvatars = response.data.map((seller: Seller) => ({
           ...seller,
           avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(seller.name)}&background=random`

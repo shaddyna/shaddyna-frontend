@@ -114,7 +114,7 @@ useEffect(() => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      let url = 'http://localhost:5000/api/products';
+      let url = 'https://shaddynab-new.onrender.com/api/products';
 
       if (shopId) {
         url += `/shop/${shopId}`;

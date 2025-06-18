@@ -84,7 +84,7 @@ useEffect(() => {
       setLoading(true);
       console.log("🔄 Fetching members...");
 
-      const response = await axios.get('http://localhost:5000/api/members');
+      const response = await axios.get('https://shaddynab-new.onrender.com/api/members');
 
       const membersWithDisplayData = response.data.data.map((member: Member) => ({
         ...member,

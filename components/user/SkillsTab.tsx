@@ -92,7 +92,7 @@ useEffect(() => {
       };
 
       const response = await axios.get(
-        `http://localhost:5000/api/skills/user/${userId}`,
+        `https://shaddynab-new.onrender.com/api/skills/user/${userId}`,
         config
       );
 

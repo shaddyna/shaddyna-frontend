@@ -82,7 +82,7 @@ useEffect(() => {
       setLoading(true);
       console.log("📡 Fetching member requests...");
 
-      const response = await fetch('http://localhost:5000/api/membersrequests');
+      const response = await fetch('https://shaddynab-new.onrender.com/api/membersrequests');
       const data = await response.json();
 
       console.log("📦 Raw response data:", data);

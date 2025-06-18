@@ -15,7 +15,7 @@ export const ShopList = () => {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/shops');
+        const response = await axios.get('https://shaddynab-new.onrender.com/api/shops');
         const shopsWithRatings = response.data.data.map((shop: Shop) => ({
           ...shop,
           rating: 4.5, // Default rating, you might fetch real ratings from your backend

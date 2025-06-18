@@ -57,7 +57,7 @@ useEffect(() => {
       };
 
       const response = await axios.get(
-        `http://localhost:5000/api/users?page=${currentPage}`,
+        `https://shaddynab-new.onrender.com/api/users?page=${currentPage}`,
         config
       );
 
