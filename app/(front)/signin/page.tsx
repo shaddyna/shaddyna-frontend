@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const SignInPage = async () => {
   return (
-    <div className="bg-white min-h-screen p-4">
+    <div>
       <Form />
     </div>
   );
