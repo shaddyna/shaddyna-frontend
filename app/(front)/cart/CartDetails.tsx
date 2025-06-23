@@ -111,11 +111,13 @@ export default CartDetails;
 
 'use client';
 
+import { useEffect, useState } from 'react';
+import { ShoppingBag, ArrowLeft, Heart } from 'lucide-react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { ShoppingBag, ArrowLeft, Heart } from 'lucide-react';
+
 import useCartService from '@/lib/hooks/useCartStore';
 
 const CartDetails = () => {
