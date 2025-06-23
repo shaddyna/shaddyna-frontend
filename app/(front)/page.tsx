@@ -14,10 +14,10 @@ import { ShopsSkeleton } from '@/components/shops/ShopsSkeleton';
 import Shops from '@/components/shops/shops';
 
 export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_APP_NAME || 'Fullstack Next.js Store',
+  title: process.env.NEXT_PUBLIC_APP_NAME || 'Shaddyna',
   description:
     process.env.NEXT_PUBLIC_APP_DESC ||
-    'Fullstack Next.js Store - Server Components, MongoDB, Next Auth, Tailwind, Zustand',
+    'Shaddyna - For great ideas and great products',
 };
 
 const HomePage = () => {
