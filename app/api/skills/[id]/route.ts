@@ -26,7 +26,7 @@ export const GET = async (req: Request, { params }: { params: { id: string } }) 
 };
 
 // Update skill
-export const PUT = auth(async (req: any, { params }: { params: { id: string } }) => {
+/*export const PUT = auth(async (req: any, { params }: { params: { id: string } }) => {
   if (!req.auth) {
     return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
   }
@@ -68,10 +68,46 @@ export const PUT = auth(async (req: any, { params }: { params: { id: string } })
       { status: 500 }
     );
   }
-});
+});*/
+export async function PUT(req: Request, { params }: { params: { id: string } }) {
+  const session = await auth();
+
+  if (!session || !session.user) {
+    return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
+  }
+
+  const { user } = session;
+  const { name, description, category, pricePerHour } = await req.json();
+
+  await dbConnect();
+
+  try {
+    const skill = await SkillModel.findById(params.id);
+    if (!skill) {
+      return NextResponse.json({ message: 'Skill not found' }, { status: 404 });
+    }
+
+    if (skill.user.toString() !== user._id) {
+      return NextResponse.json({ message: 'Not authorized' }, { status: 403 });
+    }
+
+    skill.name = name || skill.name;
+    skill.description = description || skill.description;
+    skill.category = category || skill.category;
+    skill.pricePerHour = pricePerHour || skill.pricePerHour;
+
+    await skill.save();
+    return NextResponse.json({
+      message: 'Skill updated successfully',
+      skill,
+    });
+  } catch (err: any) {
+    return NextResponse.json({ message: err.message }, { status: 500 });
+  }
+}
 
 // Delete skill
-export const DELETE = auth(async (req: any, { params }: { params: { id: string } }) => {
+/*export const DELETE = auth(async (req: any, { params }: { params: { id: string } }) => {
   if (!req.auth) {
     return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
   }
@@ -106,4 +142,30 @@ export const DELETE = auth(async (req: any, { params }: { params: { id: string }
       { status: 500 }
     );
   }
-});
+});*/
+export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+  const session = await auth();
+
+  if (!session || !session.user) {
+    return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
+  }
+
+  const { user } = session;
+  await dbConnect();
+
+  try {
+    const skill = await SkillModel.findById(params.id);
+    if (!skill) {
+      return NextResponse.json({ message: 'Skill not found' }, { status: 404 });
+    }
+
+    if (skill.user.toString() !== user._id) {
+      return NextResponse.json({ message: 'Not authorized' }, { status: 403 });
+    }
+
+    await skill.deleteOne();
+    return NextResponse.json({ message: 'Skill deleted successfully' });
+  } catch (err: any) {
+    return NextResponse.json({ message: err.message }, { status: 500 });
+  }
+}
