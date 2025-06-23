@@ -228,7 +228,18 @@ import toast from 'react-hot-toast';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
 
-import { OrderItem } from '@/lib/models/OrderModel';
+import  OrderItem  from '@/lib/models/OrderModel';
+
+type OrderItem = {
+  product: string;
+  name: string;
+  slug: string;
+  qty: number;
+  image: string;
+  price: number;
+  vendor: string;
+};
+
 
 interface IOrderDetails {
   orderId: string;
@@ -416,7 +427,7 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
                             </div>
                             <div className="ml-4">
                               <div className="text-sm font-medium text-gray-900 group-hover:text-[#bf2c7e] transition-colors">{item.name}</div>
-                              <div className="text-sm text-gray-500">{item.color} {item.size}</div>
+                              {/*<div className="text-sm text-gray-500">{item.color} {item.size}</div>*/}
                             </div>
                           </Link>
                         </td>
