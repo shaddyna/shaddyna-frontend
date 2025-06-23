@@ -1,14 +1,11 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
-import Carousel, { CarouselSkeleton } from '@/components/carousel/carousel';
 import Categories from '@/components/categories/Categories';
 import Icons from '@/components/icons/Icons';
 import ProductItems, {
   ProductItemsSkeleton,
 } from '@/components/products/ProductItems';
-import ReadMore from '@/components/readMore/ReadMore';
-import Text from '@/components/readMore/Text';
 import Slider from '@/components/slider/Slider';
 import { ShopsSkeleton } from '@/components/shops/ShopsSkeleton';
 import Shops from '@/components/shops/shops';
@@ -24,7 +21,7 @@ const HomePage = () => {
   return (
     <div className='my-0 flex flex-col gap-4 md:gap-16'>
       <Categories />
-<Icons />
+      <Icons />
       <Suspense
         fallback={<ProductItemsSkeleton qty={8} name='Latest Products' />}
       >

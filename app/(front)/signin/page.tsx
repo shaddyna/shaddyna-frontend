@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-
 import Form from './Form';
 
 export const metadata: Metadata = {
@@ -8,7 +7,7 @@ export const metadata: Metadata = {
 
 const SignInPage = async () => {
   return (
-    <div>
+    <div className="bg-white min-h-screen p-4">
       <Form />
     </div>
   );
