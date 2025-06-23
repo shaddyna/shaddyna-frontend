@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 const HomePage = () => {
   return (
-    <div className='my-0 flex flex-col gap-4 md:gap-16'>
+    <div className='my-0 flex flex-col gap-4 md:gap-16 p-4'>
       <Categories />
       <Icons />
       <Suspense
