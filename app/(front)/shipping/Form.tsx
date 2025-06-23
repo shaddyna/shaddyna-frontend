@@ -6,7 +6,16 @@ import { SubmitHandler, ValidationRule, useForm } from 'react-hook-form';
 
 import CheckoutSteps from '@/components/checkout/CheckoutSteps';
 import useCartService from '@/lib/hooks/useCartStore';
-import { ShippingAddress } from '@/lib/models/OrderModel';
+import  ShippingAddress  from '@/lib/models/OrderModel';
+
+type ShippingAddress = {
+  fullName: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+};
+
 
 const Form = () => {
   const router = useRouter();
