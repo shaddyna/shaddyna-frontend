@@ -1,88 +1,4 @@
-/*import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import { getPlaiceholder } from 'plaiceholder';
-import mongoose from 'mongoose';
 
-import shopService from '@/lib/services/shopService';
-import productService from '@/lib/services/productService';
-import ProductItem from '@/components/products/ProductItem';
-
-export default async function ShopPage({ params }: { params: { id: string } }) {
-  const shop = await shopService.getShopById(params.id);
-  if (!shop) notFound();
-
-  // Debug logs
-  console.log('Shop owner:', shop.owner);
-  console.log('Shop owner _id:', shop.owner._id.toString());
-
-  const buffer = await fetch(shop.image).then(async (res) =>
-    Buffer.from(await res.arrayBuffer()),
-  );
-  const { base64 } = await getPlaiceholder(buffer);
-
-  // Get products by vendor using the dedicated method
-  const shopProducts = await productService.getByVendor(shop.owner._id.toString());
-
-  // Alternative verification
-  const allProducts = await productService.getLatest();
-  console.log('First product vendor:', allProducts[0]?.vendor?.toString());
-
-  return (
-    <div className='container mx-auto py-8'>
-      <div className='flex flex-col md:flex-row gap-8 mb-12'>
-        <div className='md:w-1/3'>
-          <div className='relative aspect-square rounded-lg overflow-hidden'>
-            <Image
-              src={shop.image}
-              alt={shop.name}
-              placeholder='blur'
-              blurDataURL={base64}
-              fill
-              className='object-cover'
-            />
-          </div>
-        </div>
-        <div className='md:w-2/3'>
-          <h1 className='text-3xl font-bold mb-4'>{shop.name}</h1>
-          <p className='text-lg mb-6'>{shop.description}</p>
-          
-          <div className='grid grid-cols-2 gap-4 mb-8'>
-            <div>
-              <h3 className='font-semibold'>Location</h3>
-              <p>{shop.location}</p>
-            </div>
-            <div>
-              <h3 className='font-semibold'>Contact</h3>
-              <p>{shop.contact.email}</p>
-              {shop.contact.phone && <p>{shop.contact.phone}</p>}
-            </div>
-          </div>
-
-          <div className='flex flex-wrap gap-2 mb-6'>
-            {shop.categories.map((category) => (
-              <span key={category} className='badge badge-primary'>
-                {category}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className='mb-12'>
-        <h2 className='text-2xl font-bold mb-6'>Products from this shop</h2>
-       {shopProducts.length > 0 ? (
-          <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4'>
-            {shopProducts.map((product) => (
-              <ProductItem key={product._id} product={product} />
-            ))}
-          </div>
-        ) : (
-          <p>This shop currently has no products.</p>
-        )}
-      </div>
-    </div>
-  );
-}*/
 
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -92,6 +8,7 @@ import { Star, MapPin, ShoppingBag, Mail, Phone, Instagram, Facebook, Twitter, H
 import shopService from '@/lib/services/shopService';
 import productService from '@/lib/services/productService';
 import mongoose from 'mongoose';
+import AddToCart from '@/components/products/AddToCart'; // Import the AddToCart component
 
 export default async function ShopPage({ params }: { params: { id: string } }) {
   const shop = await shopService.getShopById(params.id);
@@ -112,8 +29,6 @@ export default async function ShopPage({ params }: { params: { id: string } }) {
   );
   const { base64 } = await getPlaiceholder(buffer);
 
-  //const shopProducts = await productService.getByVendor(shop.owner.toString());
-  
   const shopProducts = await productService.getByVendor(vendorId);
 
   return (
@@ -340,7 +255,15 @@ export default async function ShopPage({ params }: { params: { id: string } }) {
                     <p className="text-gray-600 text-sm sm:text-base mb-3">{product.description}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-[#bf2c7e] font-bold text-lg">Ksh {product.price.toFixed(2)}</span>
-                      <button className="btn btn-primary btn-sm">Add to Cart</button>
+                      {/* Use the AddToCart component */}
+                      <AddToCart
+                        item={{
+                          ...product,
+                          product: product._id?.toString?.() ?? '',
+                          vendor: product.vendor?.toString?.() ?? '',
+                          qty: 0,
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -355,8 +278,6 @@ export default async function ShopPage({ params }: { params: { id: string } }) {
           </div>
         </div>
       </div>
-      
-   
     </div>
   );
 }
