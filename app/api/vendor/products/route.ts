@@ -138,7 +138,7 @@ export const POST = auth(async (req: any) => {
   }
 }) as any;
 
-export const DELETE = auth(async (req: any, { params }: { params: { id: string } }) => {
+/*export const DELETE = auth(async (req: any, { params }: { params: { id: string } }) => {
   if (!req.auth || !['vendor', 'admin'].includes(req.auth.user?.role)) {
     return new Response(
       JSON.stringify({ message: 'unauthorized' }),
@@ -188,6 +188,36 @@ export const DELETE = auth(async (req: any, { params }: { params: { id: string }
       },
     );
   }
+}*/
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const session = await auth();
+
+  if (!session || !['vendor', 'superAdmin'].includes(session.user?.role ?? '')) {
+    return Response.json({ message: 'Unauthorized' }, { status: 401 });
+  }
+
+  await dbConnect();
+
+  const product = await ProductModel.findById(params.id);
+  if (!product) {
+    return Response.json({ message: 'Product not found' }, { status: 404 });
+  }
+
+  if (
+    session.user.role === 'vendor' &&
+    product.vendor.toString() !== session.user._id
+  ) {
+    return Response.json(
+      { message: 'Unauthorized - can only delete own products' },
+      { status: 403 }
+    );
+  }
+
+  await ProductModel.deleteOne({ _id: params.id });
+  return Response.json({ message: 'Product deleted successfully' });
 }
 
-) as any;
