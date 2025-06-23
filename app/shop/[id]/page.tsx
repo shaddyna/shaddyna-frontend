@@ -91,23 +91,33 @@ import { Star, MapPin, ShoppingBag, Mail, Phone, Instagram, Facebook, Twitter, H
 
 import shopService from '@/lib/services/shopService';
 import productService from '@/lib/services/productService';
-
+import mongoose from 'mongoose';
 
 export default async function ShopPage({ params }: { params: { id: string } }) {
   const shop = await shopService.getShopById(params.id);
   if (!shop) notFound();
+
+  const vendorId =
+    typeof shop.owner === 'object' && '_id' in shop.owner
+      ? (shop.owner as { _id: { toString: () => string } })._id.toString()
+      : shop.owner?.toString?.() ?? '';
+
+  if (!mongoose.Types.ObjectId.isValid(vendorId)) {
+    console.error('Invalid vendorId:', vendorId);
+    throw new Error('Invalid vendor ID');
+  }
 
   const buffer = await fetch(shop.image).then(async (res) =>
     Buffer.from(await res.arrayBuffer()),
   );
   const { base64 } = await getPlaiceholder(buffer);
 
-  const shopProducts = await productService.getByVendor(shop.owner.toString());
+  //const shopProducts = await productService.getByVendor(shop.owner.toString());
+  
+  const shopProducts = await productService.getByVendor(vendorId);
 
   return (
     <div className="bg-white min-h-screen">
-
-      
       {/* Shop Header */}
       <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden">
         <Image
@@ -329,7 +339,7 @@ export default async function ShopPage({ params }: { params: { id: string } }) {
                     <h3 className="text-lg font-semibold text-black mb-2">{product.name}</h3>
                     <p className="text-gray-600 text-sm sm:text-base mb-3">{product.description}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-[#bf2c7e] font-bold text-lg">${product.price.toFixed(2)}</span>
+                      <span className="text-[#bf2c7e] font-bold text-lg">Ksh {product.price.toFixed(2)}</span>
                       <button className="btn btn-primary btn-sm">Add to Cart</button>
                     </div>
                   </div>
