@@ -78,10 +78,22 @@ export const POST = auth(async (req: any) => {
 
 import { auth } from '@/lib/auth';
 import dbConnect from '@/lib/dbConnect';
-import OrderModel, { OrderItem } from '@/lib/models/OrderModel';
+import OrderModel from '@/lib/models/OrderModel';
+import  OrderItem  from '@/lib/models/OrderModel';
 import ProductModel from '@/lib/models/ProductModel';
 import { round2 } from '@/lib/utils';
 import mongoose from 'mongoose';
+
+type OrderItem = {
+  product: string;
+  name: string;
+  slug: string;
+  qty: number;
+  image: string;
+  price: number;
+  vendor: string;
+};
+
 
 const calcPrices = (orderItems: OrderItem[]) => {
   const itemsPrice = round2(
