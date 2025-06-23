@@ -5,7 +5,18 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import useSWR from 'swr';
 
-import { Order } from '@/lib/models/OrderModel';
+import  Order  from '@/lib/models/OrderModel';
+
+type Order = {
+  _id: string;
+  createdAt: string;
+  totalPrice: number;
+  isPaid: boolean;
+  paidAt?: string;
+  isDelivered: boolean;
+  deliveredAt?: string;
+};
+
 
 const MyOrders = () => {
   const router = useRouter();
