@@ -4,7 +4,17 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
 import useCartService from '@/lib/hooks/useCartStore';
-import { OrderItem } from '@/lib/models/OrderModel';
+import  OrderItem  from '@/lib/models/OrderModel';
+
+type OrderItem = {
+  product: string;
+  name: string;
+  slug: string;
+  qty: number;
+  image: string;
+  price: number;
+  vendor: string;
+};
 
 const AddToCart = ({ item }: { item: OrderItem }) => {
   const router = useRouter();
