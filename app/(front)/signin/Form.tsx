@@ -166,7 +166,7 @@ const Form = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-0">
+    <div className="min-h-screen bg-white flex items-center justify-center p-3">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-[#f0d0e0]">
           {/* Header with accent color */}
