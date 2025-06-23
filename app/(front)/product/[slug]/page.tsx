@@ -236,17 +236,17 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
           <span className="text-3xl font-bold text-primary-600">
             Ksh {product.price.toLocaleString()}
           </span>
-          {product.discount > 0 && (
+         { /*{product.discount > 0 && (
             <span className="text-sm text-gray-400 line-through">
               Ksh {(product.price / (1 - product.discount/100)).toLocaleString(undefined, {maximumFractionDigits: 2})}
             </span>
-          )}
+          )}*/}
         </div>
-        {product.discount > 0 && (
+        {/*{product.discount > 0 && (
           <span className="inline-block mt-1 bg-primary-100 text-primary-600 text-xs font-bold px-2 py-0.5 rounded">
             {product.discount}% OFF
           </span>
-        )}
+        )}*/}
       </div>
 
       {/* Description with expandable functionality */}
@@ -262,17 +262,17 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
       {/* Key Features */}
       <div className="mt-6">
         <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">
-          Highlights
+          Features
         </h3>
         <ul className="space-y-2">
-          {product.features?.map((feature, i) => (
+          {/*{product.features?.map((feature, i) => (
             <li key={i} className="flex items-start">
               <svg className="h-5 w-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               <span className="text-gray-700">{feature}</span>
             </li>
-          ))}
+          ))}*/}
         </ul>
       </div>
 
