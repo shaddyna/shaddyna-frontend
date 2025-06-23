@@ -16,7 +16,49 @@ const categories: ShopCategory[] = [
   'other',
 ];
 
-export default function ShopForm({ initialData }: { initialData: Shop | null }) {
+/*export default function ShopForm({ initialData }: { initialData: Shop | null }) {
+  const { data: session } = useSession();
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    location: '',
+    categories: [] as ShopCategory[],
+    image: '',
+    contact: {
+      email: '',
+      phone: '',
+    },
+    isActive: true,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        name: initialData.name,
+        description: initialData.description,
+        location: initialData.location,
+        categories: initialData.categories,
+        image: initialData.image,
+        contact: {
+          email: initialData.contact.email,
+          phone: initialData.contact.phone || '',
+        },
+        isActive: initialData.isActive,
+      });
+    } else if (session?.user?.email) {
+      setFormData(prev => ({
+        ...prev,
+        contact: {
+          ...prev.contact,
+          email: session.user.email ?? '',
+        },
+      }));
+    }
+  }, [initialData, session]);*/
+  export default function ShopForm({ initialData }: { initialData: Shop | null }) {
   const { data: session } = useSession();
   const router = useRouter();
   const [formData, setFormData] = useState({
