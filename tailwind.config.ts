@@ -25,7 +25,7 @@ const config: Config = {
           primary: '#fbbf24',
           '.toaster-con': {
             'background-color': 'white',
-            color: 'white',
+            color: 'black',
           },
         },
       },
