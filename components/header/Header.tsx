@@ -255,8 +255,8 @@ const Header = () => {
 };
 
 export default Header;*/
-'use client';
 
+"use client"
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next-nprogress-bar';
 import { useState } from 'react';
@@ -427,20 +427,6 @@ const CartIcon = ({ items }: { items: any[] }) => (
   </Link>
 );
 
-{/*const ThemeToggle = ({ theme, toggleTheme }: { theme: string, toggleTheme: () => void }) => (
-  <button
-    onClick={toggleTheme}
-    className="p-2 rounded-full hover:bg-[#bf2c7e]/10 transition-colors"
-    aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-  >
-    {theme === 'light' ? (
-      <Moon className="w-5 h-5 text-gray-700" />
-    ) : (
-      <Sun className="w-5 h-5 text-gray-700" />
-    )}
-  </button>
-);*/}
-
 const SignInButton = () => (
   <button
     className="px-4 py-2 rounded-full bg-[#bf2c7e] hover:bg-[#0f1c47] text-white font-medium transition-colors text-sm sm:text-base"
@@ -467,9 +453,6 @@ const Menu = () => {
 
   return (
     <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
-      {/* Theme Toggle */}
-    {/*}  <ThemeToggle theme={theme} toggleTheme={toggleTheme} />*/}
-
       {/* Cart */}
       <CartIcon items={items} />
 
@@ -503,16 +486,19 @@ const Header = () => {
           </div>
 
           {/* User menu and cart */}
-          <Menu />
+          <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+            {/* Mobile search button */}
+            <button 
+              className="md:hidden p-2 rounded-full hover:bg-[#bf2c7e]/10"
+              onClick={() => setSearchOpen(!searchOpen)}
+              aria-label="Search"
+            >
+              <SearchIcon className="w-5 h-5 text-gray-700" />
+            </button>
 
-          {/* Mobile search button */}
-          <button 
-            className="md:hidden p-2 rounded-full hover:bg-[#bf2c7e]/10"
-            onClick={() => setSearchOpen(!searchOpen)}
-            aria-label="Search"
-          >
-            <SearchIcon className="w-5 h-5 text-gray-700" />
-          </button>
+            {/* Menu */}
+            <Menu />
+          </div>
         </div>
 
         {/* Mobile search - appears when searchOpen is true */}
