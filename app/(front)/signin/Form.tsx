@@ -305,7 +305,7 @@ const Form = () => {
               </button>
             </form>
 
-            <div className="mt-6">
+            {/*<div className="mt-6">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300"></div>
@@ -336,7 +336,7 @@ const Form = () => {
                   </svg>
                 </button>
               </div>
-            </div>
+            </div>*/}
 
             <div className="mt-6 text-center text-sm text-gray-600">
               Don't have an account?{' '}

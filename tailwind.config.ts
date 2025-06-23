@@ -20,14 +20,14 @@ const config: Config = {
             color: 'black',
           },
         },
-        dark: {
+        /*dark: {
           ...require('daisyui/src/theming/themes')['dark'],
           primary: '#fbbf24',
           '.toaster-con': {
             'background-color': 'white',
             color: 'black',
           },
-        },
+        },*/
       },
     ],
   },
