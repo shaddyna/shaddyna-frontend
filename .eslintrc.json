@@ -19,8 +19,8 @@
 {
   "extends": "next/core-web-vitals",
   "plugins": ["import"],
-"rules": {
-  "import/order": "off"
-}
-
+  "rules": {
+    "import/order": "off",
+    "react/no-unescaped-entities": "off"
+  }
 }
