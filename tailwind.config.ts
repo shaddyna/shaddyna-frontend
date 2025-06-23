@@ -24,7 +24,7 @@ const config: Config = {
           ...require('daisyui/src/theming/themes')['dark'],
           primary: '#fbbf24',
           '.toaster-con': {
-            'background-color': 'black',
+            'background-color': 'white',
             color: 'white',
           },
         },
