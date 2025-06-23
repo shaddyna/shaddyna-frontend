@@ -54,7 +54,8 @@ export default function Users() {
                 <td>{formatId(user._id)}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.isAdmin ? 'YES' : 'NO'}</td>
+                <td>{user.role === 'superAdmin' ? 'YES' : 'NO'}</td>
+
 
                 <td>
                   <Link
