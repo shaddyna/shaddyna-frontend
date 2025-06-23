@@ -1,4 +1,4 @@
-{
+/*{
   "extends": "next/core-web-vitals",
   "plugins": ["import"],
   "rules": {
@@ -14,4 +14,13 @@
       }
     ]
   }
+}*/
+
+{
+  "extends": "next/core-web-vitals",
+  "plugins": ["import"],
+"rules": {
+  "import/order": "off"
+}
+
 }
