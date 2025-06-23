@@ -154,7 +154,7 @@ const CartDetails = () => {
               <ShoppingBag className="text-pink-500" size={60} strokeWidth={1} />
             </div>
             <h2 className="text-2xl font-semibold text-gray-800 mb-2">Your cart is empty</h2>
-            <p className="text-gray-600 mb-6">Looks like you haven't added anything to your cart yet</p>
+            <p className="text-gray-600 mb-6">Looks like you have not added anything to your cart yet</p>
             <Link 
               href="/" 
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 transition-all duration-200"
