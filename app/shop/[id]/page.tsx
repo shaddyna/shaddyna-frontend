@@ -102,7 +102,7 @@ export default async function ShopPage({ params }: { params: { id: string } }) {
   );
   const { base64 } = await getPlaiceholder(buffer);
 
-  const shopProducts = await productService.getByVendor(shop.owner._id.toString());
+  const shopProducts = await productService.getByVendor(shop.owner.toString());
 
   return (
     <div className="bg-white min-h-screen">
