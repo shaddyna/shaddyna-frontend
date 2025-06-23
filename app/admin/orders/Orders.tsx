@@ -3,7 +3,20 @@
 import Link from 'next/link';
 import useSWR from 'swr';
 
-import { Order } from '@/lib/models/OrderModel';
+import  Order  from '@/lib/models/OrderModel';
+
+type Order = {
+  _id: string;
+  createdAt: string;
+  totalPrice: number;
+  isPaid: boolean;
+  paidAt?: string;
+  isDelivered: boolean;
+  deliveredAt?: string;
+  user?: {
+    name?: string;
+  };
+};
 
 export default function Orders() {
   const { data: orders, error, isLoading } = useSWR(`/api/admin/orders`);
