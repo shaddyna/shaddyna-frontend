@@ -11,7 +11,7 @@ const getFeaturedShops = cache(async () => {
     .limit(8)
     .populate('owner')
     .lean();
-  return shops as Shop[];
+  return shops as unknown as Shop[]; // Converts the MongoDB documents to plain JavaScript objects
 });
 
 const getShopBySlug = cache(async (slug: string) => {
@@ -19,7 +19,7 @@ const getShopBySlug = cache(async (slug: string) => {
   const shop = await ShopModel.findOne({ slug })
     .populate('owner')
     .lean();
-  return shop as Shop;
+  return shop as unknown as Shop;
 });
 
 const getShopById = cache(async (id: string) => {
@@ -27,7 +27,7 @@ const getShopById = cache(async (id: string) => {
   const shop = await ShopModel.findById(id)
     .populate('owner')
     .lean();
-  return shop as Shop;
+  return shop as unknown as Shop;
 });
 
 const shopService = {
