@@ -119,7 +119,7 @@ export default function SkillsPage() {
                   </h2>
                   {skill.pricePerHour && (
                     <span className="bg-[#bf2c7e]/10 text-[#bf2c7e] px-3 py-1 rounded-full text-sm font-medium">
-                      ${skill.pricePerHour}/hr
+                      Ksh{skill.pricePerHour}/hr
                     </span>
                   )}
                 </div>
