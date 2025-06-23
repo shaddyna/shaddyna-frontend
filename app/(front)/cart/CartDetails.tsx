@@ -108,7 +108,7 @@ const CartDetails = () => {
 
 export default CartDetails;
 */
-
+"use client"
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ShoppingBag, ArrowLeft, Heart } from 'lucide-react';
