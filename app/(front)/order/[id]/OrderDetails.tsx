@@ -310,7 +310,7 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
   } = data;
 
   return (
-    <div className="min-h-screen bg-white p-0 mt-4">
+    <div className="min-h-screen bg-white p-0  p-4">
       <div className="max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-col md:flex-row items-start md:items-center gap-2 mb-6">
   <h1 className="text-xl font-bold text-[#bf2c7e]">Order #{orderId}</h1>
