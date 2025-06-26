@@ -11,12 +11,15 @@ import useSWRMutation from 'swr/mutation';
 
 import { Product } from '@/lib/models/ProductModel';
 import { formatId } from '@/lib/utils';
-import VendorLayout from '@/components/vendor/VendorLayout';
+import { useSession } from 'next-auth/react';
+import VendorEditLayout from '@/components/vendor/VendorEditLayout';
 
 export default function VendorProductEditForm({ params }: { params: { id: string } }) {
   const { data: product, error } = useSWR(`/api/vendor/products/${params.id}`);
+  const { data: session } = useSession();
   const router = useRouter();
   const categories = ['Shirt', 'Pants', 'Handbags'];
+  
   const { trigger: updateProduct, isMutating: isUpdating } = useSWRMutation(
     `/api/vendor/products/${params.id}`,
     async (url, { arg }) => {
@@ -106,6 +109,7 @@ export default function VendorProductEditForm({ params }: { params: { id: string
       });
       const { signature, timestamp } = await resSign.json();
       const file = e.target.files[0];
+      
       const formData = new FormData();
       formData.append('file', file);
       formData.append('signature', signature);
@@ -130,15 +134,16 @@ export default function VendorProductEditForm({ params }: { params: { id: string
     }
   };
 
+
   return (
-    <VendorLayout activeItem='products' vendorId={product?.vendorId}>
+    <VendorEditLayout activeItem='products' vendorId={product?.vendorId}>
       <div>
         <h1 className='py-4 text-2xl'>Edit Product {formatId(params.id)}</h1>
         <div>
           <form onSubmit={handleSubmit(formSubmit)}>
             <FormInput name='Name' id='name' required />
             <FormInput name='Slug' id='slug' required />
-            <FormInput name='Image' id='image' required />
+            <FormInput name='Image' id='image'/>
             <div className='mb-6 md:flex'>
               <label className='label md:w-1/5' htmlFor='imageFile'>
                 Upload Image
@@ -189,12 +194,19 @@ export default function VendorProductEditForm({ params }: { params: { id: string
               {isUpdating && <span className='loading loading-spinner'></span>}
               Update
             </button>
-            <Link className='btn ml-4' href='/vendor/products'>
+            <Link
+              className='btn ml-4'
+              href={
+                session?.user?._id
+                  ? `/vendor/${session.user._id}/dashboard`
+                  : '/vendor/dashboard'
+              }
+            >
               Cancel
             </Link>
           </form>
         </div>
       </div>
-    </VendorLayout>
+    </VendorEditLayout>
   );
 }

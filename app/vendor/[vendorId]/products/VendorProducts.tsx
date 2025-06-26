@@ -91,7 +91,9 @@ const VendorProducts = ({ vendorId }: { vendorId: string }) => {
 
 export default VendorProducts;*/
 // C:\Users\Admin\Desktop\Fashion-Corner-Next.js-Ecommerce\app\vendor\[vendorId]\products\VendorProducts.tsx
-'use client';
+
+
+/*'use client';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -180,6 +182,116 @@ export default function VendorProducts() {
                 <td>{formatId(product._id!)}</td>
                 <td>{product.name}</td>
                 <td>${product.price}</td>
+                <td>{product.category}</td>
+                <td>{product.countInStock}</td>
+                <td>{product.rating}</td>
+                <td>
+                  <Link
+                    href={`/vendor/products/${product._id}`}
+                    type='button'
+                    className='btn btn-ghost btn-sm'
+                  >
+                    Edit
+                  </Link>
+                  &nbsp;
+                  <button
+                    onClick={() => deleteProduct({ productId: product._id! })}
+                    type='button'
+                    className='btn btn-ghost btn-sm'
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}*/
+
+// app/vendor/products/page.tsx
+'use client';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
+
+import { Product } from '@/lib/models/ProductModel';
+import { formatId } from '@/lib/utils';
+import CreateProductModal from '@/components/vendor/CreateProductModal';
+
+export default function VendorProducts() {
+  const { data: products, error } = useSWR(`/api/vendor/products`);
+  const router = useRouter();
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const { trigger: deleteProduct } = useSWRMutation(
+    `/api/vendor/products`,
+    async (url, { arg }: { arg: { productId: string } }) => {
+      const toastId = toast.loading('Deleting product...');
+      const res = await fetch(`${url}/${arg.productId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await res.json();
+      res.ok
+        ? toast.success('Product deleted successfully', {
+            id: toastId,
+          })
+        : toast.error(data.message, {
+            id: toastId,
+          });
+    },
+  );
+
+  if (error) return 'An error has occurred.';
+  if (!products) return 'Loading...';
+
+  return (
+    <div>
+      <div className='flex items-center justify-between'>
+        <h1 className='py-4 text-2xl'>My Products</h1>
+        <button
+          onClick={() => setShowCreateModal(true)}
+          className='btn btn-primary btn-sm'
+        >
+          Create
+        </button>
+      </div>
+
+      {showCreateModal && (
+        <CreateProductModal 
+          onClose={() => setShowCreateModal(false)} 
+          vendorId={products[0]?.vendor._id} 
+        />
+      )}
+
+      <div className='overflow-x-auto'>
+        <table className='table table-zebra'>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>name</th>
+              <th>price</th>
+              <th>category</th>
+              <th>count in stock</th>
+              <th>rating</th>
+              <th>actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product: Product) => (
+              <tr key={product._id}>
+                <td>{formatId(product._id!)}</td>
+                <td>{product.name}</td>
+                <td>Ksh {product.price}</td>
                 <td>{product.category}</td>
                 <td>{product.countInStock}</td>
                 <td>{product.rating}</td>

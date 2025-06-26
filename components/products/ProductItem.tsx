@@ -48,20 +48,31 @@ const ProductItem = async ({ product }: { product: Product }) => {
 };
 
 export default ProductItem;*/
+'use client'; // Add this directive since we're using client-side hooks
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPlaiceholder } from 'plaiceholder';
 import { Star, Heart, ShoppingCart, Eye } from 'lucide-react';
 import { Product } from '@/lib/models/ProductModel';
 import { Rating } from './Rating';
+import { toast } from 'react-hot-toast';
+import useCartService from '@/lib/hooks/useCartStore';
 
-const ProductItem = async ({ product }: { product: Product }) => {
-  const buffer = await fetch(product.image).then(async (res) =>
-    Buffer.from(await res.arrayBuffer()),
-  );
+const ProductItem = ({ product }: { product: Product }) => {
+  const { increase } = useCartService();
 
-  const { base64 } = await getPlaiceholder(buffer);
+  const addToCartHandler = () => {
+    increase({
+      product: product._id?.toString() ?? '',
+      name: product.name,
+      slug: product.slug,
+      qty: 1,
+      image: product.image,
+      price: product.price,
+      vendor: product.vendor?.toString() ?? '',
+    });
+    toast.success('Added to cart');
+  };
 
   return (
     <div className="group relative overflow-hidden rounded-lg sm:rounded-xl bg-white border border-gray-200 hover:border-[#bf2c7e]/50 transition-all duration-300 shadow-sm hover:shadow-md sm:shadow-md sm:hover:shadow-lg">
@@ -71,8 +82,6 @@ const ProductItem = async ({ product }: { product: Product }) => {
           <Image
             src={product.image}
             alt={product.name}
-            placeholder='blur'
-            blurDataURL={base64}
             fill
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
@@ -83,6 +92,11 @@ const ProductItem = async ({ product }: { product: Product }) => {
           {product.countInStock <= 10 && product.countInStock > 0 && (
             <span className="bg-pink-600 text-white text-xs px-2 py-1 rounded-full">
               Low Stock
+            </span>
+          )}
+          {product.countInStock === 0 && (
+            <span className="bg-gray-600 text-white text-xs px-2 py-1 rounded-full">
+              Out of Stock
             </span>
           )}
         </div>
@@ -111,7 +125,15 @@ const ProductItem = async ({ product }: { product: Product }) => {
           </span>
           
           <div className="flex gap-2">
-            <button className="p-2 bg-gray-100 hover:bg-[#bf2c7e] hover:text-white rounded-full transition-colors">
+            <button
+              onClick={addToCartHandler}
+              disabled={product.countInStock === 0}
+              className={`p-2 rounded-full transition-colors ${
+                product.countInStock === 0 
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-gray-100 hover:bg-[#bf2c7e] hover:text-white'
+              }`}
+            >
               <ShoppingCart size={16} />
             </button>
             <Link href={`/product/${product.slug}`}>

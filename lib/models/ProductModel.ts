@@ -15,6 +15,7 @@ export type Product = {
   countInStock: number;
   colors?: [];
   sizes?: [];
+  vendor: mongoose.Schema.Types.ObjectId;
 };
 
 const productSchema = new mongoose.Schema(
@@ -31,6 +32,11 @@ const productSchema = new mongoose.Schema(
     description: { type: String, required: true },
     isFeatured: { type: Boolean, default: false },
     banner: String,
+    vendor: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -40,15 +46,18 @@ const productSchema = new mongoose.Schema(
 const ProductModel =
   mongoose.models.Product || mongoose.model('Product', productSchema);
 
-export default ProductModel;*/
+export default ProductModel;
+*/
 
+// lib/models/ProductModel.ts
 import mongoose from 'mongoose';
 
 export type Product = {
   _id?: string;
   name: string;
   slug: string;
-  image: string;
+  image: string; // Main image
+  images: string[]; // Additional images
   banner?: string;
   price: number;
   brand: string;
@@ -68,6 +77,7 @@ const productSchema = new mongoose.Schema(
     slug: { type: String, required: true, unique: true },
     category: { type: String, required: true },
     image: { type: String, required: true },
+    images: { type: [String], default: [] },
     price: { type: Number, required: true },
     brand: { type: String, required: true },
     rating: { type: Number, required: true, default: 0 },

@@ -46,7 +46,7 @@ const VendorOrders = ({ vendorId }: { vendorId: string }) => {
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                <td>${formatNumber(order.totalPrice)}</td>
+                <td>Ksh {formatNumber(order.totalPrice)}</td>
                 <td>{order.isDelivered ? 'Delivered' : 'Pending'}</td>
                 <td>
                   <Link
