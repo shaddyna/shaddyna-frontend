@@ -108,7 +108,7 @@ export const config = {
             credentials.password as string,
             user.password,
           );
-          if (isMatch) {
+          /*if (isMatch) {
             return {
               _id: user._id.toString(),
               email: user.email,
@@ -116,7 +116,17 @@ export const config = {
               role: user.role,
               shop: user.shop,
             };
-          }
+          }*/
+         if (isMatch) {
+  return {
+    _id: user._id.toString(),
+    email: user.email,
+    name: user.name,
+    role: user.role,
+    shop: user.shop?.toString(),
+  };
+}
+
         }
         return null;
       },
@@ -136,8 +146,10 @@ export const config = {
           email: user.email,
           name: user.name,
           role: user.role,
-          shop: user.shop,
+          //shop: user.shop,
+           shop: user.shop?.toString(),
         };
+
       }
       if (trigger === 'update' && session) {
         token.user = {

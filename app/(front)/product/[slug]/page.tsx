@@ -1,4 +1,4 @@
-import Image from 'next/image';
+/*import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPlaiceholder } from 'plaiceholder';
@@ -39,7 +39,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
   const { base64 } = await getPlaiceholder(buffer);
 
   return (
-    <div className='my-2'>
+    <div className='my-2 px-4'>
       <div className='my-4'>
         <Link href='/' className='btn'>{`<- Back to Products`}</Link>
       </div>
@@ -107,6 +107,37 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
       </div>
     </div>
   );
+};
+
+export default ProductPage;*/
+
+// ❌ Do NOT use 'use client' here — this is a server component
+
+import { notFound } from 'next/navigation';
+import { getPlaiceholder } from 'plaiceholder';
+import productService from '@/lib/services/productService';
+import ProductPageContent from './productPageContent';
+
+
+export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
+  const product = await productService.getBySlug(params.slug);
+  if (!product) return notFound();
+  return {
+    title: product.name,
+    description: product.description,
+  };
+};
+
+const ProductPage = async ({ params }: { params: { slug: string } }) => {
+  const product = await productService.getBySlug(params.slug);
+  if (!product) return notFound();
+
+  const buffer = await fetch(product.image).then(async (res) =>
+    Buffer.from(await res.arrayBuffer())
+  );
+  const { base64 } = await getPlaiceholder(buffer);
+
+  return <ProductPageContent product={product} blurDataURL={base64} />;
 };
 
 export default ProductPage;

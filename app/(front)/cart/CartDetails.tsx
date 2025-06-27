@@ -111,7 +111,7 @@ export default CartDetails;
 "use client"
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ShoppingBag, ArrowLeft, Heart } from 'lucide-react';
+import { ShoppingBag, ArrowLeft, } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useCartService from '@/lib/hooks/useCartStore';
@@ -188,9 +188,7 @@ const CartDetails = () => {
                           >
                             {item.name}
                           </Link>
-                          <button className="text-gray-400 hover:text-pink-500">
-                            <Heart size={18} strokeWidth={1.5} />
-                          </button>
+                          
                         </div>
                         
                         <p className="text-sm text-gray-500 mt-1">Ksh {item.price.toFixed(2)}</p>

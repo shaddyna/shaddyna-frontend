@@ -42,6 +42,7 @@ import { auth } from '@/lib/auth';
 import dbConnect from '@/lib/dbConnect';
 import ShopModel from '@/lib/models/ShopModel';
 import { redirect } from 'next/navigation';
+import mongoose from 'mongoose';
 
 export default async function VendorShopPage({
   params,
@@ -49,36 +50,46 @@ export default async function VendorShopPage({
   params: { id: string };
 }) {
   const session = await auth();
-  
-  // Redirect if not authenticated or not the correct vendor
-  /*if (!session || !session.user || session.user._id !== params.id) {
-    redirect('/signin');
-  }*/
-if (!session ) {
+
+  console.log('SESSION:', JSON.stringify(session, null, 2));
+
+  if (!session) {
     redirect('/signin');
   }
+
   await dbConnect();
-  
+
   let shop = null;
+
   if (session.user.shop) {
-    const result = await ShopModel.findById(session.user.shop).lean();
-    if (result && !Array.isArray(result)) {
-      // Map result to Shop type
-      shop = {
-        _id: result._id?.toString?.() ?? '',
-        name: result.name ?? '',
-        owner: result.owner ?? '',
-        description: result.description ?? '',
-        location: result.location ?? '',
-        image: result.image ?? '',
-        isActive: result.isActive ?? false,
-        createdAt: result.createdAt ?? '',
-        categories: result.categories ?? [],
-        contact: result.contact ?? '',
-        workingHours: result.workingHours ?? '',
-      };
-    } else {
-      shop = null;
+    try {
+      const shopIdValue =
+        typeof session.user.shop === 'string'
+          ? session.user.shop
+          : undefined; // fallback if not a string
+      if (!shopIdValue) {
+        throw new Error('Invalid shop ID');
+      }
+      const shopId = new mongoose.Types.ObjectId(shopIdValue);
+      const result = await ShopModel.findById(shopId).lean();
+
+      if (result && !Array.isArray(result)) {
+        shop = {
+          _id: result._id?.toString() ?? '',
+          name: result.name ?? '',
+          owner: result.owner ?? '',
+          description: result.description ?? '',
+          location: result.location ?? '',
+          image: result.image ?? '',
+          isActive: result.isActive ?? false,
+          createdAt: result.createdAt ?? '',
+          categories: result.categories ?? [],
+          contact: result.contact ?? '',
+          workingHours: result.workingHours ?? '',
+        };
+      }
+    } catch (err) {
+      console.error('Error loading shop:', err);
     }
   }
 
