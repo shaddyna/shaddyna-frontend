@@ -13,14 +13,14 @@ const VendorLayout = ({ children, activeItem, vendorId }: VendorLayoutProps) => 
       <div className='grid w-full md:grid-cols-5'>
         <div className='bg-base-200'>
           <ul className='menu gap-1'>
-            <li>
+            {/*<li>
               <Link
                 className={activeItem === 'dashboard' ? 'active' : ''}
                 href={`/vendor/${vendorId}/dashboard`}
               >
                 Dashboard
               </Link>
-            </li>
+            </li>*/}
             <li>
               <Link
                 className={activeItem === 'orders' ? 'active' : ''}

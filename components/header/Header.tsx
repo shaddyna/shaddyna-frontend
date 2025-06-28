@@ -353,7 +353,7 @@ const UserMenu = ({ session, signOutHandler, handleClick }: {
       {session.user.role === 'vendor' && (
         <>
           <li onClick={handleClick}>
-            <Link href={`/vendor/${session.user._id}/dashboard`} className="flex items-center gap-2 hover:bg-[#bf2c7e]/10">
+            <Link href={`/vendor/${session.user._id}/orders`} className="flex items-center gap-2 hover:bg-[#bf2c7e]/10">
               <LayoutDashboard className="w-4 h-4" />
               Vendor Dashboard
             </Link>

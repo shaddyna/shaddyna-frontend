@@ -303,7 +303,7 @@ const Menu = () => {
               <>
                 <li onClick={handleClick}>
                   <Link
-                    href={`/vendor/${session.user._id}/dashboard`}
+                    href={`/vendor/${session.user._id}/orders`}
                     className="flex items-center gap-2 hover:bg-[#bf2c7e]/10"
                   >
                     <LayoutDashboard className="w-4 h-4" />

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import useSWR from 'swr';
 
 import { formatNumber } from '@/lib/utils';
 import { Link } from 'lucide-react';
