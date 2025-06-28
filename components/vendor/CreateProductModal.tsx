@@ -107,58 +107,6 @@ export default function CreateProductModal({
   }
 };
 
-
- /* const uploadImages = async (): Promise<string[]> => {
-    if (selectedFiles.length === 0) {
-      toast.error('Please select at least one image');
-      throw new Error('No images selected');
-    }
-
-    const uploadedUrls: string[] = [];
-    const toastId = toast.loading('Uploading images...');
-    setIsUploading(true);
-
-    try {
-      // Get Cloudinary signature first
-      const resSign = await fetch('/api/cloudinary-sign', {
-        method: 'POST',
-      });
-      const { signature, timestamp } = await resSign.json();
-
-      // Upload each file
-      for (const file of selectedFiles) {
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('signature', signature);
-        formData.append('timestamp', timestamp);
-        formData.append('api_key', process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY!);
-
-        const res = await fetch(
-          `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`,
-          {
-            method: 'POST',
-            body: formData,
-          },
-        );
-
-        if (!res.ok) {
-          throw new Error('Image upload failed');
-        }
-
-        const data = await res.json();
-        uploadedUrls.push(data.secure_url);
-      }
-
-      toast.success('Images uploaded successfully', { id: toastId });
-      return uploadedUrls;
-    } catch (err: any) {
-      toast.error(err.message || 'Failed to upload images', { id: toastId });
-      throw err;
-    } finally {
-      setIsUploading(false);
-    }
-  };*/
-
   const formSubmit = async (formData: any) => {
     try {
       const imageUrls = await uploadImages();

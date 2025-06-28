@@ -110,9 +110,9 @@ export default function SellerRequestsTable() {
             <tbody>
               {requests.map((request) => (
                 <tr key={request._id}>
-                  <td className="py-2 px-4 border-b">{request.user.name}</td>
+                  {/*<td className="py-2 px-4 border-b">{request.user.name}</td>
                   <td className="py-2 px-4 border-b">{request.user.email}</td>
-                  <td className="py-2 px-4 border-b">{request.user.role}</td>
+                  <td className="py-2 px-4 border-b">{request.user.role}</td>*/}
                   <td className="py-2 px-4 border-b">
                     <span
                       className={`px-2 py-1 rounded text-xs ${
