@@ -84,8 +84,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import dbConnect from './dbConnect';
 import UserModel from './models/UserModel';
 
-//export const config = {
-export const authOptions = {
+export const config = {
+//export const authOptions = {
   secret: process.env.AUTH_SECRET,
   trustedHosts: ['shaddyna.com', 'www.shaddyna.com', 'localhost:10000'],
   providers: [
@@ -161,5 +161,5 @@ export const {
   auth,
   signIn,
   signOut,
-//} = NextAuth(config);
-} = NextAuth(authOptions);
+} = NextAuth(config);
+//} = NextAuth(authOptions);
