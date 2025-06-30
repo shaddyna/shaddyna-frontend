@@ -120,12 +120,12 @@ export async function GET(
       .populate('user', 'name email')
       .lean();
 
-    const filteredOrders = orders.map(order => ({
+    const filteredOrders = (orders as any[]).map(order => ({
       ...order,
-      items: order.items.filter(item => item.vendor.toString() === params.vendorId),
-      _id: order._id.toString(),
-      createdAt: order.createdAt.toISOString(),
-      updatedAt: order.updatedAt.toISOString(),
+      items: order.items.filter((item: any) => item.vendor.toString() === params.vendorId),
+      _id: (order._id as any).toString(),
+      createdAt: (order.createdAt as Date).toISOString(),
+      updatedAt: (order.updatedAt as Date).toISOString(),
     }));
 
     return NextResponse.json(filteredOrders);
