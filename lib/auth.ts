@@ -81,95 +81,11 @@ export const {
 import bcrypt from 'bcryptjs';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-
 import dbConnect from './dbConnect';
 import UserModel from './models/UserModel';
 
-/*export const config = {
-  secret: process.env.AUTH_SECRET,
-  providers: [
-    CredentialsProvider({
-      credentials: {
-        email: {
-          type: 'email',
-        },
-        password: {
-          type: 'password',
-        },
-      },
-      async authorize(credentials) {
-        await dbConnect();
-        if (credentials === null) return null;
-
-        const user = await UserModel.findOne({ email: credentials.email });
-
-        if (user) {
-          const isMatch = await bcrypt.compare(
-            credentials.password as string,
-            user.password,
-          );
-          /*if (isMatch) {
-            return {
-              _id: user._id.toString(),
-              email: user.email,
-              name: user.name,
-              role: user.role,
-              shop: user.shop,
-            };
-          }*
-         if (isMatch) {
-  return {
-    _id: user._id.toString(),
-    email: user.email,
-    name: user.name,
-    role: user.role,
-    shop: user.shop?.toString(),
-  };
-}
-
-        }
-        return null;
-      },
-    }),
-  ],
-  // custom pages for sign in and register
-  pages: {
-    signIn: '/signin',
-    newUser: '/register',
-    error: '/error',
-  },
-  callbacks: {
-    async jwt({ user, trigger, session, token }: any) {
-      if (user) {
-        token.user = {
-          _id: user._id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
-          //shop: user.shop,
-           shop: user.shop?.toString(),
-        };
-
-      }
-      if (trigger === 'update' && session) {
-        token.user = {
-          ...token.user,
-          email: session.user.email,
-          name: session.user.name,
-        };
-      }
-      return token;
-    },
-    session: async ({ session, token }: any) => {
-      if (token) {
-        session.user = token.user;
-      }
-      return session;
-    },
-  },
-};*/
-
-export const config = {
+//export const config = {
+export const authOptions = {
   secret: process.env.AUTH_SECRET,
   trustedHosts: ['shaddyna.com', 'www.shaddyna.com', 'localhost:10000'],
   providers: [
@@ -245,4 +161,5 @@ export const {
   auth,
   signIn,
   signOut,
-} = NextAuth(config);
+//} = NextAuth(config);
+} = NextAuth(authOptions);
