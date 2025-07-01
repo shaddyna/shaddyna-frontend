@@ -53,7 +53,7 @@ import OrderModel from '@/lib/models/OrderModel';
 
 export const PUT = auth(async (...args: any) => {
   const [req, { params }] = args;
-  if (!req.auth || req.auth.user?.role !== 'superAdmin') {
+  if (!req.auth || req.auth.user?.role !== 'user') {
     return new Response(
       JSON.stringify({ message: 'unauthorized' }),
       {

@@ -482,7 +482,7 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
                   </div>
                 )}
 
-                {session?.user.role === 'superAdmin' && (
+                {session?.user.role === 'user' && (
                   <button
                     className="w-full mt-4 bg-gradient-to-r from-[#bf2c7e] to-[#d85b9a] text-white py-2 px-4 rounded-lg hover:from-[#a8246a] hover:to-[#bf2c7e] transition-all duration-300 flex items-center justify-center disabled:opacity-70"
                     onClick={() => deliverOrder()}

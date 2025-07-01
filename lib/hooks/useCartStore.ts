@@ -126,6 +126,18 @@ const useCartService = () => {
         paymentMethod,
       });
     },
+        removeItem: (item: OrderItem) => {
+      const updatedCartItems = items.filter((x) => x.slug !== item.slug);
+      const { itemsPrice, shippingPrice, taxPrice, totalPrice } =
+        calcPrice(updatedCartItems);
+      cartStore.setState({
+        items: updatedCartItems,
+        itemsPrice,
+        shippingPrice,
+        taxPrice,
+        totalPrice,
+      });
+    },
     clear: () => {
       cartStore.setState({
         items: [],
