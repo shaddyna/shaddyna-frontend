@@ -1,4 +1,4 @@
-/*import bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
@@ -76,9 +76,9 @@ export const {
   auth,
   signIn,
   signOut,
-} = NextAuth(config);*/
+} = NextAuth(config);
 
-import bcrypt from 'bcryptjs';
+/*import bcrypt from 'bcryptjs';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import dbConnect from './dbConnect';
@@ -162,4 +162,4 @@ export const {
   signIn,
   signOut,
 //} = NextAuth(config);
-} = NextAuth(authOptions);
+} = NextAuth(authOptions);*/
