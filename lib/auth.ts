@@ -6,6 +6,7 @@ import dbConnect from './dbConnect';
 import UserModel from './models/UserModel';
 
 export const config = {
+  trustHost: true,
   secret: process.env.AUTH_SECRET,
   providers: [
     CredentialsProvider({
