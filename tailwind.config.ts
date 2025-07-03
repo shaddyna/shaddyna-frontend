@@ -14,7 +14,7 @@ const config: Config = {
       {
         light: {
           ...require('daisyui/src/theming/themes')['light'],
-          primary: '#fbbf24',
+          primary: '#bf2c7e',
           '.toaster-con': {
             'background-color': 'white',
             color: 'black',
