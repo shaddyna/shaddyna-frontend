@@ -87,6 +87,7 @@ import UserModel from './models/UserModel';
 
 export const config = {
 //export const authOptions = {
+  trustHost: true,
   secret: process.env.AUTH_SECRET,
   trustedHosts: ['shaddyna.com', 'www.shaddyna.com', 'localhost:10000'],
   providers: [

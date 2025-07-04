@@ -219,7 +219,7 @@ const ProductItem = ({ product }: { product: Product }) => {
         </div>
 
         <div className="flex items-center mb-2">
-          <Rating value={product.rating} isCard caption={''} />
+          {/*<Rating value={product.rating} isCard caption={''} />*/}
         </div>
 
         <div className="flex justify-between items-center mt-3">
