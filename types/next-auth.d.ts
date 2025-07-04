@@ -12,9 +12,7 @@ declare module 'next-auth' {
     _id?: string;
     isAdmin?: boolean;
   }
-}*/
-
-import NextAuth, { DefaultSession, DefaultUser } from 'next-auth';
+}*/import NextAuth, { DefaultSession, DefaultUser } from 'next-auth';
 
 declare module 'next-auth' {
   interface Session {
