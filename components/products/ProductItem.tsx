@@ -186,7 +186,7 @@ const ProductItem = ({ product }: { product: Product }) => {
         {/* Stock Badge */}
         {product.countInStock <= 10 && (
           <span className={`absolute top-2 left-2 rounded-full px-2 py-1 text-xs text-white ${
-            product.countInStock === 0 ? 'bg-gray-600' : 'bg-pink-600'
+            product.countInStock === 0 ? 'bg-gray-600' : 'bg-[#bf2c7e]'
           }`}>
             {product.countInStock === 0 ? 'Out of Stock' : 'Low Stock'}
           </span>
@@ -200,7 +200,7 @@ const ProductItem = ({ product }: { product: Product }) => {
         <p className="mt-1 text-sm text-gray-500">{product.brand}</p>
         
         <div className="mt-3 flex items-center justify-between">
-          <span className="text-sm font-bold text-[#bf2c7e]">Ksh {product.price}</span>
+          <span className="text-md font-bold text-[#bf2c7e]">Ksh {product.price}</span>
           
           <div className="flex gap-2">
             <button

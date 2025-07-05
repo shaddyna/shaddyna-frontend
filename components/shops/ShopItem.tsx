@@ -114,7 +114,7 @@ const ShopItem = async ({ shop }: { shop: Shop }) => {
           {shop.categories.slice(0, 3).map((category) => (
             <span 
               key={category} 
-              className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700"
+              className="rounded-full bg-gray-100 px-2 py-1 text-sm text-gray-700"
             >
               {category}
             </span>
