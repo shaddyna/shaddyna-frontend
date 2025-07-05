@@ -195,9 +195,9 @@ const ProductItem = ({ product }: { product: Product }) => {
 
       <div className="p-3">
         <Link href={`/product/${product.slug}`}>
-          <h3 className="line-clamp-2 text-sm font-medium text-gray-900">{product.name}</h3>
+          <h3 className="line-clamp-2 text-md font-medium text-gray-900">{product.name}</h3>
         </Link>
-        <p className="mt-1 text-xs text-gray-500">{product.brand}</p>
+        <p className="mt-1 text-sm text-gray-500">{product.brand}</p>
         
         <div className="mt-3 flex items-center justify-between">
           <span className="text-sm font-bold text-[#bf2c7e]">Ksh {product.price}</span>

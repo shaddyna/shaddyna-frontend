@@ -107,8 +107,8 @@ const ShopItem = async ({ shop }: { shop: Shop }) => {
       </div>
 
       <div className="p-3">
-        <h3 className="line-clamp-1 text-sm font-medium text-gray-900">{shop.name}</h3>
-        <p className="line-clamp-2 mt-1 text-xs text-gray-500">{shop.description}</p>
+        <h3 className="line-clamp-1 text-md font-medium text-gray-900">{shop.name}</h3>
+        <p className="line-clamp-2 mt-1 text-sm text-gray-500">{shop.description}</p>
         
         <div className="mt-2 flex flex-wrap gap-1">
           {shop.categories.slice(0, 3).map((category) => (

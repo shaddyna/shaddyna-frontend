@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+//import { Inter } from 'next/font/google';
 import './globals.css';
 
 import DrawerButton from '@/components/DrawerButton';
@@ -8,7 +8,7 @@ import Header from '@/components/header/Header';
 import Providers from '@/components/Providers';
 import Sidebar from '@/components/Sidebar';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
+//const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'Shaddyna',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className='bg-background text-foreground font-inconsolata'>
         <Providers>
           <div className='drawer'>
             <DrawerButton />
