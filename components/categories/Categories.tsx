@@ -64,6 +64,7 @@ import Link from 'next/link';
 import Handbags from '../../public/images/categories/Handbags.webp';
 import Pants from '../../public/images/categories/Pants.webp';
 import Shirts from '../../public/images/categories/Shirts.webp'
+import images from '../../public/hero6.jpg';
 
 const Categories = () => {
   return (
@@ -75,7 +76,7 @@ const Categories = () => {
           className="group relative col-span-2 aspect-[2/1] overflow-hidden rounded-xl shadow-md transition-transform hover:scale-[1.02]"
         >
           <Image
-            src={Shirts}
+            src={images}
             alt="Collection of shirts"
             fill
             className="object-cover"
