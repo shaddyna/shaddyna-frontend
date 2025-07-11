@@ -30,19 +30,19 @@ const AddToCart = ({ item }: { item: OrderItem }) => {
   };
 
   return existItem ? (
-    <div className="flex items-center border border-pink-200 rounded-full bg-pink-50">
+    <div className="flex items-center border border-[#bf2c7e] rounded-full bg-[#bf2c7e]">
       <button
-        className="w-8 h-8 flex items-center justify-center text-pink-600 hover:bg-pink-100 rounded-l-full transition-colors duration-200"
+        className="w-8 h-8 flex items-center justify-center text-[#bf2c7e] hover:bg-[#bf2c7e] rounded-l-full transition-colors duration-200"
         type="button"
         onClick={() => decrease(existItem)}
       >
         -
       </button>
-      <span className="px-2 text-sm font-medium text-pink-700 min-w-[1.5rem] text-center">
+      <span className="px-2 text-sm font-medium text-[#bf2c7e] min-w-[1.5rem] text-center">
         {existItem.qty}
       </span>
       <button
-        className="w-8 h-8 flex items-center justify-center text-pink-600 hover:bg-pink-100 rounded-r-full transition-colors duration-200"
+        className="w-8 h-8 flex items-center justify-center text-[#bf2c7e] hover:bg-[#bf2c7e] rounded-r-full transition-colors duration-200"
         type="button"
         onClick={() => increase(existItem)}
       >
@@ -51,7 +51,7 @@ const AddToCart = ({ item }: { item: OrderItem }) => {
     </div>
   ) : (
     <button
-      className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-medium rounded-full shadow-sm hover:shadow-md transition-all duration-200"
+      className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-gradient-to-r from-[#bf2c7e] to-[#bf2c7e] hover:from-[#bf2c7e] hover:to-[#bf2c7e] text-white font-medium rounded-full shadow-sm hover:shadow-md transition-all duration-200"
       type="button"
       onClick={addToCartHandler}
     >

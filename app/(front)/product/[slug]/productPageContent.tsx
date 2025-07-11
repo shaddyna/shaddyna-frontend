@@ -34,10 +34,10 @@ const ProductPageContent = ({ product, blurDataURL }: any) => {
           <ul className='space-y-4'>
             <li><h1 className='text-xl'>{product.name}</h1></li>
             <li>
-              <Rating
+             {/*} <Rating
                 value={product.rating}
                 caption={`${product.numReviews} ratings`}
-              />
+              />*/}
             </li>
             <li>{product.brand}</li>
             <li><div className='divider'></div></li>

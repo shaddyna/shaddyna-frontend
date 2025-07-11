@@ -28,7 +28,7 @@ const Shops = async () => {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">Featured Shops</h2>
+      <h2 className="text-2xl font-bold text-[#0f1c47] md:text-3xl">Featured Shops</h2>
       <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
         {shops.map((shop) => (
           <ShopItem key={shop._id} shop={shop} />
