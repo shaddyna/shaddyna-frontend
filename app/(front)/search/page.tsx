@@ -431,7 +431,7 @@ export default async function SearchPage({
               </ul>
             </div>
 
-            {/* Ratings Filter */}
+            {/* Ratings Filter *
             <div className="rounded-xl bg-white p-6 shadow-sm border border-gray-100">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Customer Reviews</h3>
               <ul className="space-y-3">
@@ -459,7 +459,7 @@ export default async function SearchPage({
                   </li>
                 ))}
               </ul>
-            </div>
+            </div>*/}
           </div>
 
           {/* Products Section */}
