@@ -263,6 +263,7 @@ import { useState } from 'react';
 import useSWR from 'swr';
 import { ChevronDown, Moon, ShoppingCart, Sun, Search as SearchIcon, User, LayoutDashboard, History, LogOut, AlignJustify } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 import useCartService from '@/lib/hooks/useCartStore';
 import useLayoutService from '@/lib/hooks/useLayout';
@@ -472,22 +473,22 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-40 bg-white shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo and mobile menu button */}
+        {/*<div className="flex justify-between items-center h-16">
+          {/* Logo and mobile menu button *
           <div className="flex items-center gap-4">
             <Link href="/" className="text-xl font-bold text-[#bf2c7e]">
               Shaddyna
             </Link>
           </div>
 
-          {/* Desktop Search - Hidden on mobile */}
+          {/* Desktop Search - Hidden on mobile *
           <div className="hidden md:flex flex-1 max-w-md mx-4">
             <SearchBox />
           </div>
 
-          {/* User menu and cart */}
+          {/* User menu and cart *
           <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
-            {/* Mobile search button */}
+            {/* Mobile search button *
             <button 
               className="md:hidden p-2 rounded-full hover:bg-[#bf2c7e]/10"
               onClick={() => setSearchOpen(!searchOpen)}
@@ -496,10 +497,44 @@ const Header = () => {
               <SearchIcon className="w-5 h-5 text-gray-700" />
             </button>
 
-            {/* Menu */}
+            {/* Menu *
             <Menu />
           </div>
-        </div>
+        </div>*/}
+            <div className="flex justify-between items-center h-16">
+      {/* Logo and mobile menu button */}
+      <div className="flex items-center gap-4">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/shaddyna4.png"
+            alt="Shaddyna Logo"
+            width={120}
+            height={40}
+            priority
+          />
+        </Link>
+      </div>
+
+      {/* Desktop Search - Hidden on mobile */}
+      <div className="hidden md:flex flex-1 max-w-md mx-4">
+        <SearchBox />
+      </div>
+
+      {/* User menu and cart */}
+      <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+        {/* Mobile search button */}
+        <button 
+          className="md:hidden p-2 rounded-full hover:bg-[#bf2c7e]/10"
+          onClick={() => setSearchOpen(!searchOpen)}
+          aria-label="Search"
+        >
+          <SearchIcon className="w-5 h-5 text-gray-700" />
+        </button>
+
+        {/* Menu */}
+        <Menu />
+      </div>
+    </div>
 
         {/* Mobile search - appears when searchOpen is true */}
         {searchOpen && (
