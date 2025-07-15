@@ -153,14 +153,14 @@ const Categories = () => {
           className="group relative aspect-square w-40 flex-shrink-0 overflow-hidden rounded-xl shadow-md transition-transform hover:scale-[1.02]"
         >
           <Image
-            src={images}
+            src={Shirts}
             alt="Collection of pants"
             fill
             className="object-cover"
             placeholder="blur"
             sizes="(max-width: 767px) 160px, 25vw"
           />
-          <Overlay category="Pants" />
+          <Overlay category="Shirts" />
         </Link>
         
         <Link
@@ -249,7 +249,7 @@ const Overlay = ({ category, desktop = false }: { category: string; desktop?: bo
   return (
     <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${desktop ? 'bg-black/10 hover:bg-black/20' : 'bg-black/20 hover:bg-black/40'}`}>
       <span className={`rounded-full bg-white/90 px-4 py-2 font-medium text-gray-900 shadow-lg backdrop-blur-sm transition-all duration-300 ${desktop ? 'text-lg group-hover:scale-110 group-hover:px-5' : 'text-sm group-hover:scale-105 group-hover:px-5 sm:text-base'}`}>
-        Shop {category}
+        {category}
       </span>
     </div>
   );
