@@ -23,7 +23,7 @@ const SearchBox = () => {
 
   const { data: categories, error, isLoading } = useSWR('/api/products/categories');
 
-  if (error) return <div className="text-red-500">{error.message}</div>;
+  if (error) return <div className="text-[#bf2c7e]">{error.message}</div>;
   if (isLoading) return <div className="skeleton h-10 w-64 rounded-full"></div>;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -184,7 +184,7 @@ const Menu = () => {
               <button 
                 type="button" 
                 onClick={signOutHandler}
-                className="flex items-center gap-2 text-red-500 hover:bg-red-50 w-full text-left px-4 py-2"
+                className="flex items-center gap-2 text-[#bf2c7e] hover:bg-red-50 w-full text-left px-4 py-2"
               >
                 <LogOut className="w-4 h-4" />
                 Sign out
@@ -281,7 +281,7 @@ const SearchBox = () => {
 
   const { data: categories, error, isLoading } = useSWR('/api/products/categories');
 
-  if (error) return <div className="text-red-500">{error.message}</div>;
+  if (error) return <div className="text-[#bf2c7e]">{error.message}</div>;
   if (isLoading) return <div className="skeleton h-10 w-64 rounded-full"></div>;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -403,7 +403,7 @@ const UserMenu = ({ session, signOutHandler, handleClick }: {
         <button 
           type="button" 
           onClick={signOutHandler}
-          className="flex items-center gap-2 text-red-500 hover:bg-red-50 w-full text-left px-4 py-2"
+          className="flex items-center gap-2 text-[#bf2c7e] hover:bg-red-50 w-full text-left px-4 py-2"
         >
           <LogOut className="w-4 h-4" />
           Sign out
@@ -509,7 +509,7 @@ const Header = () => {
             src="/shaddyna4.png"
             alt="Shaddyna Logo"
             width={120}
-            height={40}
+            height={60}
             priority
           />
         </Link>
