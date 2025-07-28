@@ -59,14 +59,14 @@ export default function Products() {
     <div>
       <div className='flex items-center justify-between'>
         <h1 className='py-4 text-2xl'>Products</h1>
-        <button
+        {/*<button
           disabled={isCreating}
           onClick={() => createProduct()}
           className='btn btn-primary btn-sm'
         >
           {isCreating && <span className='loading loading-spinner'></span>}
           Create
-        </button>
+        </button>*/}
       </div>
 
       <div className='overflow-x-auto'>
