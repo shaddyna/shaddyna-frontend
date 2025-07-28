@@ -103,6 +103,7 @@ export default function SellerRequestsTable() {
                 <th className="py-2 px-4 border-b">Email</th>
                 <th className="py-2 px-4 border-b">Current Role</th>
                 <th className="py-2 px-4 border-b">Status</th>
+                <th className="py-2 px-4 border-b">Time</th>
                 <th className="py-2 px-4 border-b">Date</th>
                 <th className="py-2 px-4 border-b">Actions</th>
               </tr>
@@ -110,9 +111,9 @@ export default function SellerRequestsTable() {
             <tbody>
               {requests.map((request) => (
                 <tr key={request._id}>
-                  {/*<td className="py-2 px-4 border-b">{request.user.name}</td>
-                  <td className="py-2 px-4 border-b">{request.user.email}</td>*
-                  <td className="py-2 px-4 border-b">{request.user.role}</td>*/}
+                  <td className="py-2 px-4 border-b">{request.user?.name || 'Deleted user'}</td>
+                  <td className="py-2 px-4 border-b">{request.user?.email || '-'}</td>
+                  <td className="py-2 px-4 border-b">{request.user?.role || '-'}</td>
                   <td className="py-2 px-4 border-b">
                     <span
                       className={`px-2 py-1 rounded text-xs ${
@@ -125,6 +126,10 @@ export default function SellerRequestsTable() {
                     >
                       {request.status}
                     </span>
+                  </td>
+                  <td className="py-2 px-4 border-b">
+                  {new Date(request.createdAt).toLocaleTimeString()}
+
                   </td>
                   <td className="py-2 px-4 border-b">
                     {new Date(request.createdAt).toLocaleDateString()}
