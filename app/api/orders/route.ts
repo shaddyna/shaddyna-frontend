@@ -207,14 +207,42 @@ export const POST = auth(async (req: any) => {
     });
 
     // Reduce product quantities in stock
-    const bulkOps = dbOrderItems.map((item: any) => ({
+    /*const bulkOps = dbOrderItems.map((item: any) => ({
       updateOne: {
         filter: { _id: new mongoose.Types.ObjectId(item.product) },
         update: { $inc: { countInStock: -item.qty } },
       },
     }));
 
+    await ProductModel.bulkWrite(bulkOps);*/
+    // Check if all products have enough stock
+    for (const item of dbOrderItems) {
+      const product = await ProductModel.findById(item.product);
+
+      if (!product) {
+        throw new Error(`Product not found: ${item.product}`);
+      }
+
+      if (product.countInStock < item.qty) {
+        throw new Error(
+          `Insufficient stock for ${product.name}. Only ${product.countInStock} left in stock.`
+        );
+      }
+    }
+
+    // If all items pass, proceed to deduct stock
+    const bulkOps = dbOrderItems.map((item: any) => ({
+      updateOne: {
+        filter: {
+          _id: new mongoose.Types.ObjectId(item.product),
+          countInStock: { $gte: item.qty }, // extra safety
+        },
+        update: { $inc: { countInStock: -item.qty } },
+      },
+    }));
+
     await ProductModel.bulkWrite(bulkOps);
+
     const createdOrder = await newOrder.save();
 
     console.log('[POST /api/orders] ✅ Order created:', createdOrder._id);

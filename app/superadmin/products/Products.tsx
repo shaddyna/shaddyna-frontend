@@ -87,7 +87,7 @@ export default function Products() {
               <tr key={product._id}>
                 <td>{formatId(product._id!)}</td>
                 <td>{product.name}</td>
-                <td>${product.price}</td>
+                <td>Ksh {product.price}</td>
                 <td>{product.category}</td>
                 <td>{product.countInStock}</td>
                 <td>{product.rating}</td>
