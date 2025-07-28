@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import useSWR from 'swr';
 
-import  Order  from '@/lib/models/OrderModel';
-
 type Order = {
   _id: string;
   createdAt: string;
@@ -34,6 +32,7 @@ export default function Orders() {
               <th>ID</th>
               <th>USER</th>
               <th>DATE</th>
+              <th>TIME</th>
               <th>TOTAL</th>
               <th>PAID</th>
               <th>DELIVERED</th>
@@ -44,17 +43,20 @@ export default function Orders() {
             {orders.map((order: Order) => (
               <tr key={order._id}>
                 <td>..{order._id.substring(20, 24)}</td>
-                <td>{order.user?.name || 'Deleted user'}</td>
+                <td>
+                  {order.user?.name || 'Deleted user'}
+                </td>
                 <td>{order.createdAt.substring(0, 10)}</td>
+                <td>{new Date(order.createdAt).toLocaleTimeString()}</td>
                 <td>Ks {order.totalPrice}</td>
                 <td>
                   {order.isPaid && order.paidAt
-                    ? `${order.paidAt.substring(0, 10)}`
+                    ? order.paidAt.substring(0, 10)
                     : 'not paid'}
                 </td>
                 <td>
                   {order.isDelivered && order.deliveredAt
-                    ? `${order.deliveredAt.substring(0, 10)}`
+                    ? order.deliveredAt.substring(0, 10)
                     : 'not delivered'}
                 </td>
                 <td>
