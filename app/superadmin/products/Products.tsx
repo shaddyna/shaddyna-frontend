@@ -92,13 +92,13 @@ export default function Products() {
                 <td>{product.countInStock}</td>
                 <td>{product.rating}</td>
                 <td>
-                  <Link
+                  {/* <Link
                     href={`/superadmin/products/${product._id}`}
                     type='button'
                     className='btn btn-ghost btn-sm'
                   >
                     Edit
-                  </Link>
+                  </Link>*/}
                   &nbsp;
                   <button
                     onClick={() => deleteProduct({ productId: product._id! })}
