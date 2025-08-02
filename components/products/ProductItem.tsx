@@ -1,5 +1,3 @@
-
-// ProductItem.tsx
 /*'use client';
 
 import Image from 'next/image';
@@ -43,7 +41,7 @@ const ProductItem = ({ product }: { product: Product }) => {
           />
         </Link>
         
-     
+        {/* Stock Badge *
         {product.countInStock <= 10 && (
           <span className={`absolute top-2 left-2 rounded-full px-2 py-1 text-xs text-white ${
             product.countInStock === 0 ? 'bg-gray-600' : 'bg-[#bf2c7e]'
@@ -87,7 +85,8 @@ const ProductItem = ({ product }: { product: Product }) => {
 };
 
 export default ProductItem;*/
-'use client'; // Add this at the top of your ProductItem component
+
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -101,8 +100,8 @@ const ProductItem = ({ product }: { product: Product }) => {
   const { increase } = useCartService();
   const [imageError, setImageError] = useState(false);
 
-  const productImage = product.images?.length > 0 ? product.images[0] : product.image;
-  const imageSrc = imageError ? '/images/placeholder.jpg' : productImage;
+  // Always use the main image field, fallback to placeholder if error
+  const imageSrc = imageError ? '/images/placeholder.jpg' : product.image;
 
   const addToCartHandler = () => {
     increase({

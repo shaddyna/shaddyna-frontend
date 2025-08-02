@@ -106,12 +106,17 @@ export default function CreateProductModal({
     setIsUploading(false);
   }
 };
+const generateSlug = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + Date.now();
+
 
   const formSubmit = async (formData: any) => {
     try {
       const imageUrls = await uploadImages();
+      const slug = generateSlug(formData.name);
       await createProduct({ 
         ...formData, 
+        slug,
         images: imageUrls,
         image: imageUrls[0], // First image as the main image
         vendor: vendorId 
@@ -160,7 +165,7 @@ export default function CreateProductModal({
         <div className="py-4">
           <form onSubmit={handleSubmit(formSubmit)}>
             <FormInput name='Name' id='name' required />
-            <FormInput name='Slug' id='slug' required />
+            {/*<FormInput name='Slug' id='slug' required />*/}
             <FormInput name='Price' id='price' required />
             
             <div className='mb-6 md:flex'>
@@ -190,7 +195,6 @@ export default function CreateProductModal({
             <FormInput name='Brand' id='brand' required />
             <FormInput name='Description' id='description' required />
             <FormInput name='Count In Stock' id='countInStock' required />
-
             <div className='mb-6 md:flex'>
               <label className='label md:w-1/5' htmlFor='images'>
                 Product Images (max 5)

@@ -56,8 +56,8 @@ export type Product = {
   _id?: string;
   name: string;
   slug: string;
-  image: string; // Main image
-  images: string[]; // Additional images
+  image: string; 
+  images: string[]; 
   banner?: string;
   price: number;
   brand: string;
