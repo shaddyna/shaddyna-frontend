@@ -261,7 +261,7 @@ import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next-nprogress-bar';
 import { useState } from 'react';
 import useSWR from 'swr';
-import { ChevronDown, Moon, ShoppingCart, Sun, Search as SearchIcon, User, LayoutDashboard, History, LogOut, AlignJustify } from 'lucide-react';
+import { ChevronDown, Moon, ShoppingCart, Sun, Search as SearchIcon, User, LayoutDashboard, History, LogOut, AlignJustify, DollarSign } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -375,7 +375,7 @@ const UserMenu = ({ session, signOutHandler, handleClick }: {
           </Link>
         </li>
       )}
-      <li onClick={handleClick}>
+      {/*<li onClick={handleClick}>
         <Link href="/skills" className="flex items-center gap-2 hover:bg-[#bf2c7e]/10">
           <LayoutDashboard className="w-4 h-4" />
           Skills Marketplace
@@ -386,11 +386,17 @@ const UserMenu = ({ session, signOutHandler, handleClick }: {
           <History className="w-4 h-4" />
           Skill Inquiries
         </Link>
-      </li>
+      </li>*/}
       <li onClick={handleClick}>
         <Link href="/order-history" className="flex items-center gap-2 hover:bg-[#bf2c7e]/10">
           <History className="w-4 h-4" />
           Order history
+        </Link>
+      </li>
+      <li>
+        <Link href="" className="flex items-center gap-2 hover:bg-[#bf2c7e]/10">
+          <DollarSign className="w-4 h-4" />
+          Sell Shaddyna
         </Link>
       </li>
       <li onClick={handleClick}>

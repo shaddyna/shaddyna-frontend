@@ -58,7 +58,7 @@ const Dashboard = () => {
         data: summary.salesData.map(
           (x: { totalSales: number }) => x.totalSales,
         ),
-        borderColor: 'rgb(53, 162, 235)',
+        borderColor: 'rgba(24,33,85,255)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
@@ -72,7 +72,7 @@ const Dashboard = () => {
         data: summary.salesData.map(
           (x: { totalOrders: number }) => x.totalOrders,
         ),
-        borderColor: 'rgb(53, 162, 235)',
+        borderColor: 'rgba(24,33,85,255)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
@@ -95,7 +95,8 @@ const Dashboard = () => {
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
+          //'rgba(54, 162, 235, 1)',
+          'rgba(24,33,85,255)',
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
           'rgba(153, 102, 255, 1)',
@@ -109,7 +110,8 @@ const Dashboard = () => {
     datasets: [
       {
         label: 'Users',
-        borderColor: 'rgb(53, 162, 235)',
+        //borderColor: '#35a2ebff',
+        borderColor: '#182155',
         backgroundColor: 'rgba(75, 136, 177, 0.5)',
         data: summary.usersData.map(
           (x: { totalUsers: number }) => x.totalUsers,

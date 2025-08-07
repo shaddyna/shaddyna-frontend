@@ -58,13 +58,13 @@ export default function Users() {
 
 
                 <td>
-                  <Link
+                  {/*<Link
                     href={`/admin/users/${user._id}`}
                     type='button'
                     className='btn btn-ghost btn-sm'
                   >
                     Edit
-                  </Link>
+                  </Link>*/}
                   &nbsp;
                   <button
                     onClick={() => deleteUser({ userId: user._id })}

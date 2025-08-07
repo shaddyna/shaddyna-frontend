@@ -85,7 +85,6 @@ export default function Users() {
 
 'use client';
 
-import Link from 'next/link';
 import toast from 'react-hot-toast';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
@@ -142,13 +141,13 @@ export default function Users() {
                 <td>{user.role}</td>
 
                 <td>
-                  <Link
+                  {/*<Link
                     href={`/superadmin/users/${user._id}`}
                     type='button'
                     className='btn btn-ghost btn-sm'
                   >
                     Edit
-                  </Link>
+                  </Link>*/}
                   &nbsp;
                   <button
                     onClick={() => deleteUser({ userId: user._id })}
