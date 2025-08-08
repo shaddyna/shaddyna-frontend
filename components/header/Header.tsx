@@ -394,7 +394,7 @@ const UserMenu = ({ session, signOutHandler, handleClick }: {
         </Link>
       </li>
       <li>
-        <Link href="" className="flex items-center gap-2 hover:bg-[#bf2c7e]/10">
+        <Link href="/sell-shaddyna" className="flex items-center gap-2 hover:bg-[#bf2c7e]/10">
           <DollarSign className="w-4 h-4" />
           Sell Shaddyna
         </Link>
