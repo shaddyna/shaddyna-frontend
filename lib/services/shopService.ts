@@ -11,7 +11,7 @@ const getFeaturedShops = cache(async () => {
     .limit(8)
     .populate('owner')
     .lean();
-  return shops as unknown as Shop[]; // Converts the MongoDB documents to plain JavaScript objects
+  return shops as unknown as Shop[];
 });
 
 const getShopBySlug = cache(async (slug: string) => {

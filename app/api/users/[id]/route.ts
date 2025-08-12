@@ -1,5 +1,4 @@
 // app/api/users/[id]/route.ts
-import { auth } from '@/lib/auth';
 import dbConnect from '@/lib/dbConnect';
 import UserModel from '@/lib/models/UserModel';
 import { NextResponse } from 'next/server';
